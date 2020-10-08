@@ -1,0 +1,14 @@
+Package: healthyR
+Title: Hospital Data Analysis Workflow Tools
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
+    person("Steven Sanderson", role = "cph"))
+Description: 
+    Hospital data anlysis workflow tools, modeling and automations.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
