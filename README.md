@@ -1,8 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-healthyR
-========
+healthyR <img src="man/figures/healthyR_7.png" width="147" height="170" align="right" />
+========================================================================================
 
 <!-- badges: start -->
 <!-- badges: end -->
