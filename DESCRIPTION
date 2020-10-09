@@ -16,7 +16,8 @@ BugReports: https://github.com/spsanderson/healthyR/issues
 Imports: 
     magrittr,
     rlang (>= 0.1.2),
-    tibble
+    tibble,
+    timetk
 Suggests: 
     knitr,
     rmarkdown,

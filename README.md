@@ -7,7 +7,8 @@ healthyR <img src="man/figures/healthyR_2.png" width="147" height="170" align="r
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of healthyR is to …
+The goal of healthyR is to help quickly analyze common data problems in
+the Administrative and Clincial spaces.
 
 Installation
 ------------
