@@ -26,6 +26,9 @@ ts_median_excess_plt(
 
 \item{...}{Same as the .ggplot_group_var and .secondary_grp_var}
 }
+\value{
+A ggplot2 plot
+}
 \description{
 Plot out the excess +/- of the median value grouped by certain time parameters
 }
@@ -48,6 +51,5 @@ ts_median_excess_plt(
   , yr
   , wk
 )
-
 
 }

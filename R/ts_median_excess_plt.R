@@ -28,6 +28,7 @@
 #'   , wk
 #' )
 #'
+#' @return A ggplot2 plot
 #'
 #' @export
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a plot showing the excess +/- of the median value — ts_median_excess_plt • healthyR</title>
+<title>Make a tibble with year, month, week, week day and hour information added — ts_ymwdh_tbl • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create a plot showing the excess +/- of the median value — ts_median_excess_plt" />
-<meta property="og:description" content="Plot out the excess +/- of the median value grouped by certain time parameters" />
+<meta property="og:title" content="Make a tibble with year, month, week, week day and hour information added — ts_ymwdh_tbl" />
+<meta property="og:description" content="Returns a tibble that has year, month, week, week day and hour added from a date column" />
 
 
 
@@ -123,23 +123,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a plot showing the excess +/- of the median value</h1>
-    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/ts_median_excess_plt.R'><code>R/ts_median_excess_plt.R</code></a></small>
-    <div class="hidden name"><code>ts_median_excess_plt.Rd</code></div>
+    <h1>Make a tibble with year, month, week, week day and hour information added</h1>
+    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/ts_ymwdh_tbl.R'><code>R/ts_ymwdh_tbl.R</code></a></small>
+    <div class="hidden name"><code>ts_ymwdh_tbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot out the excess +/- of the median value grouped by certain time parameters</p>
+    <p>Returns a tibble that has year, month, week, week day and hour added from a date column</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ts_median_excess_plt</span><span class='op'>(</span>
-  <span class='va'>.data</span>,
-  <span class='va'>.date_col</span>,
-  <span class='va'>.value_col</span>,
-  <span class='va'>.x_axis</span>,
-  <span class='va'>.secondary_grp_var</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ts_ymwdh_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,60 +145,47 @@
       <th>.date_col</th>
       <td><p>The column of the tibble that holds the date</p></td>
     </tr>
-    <tr>
-      <th>.value_col</th>
-      <td><p>The column that holds the value of interest</p></td>
-    </tr>
-    <tr>
-      <th>.x_axis</th>
-      <td><p>What is the be the x-axis, day, week, etc.</p></td>
-    </tr>
-    <tr>
-      <th>.secondary_grp_var</th>
-      <td><p>Typically the same as the x-axis, may not work as expected otherwise</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Same as the .ggplot_group_var and .secondary_grp_var</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A ggplot2 plot</p>
+    <p>A tibble</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
 <ul>
-<li><p>Supply data that you want to view and you will see the excess +/- of the median values
-over a specified time series tibble</p></li>
+<li><p>Supply data with a date column and this will add the year, month, week, week day and hour
+to the tibble. The original date column is kept.</p></li>
+<li><p>Returns a tibble.</p></li>
+<li><p>You must know the data going into the function and if certain columns
+should be dropped or kept when using further functions</p></li>
+<li><p>Future work - Add boolean for pad_by_time to fill in missing time series information</p></li>
 </ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'lubridate'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>ts_median_excess_plt</span><span class='op'>(</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
+<span class='fu'>ts_ymwdh_tbl</span><span class='op'>(</span>
   .data <span class='op'>=</span> <span class='va'>m4_daily</span>
   , .date_col <span class='op'>=</span> <span class='va'>date</span>
-  , .value_col <span class='op'>=</span> <span class='va'>value</span>
-  , .x_axis <span class='op'>=</span> <span class='va'>wk</span>
-  , .secondary_group_var <span class='op'>=</span> <span class='va'>wk</span>
-  , <span class='va'>yr</span>
-  , <span class='va'>wk</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Must group by variables found in `.data`.</span>
-#&gt; <span class='error'>* Column `yr` is not found.</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 9,743 x 8</span><span>
+#&gt;    id    date       value    yr mn       wk wd       hr
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> D10   2014-07-03 </span><span style='text-decoration: underline;'>2</span><span>076.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      27 Thu       0
+#&gt; </span><span style='color: #555555;'> 2</span><span> D10   2014-07-04 </span><span style='text-decoration: underline;'>2</span><span>073.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      27 Fri       0
+#&gt; </span><span style='color: #555555;'> 3</span><span> D10   2014-07-05 </span><span style='text-decoration: underline;'>2</span><span>049.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      27 Sat       0
+#&gt; </span><span style='color: #555555;'> 4</span><span> D10   2014-07-06 </span><span style='text-decoration: underline;'>2</span><span>049.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      27 Sun       0
+#&gt; </span><span style='color: #555555;'> 5</span><span> D10   2014-07-07 </span><span style='text-decoration: underline;'>2</span><span>006.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      28 Mon       0
+#&gt; </span><span style='color: #555555;'> 6</span><span> D10   2014-07-08 </span><span style='text-decoration: underline;'>2</span><span>018.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      28 Tue       0
+#&gt; </span><span style='color: #555555;'> 7</span><span> D10   2014-07-09 </span><span style='text-decoration: underline;'>2</span><span>019.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      28 Wed       0
+#&gt; </span><span style='color: #555555;'> 8</span><span> D10   2014-07-10 </span><span style='text-decoration: underline;'>2</span><span>007.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      28 Thu       0
+#&gt; </span><span style='color: #555555;'> 9</span><span> D10   2014-07-11 </span><span style='text-decoration: underline;'>2</span><span>010   </span><span style='text-decoration: underline;'>2</span><span>014 Jul      28 Fri       0
+#&gt; </span><span style='color: #555555;'>10</span><span> D10   2014-07-12 </span><span style='text-decoration: underline;'>2</span><span>002.  </span><span style='text-decoration: underline;'>2</span><span>014 Jul      28 Sat       0
+#&gt; </span><span style='color: #555555;'># ... with 9,733 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
