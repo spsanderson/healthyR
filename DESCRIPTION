@@ -17,7 +17,10 @@ Imports:
     magrittr,
     rlang (>= 0.1.2),
     tibble,
-    timetk
+    timetk,
+    ggplot2,
+    dplyr,
+    lubridate
 Suggests: 
     knitr,
     rmarkdown,

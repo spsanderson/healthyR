@@ -9,7 +9,6 @@ ts_median_excess_plt(
   .date_col,
   .value_col,
   .x_axis,
-  .ggplt_group_var,
   .secondary_grp_var,
   ...
 )
@@ -22,8 +21,6 @@ ts_median_excess_plt(
 \item{.value_col}{The column that holds the value of interest}
 
 \item{.x_axis}{What is the be the x-axis, day, week, etc.}
-
-\item{.ggplt_group_var}{What is the resulting ggplot grouped on, e.g. Year}
 
 \item{.secondary_grp_var}{Typically the same as the x-axis, may not work as expected otherwise}
 
@@ -41,13 +38,12 @@ over a specified time series tibble
 \examples{
 library(timetk)
 library(dplyr)
-
+library(lubridate)
 ts_median_excess_plt(
   .data = m4_daily
   , .date_col = date
   , .value_col = value
   , .x_axis = wk
-  , .ggplt_group_var = yr
   , .secondary_group_var = wk
   , yr
   , wk

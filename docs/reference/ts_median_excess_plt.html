@@ -137,7 +137,6 @@
   <span class='va'>.date_col</span>,
   <span class='va'>.value_col</span>,
   <span class='va'>.x_axis</span>,
-  <span class='va'>.ggplt_group_var</span>,
   <span class='va'>.secondary_grp_var</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -160,10 +159,6 @@
     <tr>
       <th>.x_axis</th>
       <td><p>What is the be the x-axis, day, week, etc.</p></td>
-    </tr>
-    <tr>
-      <th>.ggplt_group_var</th>
-      <td><p>What is the resulting ggplot grouped on, e.g. Year</p></td>
     </tr>
     <tr>
       <th>.secondary_grp_var</th>
@@ -192,13 +187,15 @@ over a specified time series tibble</p></li>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'>
-<span class='fu'>ts_median_excess_plt</span><span class='op'>(</span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: 'lubridate'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>ts_median_excess_plt</span><span class='op'>(</span>
   .data <span class='op'>=</span> <span class='va'>m4_daily</span>
   , .date_col <span class='op'>=</span> <span class='va'>date</span>
   , .value_col <span class='op'>=</span> <span class='va'>value</span>
   , .x_axis <span class='op'>=</span> <span class='va'>wk</span>
-  , .ggplt_group_var <span class='op'>=</span> <span class='va'>yr</span>
   , .secondary_group_var <span class='op'>=</span> <span class='va'>wk</span>
   , <span class='va'>yr</span>
   , <span class='va'>wk</span>
