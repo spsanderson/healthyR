@@ -121,7 +121,10 @@ ts_median_excess_plt <- function(
         ggplot2::geom_line(ggplot2::aes(col=last_flag, y = excess)) +
         ggplot2::scale_color_manual(values = c("FALSE"='gray',"TRUE"='red')) +
         ggplot2::guides(col = FALSE) +
-        ggplot2::theme_minimal()
+        ggplot2::theme_minimal() +
+        ggplot2::labs(
+            x = ""
+        )
 
     return(g)
 
