@@ -103,20 +103,37 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co">## basic example code</span></span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="kw">library</span>(timetk)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="kw">ts_ymwdh_tbl</span>(<span class="dt">.data =</span> m4_daily, <span class="dt">.date_col =</span> date) <span class="op">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">ts_median_excess_plt</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>        <span class="dt">.date_col =</span> date</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>        , <span class="dt">.value_col =</span> value</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>        , <span class="dt">.x_axis =</span> wk</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>        , <span class="dt">.ggplot_group_var =</span> yr</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>        , <span class="dt">.years_back =</span> <span class="dv">5</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>    )</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#&gt; Joining, by = "wk"</span></span></code></pre></div>
+<p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">summary</span>(cars)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="co">#&gt;      speed           dist       </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub!</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="kw">library</span>(timetk)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="kw">ts_ymwdh_tbl</span>(<span class="dt">.data =</span> m4_daily, <span class="dt">.date_col =</span> date)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 9,743 x 8</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="co">#&gt;    id    date       value    yr mn       wk wd       hr</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#&gt;    &lt;fct&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;dbl&gt; &lt;ord&gt; &lt;int&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#&gt;  1 D10   2014-07-03 2076.  2014 Jul      27 Thu       0</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="co">#&gt;  2 D10   2014-07-04 2073.  2014 Jul      27 Fri       0</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="co">#&gt;  3 D10   2014-07-05 2049.  2014 Jul      27 Sat       0</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="co">#&gt;  4 D10   2014-07-06 2049.  2014 Jul      27 Sun       0</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="co">#&gt;  5 D10   2014-07-07 2006.  2014 Jul      28 Mon       0</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a><span class="co">#&gt;  6 D10   2014-07-08 2018.  2014 Jul      28 Tue       0</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="co">#&gt;  7 D10   2014-07-09 2019.  2014 Jul      28 Wed       0</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="co">#&gt;  8 D10   2014-07-10 2007.  2014 Jul      28 Thu       0</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="co">#&gt;  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#&gt; 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="co">#&gt; # ... with 9,733 more rows</span></span></code></pre></div>
 </div>
 </div>
   </div>

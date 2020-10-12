@@ -29,26 +29,38 @@ Example
 This is a basic example which shows you how to solve a common problem:
 
     library(healthyR)
-    ## basic example code
+    library(timetk)
+
+    ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
+        ts_median_excess_plt(
+            .date_col = date
+            , .value_col = value
+            , .x_axis = wk
+            , .ggplot_group_var = yr
+            , .years_back = 5
+        )
+    #> Joining, by = "wk"
+
+<img src="man/figures/README-example-1.png" width="100%" />
 
 What is special about using `README.Rmd` instead of just `README.md`?
 You can include R chunks like so:
 
-    summary(cars)
-    #>      speed           dist       
-    #>  Min.   : 4.0   Min.   :  2.00  
-    #>  1st Qu.:12.0   1st Qu.: 26.00  
-    #>  Median :15.0   Median : 36.00  
-    #>  Mean   :15.4   Mean   : 42.98  
-    #>  3rd Qu.:19.0   3rd Qu.: 56.00  
-    #>  Max.   :25.0   Max.   :120.00
+    library(healthyR)
+    library(timetk)
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub!
+    ts_ymwdh_tbl(.data = m4_daily, .date_col = date)
+    #> # A tibble: 9,743 x 8
+    #>    id    date       value    yr mn       wk wd       hr
+    #>    <fct> <date>     <dbl> <dbl> <ord> <dbl> <ord> <int>
+    #>  1 D10   2014-07-03 2076.  2014 Jul      27 Thu       0
+    #>  2 D10   2014-07-04 2073.  2014 Jul      27 Fri       0
+    #>  3 D10   2014-07-05 2049.  2014 Jul      27 Sat       0
+    #>  4 D10   2014-07-06 2049.  2014 Jul      27 Sun       0
+    #>  5 D10   2014-07-07 2006.  2014 Jul      28 Mon       0
+    #>  6 D10   2014-07-08 2018.  2014 Jul      28 Tue       0
+    #>  7 D10   2014-07-09 2019.  2014 Jul      28 Wed       0
+    #>  8 D10   2014-07-10 2007.  2014 Jul      28 Thu       0
+    #>  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0
+    #> 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0
+    #> # ... with 9,733 more rows

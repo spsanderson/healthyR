@@ -40,21 +40,25 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(healthyR)
-## basic example code
+library(timetk)
+
+ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
+    ts_median_excess_plt(
+        .date_col = date
+        , .value_col = value
+        , .x_axis = wk
+        , .ggplot_group_var = yr
+        , .years_back = 5
+    )
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
 ```{r cars}
-summary(cars)
+library(healthyR)
+library(timetk)
+
+ts_ymwdh_tbl(.data = m4_daily, .date_col = date)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
