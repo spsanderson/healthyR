@@ -9,8 +9,8 @@ ts_median_excess_plt(
   .date_col,
   .value_col,
   .x_axis,
-  .secondary_grp_var,
-  ...
+  .ggplot_group_var,
+  .years_back
 )
 }
 \arguments{
@@ -22,9 +22,10 @@ ts_median_excess_plt(
 
 \item{.x_axis}{What is the be the x-axis, day, week, etc.}
 
-\item{.secondary_grp_var}{Typically the same as the x-axis, may not work as expected otherwise}
+\item{.ggplot_group_var}{The variable to group the ggplot on}
 
-\item{...}{Same as the .ggplot_group_var and .secondary_grp_var}
+\item{.years_back}{How many yeas back do you want to go in order to compute
+the median value}
 }
 \value{
 A ggplot2 plot
@@ -42,14 +43,17 @@ over a specified time series tibble
 library(timetk)
 library(dplyr)
 library(lubridate)
-ts_median_excess_plt(
+
+ts_ymwdh_tbl(
   .data = m4_daily
   , .date_col = date
+) \%>\%
+ts_median_excess_plt(
+  .date_col = date
   , .value_col = value
   , .x_axis = wk
-  , .secondary_group_var = wk
-  , yr
-  , wk
+  , .ggplot_group_var = yr
+  , .years_back = 5
 )
 
 }

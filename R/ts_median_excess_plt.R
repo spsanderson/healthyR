@@ -7,8 +7,9 @@
 #' @param .date_col The column of the tibble that holds the date
 #' @param .value_col The column that holds the value of interest
 #' @param .x_axis What is the be the x-axis, day, week, etc.
-#' @param .secondary_grp_var Typically the same as the x-axis, may not work as expected otherwise
-#' @param ... Same as the .ggplot_group_var and .secondary_grp_var
+#' @param .ggplot_group_var The variable to group the ggplot on
+#' @param .years_back How many yeas back do you want to go in order to compute
+#' the median value
 #'
 #' @details
 #' - Supply data that you want to view and you will see the excess +/- of the median values
@@ -18,14 +19,17 @@
 #' library(timetk)
 #' library(dplyr)
 #' library(lubridate)
-#' ts_median_excess_plt(
+#'
+#' ts_ymwdh_tbl(
 #'   .data = m4_daily
 #'   , .date_col = date
+#' ) %>%
+#' ts_median_excess_plt(
+#'   .date_col = date
 #'   , .value_col = value
 #'   , .x_axis = wk
-#'   , .secondary_group_var = wk
-#'   , yr
-#'   , wk
+#'   , .ggplot_group_var = yr
+#'   , .years_back = 5
 #' )
 #'
 #' @return A ggplot2 plot
@@ -37,8 +41,8 @@ ts_median_excess_plt <- function(
     , .date_col
     , .value_col
     , .x_axis
-    , .secondary_grp_var
-    , ...
+    , .ggplot_group_var
+    , .years_back
 ) {
 
     # Tidayeval Setup
@@ -50,9 +54,9 @@ ts_median_excess_plt <- function(
     x_axis_var_expr       <- rlang::enquo(.x_axis)
     x_axis_var_name       <- rlang::quo_name(x_axis_var_expr)
 
-    secondary_group_var_expr <- rlang::enquo(.secondary_grp_var)
+    ggplot_group_expr     <- rlang::enquo(.ggplot_group_var)
 
-    group_vars_expr       <- rlang::quos(...)
+    years_back_expr       <- rlang::enquo(.years_back)
 
     # Checks
     if(!is.data.frame(.data)) {
@@ -71,13 +75,8 @@ ts_median_excess_plt <- function(
         stop(call. = FALSE, "(x_axis_var_expr) is missing. Please supply.")
     }
 
-
-    if(rlang::quo_is_missing(secondary_group_var_expr)) {
-        stop(call. = FALSE, "(secondary_group_var_expr) is missing. Please supply.")
-    }
-
-    if(length(group_vars_expr) <= 1) {
-        stop(call. = FALSE, "(group_vars_expr) is missing. Please supply two.")
+    if (rlang::quo_is_missing(years_back_expr)) {
+        stop(call. = FALSE, "(years_back_expr) is missing. Please supply.")
     }
 
     # Get .end_date
@@ -87,34 +86,23 @@ ts_median_excess_plt <- function(
         base::max()
 
     # Data Manip
-
     df_grp_tbl <- tibble::as_tibble(.data) %>%
-        dplyr::filter(lubridate::year({{date_var_expr}}) >= lubridate::year(.end_date) - 5) %>%
+        dplyr::filter(lubridate::year({{date_var_expr}}) >= lubridate::year(.end_date) - {{years_back_expr}}) %>%
         dplyr::filter(lubridate::year({{date_var_expr}}) <= lubridate::year(.end_date) - 1) %>%
-        dplyr::mutate(yr = lubridate::year({{date_var_expr}})) %>%
-        dplyr::mutate(mn = lubridate::month({{date_var_expr}}, label = TRUE)) %>%
-        dplyr::mutate(wk = lubridate::isoweek({{date_var_expr}})) %>%
-        dplyr::mutate(wd = lubridate::wday( {{date_var_expr}} , label = TRUE)) %>%
-        dplyr::mutate(hr = lubridate::hour( {{date_var_expr}} )) %>%
-        dplyr::select(- ( {{date_var_expr}} )) %>%
-        dplyr::group_by(...) %>%
-        dplyr::summarise(value = sum( {{value_var_expr}} )) %>%
+        dplyr::select(- {{date_var_expr}} ) %>%
+        dplyr::group_by( {{ggplot_group_expr}}, {{x_axis_var_expr}} ) %>%
+        dplyr::summarise(value = sum({{value_var_expr}})) %>%
         dplyr::ungroup() %>%
-        dplyr::group_by( {{secondary_group_var_expr}} ) %>%
+        dplyr::group_by({{x_axis_var_expr}}) %>%
         dplyr::summarise(median_value = stats::median(value)) %>%
         dplyr::ungroup()
 
     df_excess_tbl <- tibble::as_tibble(.data) %>%
-        dplyr::mutate(yr = lubridate::year( {{date_var_expr}} )) %>%
-        dplyr::mutate(mn = lubridate::month( {{date_var_expr}} , label = TRUE)) %>%
-        dplyr::mutate(wk = lubridate::isoweek( {{date_var_expr}} )) %>%
-        dplyr::mutate(wd = lubridate::wday( {{date_var_expr}} , label = TRUE)) %>%
-        dplyr::mutate(hr = lubridate::hour( {{date_var_expr}} )) %>%
-        dplyr::select(- ( {{date_var_expr}} )) %>%
-        dplyr::group_by(...) %>%
+        dplyr::select(- {{date_var_expr}} ) %>%
+        dplyr::group_by( {{ggplot_group_expr}}, {{x_axis_var_expr}} ) %>%
         dplyr::summarise(value = sum( {{value_var_expr}} )) %>%
         dplyr::ungroup() %>%
-        dplyr::group_by( {{secondary_group_var_expr}} ) %>%
+        dplyr::group_by( {{x_axis_var_expr}} ) %>%
         dplyr::left_join(df_grp_tbl) %>%
         dplyr::mutate(excess = value - median_value) %>%
         dplyr::ungroup() %>%
