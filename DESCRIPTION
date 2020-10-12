@@ -20,7 +20,8 @@ Imports:
     timetk,
     ggplot2,
     dplyr,
-    lubridate
+    lubridate,
+    graphics
 Suggests: 
     knitr,
     rmarkdown,
