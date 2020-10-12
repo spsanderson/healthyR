@@ -137,8 +137,8 @@
   <span class='va'>.date_col</span>,
   <span class='va'>.value_col</span>,
   <span class='va'>.x_axis</span>,
-  <span class='va'>.secondary_grp_var</span>,
-  <span class='va'>...</span>
+  <span class='va'>.ggplot_group_var</span>,
+  <span class='va'>.years_back</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -161,12 +161,13 @@
       <td><p>What is the be the x-axis, day, week, etc.</p></td>
     </tr>
     <tr>
-      <th>.secondary_grp_var</th>
-      <td><p>Typically the same as the x-axis, may not work as expected otherwise</p></td>
+      <th>.ggplot_group_var</th>
+      <td><p>The variable to group the ggplot on</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Same as the .ggplot_group_var and .secondary_grp_var</p></td>
+      <th>.years_back</th>
+      <td><p>How many yeas back do you want to go in order to compute
+the median value</p></td>
     </tr>
     </table>
 
@@ -194,17 +195,19 @@ over a specified time series tibble</p></li>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'lubridate'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>ts_median_excess_plt</span><span class='op'>(</span>
+#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'>
+<span class='fu'><a href='ts_ymwdh_tbl.html'>ts_ymwdh_tbl</a></span><span class='op'>(</span>
   .data <span class='op'>=</span> <span class='va'>m4_daily</span>
   , .date_col <span class='op'>=</span> <span class='va'>date</span>
+<span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>ts_median_excess_plt</span><span class='op'>(</span>
+  .date_col <span class='op'>=</span> <span class='va'>date</span>
   , .value_col <span class='op'>=</span> <span class='va'>value</span>
   , .x_axis <span class='op'>=</span> <span class='va'>wk</span>
-  , .secondary_group_var <span class='op'>=</span> <span class='va'>wk</span>
-  , <span class='va'>yr</span>
-  , <span class='va'>wk</span>
+  , .ggplot_group_var <span class='op'>=</span> <span class='va'>yr</span>
+  , .years_back <span class='op'>=</span> <span class='fl'>5</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: Must group by variables found in `.data`.</span>
-#&gt; <span class='error'>* Column `yr` is not found.</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = "wk"</span></div><div class='img'><img src='ts_median_excess_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
