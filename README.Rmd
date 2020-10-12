@@ -52,7 +52,6 @@ ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
     )
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
 ```{r cars}
 library(healthyR)
