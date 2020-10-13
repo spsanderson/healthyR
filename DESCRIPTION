@@ -21,7 +21,8 @@ Imports:
     ggplot2,
     dplyr,
     lubridate,
-    graphics
+    graphics,
+    purrr
 Suggests: 
     knitr,
     rmarkdown,

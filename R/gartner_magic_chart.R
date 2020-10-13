@@ -6,21 +6,28 @@
 #' @param .data The data set you want to plot
 #' @param .x_col The x-axis for the plot
 #' @param .y_col The y-axis for the plot
+#' @param .y_lab The y-axis label
+#' @param .x_lab The x-axis label
+#' @param .plt_title The title of the plot
 #'
 #' @details
 #' - Supply a data frame with at least two continuous variables to plot against
 #' each other
 #'
 #' @examples
-#' library(tidyverse)
+#' library(dplyr)
+#' library(ggplot2)
 #' library(purrr)
 #' x <- rnorm(180, mean = 0, sd = 1)
 #' y <- rnorm(180, mean = 0, sd = 1)
 #' df <- data.frame(x,y)
 #' df %>%
 #'   plt_gartner_magic_chart(
-#'     .x_axis = x
-#'     , .y_axis = y
+#'     .x_col = x
+#'     , .y_col = y
+#'     , .x_lab = "Excess LOS"
+#'     , .y_lab = "Excess Readmit Rate"
+#'     , .plt_title = "Excess LOS vs. Excess Readmit Rate"
 #'   )
 #'
 #' @return
@@ -34,11 +41,17 @@ plt_gartner_magic_chart <- function(
     .data
     , .x_col
     , .y_col
+    , .y_lab
+    , .x_lab
+    , .plt_title
 ) {
 
     # Tidyeval
     x_var_expr <- rlang::enquo(.x_col)
     y_var_expr <- rlang::enquo(.y_col)
+    x_lab_expr <- rlang::enquo(.x_lab)
+    y_lab_expr <- rlang::enquo(.y_lab)
+    title_expr <- rlang::enquo(.plt_title)
 
     # Checks
     if(!is.data.frame(.data)) {
@@ -51,6 +64,18 @@ plt_gartner_magic_chart <- function(
 
     if(rlang::quo_is_missing(y_var_expr)) {
         stop(call. = FALSE, "(.y_col) is missing. Please supply.")
+    }
+
+    if(rlang::quo_is_missing(x_lab_expr)) {
+        stop(call. = FALSE, "(.x_lab) is missing. Please supply.")
+    }
+
+    if(rlang::quo_is_missing(y_lab_expr)) {
+        stop(call. = FALSE, "(.y_lab) is missing. Please supply.")
+    }
+
+    if(rlang::quo_is_missing(title_expr)) {
+        stop(call. = FALSE, "(.plt_title) is missing. Please supply.")
     }
 
     data_tbl <- tibble::as_tibble(.data) %>%
@@ -79,10 +104,13 @@ plt_gartner_magic_chart <- function(
                 , max(data_tbl$y)
             )
         ) +
-        ggplot2::ylab("Excess Readmit Rate") +
-        ggplot2::xlab("Excess LOS") +
+        # ggplot2::ylab("Excess Readmit Rate") +
+        # ggplot2::xlab("Excess LOS") +
+        ggplot2::ylab( {{y_lab_expr}} ) +
+        ggplot2::xlab( {{x_lab_expr}} ) +
         ggplot2::labs(
-            title = "Gartner Magic Quadrant - Excess LOS vs Excess Readmit Rate"
+            #title = "Gartner Magic Quadrant - Excess LOS vs Excess Readmit Rate"
+            title = {{title_expr}}
             , subtitle = "Red Dot Indicates Zero Variance"
         ) +
         ggplot2::theme(
@@ -111,33 +139,33 @@ plt_gartner_magic_chart <- function(
         ggplot2::annotate(
             "rect"
             , xmin = 0
-            , xmax = max(data_tbl$x)
+            , xmax = max(x)
             , ymin = 0
-            , ymax = max(data_tbl$y)
+            , ymax = max(y)
             , fill = "#F8F9F9"
         ) +
         ggplot2::annotate(
             "rect"
             , xmin = 0
-            , xmax = min(data_tbl$x)
+            , xmax = min(x)
             , ymin = 0
-            , ymax = min(data_tbl$y)
+            , ymax = min(y)
             , fill = "#F8F9F9"
         ) +
         ggplot2::annotate(
             "rect"
             , xmin = 0
-            , xmax = min(data_tbl$x)
+            , xmax = min(x)
             , ymin = 0
-            , ymax = max(data_tbl$y)
+            , ymax = max(y)
             , fill = "white"
         ) +
         ggplot2::annotate(
             "rect"
             , xmin = 0
-            , xmax = max(data_tbl$x)
+            , xmax = max(x)
             , ymin = 0
-            , ymax = min(data_tbl$y)
+            , ymax = min(y)
             , fill = "white"
         ) +
         ggplot2::geom_hline(
@@ -152,8 +180,8 @@ plt_gartner_magic_chart <- function(
         ) +
         ggplot2::geom_label(
             ggplot2::aes(
-                x = 0.75 * min(data_tbl$x)
-                , y = 0.90 * max(data_tbl$y)
+                x = 0.75 * min(x)
+                , y = 0.90 * max(y)
                 , label = "High RA"
             )
             , label.padding = ggplot2::unit(2, "mm")
@@ -162,8 +190,8 @@ plt_gartner_magic_chart <- function(
         ) +
         ggplot2::geom_label(
             ggplot2::aes(
-                x = 0.75 * max(data_tbl$x)
-                , y = 0.90 * max(data_tbl$y)
+                x = 0.75 * max(x)
+                , y = 0.90 * max(y)
                 , label = "High RA/LOS"
             )
             , label.padding = ggplot2::unit(2, "mm")
@@ -172,8 +200,8 @@ plt_gartner_magic_chart <- function(
         ) +
         ggplot2::geom_label(
             ggplot2::aes(
-                x = 0.75 * min(data_tbl$x)
-                , y = 0.90 * min(data_tbl$y)
+                x = 0.75 * min(x)
+                , y = 0.90 * min(y)
                 , label = "Leader"
             )
             , label.padding = ggplot2::unit(2, "mm")
@@ -182,8 +210,8 @@ plt_gartner_magic_chart <- function(
         ) +
         ggplot2::geom_label(
             ggplot2::aes(
-                x = 0.75 * max(data_tbl$x)
-                , y = 0.9 * min(data_tbl$y)
+                x = 0.75 * max(x)
+                , y = 0.9 * min(y)
                 , label = "High LOS"
             )
             , label.padding = ggplot2::unit(2, "mm")

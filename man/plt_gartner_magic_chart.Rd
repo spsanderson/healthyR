@@ -4,7 +4,7 @@
 \alias{plt_gartner_magic_chart}
 \title{Gartner Magic Chart Plotting of two continuous variables}
 \usage{
-plt_gartner_magic_chart(.data, .x_col, .y_col)
+plt_gartner_magic_chart(.data, .x_col, .y_col, .y_lab, .x_lab, .plt_title)
 }
 \arguments{
 \item{.data}{The data set you want to plot}
@@ -12,6 +12,12 @@ plt_gartner_magic_chart(.data, .x_col, .y_col)
 \item{.x_col}{The x-axis for the plot}
 
 \item{.y_col}{The y-axis for the plot}
+
+\item{.y_lab}{The y-axis label}
+
+\item{.x_lab}{The x-axis label}
+
+\item{.plt_title}{The title of the plot}
 }
 \value{
 A ggplot plot
@@ -26,15 +32,19 @@ each other
 }
 }
 \examples{
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(purrr)
 x <- rnorm(180, mean = 0, sd = 1)
 y <- rnorm(180, mean = 0, sd = 1)
 df <- data.frame(x,y)
 df \%>\%
   plt_gartner_magic_chart(
-    .x_axis = x
-    , .y_axis = y
+    .x_col = x
+    , .y_col = y
+    , .x_lab = "Excess LOS"
+    , .y_lab = "Excess Readmit Rate"
+    , .plt_title = "Excess LOS vs. Excess Readmit Rate"
   )
 
 }
