@@ -101,7 +101,7 @@
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<p>This is a basic example of using the ts_median_excess_plt() function`:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="kw">library</span>(timetk)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
@@ -115,6 +115,7 @@
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>    )</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#&gt; Joining, by = "wk"</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<p>Here is a simple example of using the ts_ymwdh_tbl() function:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="kw">library</span>(timetk)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
@@ -133,6 +134,27 @@
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="co">#&gt;  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#&gt; 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="co">#&gt; # ... with 9,733 more rows</span></span></code></pre></div>
+<p>Here is a simple example of using the plt_gartner_magic_chart() function:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="kw">library</span>(tibble)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="kw">plt_gartner_magic_chart</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a>  <span class="dt">.data =</span> <span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>  , <span class="dt">.x_col =</span> x</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>  , <span class="dt">.y_col =</span> y</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>  , <span class="dt">.y_lab =</span> <span class="st">"los"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>  , <span class="dt">.x_lab =</span> <span class="st">"RA"</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>  , <span class="dt">.plt_title =</span> <span class="st">"Test Title"</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a>)</span></code></pre></div>
+<p><img src="reference/figures/README-gartner_chart-1.png" width="100%"></p>
 </div>
 </div>
   </div>
