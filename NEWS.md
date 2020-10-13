@@ -1,5 +1,9 @@
 # healthyR (development version)
 
+## healthyR 0.0.0.9003
+
+* Added plt_gartner_magic_chart()
+
 ## healthyR 0.0.0.9002
 
 * Added the function opt_bin()
