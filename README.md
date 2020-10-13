@@ -26,7 +26,8 @@ And the development version from [GitHub](https://github.com/) with:
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example of using the ts\_median\_excess\_plt()
+function\`:
 
     library(healthyR)
     library(timetk)
@@ -42,6 +43,8 @@ This is a basic example which shows you how to solve a common problem:
     #> Joining, by = "wk"
 
 <img src="man/figures/README-example-1.png" width="100%" />
+
+Here is a simple example of using the ts\_ymwdh\_tbl() function:
 
     library(healthyR)
     library(timetk)
@@ -61,3 +64,29 @@ This is a basic example which shows you how to solve a common problem:
     #>  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0
     #> 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0
     #> # ... with 9,733 more rows
+
+Here is a simple example of using the plt\_gartner\_magic\_chart()
+function:
+
+
+    library(healthyR)
+    library(tibble)
+    library(dplyr)
+    #> 
+    #> Attaching package: 'dplyr'
+    #> The following objects are masked from 'package:stats':
+    #> 
+    #>     filter, lag
+    #> The following objects are masked from 'package:base':
+    #> 
+    #>     intersect, setdiff, setequal, union
+    plt_gartner_magic_chart(
+      .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100, 0, 1))
+      , .x_col = x
+      , .y_col = y
+      , .y_lab = "los"
+      , .x_lab = "RA"
+      , .plt_title = "Test Title"
+    )
+
+<img src="man/figures/README-gartner_chart-1.png" width="100%" />

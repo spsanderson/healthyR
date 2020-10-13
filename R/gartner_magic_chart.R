@@ -18,17 +18,15 @@
 #' library(dplyr)
 #' library(ggplot2)
 #' library(purrr)
-#' x <- rnorm(180, mean = 0, sd = 1)
-#' y <- rnorm(180, mean = 0, sd = 1)
-#' df <- data.frame(x,y)
-#' df %>%
-#'   plt_gartner_magic_chart(
-#'     .x_col = x
-#'     , .y_col = y
-#'     , .x_lab = "Excess LOS"
-#'     , .y_lab = "Excess Readmit Rate"
-#'     , .plt_title = "Excess LOS vs. Excess Readmit Rate"
-#'   )
+#' library(tibble)
+#' plt_gartner_magic_chart(
+#'   .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100,0,1))
+#'   , .x_col = x
+#'   , .y_col = y
+#'   , .x_lab = "los"
+#'   , .y_lab = "ra"
+#'   , .plt_title = "tst"
+#' )
 #'
 #' @return
 #' A ggplot plot
@@ -83,6 +81,12 @@ plt_gartner_magic_chart <- function(
         tibble::as_tibble() %>%
         purrr::set_names("x","y")
 
+    x <- data_tbl %>%
+        dplyr::pull(x)
+
+    y <- data_tbl %>%
+        dplyr::pull(y)
+
     plt <- data_tbl %>%
         ggplot2::ggplot(
             ggplot2::aes(
@@ -93,15 +97,15 @@ plt_gartner_magic_chart <- function(
         ggplot2::scale_x_continuous(
             expand = c(0, 0)
             , limits = c(
-                min(data_tbl$x)
-                , max(data_tbl$x)
+                min(x)
+                , max(x)
             )
         ) +
         ggplot2::scale_y_continuous(
             expand = c(0, 0)
             , limits = c(
-                min(data_tbl$y)
-                , max(data_tbl$y)
+                min(y)
+                , max(y)
             )
         ) +
         # ggplot2::ylab("Excess Readmit Rate") +
@@ -109,7 +113,6 @@ plt_gartner_magic_chart <- function(
         ggplot2::ylab( {{y_lab_expr}} ) +
         ggplot2::xlab( {{x_lab_expr}} ) +
         ggplot2::labs(
-            #title = "Gartner Magic Quadrant - Excess LOS vs Excess Readmit Rate"
             title = {{title_expr}}
             , subtitle = "Red Dot Indicates Zero Variance"
         ) +

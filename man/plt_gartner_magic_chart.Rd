@@ -35,16 +35,14 @@ each other
 library(dplyr)
 library(ggplot2)
 library(purrr)
-x <- rnorm(180, mean = 0, sd = 1)
-y <- rnorm(180, mean = 0, sd = 1)
-df <- data.frame(x,y)
-df \%>\%
-  plt_gartner_magic_chart(
-    .x_col = x
-    , .y_col = y
-    , .x_lab = "Excess LOS"
-    , .y_lab = "Excess Readmit Rate"
-    , .plt_title = "Excess LOS vs. Excess Readmit Rate"
-  )
+library(tibble)
+plt_gartner_magic_chart(
+  .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100,0,1))
+  , .x_col = x
+  , .y_col = y
+  , .x_lab = "los"
+  , .y_lab = "ra"
+  , .plt_title = "tst"
+)
 
 }

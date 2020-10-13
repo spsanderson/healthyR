@@ -36,7 +36,7 @@ devtools::install_github("spsanderson/healthyR")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example of using the ts_median_excess_plt() function`:
 
 ```{r example}
 library(healthyR)
@@ -52,6 +52,7 @@ ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
     )
 ```
 
+Here is a simple example of using the ts_ymwdh_tbl() function:
 
 ```{r cars}
 library(healthyR)
@@ -61,3 +62,19 @@ ts_ymwdh_tbl(.data = m4_daily, .date_col = date)
 ```
 
 
+Here is a simple example of using the plt_gartner_magic_chart() function:
+```{r gartner_chart}
+
+library(healthyR)
+library(tibble)
+library(dplyr)
+plt_gartner_magic_chart(
+  .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100, 0, 1))
+  , .x_col = x
+  , .y_col = y
+  , .y_lab = "los"
+  , .x_lab = "RA"
+  , .plt_title = "Test Title"
+)
+
+```
