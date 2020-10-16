@@ -1,29 +1,30 @@
-#' Use SQL LEFT, MID and RIGHT type functions
+#' Use SQL LEFT type function
 #'
 #' @description
-#' perform either left, mid or right substring sql like manipulations
+#' Perform a sql LEFT() type function on a piece of text
 #'
 #' @param text A piece of text/string to be manipulated
 #' @param num_char How many characters do you want to grab
 #'
 #' @details
 #'
-#' - You must supply data that you want to manipulate and substrig.
+#' - You must supply data that you want to manipulate.
 #'
 #' @examples
 #'
-#' left("text", 3)
+#' sql_left("text", 3)
 #'
 #' @export
+#'
 
-left <- function(text, num_char) {
+sql_left <- function(text, num_char) {
     base::substr(text, 1, num_char)
 }
 
-#' Use SQL LEFT, MID and RIGHT type functions
+#' Use SQL MID type function
 #'
 #' @description
-#' perform either left, mid or right substring sql like manipulations
+#' Perform a SQL SUBSTRING type function
 #'
 #' @param text A piece of text/string to be manipulated
 #' @param start_num What place to start at
@@ -31,34 +32,38 @@ left <- function(text, num_char) {
 #'
 #' @details
 #'
-#' - You must supply data that you want to manipulate and substrig.
+#' - You must supply data that you want to manipulate.
 #'
 #' @examples
 #'
-#' mid("this is some text", 3, 5)
+#' sql_mid("this is some text", 6, 2)
 #'
 #' @export
-mid <- function(text, start_num, num_char) {
+#'
+
+sql_mid <- function(text, start_num, num_char) {
     base::substr(text, start_num, start_num + num_char - 1)
 }
 
-#' Use SQL LEFT, MID and RIGHT type functions
+#' Use SQL RIGHT type functions
 #'
 #' @description
-#' perform either left, mid or right substring sql like manipulations
+#' Perform a SQL RIGHT type function
 #'
 #' @param text A piece of text/string to be manipulated
 #' @param num_char How many characters do you want to grab
 #'
 #' @details
 #'
-#' - You must supply data that you want to manipulate and substrig.
+#' - You must supply data that you want to manipulate.
 #'
 #' @examples
 #'
-#' right("this is some more text", 3)
+#' sql_right("this is some more text", 3)
 #'
 #' @export
-right <- function(text, num_char) {
+#'
+
+sql_right <- function(text, num_char) {
     base::substr(text, base::nchar(text) - (num_char-1), base::nchar(text))
 }
