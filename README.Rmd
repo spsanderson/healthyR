@@ -75,6 +75,10 @@ plt_gartner_magic_chart(
   , .y_lab = "los"
   , .x_lab = "RA"
   , .plt_title = "Test Title"
+  , .tl_lbl = "Top Left lbl"
+  , .tr_lbl = "Top Right lbl"
+  , .bl_lbl = "Bottom Left lbl"
+  , .br_lbl = "Bottom Right lbl"
 )
 
 ```

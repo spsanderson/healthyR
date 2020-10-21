@@ -1,8 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-healthyR <img src="man/figures/healthyR_2.png" width="147" height="170" align="right" />
-========================================================================================
+# healthyR <img src="man/figures/healthyR_2.png" width="147" height="170" align="right" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -10,8 +9,7 @@ healthyR <img src="man/figures/healthyR_2.png" width="147" height="170" align="r
 The goal of healthyR is to help quickly analyze common data problems in
 the Administrative and Clincial spaces.
 
-Installation
-------------
+## Installation
 
 You can install the released version of healthyR from
 [CRAN](https://CRAN.R-project.org) with:
@@ -23,8 +21,7 @@ And the development version from [GitHub](https://github.com/) with:
     # install.packages("devtools")
     devtools::install_github("spsanderson/healthyR")
 
-Example
--------
+## Example
 
 This is a basic example of using the ts\_median\_excess\_plt()
 function\`:
@@ -87,6 +84,10 @@ function:
       , .y_lab = "los"
       , .x_lab = "RA"
       , .plt_title = "Test Title"
+      , .tl_lbl = "Top Left lbl"
+      , .tr_lbl = "Top Right lbl"
+      , .bl_lbl = "Bottom Left lbl"
+      , .br_lbl = "Bottom Right lbl"
     )
 
 <img src="man/figures/README-gartner_chart-1.png" width="100%" />
