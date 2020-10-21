@@ -9,6 +9,10 @@
 #' @param .y_lab The y-axis label
 #' @param .x_lab The x-axis label
 #' @param .plt_title The title of the plot
+#' @param .tr_lbl The top right label
+#' @param .tl_lbl The top left label
+#' @param .bl_lbl The bottom left label
+#' @param .br_lbl The bottom right label
 #'
 #' @details
 #' - Supply a data frame with at least two continuous variables to plot against
@@ -26,6 +30,10 @@
 #'   , .x_lab = "los"
 #'   , .y_lab = "ra"
 #'   , .plt_title = "tst"
+#'   , .tr_lbl = "High RA-LOS"
+#'   , .tl_lbl = "High RA"
+#'   , .bl_lbl = "Leader"
+#'   , .br_lbl = "High LOS"
 #' )
 #'
 #' @return
@@ -42,14 +50,22 @@ plt_gartner_magic_chart <- function(
     , .y_lab
     , .x_lab
     , .plt_title
+    , .tl_lbl
+    , .tr_lbl
+    , .br_lbl
+    , .bl_lbl
 ) {
 
     # Tidyeval
-    x_var_expr <- rlang::enquo(.x_col)
-    y_var_expr <- rlang::enquo(.y_col)
-    x_lab_expr <- rlang::enquo(.x_lab)
-    y_lab_expr <- rlang::enquo(.y_lab)
-    title_expr <- rlang::enquo(.plt_title)
+    x_var_expr  <- rlang::enquo(.x_col)
+    y_var_expr  <- rlang::enquo(.y_col)
+    x_lab_expr  <- rlang::enquo(.x_lab)
+    y_lab_expr  <- rlang::enquo(.y_lab)
+    title_expr  <- rlang::enquo(.plt_title)
+    tl_lab_expr <- rlang::enquo(.tl_lbl)
+    tr_lab_expr <- rlang::enquo(.tr_lbl)
+    bl_lab_expr <- rlang::enquo(.bl_lbl)
+    br_lab_expr <- rlang::enquo(.br_lbl)
 
     # Checks
     if(!is.data.frame(.data)) {
@@ -108,8 +124,6 @@ plt_gartner_magic_chart <- function(
                 , max(y)
             )
         ) +
-        # ggplot2::ylab("Excess Readmit Rate") +
-        # ggplot2::xlab("Excess LOS") +
         ggplot2::ylab( {{y_lab_expr}} ) +
         ggplot2::xlab( {{x_lab_expr}} ) +
         ggplot2::labs(
@@ -181,56 +195,77 @@ plt_gartner_magic_chart <- function(
             , color = "lightgrey"
             , size = 1.5
         ) +
-        ggplot2::geom_label(
-            ggplot2::aes(
-                x = 0.75 * min(x)
-                , y = 0.90 * max(y)
-                , label = "High RA"
-            )
-            , label.padding = ggplot2::unit(2, "mm")
-            , fill = "lightgrey"
-            , color="black"
-        ) +
-        ggplot2::geom_label(
-            ggplot2::aes(
-                x = 0.75 * max(x)
-                , y = 0.90 * max(y)
-                , label = "High RA/LOS"
-            )
-            , label.padding = ggplot2::unit(2, "mm")
-            , fill = "lightgrey"
-            , color = "black"
-        ) +
-        ggplot2::geom_label(
-            ggplot2::aes(
-                x = 0.75 * min(x)
-                , y = 0.90 * min(y)
-                , label = "Leader"
-            )
-            , label.padding = ggplot2::unit(2, "mm")
-            , fill = "lightgrey"
-            , color = "black"
-        ) +
-        ggplot2::geom_label(
-            ggplot2::aes(
-                x = 0.75 * max(x)
-                , y = 0.9 * min(y)
-                , label = "High LOS"
-            )
-            , label.padding = ggplot2::unit(2, "mm")
-            , fill = "lightgrey"
-            , color = "black"
-        ) +
-        ggplot2::geom_point(
-            color = "#2896BA"
-            , size = 2
-        ) +
-        # where you want to be
+        # Where you want to be
         ggplot2::geom_point(
             data = data.frame(x = 0, y = 0)
             , ggplot2::aes(color = 'red')
             , size = 3
+        ) +
+        ggplot2::geom_point(
+            color = "#2896BA"
+            , size = 2
         )
+
+    # If statements to add inside labels should they exist
+    # Top right label
+    if(!rlang::quo_is_missing(tr_lab_expr)){
+        plt <- plt +
+            ggplot2::geom_label(
+                ggplot2::aes(
+                    x = 0.75 * max(x)
+                    , y = 0.90 * max(y)
+                    , label = {{tr_lab_expr}}
+                )
+                , label.padding = ggplot2::unit(2, "mm")
+                , fill = "lightgrey"
+                , color = "black"
+            )
+    }
+
+    # Top left label
+    if(!rlang::quo_is_missing(tl_lab_expr)){
+        plt <- plt +
+            ggplot2::geom_label(
+                ggplot2::aes(
+                    x = 0.75 * min(x)
+                    , y = 0.90 * max(y)
+                    , label = {{tl_lab_expr}}
+                )
+                , label.padding = ggplot2::unit(2, "mm")
+                , fill = "lightgrey"
+                , color = "black"
+            )
+    }
+
+    # Bottom left label
+    if(!rlang::quo_is_missing(bl_lab_expr)){
+        plt <- plt +
+            ggplot2::geom_label(
+                ggplot2::aes(
+                    x = 0.75 * min(x)
+                    , y = 0.90 * min(y)
+                    , label = {{bl_lab_expr}}
+                )
+                , label.padding = ggplot2::unit(2, "mm")
+                , fill = "lightgrey"
+                , color = "black"
+            )
+    }
+
+    # Bottom right label
+    if(!rlang::quo_is_missing(br_lab_expr)){
+        plt <- plt +
+            ggplot2::geom_label(
+                ggplot2::aes(
+                    x = 0.75 * max(x)
+                    , y = 0.9 * min(y)
+                    , label = {{br_lab_expr}}
+                )
+                , label.padding = ggplot2::unit(2, "mm")
+                , fill = "lightgrey"
+                , color = "black"
+            )
+    }
 
     return(plt)
 

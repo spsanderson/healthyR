@@ -4,7 +4,18 @@
 \alias{plt_gartner_magic_chart}
 \title{Gartner Magic Chart Plotting of two continuous variables}
 \usage{
-plt_gartner_magic_chart(.data, .x_col, .y_col, .y_lab, .x_lab, .plt_title)
+plt_gartner_magic_chart(
+  .data,
+  .x_col,
+  .y_col,
+  .y_lab,
+  .x_lab,
+  .plt_title,
+  .tl_lbl,
+  .tr_lbl,
+  .br_lbl,
+  .bl_lbl
+)
 }
 \arguments{
 \item{.data}{The data set you want to plot}
@@ -18,6 +29,14 @@ plt_gartner_magic_chart(.data, .x_col, .y_col, .y_lab, .x_lab, .plt_title)
 \item{.x_lab}{The x-axis label}
 
 \item{.plt_title}{The title of the plot}
+
+\item{.tl_lbl}{The top left label}
+
+\item{.tr_lbl}{The top right label}
+
+\item{.br_lbl}{The bottom right label}
+
+\item{.bl_lbl}{The bottom left label}
 }
 \value{
 A ggplot plot
@@ -43,6 +62,10 @@ plt_gartner_magic_chart(
   , .x_lab = "los"
   , .y_lab = "ra"
   , .plt_title = "tst"
+  , .tr_lbl = "High RA-LOS"
+  , .tl_lbl = "High RA"
+  , .bl_lbl = "Leader"
+  , .br_lbl = "High LOS"
 )
 
 }
