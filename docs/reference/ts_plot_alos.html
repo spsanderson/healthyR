@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • healthyR</title>
+<title>Plot ALOS - Average length of stay — ts_plot_alos • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Plot ALOS - Average length of stay — ts_plot_alos" />
+<meta property="og:description" content="Plot ALOS - average length of stay" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -120,85 +121,57 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Plot ALOS - Average length of stay</h1>
+    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/time_series_plots.R'><code>R/time_series_plots.R</code></a></small>
+    <div class="hidden name"><code>ts_plot_alos.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Plot ALOS - average length of stay</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>ts_plot_alos</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span>, <span class='va'>.value_col</span>, <span class='va'>.by_grouping</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="opt_bin.html">opt_bin()</a></code> </p>
-        </td>
-        <td><p>Get the optimal bin width for a histogram given a data set, its value and
-the desired amount of bins</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plt_gartner_magic_chart.html">plt_gartner_magic_chart()</a></code> </p>
-        </td>
-        <td><p>Gartner Magic Chart Plotting of two continuous variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sql_left.html">sql_left()</a></code> </p>
-        </td>
-        <td><p>Use SQL LEFT type function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sql_mid.html">sql_mid()</a></code> </p>
-        </td>
-        <td><p>Use SQL MID type function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sql_right.html">sql_right()</a></code> </p>
-        </td>
-        <td><p>Use SQL RIGHT type functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_median_excess_plt.html">ts_median_excess_plt()</a></code> </p>
-        </td>
-        <td><p>Create a plot showing the excess +/- of the median value</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_plot_alos.html">ts_plot_alos()</a></code> </p>
-        </td>
-        <td><p>Plot ALOS - Average length of stay</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_ymwdh_tbl.html">ts_ymwdh_tbl()</a></code> </p>
-        </td>
-        <td><p>Make a tibble with year, month, week, week day and hour information added</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>The data you need to pass</p></td>
+    </tr>
+    <tr>
+      <th>.date_col</th>
+      <td><p>The date column</p></td>
+    </tr>
+    <tr>
+      <th>.value_col</th>
+      <td><p>The value column</p></td>
+    </tr>
+    <tr>
+      <th>.by_grouping</th>
+      <td><p>How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A timetk time series plot that is interactive</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+<ul>
+<li><p>Expects a tibble with a date time column and a value column</p></li>
+<li><p>Uses timetk for underlying sumarization and plot</p></li>
+<li><p>If .by is missing it will default to "day"</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Steven P. Sanderson II, MPH</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
