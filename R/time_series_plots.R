@@ -16,10 +16,11 @@
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"
 #'
 #' @examples
-#' library(tidyverse)
+#' library(dplyr)
+#' library(purrr)
 #' library(timetk)
 #'
-#' ts_tbl <- tk_make_timeseries(start = "2019-01-01, by = "day", length_out = "1 year 6 months")
+#' ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
 #' values <- arima.sim(model= list(order = c(0, 1, 0)), n=547, mean=1,sd=5)
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
@@ -102,10 +103,11 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping) {
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"
 #'
 #' @examples
-#' library(tidyverse)
+#' library(dplyr)
+#' library(purrr)
 #' library(timetk)
 #'
-#' ts_tbl <- tk_make_timeseries(start = "2019-01-01, by = "day", length_out = "1 year 6 months")
+#' ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
 #' values <- arima.sim(model= list(order = c(0, 1, 0)), n=547, mean=1,sd=5)
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'

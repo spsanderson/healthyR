@@ -28,6 +28,18 @@ Plot ALOS - average length of stay
 \item If .by_grouping is missing it will default to "day"
 }
 }
+\examples{
+library(dplyr)
+library(purrr)
+library(timetk)
+
+ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
+values <- arima.sim(model= list(order = c(0, 1, 0)), n=547, mean=1,sd=5)
+df_tbl <- tibble(x = ts_tbl, y = values) \%>\% set_names("Date","Values")
+
+ts_plot_readmit_rate(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month")
+
+}
 \author{
 Steven P. Sanderson II, MPH
 }
