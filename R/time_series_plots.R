@@ -13,19 +13,28 @@
 #' @param .data The data you need to pass
 #' @param .date_col The date column
 #' @param .value_col The value column
-#' @param .by_grouping How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"
-#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE returns a static ggplot2 plot
+#' @param .by_grouping How you want the data summarized - "sec", "min", "hour",
+#' "day", "week", "month", "quarter" or "year"
+#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE
+#' returns a static ggplot2 plot
 #'
 #' @examples
 #' library(dplyr)
 #' library(purrr)
 #' library(timetk)
 #'
-#' ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
-#' values <- arima.sim(model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5)
+#' ts_tbl <- tk_make_timeseries(
+#' start = "2019-01-01", by = "day", length_out = "1 year 6 months"
+#' )
+#' values <- arima.sim(
+#' model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5
+#' )
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
-#' ts_plot_alos(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month", .interactive = FALSE)
+#' ts_plot_alos(
+#' .data = df_tbl, .date_col = Date, .value_col = Values, .by = "month"
+#' , .interactive = FALSE
+#' )
 #'
 #' @return
 #' A timetk time series plot that is interactive
@@ -113,19 +122,28 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping, .interactiv
 #' @param .data The data you need to pass
 #' @param .date_col The date column
 #' @param .value_col The value column
-#' @param .by_grouping How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"
-#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE returns a static ggplot2 plot
+#' @param .by_grouping How you want the data summarized - "sec", "min", "hour",
+#' "day", "week", "month", "quarter" or "year"
+#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE
+#' returns a static ggplot2 plot
 #'
 #' @examples
 #' library(dplyr)
 #' library(purrr)
 #' library(timetk)
 #'
-#' ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
-#' values <- arima.sim(model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5)
+#' ts_tbl <- tk_make_timeseries(
+#' start = "2019-01-01", by = "day", length_out = "1 year 6 months"
+#' )
+#' values <- arima.sim(
+#' model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5
+#' )
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
-#' ts_plot_readmit_rate(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month", .interactive = FALSE)
+#' ts_plot_readmit_rate(
+#' .data = df_tbl, .date_col = Date, .value_col = Values, .by = "month"
+#' , .interactive = FALSE
+#' )
 #'
 #' @return
 #' A timetk time series plot that is interactive
