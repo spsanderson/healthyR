@@ -14,6 +14,7 @@
 #' @param .date_col The date column
 #' @param .value_col The value column
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"
+#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE returns a static ggplot2 plot
 #'
 #' @examples
 #' library(dplyr)
@@ -21,10 +22,10 @@
 #' library(timetk)
 #'
 #' ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
-#' values <- arima.sim(model= list(order = c(0, 1, 0)), n=547, mean=1,sd=5)
+#' values <- arima.sim(model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5)
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
-#' ts_plot_alos(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month")
+#' ts_plot_alos(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month", .interactive = FALSE)
 #'
 #' @return
 #' A timetk time series plot that is interactive
@@ -32,12 +33,13 @@
 #' @export
 #'
 
-ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping) {
+ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
 
     # Tidyeval
-    date_var_expr  <- rlang::enquo(.date_col)
-    value_var_expr <- rlang::enquo(.value_col)
-    by_var_expr    <- .by_grouping
+    date_var_expr        <- rlang::enquo(.date_col)
+    value_var_expr       <- rlang::enquo(.value_col)
+    by_var_expr          <- .by_grouping
+    interactive_var_expr <- .interactive
 
     # Checks
     if(!is.data.frame(.data)) {
@@ -74,12 +76,23 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping) {
     }
 
     # Plot out
-    g <- df_summarised_tbl %>%
-        timetk::plot_time_series(
-            .date_var = date
-            , .value = value
-            , .title = "Average Length of Stay Plot"
-        )
+    if(!interactive_var_expr) {
+        g <- df_summarised_tbl %>%
+            timetk::plot_time_series(
+                .date_var = date
+                , .value = value
+                , .title = "Average Length of Stay Plot"
+                , .interactive = FALSE
+            )
+    } else {
+        g <- df_summarised_tbl %>%
+            timetk::plot_time_series(
+                .date_var = date
+                , .value = value
+                , .title = "Average Length of Stay Plot"
+                , .interactive = TRUE
+            )
+    }
 
     return(g)
 
@@ -101,6 +114,7 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping) {
 #' @param .date_col The date column
 #' @param .value_col The value column
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour", "day", "week", "month", "quarter" or "year"
+#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE returns a static ggplot2 plot
 #'
 #' @examples
 #' library(dplyr)
@@ -108,10 +122,10 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping) {
 #' library(timetk)
 #'
 #' ts_tbl <- tk_make_timeseries(start = "2019-01-01", by = "day", length_out = "1 year 6 months")
-#' values <- arima.sim(model= list(order = c(0, 1, 0)), n=547, mean=1,sd=5)
+#' values <- arima.sim(model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5)
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
-#' ts_plot_readmit_rate(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month")
+#' ts_plot_readmit_rate(.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month", .interactive = FALSE)
 #'
 #' @return
 #' A timetk time series plot that is interactive
@@ -119,12 +133,13 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping) {
 #' @export
 #'
 
-ts_plot_readmit_rate <- function(.data, .date_col, .value_col, .by_grouping) {
+ts_plot_readmit_rate <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
 
     # Tidyeval
-    date_var_expr  <- rlang::enquo(.date_col)
-    value_var_expr <- rlang::enquo(.value_col)
-    by_var_expr    <- .by_grouping
+    date_var_expr        <- rlang::enquo(.date_col)
+    value_var_expr       <- rlang::enquo(.value_col)
+    by_var_expr          <- .by_grouping
+    interactive_var_expr <- .interactive
 
     # Checks
     if(!is.data.frame(.data)) {
@@ -161,12 +176,23 @@ ts_plot_readmit_rate <- function(.data, .date_col, .value_col, .by_grouping) {
     }
 
     # Plot out
-    g <- df_summarised_tbl %>%
-        timetk::plot_time_series(
-            .date_var = date
-            , .value = value
-            , .title = "Readmission Rate Plot"
-        )
+    if(!interactive_var_expr) {
+        g <- df_summarised_tbl %>%
+            timetk::plot_time_series(
+                .date_var = date
+                , .value = value
+                , .title = "Readmission Rate Plot"
+                , .interactive = FALSE
+            )
+    } else {
+        g <- df_summarised_tbl %>%
+            timetk::plot_time_series(
+                .date_var = date
+                , .value = value
+                , .title = "Readmission Rate Plot"
+                , .interactive = TRUE
+            )
+    }
 
     return(g)
 
