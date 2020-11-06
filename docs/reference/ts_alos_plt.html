@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Use SQL LEFT type function — sql_left • healthyR</title>
+<title>Plot ALOS - Average length of stay — ts_alos_plt • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Use SQL LEFT type function — sql_left" />
-<meta property="og:description" content="Perform a sql LEFT() type function on a piece of text" />
+<meta property="og:title" content="Plot ALOS - Average length of stay — ts_alos_plt" />
+<meta property="og:description" content="Plot ALOS - average length of stay" />
 
 
 
@@ -124,42 +124,78 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Use SQL LEFT type function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/sql_string_split.R'><code>R/sql_string_split.R</code></a></small>
-    <div class="hidden name"><code>sql_left.Rd</code></div>
+    <h1>Plot ALOS - Average length of stay</h1>
+    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/time_series_plots.R'><code>R/time_series_plots.R</code></a></small>
+    <div class="hidden name"><code>ts_alos_plt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Perform a sql LEFT() type function on a piece of text</p>
+    <p>Plot ALOS - average length of stay</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sql_left</span><span class='op'>(</span><span class='va'>text</span>, <span class='va'>num_char</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ts_alos_plt</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span>, <span class='va'>.value_col</span>, <span class='va'>.by_grouping</span>, <span class='va'>.interactive</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>text</th>
-      <td><p>A piece of text/string to be manipulated</p></td>
+      <th>.data</th>
+      <td><p>The data you need to pass</p></td>
     </tr>
     <tr>
-      <th>num_char</th>
-      <td><p>How many characters do you want to grab</p></td>
+      <th>.date_col</th>
+      <td><p>The date column</p></td>
+    </tr>
+    <tr>
+      <th>.value_col</th>
+      <td><p>The value column</p></td>
+    </tr>
+    <tr>
+      <th>.by_grouping</th>
+      <td><p>How you want the data summarized - "sec", "min", "hour",
+"day", "week", "month", "quarter" or "year"</p></td>
+    </tr>
+    <tr>
+      <th>.interactive</th>
+      <td><p>TRUE or FALSE. TRUE returns a plotly plot and FALSE
+returns a static ggplot2 plot</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A timetk time series plot that is interactive</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
 <ul>
-<li><p>You must supply data that you want to manipulate.</p></li>
+<li><p>Expects a tibble with a date time column and a value column</p></li>
+<li><p>Uses timetk for underlying sumarization and plot</p></li>
+<li><p>If .by_grouping is missing it will default to "day"</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>sql_left</span><span class='op'>(</span><span class='st'>"text"</span>, <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "tex"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'timetk' was built under R version 4.0.3</span></div><div class='input'>
+<span class='va'>ts_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/tk_make_timeseries.html'>tk_make_timeseries</a></span><span class='op'>(</span>
+start <span class='op'>=</span> <span class='st'>"2019-01-01"</span>, by <span class='op'>=</span> <span class='st'>"day"</span>, length_out <span class='op'>=</span> <span class='st'>"1 year 6 months"</span>
+<span class='op'>)</span>
+<span class='va'>values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/arima.sim.html'>arima.sim</a></span><span class='op'>(</span>
+model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>547</span>, mean <span class='op'>=</span> <span class='fl'>1</span>, sd <span class='op'>=</span> <span class='fl'>5</span>
+<span class='op'>)</span>
+<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ts_tbl</span>, y <span class='op'>=</span> <span class='va'>values</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/set_names.html'>set_names</a></span><span class='op'>(</span><span class='st'>"Date"</span>,<span class='st'>"Values"</span><span class='op'>)</span>
+
+<span class='fu'>ts_alos_plt</span><span class='op'>(</span>
+.data <span class='op'>=</span> <span class='va'>df_tbl</span>, .date_col <span class='op'>=</span> <span class='va'>Date</span>, .value_col <span class='op'>=</span> <span class='va'>Values</span>, .by <span class='op'>=</span> <span class='st'>"month"</span>
+, .interactive <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='ts_alos_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

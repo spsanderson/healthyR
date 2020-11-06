@@ -1,0 +1,45 @@
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  title: "healthyR"
+  left:
+    - icon: "fa-home"
+      href: index.html
+    - text: "Documentation"
+      href: articles/index.html
+      menu:
+        -  text: "Getting Started"
+        -  text: "Getting Started with healthyR"
+           href: articles/getting-started.html
+    - text: "Function Reference"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+
+reference:
+  -  title: Plotting with healthyR
+     desc: healthyR Plots
+  -  subtitle: Time Series Plotting
+     contents:
+     -  contains("ts_alos_plt")
+     -  contains("ts_readmit_rate_plt")
+  -  subtitle: Gartner Magic Chart
+     contents:
+     -  contains("gartner_magic_chart_plt")
+  -  title: Optimal Bin Functions for Histograms
+     desc: Optimal Binning Functions
+  -  subtitle: Optimal Binning for histograms
+     contents:
+     -  contains("opt_bin")
+  -  title: SQL String Functions
+     desc: Manipulate Strings with SQL like Functions
+  -  subtitle: SQL String Functions
+     contents:
+     -  contains("sql")
+  -  title: Table Functions
+     desc: Functions that return tibbles
+  -  subtitle: Table Functions
+     contents:
+     -  contains("tbl")

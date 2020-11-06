@@ -31,7 +31,7 @@
 #' )
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
-#' ts_plot_alos(
+#' ts_alos_plt(
 #' .data = df_tbl, .date_col = Date, .value_col = Values, .by = "month"
 #' , .interactive = FALSE
 #' )
@@ -42,7 +42,7 @@
 #' @export
 #'
 
-ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
+ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
 
     # Tidyeval
     date_var_expr        <- rlang::enquo(.date_col)
@@ -140,7 +140,7 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping, .interactiv
 #' )
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
-#' ts_plot_readmit_rate(
+#' ts_readmit_rate_plt(
 #' .data = df_tbl, .date_col = Date, .value_col = Values, .by = "month"
 #' , .interactive = FALSE
 #' )
@@ -151,7 +151,7 @@ ts_plot_alos <- function(.data, .date_col, .value_col, .by_grouping, .interactiv
 #' @export
 #'
 
-ts_plot_readmit_rate <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
+ts_readmit_rate_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
 
     # Tidyeval
     date_var_expr        <- rlang::enquo(.date_col)

@@ -23,7 +23,7 @@
 #' library(ggplot2)
 #' library(purrr)
 #' library(tibble)
-#' plt_gartner_magic_chart(
+#' gartner_magic_chart_plt(
 #'   .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100,0,1))
 #'   , .x_col = x
 #'   , .y_col = y
@@ -43,7 +43,7 @@
 #'
 #'
 
-plt_gartner_magic_chart <- function(
+gartner_magic_chart_plt <- function(
     .data
     , .x_col
     , .y_col

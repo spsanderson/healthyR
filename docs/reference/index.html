@@ -12,8 +12,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -79,27 +79,28 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Documentation
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Getting Started</li>
     <li>
       <a href="../articles/getting-started.html">Getting Started with healthyR</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Function Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -136,11 +137,73 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-plotting-with-healthyr" class="hasAnchor"><a href="#section-plotting-with-healthyr" class="anchor"></a>Plotting with healthyR</h2>
+          <p class="section-desc"><p>healthyR Plots</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-time-series-plotting" class="hasAnchor"><a href="#section-time-series-plotting" class="anchor"></a>Time Series Plotting</h3>
           <p class="section-desc"></p>
         </th>
       </tr>
       
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="ts_alos_plt.html">ts_alos_plt()</a></code> </p>
+        </td>
+        <td><p>Plot ALOS - Average length of stay</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ts_readmit_rate_plt.html">ts_readmit_rate_plt()</a></code> </p>
+        </td>
+        <td><p>Plot Readmit Rate</p></td>
+      </tr>
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-gartner-magic-chart" class="hasAnchor"><a href="#section-gartner-magic-chart" class="anchor"></a>Gartner Magic Chart</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="gartner_magic_chart_plt.html">gartner_magic_chart_plt()</a></code> </p>
+        </td>
+        <td><p>Gartner Magic Chart Plotting of two continuous variables</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-optimal-bin-functions-for-histograms" class="hasAnchor"><a href="#section-optimal-bin-functions-for-histograms" class="anchor"></a>Optimal Bin Functions for Histograms</h2>
+          <p class="section-desc"><p>Optimal Binning Functions</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-optimal-binning-for-histograms" class="hasAnchor"><a href="#section-optimal-binning-for-histograms" class="anchor"></a>Optimal Binning for histograms</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
       
     </tbody><tbody>
       
@@ -152,13 +215,29 @@
         </td>
         <td><p>Get the optimal bin width for a histogram given a data set, its value and
 the desired amount of bins</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plt_gartner_magic_chart.html">plt_gartner_magic_chart()</a></code> </p>
-        </td>
-        <td><p>Gartner Magic Chart Plotting of two continuous variables</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-sql-string-functions" class="hasAnchor"><a href="#section-sql-string-functions" class="anchor"></a>SQL String Functions</h2>
+          <p class="section-desc"><p>Manipulate Strings with SQL like Functions</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-sql-string-functions" class="hasAnchor"><a href="#section-sql-string-functions" class="anchor"></a>SQL String Functions</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="sql_left.html">sql_left()</a></code> </p>
@@ -176,25 +255,29 @@ the desired amount of bins</p></td>
           <p><code><a href="sql_right.html">sql_right()</a></code> </p>
         </td>
         <td><p>Use SQL RIGHT type functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_median_excess_plt.html">ts_median_excess_plt()</a></code> </p>
-        </td>
-        <td><p>Create a plot showing the excess +/- of the median value</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_plot_alos.html">ts_plot_alos()</a></code> </p>
-        </td>
-        <td><p>Plot ALOS - Average length of stay</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ts_plot_readmit_rate.html">ts_plot_readmit_rate()</a></code> </p>
-        </td>
-        <td><p>Plot Readmit Rate</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-table-functions" class="hasAnchor"><a href="#section-table-functions" class="anchor"></a>Table Functions</h2>
+          <p class="section-desc"><p>Functions that return tibbles</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-table-functions" class="hasAnchor"><a href="#section-table-functions" class="anchor"></a>Table Functions</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="ts_ymwdh_tbl.html">ts_ymwdh_tbl()</a></code> </p>
