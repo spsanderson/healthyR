@@ -43,3 +43,8 @@ reference:
   -  subtitle: Table Functions
      contents:
      -  contains("tbl")
+  -  title: Data Files
+     desc: __Data Files__
+  -  subtitle: Mapping Files
+     contents:
+     -  contains("mapping")
