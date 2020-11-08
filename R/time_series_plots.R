@@ -9,6 +9,8 @@
 #' - Expects a tibble with a date time column and a value column
 #' - Uses timetk for underlying sumarization and plot
 #' - If .by_grouping is missing it will default to "day"
+#' - A static ggplot2 object is return if the .interactive function is FALSE
+#' otherwise a plotly plot is returned.
 #'
 #' @param .data The data you need to pass
 #' @param .date_col The date column
@@ -19,16 +21,27 @@
 #' returns a static ggplot2 plot
 #'
 #' @examples
-#' library(dplyr)
-#' library(purrr)
-#' library(timetk)
+#' set.seed(123)
 #'
+#' # Library Load ----
+#' if(!require(pacman)) {install.packages("pacman")}
+#' pacman::p_load(
+#'    "timetk"
+#'    , "healthyR"
+#'    , "tidyverse"
+#' )
+#'
+#' # Make A Series of Dates ----
 #' ts_tbl <- tk_make_timeseries(
-#' start = "2019-01-01", by = "day", length_out = "1 year 6 months"
-#' )
-#' values <- arima.sim(
-#' model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5
-#' )
+#'    start = "2019-01-01"
+#'    , by = "day"
+#'   , length_out = "1 year 6 months"
+#')
+#'
+#' # Set Values ----
+#' values <- runif(548, 5, 10)
+#'
+#' # Make tibble ----
 #' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
 #'
 #' ts_alos_plt(
@@ -37,7 +50,7 @@
 #' )
 #'
 #' @return
-#' A timetk time series plot that is interactive
+#' A timetk time series plot
 #'
 #' @export
 #'
