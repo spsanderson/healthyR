@@ -1,6 +1,12 @@
 ---
 title: "Getting Started with healthyR"
-output: rmarkdown::html_vignette
+subtitle: "A Quick Introduction"
+author: "Steven P. Sanderson II, MPH"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
 vignette: >
   %\VignetteIndexEntry{Getting Started with healthyR}
   %\VignetteEngine{knitr::rmarkdown}

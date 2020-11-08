@@ -9,7 +9,7 @@
 The goal of healthyR is to help quickly analyze common data problems in
 the Administrative and Clincial spaces.
 
-## Installation
+## Installation NOT YET ON CRAN
 
 You can install the released version of healthyR from
 [CRAN](https://CRAN.R-project.org) with:
@@ -28,6 +28,7 @@ function\`:
 
     library(healthyR)
     library(timetk)
+    #> Warning: package 'timetk' was built under R version 4.0.3
 
     ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
         ts_median_excess_plt(
@@ -77,7 +78,7 @@ function:
     #> The following objects are masked from 'package:base':
     #> 
     #>     intersect, setdiff, setequal, union
-    plt_gartner_magic_chart(
+    gartner_magic_chart_plt(
       .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100, 0, 1))
       , .x_col = x
       , .y_col = y
