@@ -4,6 +4,7 @@
 * Add data files dx_cc_mapping and px_cc_mapping
 * Added fucntion(s)
 1. save_to_excel()
+2. los_ra_index_summary_tbl
 
 ## healthyR 0.0.0.9005
 
