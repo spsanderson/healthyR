@@ -44,6 +44,11 @@ reference:
   -  subtitle: Table Functions
      contents:
      -  contains("tbl")
+  - title: Miscellaneous
+    desc: Miscellaneous Functions and Utilities
+  - subtitle: Function List
+    contents:
+    -  contains("save_to_excel")
   -  title: Data Files
      desc: __Data Files__
   -  subtitle: Mapping Files

@@ -22,7 +22,9 @@ Imports:
     dplyr,
     lubridate,
     graphics,
-    purrr
+    purrr,
+    stringr,
+    writexl
 Suggests: 
     knitr,
     rmarkdown,
