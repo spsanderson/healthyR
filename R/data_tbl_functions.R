@@ -14,8 +14,10 @@
 #' 4. Readmit Rate Benchmark - Should be a percentage from the benchmark file.
 #' - This will add a column called visits that will be the count of records per
 #' length of stay from 1 to .max_los
-#' - The .max_los param can be left blank and the function will default to the
-#' 75 percentile from the [stats::quantile] function using the defaults
+#' - The .max_los param can be left blank and the function will default to 15. If
+#' this is not a good default and you don't know what it should be then set it to
+#' 75 percentile from the [stats::quantile] function using the defaults, like so
+#' .max_los = `stats::quantile(data_tbl$alos)[[4]]`
 #' - Uses all data to compute variance, if you want it for a particular time frame
 #' you will have to filter the data that goes into the .data argument. It is
 #' suggested to use `timetk::filter_by_time()`
@@ -58,7 +60,7 @@
 
 los_ra_index_summary_tbl <- function(
     .data
-    , .max_los
+    , .max_los = 15
     , .alos_col
     , .elos_col
     , .readmit_rate
@@ -66,7 +68,7 @@ los_ra_index_summary_tbl <- function(
     ) {
 
     # Tidyeval
-    max_los_var_expr       <- rlang::enquo(.max_los)
+    max_los_var_expr       <- .max_los
     alos_col_var_expr      <- rlang::enquo(.alos_col)
     elos_col_var_expr      <- rlang::enquo(.elos_col)
     readmit_rate_var_expr  <- rlang::enquo(.readmit_rate)
@@ -77,8 +79,8 @@ los_ra_index_summary_tbl <- function(
         stop(call. = FALSE, "(data) is not a data-frame/tibble. Please provide.")
     }
 
-    if(rlang::quo_is_missing(max_los_var_expr)) {
-        max_los_var_expr = stats::quantile( {{alos_col_var_expr}} )[[4]]
+    if(!(.max_los)) {
+        max_los_var_expr = stats::quantile( !!alos_col_var_expr )[[4]]
     }
 
     if(rlang::quo_is_missing(alos_col_var_expr)) {
@@ -103,8 +105,8 @@ los_ra_index_summary_tbl <- function(
     df_summary_tbl <- df_tbl %>%
         dplyr::mutate(
             los_group = dplyr::case_when(
-                {{alos_col_var_expr}} > 15 ~ 15,
-                TRUE ~ {{alos_col_var_expr}}
+                {{alos_col_var_expr}} > max_los_var_expr ~ max_los_var_expr
+                , TRUE ~ {{alos_col_var_expr}}
             )
         ) %>%
         dplyr::group_by(los_group) %>%

@@ -135,7 +135,7 @@
 
     <pre class="usage"><span class='fu'>los_ra_index_summary_tbl</span><span class='op'>(</span>
   <span class='va'>.data</span>,
-  <span class='va'>.max_los</span>,
+  .max_los <span class='op'>=</span> <span class='fl'>15</span>,
   <span class='va'>.alos_col</span>,
   <span class='va'>.elos_col</span>,
   <span class='va'>.readmit_rate</span>,
@@ -192,8 +192,10 @@ than .max_los will be grouped to .max_los</p></td>
 <ul>
 <li><p>This will add a column called visits that will be the count of records per
 length of stay from 1 to .max_los</p></li>
-<li><p>The .max_los param can be left blank and the function will default to the
-75 percentile from the <a href='https://rdrr.io/r/stats/quantile.html'>stats::quantile</a> function using the defaults</p></li>
+<li><p>The .max_los param can be left blank and the function will default to 15. If
+this is not a good default and you don't know what it should be then set it to
+75 percentile from the <a href='https://rdrr.io/r/stats/quantile.html'>stats::quantile</a> function using the defaults, like so
+.max_los = <code>stats::quantile(data_tbl$alos)[[4]]</code></p></li>
 <li><p>Uses all data to compute variance, if you want it for a particular time frame
 you will have to filter the data that goes into the .data argument. It is
 suggested to use <code><a href='https://rdrr.io/pkg/timetk/man/filter_by_time.html'>timetk::filter_by_time()</a></code></p></li>
