@@ -5,6 +5,7 @@
 * Added fucntion(s)
 1. save_to_excel()
 2. los_ra_index_summary_tbl
+3. los_ra_index_plt
 
 ## healthyR 0.0.0.9005
 

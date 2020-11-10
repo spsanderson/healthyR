@@ -24,11 +24,15 @@ reference:
   -  subtitle: Time Series Plotting
      contents:
      -  contains("ts_alos_plt")
+     -  contains("ts_median_excess_plt")
      -  contains("ts_readmit_rate_plt")
-     -  contains("ts_median")
   -  subtitle: Gartner Magic Chart
      contents:
      -  contains("gartner_magic_chart_plt")
+  -  title: Miscellaneous Plots
+     desc: Other Plotting Functions
+     contents:
+     - contains("_index_plt")
   -  title: Optimal Bin Functions for Histograms
      desc: Optimal Binning Functions
   -  subtitle: Optimal Binning for histograms

@@ -63,8 +63,8 @@ over their respective expectations.
 library(tibble)
 library(timetk)
 data_tbl <- tibble(
-  "alos"                 = runif(186, 1, 20)
-  , "elos"               = runif(186, 1, 17)
+  "alos"                 = runif(186, 1, 20) \%>\% as.integer()
+  , "elos"               = runif(186, 1, 17) \%>\% as.integer()
   , "readmit_rate"       = runif(186, 0, .25)
   , "readmit_rate_bench" = runif(186, 0, .2)
 )

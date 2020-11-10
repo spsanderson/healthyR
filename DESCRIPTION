@@ -24,7 +24,10 @@ Imports:
     graphics,
     purrr,
     stringr,
-    writexl
+    writexl,
+    patchwork,
+    tidyquant,
+    scales
 Suggests: 
     knitr,
     rmarkdown,

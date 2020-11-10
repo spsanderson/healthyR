@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the optimal bin width for a histogram given a data set, its value and
-the desired amount of bins — opt_bin • healthyR</title>
+<title>Plot LOS and Readmit Index with Variance — los_ra_index_plt • healthyR</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,9 @@ the desired amount of bins — opt_bin • healthyR</title>
 
 
 
-<meta property="og:title" content="Get the optimal bin width for a histogram given a data set, its value and
-the desired amount of bins — opt_bin" />
-<meta property="og:description" content="Gives the optimal bindwidth for a histogram given a data set, it's value and
-the desired amoutn of bins" />
+<meta property="og:title" content="Plot LOS and Readmit Index with Variance — los_ra_index_plt" />
+<meta property="og:description" content="Plot the index of the length of stay and readmit rate against each other along
+with the variance" />
 
 
 
@@ -127,80 +125,67 @@ the desired amoutn of bins" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the optimal bin width for a histogram given a data set, its value and
-the desired amount of bins</h1>
-    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/optimal_bin_size.R'><code>R/optimal_bin_size.R</code></a></small>
-    <div class="hidden name"><code>opt_bin.Rd</code></div>
+    <h1>Plot LOS and Readmit Index with Variance</h1>
+    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/los_ra_index_plt.R'><code>R/los_ra_index_plt.R</code></a></small>
+    <div class="hidden name"><code>los_ra_index_plt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Gives the optimal bindwidth for a histogram given a data set, it's value and
-the desired amoutn of bins</p>
+    <p>Plot the index of the length of stay and readmit rate against each other along
+with the variance</p>
     </div>
 
-    <pre class="usage"><span class='fu'>opt_bin</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.value_col</span>, .iters <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>los_ra_index_plt</span><span class='op'>(</span><span class='va'>.data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>The data set in question</p></td>
-    </tr>
-    <tr>
-      <th>.value_col</th>
-      <td><p>The column that holds the values</p></td>
-    </tr>
-    <tr>
-      <th>.iters</th>
-      <td><p>How many times the cost function loop should run</p></td>
+      <td><p>The data supplied from <code><a href='los_ra_index_summary_tbl.html'>los_ra_index_summary_tbl()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of histogram breakpoints</p>
+    <p>A patchwork ggplot2 plot</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Modified from Hideaki Shimazaki
-Department of Physics, Kyoto University
-shimazaki at ton.scphys.kyoto-u.ac.jp
-Feel free to modify/distribute this program.</p><ul>
-<li><p>Supply a data.frame/tibble with a value column. from this an optimal binwidth
-will be computed for the amount of binds desired</p></li>
+    
+<ul>
+<li><p>Expects a tibble</p></li>
+<li><p>Expects a Length of Stay and Readmit column, must be numeric</p></li>
+<li><p>Uses patchwork to stack plots</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tibble.tidyverse.org/'>tibble</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://patchwork.data-imaginist.com'>patchwork</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/tidyquant'>tidyquant</a></span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1000</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='va'>df_tbl</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://purrr.tidyverse.org/reference/set_names.html'>set_names</a></span><span class='op'>(</span><span class='st'>"value"</span><span class='op'>)</span>
+<span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  <span class='st'>"alos"</span>                 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>1</span>, <span class='fl'>20</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='op'>)</span>
+  , <span class='st'>"elos"</span>               <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>1</span>, <span class='fl'>17</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='op'>)</span>
+  , <span class='st'>"readmit_rate"</span>       <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>0</span>, <span class='fl'>.25</span><span class='op'>)</span>
+  , <span class='st'>"readmit_rate_bench"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>0</span>, <span class='fl'>.2</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='va'>df_tbl</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>opt_bin</span><span class='op'>(</span>
-    .value_col <span class='op'>=</span> <span class='va'>value</span>
-    , .iters <span class='op'>=</span> <span class='fl'>100</span>
-  <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 11 x 1</span><span>
-#&gt;      value
-#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> -</span><span style='color: #BB0000;'>2.95</span><span>  
-#&gt; </span><span style='color: #555555;'> 2</span><span> -</span><span style='color: #BB0000;'>2.34</span><span>  
-#&gt; </span><span style='color: #555555;'> 3</span><span> -</span><span style='color: #BB0000;'>1.74</span><span>  
-#&gt; </span><span style='color: #555555;'> 4</span><span> -</span><span style='color: #BB0000;'>1.13</span><span>  
-#&gt; </span><span style='color: #555555;'> 5</span><span> -</span><span style='color: #BB0000;'>0.526</span><span> 
-#&gt; </span><span style='color: #555555;'> 6</span><span>  0.080</span><span style='text-decoration: underline;'>0</span><span>
-#&gt; </span><span style='color: #555555;'> 7</span><span>  0.686 
-#&gt; </span><span style='color: #555555;'> 8</span><span>  1.29  
-#&gt; </span><span style='color: #555555;'> 9</span><span>  1.90  
-#&gt; </span><span style='color: #555555;'>10</span><span>  2.50  
-#&gt; </span><span style='color: #555555;'>11</span><span>  3.11  </div><div class='input'>
-</div></span></pre>
+<span class='fu'><a href='los_ra_index_summary_tbl.html'>los_ra_index_summary_tbl</a></span><span class='op'>(</span>
+  .data <span class='op'>=</span> <span class='va'>data_tbl</span>
+  , .max_los       <span class='op'>=</span> <span class='fl'>15</span>
+  , .alos_col      <span class='op'>=</span> <span class='va'>alos</span>
+  , .elos_col      <span class='op'>=</span> <span class='va'>elos</span>
+  , .readmit_rate  <span class='op'>=</span> <span class='va'>readmit_rate</span>
+  , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_rate_bench</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>los_ra_index_plt</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='los_ra_index_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

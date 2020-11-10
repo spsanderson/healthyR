@@ -37,8 +37,8 @@
 #' library(tibble)
 #' library(timetk)
 #' data_tbl <- tibble(
-#'   "alos"                 = runif(186, 1, 20)
-#'   , "elos"               = runif(186, 1, 17)
+#'   "alos"                 = runif(186, 1, 20) %>% as.integer()
+#'   , "elos"               = runif(186, 1, 17) %>% as.integer()
 #'   , "readmit_rate"       = runif(186, 0, .25)
 #'   , "readmit_rate_bench" = runif(186, 0, .2)
 #' )
@@ -100,18 +100,20 @@ los_ra_index_summary_tbl <- function(
     }
 
     # Summarize and Manipulate
-    df_tbl <- tibble::as_tibble(.data)
+    df_tbl <- tibble::as_tibble(.data) %>%
+        dplyr::mutate(alos = as.double( {{alos_col_var_expr}} ))
 
     df_summary_tbl <- df_tbl %>%
+        # dplyr::mutate(alos = as.double({{alos_col_var_expr}})) %>%
         dplyr::mutate(
             los_group = dplyr::case_when(
-                {{alos_col_var_expr}} > max_los_var_expr ~ max_los_var_expr
-                , TRUE ~ {{alos_col_var_expr}}
+                alos > max_los_var_expr ~ max_los_var_expr
+                , TRUE ~ alos
             )
         ) %>%
         dplyr::group_by(los_group) %>%
         dplyr::summarise(
-            tot_visits = n()
+            tot_visits = dplyr::n()
             , tot_los  = sum({{alos_col_var_expr}}, na.rm = TRUE)
             , tot_elos = sum({{elos_col_var_expr}}, na.rm = TRUE)
             , tot_ra   = sum({{readmit_rate_var_expr}}, na.rm = TRUE)
