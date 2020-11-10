@@ -2,6 +2,8 @@
 
 # healthyR 0.0.0.9006
 * Add data files dx_cc_mapping and px_cc_mapping
+* Added fucntion(s)
+1. save_to_excel()
 
 ## healthyR 0.0.0.9005
 
