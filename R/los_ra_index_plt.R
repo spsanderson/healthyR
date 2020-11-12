@@ -20,8 +20,8 @@
 #' suppressMessages(library(tidyquant))
 #'
 #' data_tbl <- tibble(
-#'   "alos"                 = runif(186, 1, 20) %>% as.integer()
-#'   , "elos"               = runif(186, 1, 17) %>% as.integer()
+#'   "alos"                 = runif(186, 1, 20)
+#'   , "elos"               = runif(186, 1, 17)
 #'   , "readmit_rate"       = runif(186, 0, .25)
 #'   , "readmit_rate_bench" = runif(186, 0, .2)
 #' )
@@ -29,6 +29,16 @@
 #' los_ra_index_summary_tbl(
 #'   .data = data_tbl
 #'   , .max_los       = 15
+#'   , .alos_col      = alos
+#'   , .elos_col      = elos
+#'   , .readmit_rate  = readmit_rate
+#'   , .readmit_bench = readmit_rate_bench
+#'   ) %>%
+#'   los_ra_index_plt()
+#'
+#' los_ra_index_summary_tbl(
+#'   .data = data_tbl
+#'   , .max_los       = 10
 #'   , .alos_col      = alos
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
