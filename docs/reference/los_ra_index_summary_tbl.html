@@ -211,11 +211,12 @@ over their respective expectations.</p></li>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tibble.tidyverse.org/'>tibble</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span>
+
 <span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  <span class='st'>"alos"</span>                 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>1</span>, <span class='fl'>20</span><span class='op'>)</span>
-  , <span class='st'>"elos"</span>               <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>1</span>, <span class='fl'>17</span><span class='op'>)</span>
-  , <span class='st'>"readmit_rate"</span>       <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>0</span>, <span class='fl'>.25</span><span class='op'>)</span>
-  , <span class='st'>"readmit_rate_bench"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>0</span>, <span class='fl'>.2</span><span class='op'>)</span>
+  <span class='st'>"alos"</span>            <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>1</span>, <span class='fl'>20</span><span class='op'>)</span>
+  , <span class='st'>"elos"</span>          <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>1</span>, <span class='fl'>17</span><span class='op'>)</span>
+  , <span class='st'>"readmit_rate"</span>  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>0</span>, <span class='fl'>.25</span><span class='op'>)</span>
+  , <span class='st'>"readmit_bench"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>186</span>, <span class='fl'>0</span>, <span class='fl'>.2</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='fu'>los_ra_index_summary_tbl</span><span class='op'>(</span>
@@ -224,7 +225,7 @@ over their respective expectations.</p></li>
   , .alos_col      <span class='op'>=</span> <span class='va'>alos</span>
   , .elos_col      <span class='op'>=</span> <span class='va'>elos</span>
   , .readmit_rate  <span class='op'>=</span> <span class='va'>readmit_rate</span>
-  , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_rate_bench</span>
+  , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_bench</span>
   <span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 4</span><span>
 #&gt;    los_group los_index rar_index los_ra_var
@@ -250,7 +251,7 @@ over their respective expectations.</p></li>
   , .alos_col      <span class='op'>=</span> <span class='va'>alos</span>
   , .elos_col      <span class='op'>=</span> <span class='va'>elos</span>
   , .readmit_rate  <span class='op'>=</span> <span class='va'>readmit_rate</span>
-  , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_rate_bench</span>
+  , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_bench</span>
   <span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 4</span><span>
 #&gt;    los_group los_index rar_index los_ra_var

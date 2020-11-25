@@ -1,6 +1,7 @@
 # healthyR 0.1.0
+* Prepping Package for CRAN
 
-# healthyR 0.0.0.9006
+## healthyR 0.0.0.9006
 * Add data files dx_cc_mapping and px_cc_mapping
 * Added fucntion(s)
 1. save_to_excel()

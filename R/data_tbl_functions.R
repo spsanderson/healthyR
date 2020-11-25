@@ -37,11 +37,12 @@
 #' library(tibble)
 #' library(dplyr)
 #' library(timetk)
+#'
 #' data_tbl <- tibble(
-#'   "alos"                 = runif(186, 1, 20)
-#'   , "elos"               = runif(186, 1, 17)
-#'   , "readmit_rate"       = runif(186, 0, .25)
-#'   , "readmit_rate_bench" = runif(186, 0, .2)
+#'   "alos"            = runif(186, 1, 20)
+#'   , "elos"          = runif(186, 1, 17)
+#'   , "readmit_rate"  = runif(186, 0, .25)
+#'   , "readmit_bench" = runif(186, 0, .2)
 #' )
 #'
 #' los_ra_index_summary_tbl(
@@ -50,7 +51,7 @@
 #'   , .alos_col      = alos
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
-#'   , .readmit_bench = readmit_rate_bench
+#'   , .readmit_bench = readmit_bench
 #'   )
 #'
 #' los_ra_index_summary_tbl(
@@ -59,7 +60,7 @@
 #'   , .alos_col      = alos
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
-#'   , .readmit_bench = readmit_rate_bench
+#'   , .readmit_bench = readmit_bench
 #'   )
 #'
 #' @return

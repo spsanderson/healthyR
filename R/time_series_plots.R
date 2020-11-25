@@ -24,12 +24,9 @@
 #' set.seed(123)
 #'
 #' # Library Load ----
-#' if(!require(pacman)) {install.packages("pacman")}
-#' pacman::p_load(
-#'    "timetk"
-#'    , "healthyR"
-#'    , "tidyverse"
-#' )
+#' library(dplyr)
+#' library(purrr)
+#' library(timetk)
 #'
 #' # Make A Series of Dates ----
 #' ts_tbl <- tk_make_timeseries(
