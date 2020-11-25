@@ -88,78 +88,82 @@
 <a href="#healthyr-" class="anchor"></a>healthyR <img src="reference/figures/healthyR_2.png" width="147" height="170" align="right">
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p>The goal of healthyR is to help quickly analyze common data problems in the Administrative and Clincial spaces.</p>
 <div id="installation-not-yet-on-cran" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation-not-yet-on-cran" class="anchor"></a>Installation NOT YET ON CRAN</h2>
 <p>You can install the released version of healthyR from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">"healthyR"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"healthyR"</span><span class="op">)</span></code></pre></div>
 <p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"spsanderson/healthyR"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"spsanderson/healthyR"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example of using the ts_median_excess_plt() function`:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="kw">library</span>(timetk)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">#&gt; Warning: package 'timetk' was built under R version 4.0.3</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="kw">ts_ymwdh_tbl</span>(<span class="dt">.data =</span> m4_daily, <span class="dt">.date_col =</span> date) <span class="op">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="st">    </span><span class="kw">ts_median_excess_plt</span>(</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>        <span class="dt">.date_col =</span> date</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>        , <span class="dt">.value_col =</span> value</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>        , <span class="dt">.x_axis =</span> wk</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>        , <span class="dt">.ggplot_group_var =</span> yr</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>        , <span class="dt">.years_back =</span> <span class="dv">5</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>    )</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="co">#&gt; Joining, by = "wk"</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR">healthyR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk">timetk</a></span><span class="op">)</span>
+
+<span class="fu"><a href="reference/ts_ymwdh_tbl.html">ts_ymwdh_tbl</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">m4_daily</span>, .date_col <span class="op">=</span> <span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="reference/ts_median_excess_plt.html">ts_median_excess_plt</a></span><span class="op">(</span>
+        .date_col <span class="op">=</span> <span class="va">date</span>
+        , .value_col <span class="op">=</span> <span class="va">value</span>
+        , .x_axis <span class="op">=</span> <span class="va">wk</span>
+        , .ggplot_group_var <span class="op">=</span> <span class="va">yr</span>
+        , .years_back <span class="op">=</span> <span class="fl">5</span>
+    <span class="op">)</span>
+<span class="co">#&gt; Joining, by = "wk"</span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <p>Here is a simple example of using the ts_ymwdh_tbl() function:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="kw">library</span>(timetk)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="kw">ts_ymwdh_tbl</span>(<span class="dt">.data =</span> m4_daily, <span class="dt">.date_col =</span> date)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 9,743 x 8</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="co">#&gt;    id    date       value    yr mn       wk wd       hr</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#&gt;    &lt;fct&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;dbl&gt; &lt;ord&gt; &lt;int&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#&gt;  1 D10   2014-07-03 2076.  2014 Jul      27 Thu       0</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="co">#&gt;  2 D10   2014-07-04 2073.  2014 Jul      27 Fri       0</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="co">#&gt;  3 D10   2014-07-05 2049.  2014 Jul      27 Sat       0</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="co">#&gt;  4 D10   2014-07-06 2049.  2014 Jul      27 Sun       0</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="co">#&gt;  5 D10   2014-07-07 2006.  2014 Jul      28 Mon       0</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a><span class="co">#&gt;  6 D10   2014-07-08 2018.  2014 Jul      28 Tue       0</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="co">#&gt;  7 D10   2014-07-09 2019.  2014 Jul      28 Wed       0</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="co">#&gt;  8 D10   2014-07-10 2007.  2014 Jul      28 Thu       0</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="co">#&gt;  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#&gt; 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="co">#&gt; # ... with 9,733 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR">healthyR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk">timetk</a></span><span class="op">)</span>
+
+<span class="fu"><a href="reference/ts_ymwdh_tbl.html">ts_ymwdh_tbl</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">m4_daily</span>, .date_col <span class="op">=</span> <span class="va">date</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 9,743 x 8</span>
+<span class="co">#&gt;    id    date       value    yr mn       wk wd       hr</span>
+<span class="co">#&gt;    &lt;fct&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;dbl&gt; &lt;ord&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1 D10   2014-07-03 2076.  2014 Jul      27 Thu       0</span>
+<span class="co">#&gt;  2 D10   2014-07-04 2073.  2014 Jul      27 Fri       0</span>
+<span class="co">#&gt;  3 D10   2014-07-05 2049.  2014 Jul      27 Sat       0</span>
+<span class="co">#&gt;  4 D10   2014-07-06 2049.  2014 Jul      27 Sun       0</span>
+<span class="co">#&gt;  5 D10   2014-07-07 2006.  2014 Jul      28 Mon       0</span>
+<span class="co">#&gt;  6 D10   2014-07-08 2018.  2014 Jul      28 Tue       0</span>
+<span class="co">#&gt;  7 D10   2014-07-09 2019.  2014 Jul      28 Wed       0</span>
+<span class="co">#&gt;  8 D10   2014-07-10 2007.  2014 Jul      28 Thu       0</span>
+<span class="co">#&gt;  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0</span>
+<span class="co">#&gt; 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0</span>
+<span class="co">#&gt; # ... with 9,733 more rows</span></code></pre></div>
 <p>Here is a simple example of using the plt_gartner_magic_chart() function:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">library</span>(healthyR)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="kw">library</span>(tibble)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#&gt;     filter, lag</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="kw">gartner_magic_chart_plt</span>(</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a>  <span class="dt">.data =</span> <span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>  , <span class="dt">.x_col =</span> x</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>  , <span class="dt">.y_col =</span> y</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>  , <span class="dt">.y_lab =</span> <span class="st">"los"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>  , <span class="dt">.x_lab =</span> <span class="st">"RA"</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a>  , <span class="dt">.plt_title =</span> <span class="st">"Test Title"</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a>  , <span class="dt">.tl_lbl =</span> <span class="st">"Top Left lbl"</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a>  , <span class="dt">.tr_lbl =</span> <span class="st">"Top Right lbl"</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a>  , <span class="dt">.bl_lbl =</span> <span class="st">"Bottom Left lbl"</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a>  , <span class="dt">.br_lbl =</span> <span class="st">"Bottom Right lbl"</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR">healthyR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="fu"><a href="reference/gartner_magic_chart_plt.html">gartner_magic_chart_plt</a></span><span class="op">(</span>
+  .data <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+  , .x_col <span class="op">=</span> <span class="va">x</span>
+  , .y_col <span class="op">=</span> <span class="va">y</span>
+  , .y_lab <span class="op">=</span> <span class="st">"los"</span>
+  , .x_lab <span class="op">=</span> <span class="st">"RA"</span>
+  , .plt_title <span class="op">=</span> <span class="st">"Test Title"</span>
+  , .tl_lbl <span class="op">=</span> <span class="st">"Top Left lbl"</span>
+  , .tr_lbl <span class="op">=</span> <span class="st">"Top Right lbl"</span>
+  , .bl_lbl <span class="op">=</span> <span class="st">"Bottom Left lbl"</span>
+  , .br_lbl <span class="op">=</span> <span class="st">"Bottom Right lbl"</span>
+<span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-gartner_chart-1.png" width="100%"></p>
 </div>
 </div>
@@ -190,7 +194,13 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
