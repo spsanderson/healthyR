@@ -1,4 +1,4 @@
-# healthyR (development version)
+# healthyR 0.1.0
 
 # healthyR 0.0.0.9006
 * Add data files dx_cc_mapping and px_cc_mapping
