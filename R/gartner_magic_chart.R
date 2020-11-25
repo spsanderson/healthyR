@@ -19,12 +19,8 @@
 #' each other
 #'
 #' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#' library(purrr)
-#' library(tibble)
 #' gartner_magic_chart_plt(
-#'   .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100,0,1))
+#'   .data = tibble::tibble(x = rnorm(100, 0, 1), y = rnorm(100,0,1))
 #'   , .x_col = x
 #'   , .y_col = y
 #'   , .x_lab = "los"

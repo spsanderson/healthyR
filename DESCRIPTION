@@ -5,7 +5,7 @@ Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
 Description: 
-    Hospital data anlysis workflow tools, modeling and automations.
+    Hospital data analysis workflow tools, modeling, and automations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
