@@ -20,14 +20,13 @@ with the variance
 \itemize{
 \item Expects a tibble
 \item Expects a Length of Stay and Readmit column, must be numeric
-\item Uses patchwork to stack plots
+\item Uses cowplot to stack plots
 }
 }
 \examples{
 suppressMessages(library(dplyr))
 library(ggplot2)
-library(patchwork)
-suppressMessages(library(tidyquant))
+library(cowplot)
 
 data_tbl <- tibble(
   "alos"                 = runif(186, 1, 20)
