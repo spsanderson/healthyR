@@ -1,5 +1,4 @@
-#' Get the optimal bin width for a histogram given a data set, its value and
-#' the desired amount of bins
+#' Get the optimal binwidth for a histogram
 #'
 #' Modified from Hideaki Shimazaki
 #' Department of Physics, Kyoto University
@@ -7,8 +6,8 @@
 #' Feel free to modify/distribute this program.
 #'
 #' @description
-#' Gives the optimal bindwidth for a histogram given a data set, it's value and
-#' the desired amoutn of bins
+#' Gives the optimal binwidth for a histogram given a data set, it's value and
+#' the desired amount of bins
 #'
 #' @param .data The data set in question
 #' @param .value_col The column that holds the values
@@ -38,6 +37,7 @@
 #' A tibble of histogram breakpoints
 #'
 #' @export
+#'
 
 opt_bin <- function(
     .data

@@ -2,8 +2,7 @@
 % Please edit documentation in R/optimal_bin_size.R
 \name{opt_bin}
 \alias{opt_bin}
-\title{Get the optimal bin width for a histogram given a data set, its value and
-the desired amount of bins}
+\title{Get the optimal binwidth for a histogram}
 \usage{
 opt_bin(.data, .value_col, .iters = 30)
 }
@@ -18,8 +17,8 @@ opt_bin(.data, .value_col, .iters = 30)
 A tibble of histogram breakpoints
 }
 \description{
-Gives the optimal bindwidth for a histogram given a data set, it's value and
-the desired amoutn of bins
+Gives the optimal binwidth for a histogram given a data set, it's value and
+the desired amount of bins
 }
 \details{
 Modified from Hideaki Shimazaki

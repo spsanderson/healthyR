@@ -1,4 +1,4 @@
-#' Create a plot showing the excess +/- of the median value
+#' Create a plot showing the excess of the median value
 #'
 #' @description
 #' Plot out the excess +/- of the median value grouped by certain time parameters
@@ -32,9 +32,11 @@
 #'   , .years_back = 5
 #' )
 #'
-#' @return A ggplot2 plot
+#' @return
+#' A `ggplot2` plot
 #'
 #' @export
+#'
 
 ts_median_excess_plt <- function(
     .data

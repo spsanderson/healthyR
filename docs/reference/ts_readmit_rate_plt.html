@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Plot Readmit Rate — ts_readmit_rate_plt" />
-<meta property="og:description" content="Plot ALOS - average length of stay" />
+<meta property="og:description" content="Plot Readmit Rate" />
 
 
 
@@ -130,7 +130,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Plot ALOS - average length of stay</p>
+    <p>Plot Readmit Rate</p>
     </div>
 
     <pre class="usage"><span class='fu'>ts_readmit_rate_plt</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span>, <span class='va'>.value_col</span>, <span class='va'>.by_grouping</span>, <span class='va'>.interactive</span><span class='op'>)</span></pre>
@@ -157,8 +157,8 @@
     </tr>
     <tr>
       <th>.interactive</th>
-      <td><p>TRUE or FALSE. TRUE returns a plotly plot and FALSE
-returns a static ggplot2 plot</p></td>
+      <td><p>TRUE or FALSE. TRUE returns a <code>plotly</code> plot and FALSE
+returns a static <code>ggplot2</code> plot</p></td>
     </tr>
     </table>
 
@@ -170,7 +170,7 @@ returns a static ggplot2 plot</p></td>
     
 <ul>
 <li><p>Expects a tibble with a date time column and a value column</p></li>
-<li><p>Uses timetk for underlying sumarization and plot</p></li>
+<li><p>Uses <code>timetk</code> for underlying sumarization and plot</p></li>
 <li><p>If .by_grouping is missing it will default to "day"</p></li>
 </ul>
 

@@ -1,7 +1,7 @@
-#' Gartner Magic Chart Plotting of two continuous variables
+#' Gartner Magic Chart - Plotting of two continuous variables
 #'
 #' @description
-#' Plot a Gartner Magic Chart of two continuous variabls
+#' Plot a Gartner Magic Chart of two continuous variables
 #'
 #' @param .data The data set you want to plot
 #' @param .x_col The x-axis for the plot
@@ -33,7 +33,7 @@
 #' )
 #'
 #' @return
-#' A ggplot plot
+#' A `ggplot` plot
 #'
 #' @export
 #'

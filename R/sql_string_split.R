@@ -7,7 +7,6 @@
 #' @param num_char How many characters do you want to grab
 #'
 #' @details
-#'
 #' - You must supply data that you want to manipulate.
 #'
 #' @examples

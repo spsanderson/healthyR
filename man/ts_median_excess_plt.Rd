@@ -2,7 +2,7 @@
 % Please edit documentation in R/ts_median_excess_plt.R
 \name{ts_median_excess_plt}
 \alias{ts_median_excess_plt}
-\title{Create a plot showing the excess +/- of the median value}
+\title{Create a plot showing the excess of the median value}
 \usage{
 ts_median_excess_plt(
   .data,
@@ -28,7 +28,7 @@ ts_median_excess_plt(
 the median value}
 }
 \value{
-A ggplot2 plot
+A \code{ggplot2} plot
 }
 \description{
 Plot out the excess +/- of the median value grouped by certain time parameters

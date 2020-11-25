@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot ALOS - Average length of stay — ts_alos_plt • healthyR</title>
+<title>Plot ALOS - Average Length of Stay — ts_alos_plt • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot ALOS - Average length of stay — ts_alos_plt" />
-<meta property="og:description" content="Plot ALOS - average length of stay" />
+<meta property="og:title" content="Plot ALOS - Average Length of Stay — ts_alos_plt" />
+<meta property="og:description" content="Plot ALOS - Average Length of Stay" />
 
 
 
@@ -124,13 +124,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot ALOS - Average length of stay</h1>
+    <h1>Plot ALOS - Average Length of Stay</h1>
     <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/time_series_plots.R'><code>R/time_series_plots.R</code></a></small>
     <div class="hidden name"><code>ts_alos_plt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot ALOS - average length of stay</p>
+    <p>Plot ALOS - Average Length of Stay</p>
     </div>
 
     <pre class="usage"><span class='fu'>ts_alos_plt</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span>, <span class='va'>.value_col</span>, <span class='va'>.by_grouping</span>, <span class='va'>.interactive</span><span class='op'>)</span></pre>
@@ -140,7 +140,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>The data you need to pass</p></td>
+      <td><p>The time series data you need to pass</p></td>
     </tr>
     <tr>
       <th>.date_col</th>
@@ -157,8 +157,8 @@
     </tr>
     <tr>
       <th>.interactive</th>
-      <td><p>TRUE or FALSE. TRUE returns a plotly plot and FALSE
-returns a static ggplot2 plot</p></td>
+      <td><p>TRUE or FALSE. TRUE returns a <code>plotly</code> plot and FALSE
+returns a static <code>ggplot2</code> plot</p></td>
     </tr>
     </table>
 
@@ -170,10 +170,10 @@ returns a static ggplot2 plot</p></td>
     
 <ul>
 <li><p>Expects a tibble with a date time column and a value column</p></li>
-<li><p>Uses timetk for underlying sumarization and plot</p></li>
+<li><p>Uses <code>timetk</code> for underlying sumarization and plot</p></li>
 <li><p>If .by_grouping is missing it will default to "day"</p></li>
 <li><p>A static ggplot2 object is return if the .interactive function is FALSE
-otherwise a plotly plot is returned.</p></li>
+otherwise a <code>plotly</code> plot is returned.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>

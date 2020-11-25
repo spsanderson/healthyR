@@ -1,24 +1,24 @@
-#' Plot ALOS - Average length of stay
+#' Plot ALOS - Average Length of Stay
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
-#' Plot ALOS - average length of stay
+#' Plot ALOS - Average Length of Stay
 #'
 #' @details
 #' - Expects a tibble with a date time column and a value column
-#' - Uses timetk for underlying sumarization and plot
+#' - Uses `timetk` for underlying sumarization and plot
 #' - If .by_grouping is missing it will default to "day"
 #' - A static ggplot2 object is return if the .interactive function is FALSE
-#' otherwise a plotly plot is returned.
+#' otherwise a `plotly` plot is returned.
 #'
-#' @param .data The data you need to pass
+#' @param .data The time series data you need to pass
 #' @param .date_col The date column
 #' @param .value_col The value column
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour",
 #' "day", "week", "month", "quarter" or "year"
-#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE
-#' returns a static ggplot2 plot
+#' @param .interactive TRUE or FALSE. TRUE returns a `plotly` plot and FALSE
+#' returns a static `ggplot2` plot
 #'
 #' @examples
 #' set.seed(123)
@@ -122,11 +122,11 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
-#' Plot ALOS - average length of stay
+#' Plot Readmit Rate
 #'
 #' @details
 #' - Expects a tibble with a date time column and a value column
-#' - Uses timetk for underlying sumarization and plot
+#' - Uses `timetk` for underlying sumarization and plot
 #' - If .by_grouping is missing it will default to "day"
 #'
 #' @param .data The data you need to pass
@@ -134,8 +134,8 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
 #' @param .value_col The value column
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour",
 #' "day", "week", "month", "quarter" or "year"
-#' @param .interactive TRUE or FALSE. TRUE returns a plotly plot and FALSE
-#' returns a static ggplot2 plot
+#' @param .interactive TRUE or FALSE. TRUE returns a `plotly` plot and FALSE
+#' returns a static `ggplot2` plot
 #'
 #' @examples
 #' library(dplyr)

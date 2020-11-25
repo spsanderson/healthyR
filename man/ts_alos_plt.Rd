@@ -2,12 +2,12 @@
 % Please edit documentation in R/time_series_plots.R
 \name{ts_alos_plt}
 \alias{ts_alos_plt}
-\title{Plot ALOS - Average length of stay}
+\title{Plot ALOS - Average Length of Stay}
 \usage{
 ts_alos_plt(.data, .date_col, .value_col, .by_grouping, .interactive)
 }
 \arguments{
-\item{.data}{The data you need to pass}
+\item{.data}{The time series data you need to pass}
 
 \item{.date_col}{The date column}
 
@@ -16,22 +16,22 @@ ts_alos_plt(.data, .date_col, .value_col, .by_grouping, .interactive)
 \item{.by_grouping}{How you want the data summarized - "sec", "min", "hour",
 "day", "week", "month", "quarter" or "year"}
 
-\item{.interactive}{TRUE or FALSE. TRUE returns a plotly plot and FALSE
-returns a static ggplot2 plot}
+\item{.interactive}{TRUE or FALSE. TRUE returns a \code{plotly} plot and FALSE
+returns a static \code{ggplot2} plot}
 }
 \value{
 A timetk time series plot
 }
 \description{
-Plot ALOS - average length of stay
+Plot ALOS - Average Length of Stay
 }
 \details{
 \itemize{
 \item Expects a tibble with a date time column and a value column
-\item Uses timetk for underlying sumarization and plot
+\item Uses \code{timetk} for underlying sumarization and plot
 \item If .by_grouping is missing it will default to "day"
 \item A static ggplot2 object is return if the .interactive function is FALSE
-otherwise a plotly plot is returned.
+otherwise a \code{plotly} plot is returned.
 }
 }
 \examples{

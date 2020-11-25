@@ -10,7 +10,7 @@ los_ra_index_plt(.data)
 \item{.data}{The data supplied from \code{\link[=los_ra_index_summary_tbl]{los_ra_index_summary_tbl()}}}
 }
 \value{
-A patchwork ggplot2 plot
+A patchwork \code{ggplot2} plot
 }
 \description{
 Plot the index of the length of stay and readmit rate against each other along
@@ -20,7 +20,7 @@ with the variance
 \itemize{
 \item Expects a tibble
 \item Expects a Length of Stay and Readmit column, must be numeric
-\item Uses cowplot to stack plots
+\item Uses \code{cowplot} to stack plots
 }
 }
 \examples{

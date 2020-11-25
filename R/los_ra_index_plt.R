@@ -9,7 +9,7 @@
 #' @details
 #' - Expects a tibble
 #' - Expects a Length of Stay and Readmit column, must be numeric
-#' - Uses cowplot to stack plots
+#' - Uses `cowplot` to stack plots
 #'
 #' @param .data The data supplied from [los_ra_index_summary_tbl()]
 #'
@@ -46,7 +46,7 @@
 #'   los_ra_index_plt()
 #'
 #' @return
-#' A patchwork ggplot2 plot
+#' A patchwork `ggplot2` plot
 #'
 #' @export
 #'
@@ -107,8 +107,6 @@ los_ra_index_plt <- function(.data) {
             , linetype = "dashed"
         ) +
         ggplot2::scale_y_continuous(labels = scales::percent) +
-        # tidyquant::theme_tq() +
-        # tidyquant::scale_color_tq() +
         ggplot2::labs(
             title = "LOS Index vs. Readmit Index",
             subtitle = "Black dots are LOS and Red are Readmit",
@@ -135,8 +133,6 @@ los_ra_index_plt <- function(.data) {
             color = "red"
         ) +
         ggplot2::scale_y_continuous(labels = scales::number) +
-        # tidyquant::theme_tq() +
-        # tidyquant::scale_color_tq() +
         ggplot2::labs(
             title = "LOS vs Readmit Rate Index Variance",
             subtitle = stringr::str_c(

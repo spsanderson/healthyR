@@ -77,17 +77,10 @@ Here is a simple example of using the plt\_gartner\_magic\_chart()
 function:
 
 ``` r
-library(healthyR)
-library(tibble)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+suppressPackageStartupMessages(library(healthyR))
+suppressPackageStartupMessages(library(tibble))
+suppressPackageStartupMessages(library(dplyr))
+
 gartner_magic_chart_plt(
   .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100, 0, 1))
   , .x_col = x

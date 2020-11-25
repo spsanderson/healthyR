@@ -66,9 +66,10 @@ ts_ymwdh_tbl(.data = m4_daily, .date_col = date)
 Here is a simple example of using the plt_gartner_magic_chart() function:
 ```{r gartner_chart}
 
-library(healthyR)
-library(tibble)
-library(dplyr)
+suppressPackageStartupMessages(library(healthyR))
+suppressPackageStartupMessages(library(tibble))
+suppressPackageStartupMessages(library(dplyr))
+
 gartner_magic_chart_plt(
   .data = tibble(x = rnorm(100, 0, 1), y = rnorm(100, 0, 1))
   , .x_col = x

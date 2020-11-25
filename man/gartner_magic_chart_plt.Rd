@@ -2,7 +2,7 @@
 % Please edit documentation in R/gartner_magic_chart.R
 \name{gartner_magic_chart_plt}
 \alias{gartner_magic_chart_plt}
-\title{Gartner Magic Chart Plotting of two continuous variables}
+\title{Gartner Magic Chart - Plotting of two continuous variables}
 \usage{
 gartner_magic_chart_plt(
   .data,
@@ -39,10 +39,10 @@ gartner_magic_chart_plt(
 \item{.bl_lbl}{The bottom left label}
 }
 \value{
-A ggplot plot
+A \code{ggplot} plot
 }
 \description{
-Plot a Gartner Magic Chart of two continuous variabls
+Plot a Gartner Magic Chart of two continuous variables
 }
 \details{
 \itemize{
