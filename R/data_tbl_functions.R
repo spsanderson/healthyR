@@ -35,6 +35,8 @@
 #'
 #' @examples
 #'
+#' suppressPackageStartupMessages(library(dplyr))
+#'
 #' data_tbl <- tibble(
 #'   "alos"            = runif(186, 1, 20)
 #'   , "elos"          = runif(186, 1, 17)
