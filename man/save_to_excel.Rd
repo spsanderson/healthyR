@@ -25,7 +25,7 @@ at 1:24:16PM.
 }
 }
 \examples{
-\dontrun{
+\donttest{
 library(tibble)
 tibble::tibble("x" = runif(10, 0, 1), "y" = runif(10, 0, 1)) \%>\%
   save_to_excel(.file_name = "test_file")

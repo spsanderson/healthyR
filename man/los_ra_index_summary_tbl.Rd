@@ -60,9 +60,6 @@ over their respective expectations.
 }
 }
 \examples{
-library(tibble)
-library(dplyr)
-library(timetk)
 
 data_tbl <- tibble(
   "alos"            = runif(186, 1, 20)

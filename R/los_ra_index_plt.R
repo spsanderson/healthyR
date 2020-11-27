@@ -14,9 +14,8 @@
 #' @param .data The data supplied from [los_ra_index_summary_tbl()]
 #'
 #' @examples
-#' suppressMessages(library(dplyr))
-#' library(ggplot2)
-#' library(cowplot)
+#'
+#' suppressPackageStartupMessages(library(dplyr))
 #'
 #' data_tbl <- tibble(
 #'   "alos"                 = runif(186, 1, 20)
@@ -46,7 +45,7 @@
 #'   los_ra_index_plt()
 #'
 #' @return
-#' A patchwork `ggplot2` plot
+#' A `patchwork` `ggplot2` plot
 #'
 #' @export
 #'

@@ -18,9 +18,9 @@
 #'   will be computed for the amount of binds desired
 #'
 #' @examples
-#' library(dplyr)
-#' library(tibble)
-#' library(purrr)
+#'
+#' suppressPackageStartupMessages(library(purrr))
+#' suppressPackageStartupMessages(library(dplyr))
 #'
 #' df_tbl <- rnorm(n = 1000, mean = 0, sd = 1)
 #' df_tbl <- df_tbl %>%

@@ -29,8 +29,7 @@ should be dropped or kept when using further functions
 }
 \examples{
 library(timetk)
-library(dplyr)
-library(lubridate)
+
 ts_ymwdh_tbl(
   .data = m4_daily
   , .date_col = date

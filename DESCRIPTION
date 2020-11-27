@@ -5,7 +5,11 @@ Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
 Description: 
-    Hospital data analysis workflow tools, modeling, and automations.
+    Hospital data analysis workflow tools, modeling, and automations. This library
+    provides many useful tools to review common administrative hospital data. Some 
+    of these include Average Length of Stay, Readmission Rates, Average Net Pay
+    amounts by service lines just to name a few. The aim is to provide a simple
+    and consistent verb framework that takes the guesswork out of everything.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

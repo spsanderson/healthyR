@@ -16,9 +16,8 @@
 #'   over a specified time series tibble
 #'
 #' @examples
-#' library(timetk)
-#' library(dplyr)
-#' library(lubridate)
+#'
+#' suppressPackageStartupMessages(library(timetk))
 #'
 #' ts_ymwdh_tbl(
 #'   .data = m4_daily

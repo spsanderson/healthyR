@@ -23,10 +23,9 @@
 #' @examples
 #' set.seed(123)
 #'
-#' # Library Load ----
-#' library(dplyr)
-#' library(purrr)
-#' library(timetk)
+#' suppressPackageStartupMessages(library(timetk))
+#' suppressPackageStartupMessages(library(purrr))
+#' suppressPackageStartupMessages(library(dplyr))
 #'
 #' # Make A Series of Dates ----
 #' ts_tbl <- tk_make_timeseries(
@@ -138,25 +137,41 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
 #' returns a static `ggplot2` plot
 #'
 #' @examples
-#' library(dplyr)
-#' library(purrr)
-#' library(timetk)
+#' set.seed(123)
+#'
+#' suppressPackageStartupMessages(library(timetk))
+#' suppressPackageStartupMessages(library(purrr))
+#' suppressPackageStartupMessages(library(dplyr))
 #'
 #' ts_tbl <- tk_make_timeseries(
-#' start = "2019-01-01", by = "day", length_out = "1 year 6 months"
+#'   start = "2019-01-01"
+#'   , by = "day"
+#'   , length_out = "1 year 6 months"
 #' )
 #' values <- arima.sim(
-#' model = list(order = c(0, 1, 0)), n = 547, mean = 1, sd = 5
+#'   model = list(
+#'     order = c(0, 1, 0))
+#'     , n = 547
+#'     , mean = 1
+#'     , sd = 5
 #' )
-#' df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
+#'
+#' df_tbl <- tibble(
+#'   x = ts_tbl
+#'   , y = values
+#'   ) %>%
+#'   set_names("Date","Values")
 #'
 #' ts_readmit_rate_plt(
-#' .data = df_tbl, .date_col = Date, .value_col = Values, .by = "month"
-#' , .interactive = FALSE
+#'   .data = df_tbl
+#'   , .date_col = Date
+#'   , .value_col = Values
+#'   , .by = "month"
+#'   , .interactive = FALSE
 #' )
 #'
 #' @return
-#' A timetk time series plot that is interactive
+#' A `timetk` time series plot that is interactive
 #'
 #' @export
 #'

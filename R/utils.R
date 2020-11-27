@@ -14,7 +14,7 @@
 #' @param .file_name the name you want to give to the file.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(tibble)
 #' tibble::tibble("x" = runif(10, 0, 1), "y" = runif(10, 0, 1)) %>%
 #'   save_to_excel(.file_name = "test_file")

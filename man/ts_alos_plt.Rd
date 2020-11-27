@@ -37,10 +37,9 @@ otherwise a \code{plotly} plot is returned.
 \examples{
 set.seed(123)
 
-# Library Load ----
-library(dplyr)
-library(purrr)
-library(timetk)
+suppressPackageStartupMessages(library(timetk))
+suppressPackageStartupMessages(library(purrr))
+suppressPackageStartupMessages(library(dplyr))
 
 # Make A Series of Dates ----
 ts_tbl <- tk_make_timeseries(

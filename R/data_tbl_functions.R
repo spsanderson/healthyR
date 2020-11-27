@@ -34,9 +34,6 @@
 #' @param .readmit_bench The Expected Readmit Rate column
 #'
 #' @examples
-#' library(tibble)
-#' library(dplyr)
-#' library(timetk)
 #'
 #' data_tbl <- tibble(
 #'   "alos"            = runif(186, 1, 20)

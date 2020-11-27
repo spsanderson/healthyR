@@ -10,7 +10,7 @@ los_ra_index_plt(.data)
 \item{.data}{The data supplied from \code{\link[=los_ra_index_summary_tbl]{los_ra_index_summary_tbl()}}}
 }
 \value{
-A patchwork \code{ggplot2} plot
+A \code{patchwork} \code{ggplot2} plot
 }
 \description{
 Plot the index of the length of stay and readmit rate against each other along
@@ -24,9 +24,8 @@ with the variance
 }
 }
 \examples{
-suppressMessages(library(dplyr))
-library(ggplot2)
-library(cowplot)
+
+suppressPackageStartupMessages(library(dplyr))
 
 data_tbl <- tibble(
   "alos"                 = runif(186, 1, 20)
