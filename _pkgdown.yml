@@ -27,6 +27,7 @@ reference:
      -  contains("ts_alos_plt")
      -  contains("ts_median_excess_plt")
      -  contains("ts_readmit_rate_plt")
+     -  contains("ts_plt")
   -  subtitle: Gartner Magic Chart
      contents:
      -  contains("gartner_magic_chart_plt")
