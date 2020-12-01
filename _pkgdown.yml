@@ -24,9 +24,10 @@ reference:
      desc: healthyR Plots
   -  subtitle: Time Series Plotting
      contents:
-     -  contains("ts_alos_plt")
-     -  contains("ts_median_excess_plt")
-     -  contains("ts_readmit_rate_plt")
+     -  matches("^ts_.+_plt")
+     # -  contains("ts_alos_plt")
+     # -  contains("ts_median_excess_plt")
+     # -  contains("ts_readmit_rate_plt")
      -  contains("ts_plt")
   -  subtitle: Gartner Magic Chart
      contents:
