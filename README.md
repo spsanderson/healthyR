@@ -12,7 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 The goal of healthyR is to help quickly analyze common data problems in
 the Administrative and Clincial spaces.
 
-## Installation NOT YET ON CRAN
+## Installation
 
 You can install the released version of healthyR from
 [CRAN](https://CRAN.R-project.org) with:
