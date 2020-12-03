@@ -1,7 +1,7 @@
 # healthyR (development version)
 
 # healthyR 0.1.0
-* Prepping Package for CRAN
+* Released to CRAN 12-03-2020
 
 ## healthyR 0.0.0.9006
 * Add data files dx_cc_mapping and px_cc_mapping
