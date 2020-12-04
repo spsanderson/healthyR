@@ -7,6 +7,9 @@
   + Average Length of Stay -> average length of stay
   + Readmission Rates -> readmission rates
   + Average Net Pay -> average net pay
+  
+## Fix Issue to maintain CRAN
+* fix vignette that causes build failure
 
 ## R CMD check results
 
