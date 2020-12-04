@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/healthyR.data)](https://cran.r-project.org/package=healthyR)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/healthyR)](https://cran.r-project.org/package=healthyR)
 ![](http://cranlogs.r-pkg.org/badges/healthyR?color=brightgreen)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/healthyR?color=brightgreen)
 [![Lifecycle:
