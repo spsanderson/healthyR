@@ -1,4 +1,4 @@
-# healthyR (development version)
+# healthyR 0.1.1
 
 # healthyR 0.1.0
 * Released to CRAN 12-03-2020
