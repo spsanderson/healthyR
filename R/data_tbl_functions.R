@@ -172,7 +172,7 @@ los_ra_index_summary_tbl <- function(
 #' @examples
 #' library(healthyR.data)
 #'
-#' df <- healthyr_data
+#' df <- healthyR_data
 #' df_list <- named_item_list(.data = df, .group_col = service_line)
 #' df_list
 #'

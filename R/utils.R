@@ -13,13 +13,6 @@
 #' @param .data The tibble/data.frame that you want to save as an `.xlsx` file.
 #' @param .file_name the name you want to give to the file.
 #'
-#' @examples
-#' \donttest{
-#' library(tibble)
-#' tibble::tibble("x" = runif(10, 0, 1), "y" = runif(10, 0, 1)) %>%
-#'   save_to_excel(.file_name = "test_file")
-#' }
-#'
 #' @return
 #' A saved excel file
 #'
