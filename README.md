@@ -48,7 +48,6 @@ ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
         , .ggplot_group_var = yr
         , .years_back = 5
     )
-#> Joining, by = "wk"
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
