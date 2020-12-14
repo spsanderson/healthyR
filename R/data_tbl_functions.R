@@ -240,6 +240,7 @@ named_item_list <- function(.data, .group_col){
 #' healthyR_data %>%
 #'   category_counts_tbl(
 #'     .count_col = ip_op_flag
+#'     , .arrange_value = TRUE
 #'     , service_line
 #'   )
 #'
