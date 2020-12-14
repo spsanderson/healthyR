@@ -2,7 +2,10 @@
 
 # healthyR 0.1.1
 * Add function(s)
-1. category_counts_tbl
+1. category_counts_tbl - Get counts of a specified column with a user specified
+grouping if provided
+2. named_item_list - Good for saving a tibble with many groups to different sheets
+of an excel file
 
 ## healthyR 0.1.0
 * Released to CRAN 12-03-2020
