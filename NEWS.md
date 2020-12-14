@@ -1,8 +1,10 @@
 # healthyR (development version)
 
 # healthyR 0.1.1
+* Add function(s)
+1. category_counts_tbl
 
-# healthyR 0.1.0
+## healthyR 0.1.0
 * Released to CRAN 12-03-2020
 
 ## healthyR 0.0.0.9006
