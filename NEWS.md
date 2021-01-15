@@ -6,6 +6,7 @@
 grouping if provided
 2. named_item_list - Good for saving a tibble with many groups to different sheets
 of an excel file
+3. top_n_tbl - Good for getting a tibble of n records by some column selection
 
 ## healthyR 0.1.0
 * Released to CRAN 12-03-2020
