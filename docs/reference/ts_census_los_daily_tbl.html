@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Top N tibble — top_n_tbl • healthyR</title>
+<title>Time Series = Census and LOS by Day — ts_census_los_daily_tbl • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,12 @@
 
 
 
-<meta property="og:title" content="Top N tibble — top_n_tbl" />
-<meta property="og:description" content="Get a tibble returned with n records sorted either by descending order (default) or
-ascending order." />
+<meta property="og:title" content="Time Series = Census and LOS by Day — ts_census_los_daily_tbl" />
+<meta property="og:description" content="Sometimes it is important to know what the census was on any given day, or what
+the average length of stay is on given day, including for those patients that
+are not yet discharged. This can be easily achieved. This wil return one
+record for every account so the data will still need to be summarised.
+This function can take a little bit of time to run while the join comparison runs." />
 
 
 
@@ -135,17 +138,26 @@ ascending order." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Top N tibble</h1>
+    <h1>Time Series = Census and LOS by Day</h1>
     <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/data_tbl_functions.R'><code>R/data_tbl_functions.R</code></a></small>
-    <div class="hidden name"><code>top_n_tbl.Rd</code></div>
+    <div class="hidden name"><code>ts_census_los_daily_tbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a tibble returned with n records sorted either by descending order (default) or
-ascending order.</p>
+    <p>Sometimes it is important to know what the census was on any given day, or what
+the average length of stay is on given day, including for those patients that
+are not yet discharged. This can be easily achieved. This wil return one
+record for every account so the data will still need to be summarised.</p>
+<p><strong>This function can take a little bit of time to run while the join comparison runs.</strong></p>
     </div>
 
-    <pre class="usage"><span class='fu'>top_n_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.n_records</span>, .arrange_value <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ts_census_los_daily_tbl</span><span class='op'>(</span>
+  <span class='va'>.data</span>,
+  .keep_nulls_only <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>.start_date_col</span>,
+  <span class='va'>.end_date_col</span>,
+  .by_time <span class='op'>=</span> <span class='st'>"day"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,28 +167,36 @@ ascending order.</p>
       <td><p>The data you want to pass to the function</p></td>
     </tr>
     <tr>
-      <th>.n_records</th>
-      <td><p>How many records you want returned</p></td>
+      <th>.keep_nulls_only</th>
+      <td><p>A boolean that will keep only those records that have
+a NULL end date, meaning the patient is still admitted. The default is FALSE which
+brings back all records.</p></td>
     </tr>
     <tr>
-      <th>.arrange_value</th>
-      <td><p>A boolean with TRUE as the default. TRUE sorts data in
-descending order</p></td>
+      <th>.start_date_col</th>
+      <td><p>The column containing the start date for the record</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>The columns you want to pass to the function.</p></td>
+      <th>.end_date_col</th>
+      <td><p>The column containing the end date for the record.</p></td>
+    </tr>
+    <tr>
+      <th>.by_time</th>
+      <td><p>How you want the data presented, defaults to day and should remain
+that way unless you need more granular data.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble object</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
 <ul>
-<li><p>Requires a data.frame/tibble</p></li>
-<li><p>Requires at least one column to be chosen inside of the ...</p></li>
-<li><p>Will return the tibble in sorted order that is chosen with descending as
-the default</p></li>
+<li><p>Requires a dataset that has at least a start date column and an end date
+column</p></li>
+<li><p>Takes a single boolean parameter</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
@@ -184,25 +204,37 @@ the default</p></li>
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR'>healthyR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>healthyR_data</span>
 
-<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='fu'>top_n_tbl</span><span class='op'>(</span>
-  .data <span class='op'>=</span> <span class='va'>df</span>
-  , .n_records <span class='op'>=</span> <span class='fl'>3</span>
-  , .arrange_value <span class='op'>=</span> <span class='cn'>TRUE</span>
-  , <span class='va'>service_line</span>
-  , <span class='va'>payer_grouping</span>
-<span class='op'>)</span>
+<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>visit_start_date_time</span>, <span class='va'>visit_end_date_time</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>timetk</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/timetk/man/filter_by_time.html'>filter_by_time</a></span><span class='op'>(</span>.date_var <span class='op'>=</span> <span class='va'>visit_start_date_time</span>, .start_date <span class='op'>=</span> <span class='st'>"2020"</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>df_tbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 3</span><span>
-#&gt;   service_line       payer_grouping     n
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Medical            Medicare A     </span><span style='text-decoration: underline;'>30</span><span>250
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> General Outpatient Medicare B     </span><span style='text-decoration: underline;'>13</span><span>646
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> General Outpatient Blue Cross     </span><span style='text-decoration: underline;'>10</span><span>607</div><div class='input'>
+<span class='fu'>ts_census_los_daily_tbl</span><span class='op'>(</span>
+   .data              <span class='op'>=</span> <span class='va'>df_tbl</span>
+   , .keep_nulls_only <span class='op'>=</span> <span class='cn'>FALSE</span>
+   , .start_date_col  <span class='op'>=</span> <span class='va'>visit_start_date_time</span>
+   , .end_date_col    <span class='op'>=</span> <span class='va'>visit_end_date_time</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'RSQLite' was built under R version 4.0.3</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7,075 x 5</span><span>
+#&gt;    date       start_date end_date     los census
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-01-01 2020-01-01 2020-01-01     0      1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-01-02 2020-01-01 2020-01-02     1      1
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-01-02 2020-01-01 2020-01-02     1      1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-01-02 2020-01-01 2020-01-02     1      1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-01-03 2020-01-01 2020-01-03     2      1
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-01-03 2020-01-01 2020-01-03     2      1
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-01-03 2020-01-01 2020-01-03     2      1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-01-03 2020-01-02 2020-01-03     1      1
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-01-03 2020-01-02 2020-01-03     1      1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-01-03 2020-01-02 2020-01-03     1      1
+#&gt; </span><span style='color: #949494;'># ... with 7,065 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
