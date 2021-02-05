@@ -390,6 +390,23 @@ top_n_tbl <- function(
 #' that way unless you need more granular data.
 #'
 #' @examples
+#' library(healthyR)
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' df <- healthyR_data
+#'
+#' df_tbl <- df %>%
+#'   filter(ip_op_flag == "I") %>%
+#'   select(visit_start_date_time, visit_end_date_time) %>%
+#'   timetk::filter_by_time(.date_var = visit_start_date_time, .start_date = "2020")
+#'
+#' ts_census_los_daily_tbl(
+#'    .data              = df_tbl
+#'    , .keep_nulls_only = FALSE
+#'    , .start_date_col  = visit_start_date_time
+#'    , .end_date_col    = visit_end_date_time
+#' )
 #'
 #' @return
 #' A tibble object
