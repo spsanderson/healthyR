@@ -30,7 +30,8 @@ Imports:
     stringr,
     writexl,
     cowplot,
-    scales
+    scales,
+    sqldf
 Suggests: 
     knitr,
     rmarkdown,
