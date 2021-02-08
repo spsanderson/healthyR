@@ -9,7 +9,7 @@
 ![](https://cranlogs.r-pkg.org/badges/healthyR)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/healthyR)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html##experimental)
 <!-- badges: end -->
 
 The goal of healthyR is to help quickly analyze common data problems in
