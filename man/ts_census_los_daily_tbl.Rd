@@ -2,7 +2,7 @@
 % Please edit documentation in R/data_tbl_functions.R
 \name{ts_census_los_daily_tbl}
 \alias{ts_census_los_daily_tbl}
-\title{Time Series = Census and LOS by Day}
+\title{Time Series - Census and LOS by Day}
 \usage{
 ts_census_los_daily_tbl(
   .data,

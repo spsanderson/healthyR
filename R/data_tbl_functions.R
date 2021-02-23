@@ -363,7 +363,7 @@ top_n_tbl <- function(
 
 }
 
-#' Time Series = Census and LOS by Day
+#' Time Series - Census and LOS by Day
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
