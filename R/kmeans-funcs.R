@@ -32,7 +32,7 @@ user_item_tbl <- function(.data, .user_input, .item_input){
 
     # * Checks ----
     if(!is.data.frame(.data)){
-        stop(call. = FALSE, "(.data) is not a data.frame/tibble. Please supply.")
+        stop(call. = FALSE, "(.data) is missing, please supply.")
     }
 
     if(rlang::quo_is_missing(user_input_var_expr)){
