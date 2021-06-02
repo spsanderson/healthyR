@@ -452,6 +452,11 @@ ts_census_los_daily_tbl <- function(.data, .keep_nulls_only = FALSE,
         dplyr::mutate(start_date = as.Date(start_date)) %>%
         dplyr::mutate(end_date   = as.Date(end_date))
 
+    # Filter out all na.dates
+    all_dates_tbl <- all_dates_tbl %>%
+        dplyr::filter(!is.na(start_date)) %>%
+        dplyr::filter(!is.na(end_date))
+
     start_date <- min(all_dates_tbl[[1]], all_dates_tbl[[2]])
     end_date   <- max(all_dates_tbl[[1]], all_dates_tbl[[2]])
     today      <- Sys.Date()
@@ -490,12 +495,13 @@ ts_census_los_daily_tbl <- function(.data, .keep_nulls_only = FALSE,
             )
         ) %>%
         dplyr::mutate(census = 1) %>%
-        dplyr::mutate(
-            date = dplyr::case_when(
-                is.na(end_date) ~ Sys.Date()
-                , TRUE ~ end_date
-            )
-        )
+        # dplyr::mutate(
+        #     date = dplyr::case_when(
+        #         is.na(end_date) ~ Sys.Date()
+        #         , TRUE ~ end_date
+        #     )
+        # )
+        dplyr::arrange(date)
 
     # Keep NA columns?
     if(!keep_nulls_only_bool){
