@@ -196,41 +196,41 @@ in descending order by .count_col</p></td>
     , .arrange <span class='op'>=</span> <span class='cn'>TRUE</span>
     , <span class='va'>ip_op_flag</span>
   <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 25 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 25 x 3</span>
 #&gt;    ip_op_flag payer_grouping     n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> I          Medicare A     </span><span style='text-decoration: underline;'>52</span><span>621
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> O          Medicare B     </span><span style='text-decoration: underline;'>22</span><span>270
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> I          Medicaid HMO   </span><span style='text-decoration: underline;'>15</span><span>466
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> I          Medicare HMO   </span><span style='text-decoration: underline;'>13</span><span>572
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> O          Blue Cross     </span><span style='text-decoration: underline;'>13</span><span>560
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> I          Blue Cross     </span><span style='text-decoration: underline;'>10</span><span>797
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> O          Medicaid HMO   </span><span style='text-decoration: underline;'>10</span><span>018
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> O          HMO             </span><span style='text-decoration: underline;'>9</span><span>331
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> I          HMO             </span><span style='text-decoration: underline;'>8</span><span>113
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> I          Medicaid        </span><span style='text-decoration: underline;'>7</span><span>131
-#&gt; </span><span style='color: #949494;'># ... with 15 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> I          Medicare A     <span style='text-decoration: underline;'>52</span>621
+#&gt; <span style='color: #BCBCBC;'> 2</span> O          Medicare B     <span style='text-decoration: underline;'>22</span>270
+#&gt; <span style='color: #BCBCBC;'> 3</span> I          Medicaid HMO   <span style='text-decoration: underline;'>15</span>466
+#&gt; <span style='color: #BCBCBC;'> 4</span> I          Medicare HMO   <span style='text-decoration: underline;'>13</span>572
+#&gt; <span style='color: #BCBCBC;'> 5</span> O          Blue Cross     <span style='text-decoration: underline;'>13</span>560
+#&gt; <span style='color: #BCBCBC;'> 6</span> I          Blue Cross     <span style='text-decoration: underline;'>10</span>797
+#&gt; <span style='color: #BCBCBC;'> 7</span> O          Medicaid HMO   <span style='text-decoration: underline;'>10</span>018
+#&gt; <span style='color: #BCBCBC;'> 8</span> O          HMO             <span style='text-decoration: underline;'>9</span>331
+#&gt; <span style='color: #BCBCBC;'> 9</span> I          HMO             <span style='text-decoration: underline;'>8</span>113
+#&gt; <span style='color: #BCBCBC;'>10</span> I          Medicaid        <span style='text-decoration: underline;'>7</span>131
+#&gt; <span style='color: #949494;'># ... with 15 more rows</span></div><div class='input'>
 <span class='va'>healthyR_data</span> <span class='op'>%&gt;%</span>
   <span class='fu'>category_counts_tbl</span><span class='op'>(</span>
     .count_col <span class='op'>=</span> <span class='va'>ip_op_flag</span>
     , .arrange_value <span class='op'>=</span> <span class='cn'>TRUE</span>
     , <span class='va'>service_line</span>
   <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 30 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 x 3</span>
 #&gt;    service_line                                 ip_op_flag     n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Medical                                      I          </span><span style='text-decoration: underline;'>64</span><span>435
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> General Outpatient                           O          </span><span style='text-decoration: underline;'>50</span><span>526
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Surgical                                     I          </span><span style='text-decoration: underline;'>14</span><span>916
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Colonoscopy/Endoscopy                        O          </span><span style='text-decoration: underline;'>11</span><span>486
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Cataract Removal                             O           </span><span style='text-decoration: underline;'>4</span><span>930
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> COPD                                         I           </span><span style='text-decoration: underline;'>4</span><span>398
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> CHF                                          I           </span><span style='text-decoration: underline;'>3</span><span>871
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Pneumonia                                    I           </span><span style='text-decoration: underline;'>3</span><span>323
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Cellulitis                                   I           </span><span style='text-decoration: underline;'>3</span><span>311
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Major Depression/Bipolar Affective Disorders I           </span><span style='text-decoration: underline;'>2</span><span>866
-#&gt; </span><span style='color: #949494;'># ... with 20 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Medical                                      I          <span style='text-decoration: underline;'>64</span>435
+#&gt; <span style='color: #BCBCBC;'> 2</span> General Outpatient                           O          <span style='text-decoration: underline;'>50</span>526
+#&gt; <span style='color: #BCBCBC;'> 3</span> Surgical                                     I          <span style='text-decoration: underline;'>14</span>916
+#&gt; <span style='color: #BCBCBC;'> 4</span> Colonoscopy/Endoscopy                        O          <span style='text-decoration: underline;'>11</span>486
+#&gt; <span style='color: #BCBCBC;'> 5</span> Cataract Removal                             O           <span style='text-decoration: underline;'>4</span>930
+#&gt; <span style='color: #BCBCBC;'> 6</span> COPD                                         I           <span style='text-decoration: underline;'>4</span>398
+#&gt; <span style='color: #BCBCBC;'> 7</span> CHF                                          I           <span style='text-decoration: underline;'>3</span>871
+#&gt; <span style='color: #BCBCBC;'> 8</span> Pneumonia                                    I           <span style='text-decoration: underline;'>3</span>323
+#&gt; <span style='color: #BCBCBC;'> 9</span> Cellulitis                                   I           <span style='text-decoration: underline;'>3</span>311
+#&gt; <span style='color: #BCBCBC;'>10</span> Major Depression/Bipolar Affective Disorders I           <span style='text-decoration: underline;'>2</span>866
+#&gt; <span style='color: #949494;'># ... with 20 more rows</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
