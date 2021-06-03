@@ -65,8 +65,7 @@ user_item_tbl <- function(.data, .row_input, .col_input){
             names_from    = {{ col_input_var_expr }}
             , values_from = prop_of_total
             , values_fill = list(prop_of_total = 0)
-        ) %>%
-        janitor::clean_names()
+        )
 
     # * Return ----
     return(user_item_tbl)
