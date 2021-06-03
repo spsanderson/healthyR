@@ -31,7 +31,8 @@ Imports:
     writexl,
     cowplot,
     scales,
-    sqldf
+    sqldf,
+    tidyr
 Suggests: 
     knitr,
     rmarkdown,
