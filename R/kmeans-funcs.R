@@ -1,4 +1,4 @@
-#' OPPE CPOE K-Means
+#' K-Means Functions
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
@@ -16,7 +16,18 @@
 #' @param .col_input The column that is going to be the column (item)
 #'
 #' @examples
-#' user_item_tbl()
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' data_tbl <- healthyR_data%>%
+#'    filter(ip_op_flag == "I") %>%
+#'    filter(payer_grouping != "Medicare B") %>%
+#'    filter(payer_grouping != "?") %>%
+#'    select(service_line, payer_grouping) %>%
+#'    mutate(record = 1) %>%
+#'    as_tibble()
+#'
+#'  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
 #'
 #' @return
 #' A aggregated/normalized user item tibble
@@ -24,7 +35,7 @@
 #' @export
 #'
 
-user_item_tbl <- function(.data, .row_input, .col_input){
+kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
 
     # Tidyeval ----
     row_input_var_expr <- rlang::enquo(.row_input)
@@ -69,5 +80,70 @@ user_item_tbl <- function(.data, .row_input, .col_input){
 
     # * Return ----
     return(user_item_tbl)
+
+}
+
+
+#' K-Means Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description
+#' Takes the output of the [kmeans_user_item_tbl()] function and applies the
+#' k-means algorithm to it using [stats::kmeans()]
+#'
+#' @details Uses the [stats::kmeans()] function and creates a wrapper around it.
+#'
+#' @param .data The data that gets passed from [kmeans_user_item_tbl()]
+#' @param .centers How many initial centers to start with
+#'
+#' @examples
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' data_tbl <- healthyR_data%>%
+#'    filter(ip_op_flag == "I") %>%
+#'    filter(payer_grouping != "Medicare B") %>%
+#'    filter(payer_grouping != "?") %>%
+#'    select(service_line, payer_grouping) %>%
+#'    mutate(record = 1) %>%
+#'    as_tibble()
+#'
+#'  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping) %>%
+#'    kmeans_obj()
+#'
+#' @return
+#' A stats k-means object
+#'
+#' @export
+#'
+
+kmeans_obj <- function(.data, .centers = 5){
+
+    # * Tidyeval Setup ----
+    centers_var_expr <- .centers
+
+    # * Checks ----
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE("(.data) is missing. Please supply."))
+    }
+
+    # Default to 5
+    if(is.null(centers_var_expr)){centers_var_expr = 5}
+
+    # * Data ----
+    data <- tibble::as_tibble(.data)
+
+    # * k-means ----
+    kmeans_tbl <- data %>%
+        dplyr::select(-1)
+
+    kmeans_obj <- kmeans_tbl %>%
+        stats::kmeans(
+            centers = centers_var_expr
+            , nstart = 100
+        )
+
+    return(kmeans_obj)
 
 }
