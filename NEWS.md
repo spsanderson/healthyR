@@ -1,4 +1,4 @@
-# healthyR (development version)
+# healthyR 0.1.3
 
 # healthyR 0.1.3
 
