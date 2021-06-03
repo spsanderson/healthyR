@@ -1,12 +1,26 @@
 # healthyR (development version)
 
-# healthyR 0.1.2
-Submit to CRAN
+# healthyR 0.1.3
+
+## Breaking Changes
+None
+
+## New Features
+* Add functions
+1. `kmeans_user_item_tbl()` Fix #37 - Creates a user item tibble from preprocessed data.
+2. `kmeans_obj()` Fix #37 - Creates a stats kmeans object, a simple wrapper.
+
+## Minor fixes and imprivements
+* Minor fixes and improvements
+1. `ts_census_los_daily_tbl()` Fix #37 - Correctly arranges by date and gets
+correct counts by date column.
+
+## healthyR 0.1.2
 * Add function
 1. ts_census_los_daily_tbl - Can get the census or length of stay given just two
 columns of data, admit/arrival date and discharge/departure date
 
-# healthyR 0.1.1
+## healthyR 0.1.1
 * Add function(s)
 1. category_counts_tbl - Get counts of a specified column with a user specified
 grouping if provided
