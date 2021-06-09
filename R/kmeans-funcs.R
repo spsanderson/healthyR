@@ -147,3 +147,100 @@ kmeans_obj <- function(.data, .centers = 5){
     return(kmeans_obj)
 
 }
+
+#' K-Means tidy Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description
+#' K-Means tidy functions
+#'
+#' @details
+#' Takes in a k-means object and its associated user item tibble and then
+#' returns one of the items asked for. Either: [broom::tidy()], [broom::glance()]
+#' or [broom::augment()]. The function defaults to [broom::tidy()]
+#'
+#' @param .kmeans_obj A [stats::kmeans()] object
+#' @param .tidy_type "tidy","glance", or "augment"
+#' @param .data The user item tibble created from [kmeans_user_item_tbl()]
+#' @param .row_col The column the represents the user from the [kmeans_user_item_tbl()]
+#'
+#' @examples
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' data_tbl <- healthyR_data%>%
+#'    filter(ip_op_flag == "I") %>%
+#'    filter(payer_grouping != "Medicare B") %>%
+#'    filter(payer_grouping != "?") %>%
+#'    select(service_line, payer_grouping) %>%
+#'    mutate(record = 1) %>%
+#'    as_tibble()
+#'
+#'  uit_tbl <- kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'  km_obj  <- kmeans_obj(uit_tbl)
+#'  kmeans_tidy_tbl(
+#'    .kmeans_obj  = km_obj
+#'    , .data      = uit_tbl
+#'    , .row_col   = service_line
+#'    , .tidy_type = "augment"
+#'  )
+#'  kmeans_tidy_tbl(
+#'    .kmeans_obj  = km_obj
+#'    , .data      = uit_tbl
+#'    , .row_col   = service_line
+#'    , .tidy_type = "glance"
+#'  )
+#'  kmeans_tidy_tbl(
+#'    .kmeans_obj  = km_obj
+#'    , .data      = uit_tbl
+#'    , .row_col   = service_line
+#'    , .tidy_type = "tidy"
+#'  ) %>%
+#'    glimpse()
+#'
+#' @return
+#' A tibble
+#'
+#' @export
+#'
+
+kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy",
+                        .row_col) {
+    # * Tidyeval Setup ----
+    kmeans_obj   <- .kmeans_obj
+    tidy_type    <- .tidy_type
+    row_col_expr <- rlang::enquo(.row_col)
+
+    # * Checks ----
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE, "(.user_item_data) is not a data.frame/tibble, please supply original user item tibble.")
+    }
+
+    if (!class(kmeans_obj) == "kmeans") {
+        stop(call. = FALSE, "(.kmeans_obj) is not of class 'kmeans'")
+    }
+
+    if (!tidy_type %in% c("tidy", "augment", "glance")) {
+        stop(call. = FALSE,
+             "(.tidy_type) must be either tidy, glance, or augment")
+    }
+
+    # * Manipulate ----
+    uit_tbl <- tibble::as_tibble(.data)
+
+    if (tidy_type == "tidy") {
+        km_tbl <- kmeans_obj %>% broom::tidy()
+    } else if (tidy_type == "glance") {
+        km_tbl <- kmeans_obj %>% broom::glance()
+    } else if (tidy_type == "augment") {
+        km_tbl <- kmeans_obj %>%
+            broom::augment(uit_tbl) %>%
+            dplyr::select({{ row_col_expr }}, .cluster) %>%
+            dplyr::rename("cluster" = .cluster)
+    }
+
+    # * Return ----
+    return(km_tbl)
+
+}
