@@ -2,8 +2,6 @@
 
 # healthyR 0.1.3
 
-# healthyR 0.1.3
-
 ## Breaking Changes
 None
 

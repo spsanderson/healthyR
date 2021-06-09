@@ -38,7 +38,8 @@ Suggests:
     rmarkdown,
     roxygen2,
     pacman,
-    healthyR.data
+    healthyR.data,
+    broom
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
