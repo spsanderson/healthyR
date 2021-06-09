@@ -168,6 +168,7 @@ kmeans_obj <- function(.data, .centers = 5){
 #' @examples
 #' library(healthyR.data)
 #' library(dplyr)
+#' library(broom)
 #'
 #' data_tbl <- healthyR_data%>%
 #'    filter(ip_op_flag == "I") %>%
