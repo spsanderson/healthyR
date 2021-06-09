@@ -158,12 +158,11 @@ kmeans_obj <- function(.data, .centers = 5){
 #' @details
 #' Takes in a k-means object and its associated user item tibble and then
 #' returns one of the items asked for. Either: [broom::tidy()], [broom::glance()]
-#' or [broom::augment()]. The function defaults to [broom::tidy()]
+#' or [broom::augment()]. The function defaults to [broom::tidy()].
 #'
 #' @param .kmeans_obj A [stats::kmeans()] object
 #' @param .tidy_type "tidy","glance", or "augment"
 #' @param .data The user item tibble created from [kmeans_user_item_tbl()]
-#' @param .row_col The column the represents the user from the [kmeans_user_item_tbl()]
 #'
 #' @examples
 #' library(healthyR.data)
@@ -183,19 +182,16 @@ kmeans_obj <- function(.data, .centers = 5){
 #'  kmeans_tidy_tbl(
 #'    .kmeans_obj  = km_obj
 #'    , .data      = uit_tbl
-#'    , .row_col   = service_line
 #'    , .tidy_type = "augment"
 #'  )
 #'  kmeans_tidy_tbl(
 #'    .kmeans_obj  = km_obj
 #'    , .data      = uit_tbl
-#'    , .row_col   = service_line
 #'    , .tidy_type = "glance"
 #'  )
 #'  kmeans_tidy_tbl(
 #'    .kmeans_obj  = km_obj
 #'    , .data      = uit_tbl
-#'    , .row_col   = service_line
 #'    , .tidy_type = "tidy"
 #'  ) %>%
 #'    glimpse()
@@ -206,12 +202,10 @@ kmeans_obj <- function(.data, .centers = 5){
 #' @export
 #'
 
-kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy",
-                        .row_col) {
+kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy") {
     # * Tidyeval Setup ----
     kmeans_obj   <- .kmeans_obj
     tidy_type    <- .tidy_type
-    row_col_expr <- rlang::enquo(.row_col)
 
     # * Checks ----
     if(!is.data.frame(.data)){
@@ -229,6 +223,7 @@ kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy",
 
     # * Manipulate ----
     uit_tbl <- tibble::as_tibble(.data)
+    row_col <- colnames(uit_tbl[1])
 
     if (tidy_type == "tidy") {
         km_tbl <- kmeans_obj %>% broom::tidy()
@@ -237,7 +232,7 @@ kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy",
     } else if (tidy_type == "augment") {
         km_tbl <- kmeans_obj %>%
             broom::augment(uit_tbl) %>%
-            dplyr::select({{ row_col_expr }}, .cluster) %>%
+            dplyr::select(row_col, .cluster) %>%
             dplyr::rename("cluster" = .cluster)
     }
 
