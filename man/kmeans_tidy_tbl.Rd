@@ -4,7 +4,7 @@
 \alias{kmeans_tidy_tbl}
 \title{K-Means tidy Functions}
 \usage{
-kmeans_tidy_tbl(.kmeans_obj, .data, .tidy_type = "tidy", .row_col)
+kmeans_tidy_tbl(.kmeans_obj, .data, .tidy_type = "tidy")
 }
 \arguments{
 \item{.kmeans_obj}{A \code{\link[stats:kmeans]{stats::kmeans()}} object}
@@ -12,8 +12,6 @@ kmeans_tidy_tbl(.kmeans_obj, .data, .tidy_type = "tidy", .row_col)
 \item{.data}{The user item tibble created from \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}}}
 
 \item{.tidy_type}{"tidy","glance", or "augment"}
-
-\item{.row_col}{The column the represents the user from the \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}}}
 }
 \value{
 A tibble
@@ -24,7 +22,7 @@ K-Means tidy functions
 \details{
 Takes in a k-means object and its associated user item tibble and then
 returns one of the items asked for. Either: \code{\link[broom:reexports]{broom::tidy()}}, \code{\link[broom:reexports]{broom::glance()}}
-or \code{\link[broom:reexports]{broom::augment()}}. The function defaults to \code{\link[broom:reexports]{broom::tidy()}}
+or \code{\link[broom:reexports]{broom::augment()}}. The function defaults to \code{\link[broom:reexports]{broom::tidy()}}.
 }
 \examples{
 library(healthyR.data)
@@ -44,19 +42,16 @@ data_tbl <- healthyR_data\%>\%
  kmeans_tidy_tbl(
    .kmeans_obj  = km_obj
    , .data      = uit_tbl
-   , .row_col   = service_line
    , .tidy_type = "augment"
  )
  kmeans_tidy_tbl(
    .kmeans_obj  = km_obj
    , .data      = uit_tbl
-   , .row_col   = service_line
    , .tidy_type = "glance"
  )
  kmeans_tidy_tbl(
    .kmeans_obj  = km_obj
    , .data      = uit_tbl
-   , .row_col   = service_line
    , .tidy_type = "tidy"
  ) \%>\%
    glimpse()
