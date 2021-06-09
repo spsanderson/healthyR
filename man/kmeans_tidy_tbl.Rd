@@ -9,11 +9,11 @@ kmeans_tidy_tbl(.kmeans_obj, .data, .tidy_type = "tidy", .row_col)
 \arguments{
 \item{.kmeans_obj}{A \code{\link[stats:kmeans]{stats::kmeans()}} object}
 
-\item{.data}{The user item tibble created from \code{\link[=kmean_user_item_tbl]{kmean_user_item_tbl()}}}
+\item{.data}{The user item tibble created from \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}}}
 
 \item{.tidy_type}{"tidy","glance", or "augment"}
 
-\item{.row_col}{The column the represents the user from the \code{\link[=kmean_user_item_tbl]{kmean_user_item_tbl()}}}
+\item{.row_col}{The column the represents the user from the \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}}}
 }
 \value{
 A tibble
@@ -29,6 +29,7 @@ or \code{\link[broom:reexports]{broom::augment()}}. The function defaults to \co
 \examples{
 library(healthyR.data)
 library(dplyr)
+library(broom)
 
 data_tbl <- healthyR_data\%>\%
    filter(ip_op_flag == "I") \%>\%
