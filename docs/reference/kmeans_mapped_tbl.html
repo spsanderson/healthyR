@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>K-Means Functions — kmeans_obj • healthyR</title>
+<title>OPPE CPOE K-Means Mapper — kmeans_mapped_tbl • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="K-Means Functions — kmeans_obj" />
-<meta property="og:description" content="Takes the output of the kmeans_user_item_tbl() function and applies the
-k-means algorithm to it using stats::kmeans()" />
+<meta property="og:title" content="OPPE CPOE K-Means Mapper — kmeans_mapped_tbl" />
+<meta property="og:description" content="Create a tibble that maps the kmeans_obj() using purrr::map()
+to create a nested data.frame/tibble that holds n centers. This tibble will be
+used to help create a scree plot." />
 
 
 
@@ -135,37 +136,43 @@ k-means algorithm to it using stats::kmeans()" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>K-Means Functions</h1>
+    <h1>OPPE CPOE K-Means Mapper</h1>
     <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/kmeans-funcs.R'><code>R/kmeans-funcs.R</code></a></small>
-    <div class="hidden name"><code>kmeans_obj.Rd</code></div>
+    <div class="hidden name"><code>kmeans_mapped_tbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Takes the output of the <code><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl()</a></code> function and applies the
-k-means algorithm to it using <code><a href='https://rdrr.io/r/stats/kmeans.html'>stats::kmeans()</a></code></p>
+    <p>Create a tibble that maps the <code><a href='kmeans_obj.html'>kmeans_obj()</a></code> using <code><a href='https://purrr.tidyverse.org/reference/map.html'>purrr::map()</a></code>
+to create a nested data.frame/tibble that holds n centers. This tibble will be
+used to help create a scree plot.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kmeans_obj</span><span class='op'>(</span><span class='va'>.data</span>, .centers <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>kmeans_mapped_tbl</span><span class='op'>(</span><span class='va'>.data</span>, .centers <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>The data that gets passed from <code><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl()</a></code></p></td>
+      <td><p>You must have a tibble in the working environment from the
+<code><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl()</a></code></p></td>
     </tr>
     <tr>
       <th>.centers</th>
-      <td><p>How many initial centers to start with</p></td>
+      <td><p>How many different centers do you want to try</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A stats k-means object</p>
+    <p>A nested tibble</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Uses the <code><a href='https://rdrr.io/r/stats/kmeans.html'>stats::kmeans()</a></code> function and creates a wrapper around it.</p>
+    <p>Takes in a single parameter of .centers. This is used to create the tibble
+and map the <code><a href='kmeans_obj.html'>kmeans_obj()</a></code> function down the list creating a nested tibble.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://en.wikipedia.org/wiki/Scree_plot'>https://en.wikipedia.org/wiki/Scree_plot</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven P. Sanderson II, MPH</p>
@@ -182,35 +189,27 @@ k-means algorithm to it using <code><a href='https://rdrr.io/r/stats/kmeans.html
    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 
- <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span><span class='va'>data_tbl</span>, <span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>kmeans_obj</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; K-means clustering with 5 clusters of sizes 3, 2, 1, 12, 5
-#&gt; 
-#&gt; Cluster means:
-#&gt;   Blue Cross Commercial Compensation Exchange Plans        HMO   Medicaid
-#&gt; 1 0.07912806 0.02702478 0.0002914681    0.009301354 0.07723873 0.21428392
-#&gt; 2 0.27188303 0.05712358 0.0003293808    0.039065198 0.18065096 0.04246134
-#&gt; 3 0.00000000 0.00000000 0.0000000000    0.000000000 0.27272727 0.18181818
-#&gt; 4 0.07837450 0.02182129 0.0043244347    0.006202137 0.04493860 0.03684344
-#&gt; 5 0.13375082 0.03542694 0.0121998471    0.016160901 0.10724914 0.05150211
-#&gt;   Medicaid HMO Medicare A Medicare HMO    No Fault    Self Pay
-#&gt; 1   0.28209782 0.23654904   0.04362913 0.002672067 0.027783628
-#&gt; 2   0.24760799 0.10958146   0.03584494 0.000000000 0.015452115
-#&gt; 3   0.45454545 0.09090909   0.00000000 0.000000000 0.000000000
-#&gt; 4   0.08001653 0.56250366   0.15152338 0.003475542 0.009976485
-#&gt; 5   0.13107693 0.35217108   0.11769769 0.008242686 0.034521844
-#&gt; 
-#&gt; Clustering vector:
-#&gt;  [1] 1 2 4 5 5 4 4 4 4 4 2 1 5 4 4 4 5 1 5 4 4 3 4
-#&gt; 
-#&gt; Within cluster sum of squares by cluster:
-#&gt; [1] 0.04450884 0.03549821 0.00000000 0.09625399 0.02592247
-#&gt;  (between_SS / total_SS =  85.6 %)
-#&gt; 
-#&gt; Available components:
-#&gt; 
-#&gt; [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
-#&gt; [6] "betweenss"    "size"         "iter"         "ifault"      </div><div class='input'>
+<span class='va'>ui_tbl</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span><span class='va'>data_tbl</span>, <span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span>
+
+<span class='fu'>kmeans_mapped_tbl</span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 3</span>
+#&gt;    centers k_means  glance          
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>          
+#&gt; <span style='color: #BCBCBC;'> 1</span>       1 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 2</span>       2 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 3</span>       3 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span>       4 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 5</span>       5 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span>       6 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span>       7 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span>       8 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span>       9 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>10</span>      10 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>11</span>      11 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>12</span>      12 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>13</span>      13 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>14</span>      14 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>15</span>      15 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
