@@ -240,3 +240,76 @@ kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy") {
     return(km_tbl)
 
 }
+
+#' OPPE CPOE K-Means Mapper
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description Create a tibble that maps the [kmeans_obj()] using [purrr::map()]
+#' to create a nested data.frame/tibble that holds n centers. This tibble will be
+#' used to help create a scree plot.
+#'
+#' @seealso
+#' \url{https://en.wikipedia.org/wiki/Scree_plot}
+#'
+#' @details Takes in a single parameter of .centers. This is used to create the tibble
+#' and map the [kmeans_obj()] function down the list creating a nested tibble.
+#'
+#' @param .centers How many different centers do you want to try
+#' @param .data You must have a tibble in the working environment from the
+#' [kmeans_user_item_tbl()]
+#'
+#' @examples
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' data_tbl <- healthyR_data%>%
+#'    filter(ip_op_flag == "I") %>%
+#'    filter(payer_grouping != "Medicare B") %>%
+#'    filter(payer_grouping != "?") %>%
+#'    select(service_line, payer_grouping) %>%
+#'    mutate(record = 1) %>%
+#'    as_tibble()
+#'
+#' ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'
+#' kmeans_mapped_tbl(ui_tbl)
+#'
+#' @return
+#' A nested tibble
+#'
+#' @export
+#'
+kmeans_mapped_tbl <- function(.data, .centers = 15){
+
+    # * Tidy ----
+    centers_var_expr <- .centers
+
+    # * Checks ----
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE, "(.data) is not a data.frame/tibble. Please supply.")
+    }
+
+    input_data <- tibble::as_tibble(.data)
+
+    km_mapper <- function(centers = 3){
+        input_data %>%
+            dplyr::select(-1) %>%
+            stats::kmeans(
+                centers = centers
+                , nstart = 100
+            )
+    }
+
+    # * Manipulate ----
+    data_tbl <- tibble::tibble(centers = 1:centers_var_expr) %>%
+        dplyr::mutate(k_means = centers %>%
+                          purrr::map(km_mapper)
+        ) %>%
+        dplyr::mutate(glance = k_means %>%
+                          purrr::map(broom::glance))
+
+    # * Return ----
+    return(data_tbl)
+
+}
