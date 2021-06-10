@@ -184,27 +184,27 @@ k-means algorithm to it using <code><a href='https://rdrr.io/r/stats/kmeans.html
 
  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span><span class='va'>data_tbl</span>, <span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'>kmeans_obj</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; K-means clustering with 5 clusters of sizes 12, 3, 1, 5, 2
+</div><div class='output co'>#&gt; K-means clustering with 5 clusters of sizes 3, 2, 1, 12, 5
 #&gt; 
 #&gt; Cluster means:
 #&gt;   Blue Cross Commercial Compensation Exchange Plans        HMO   Medicaid
-#&gt; 1 0.07837450 0.02182129 0.0043244347    0.006202137 0.04493860 0.03684344
-#&gt; 2 0.07912806 0.02702478 0.0002914681    0.009301354 0.07723873 0.21428392
+#&gt; 1 0.07912806 0.02702478 0.0002914681    0.009301354 0.07723873 0.21428392
+#&gt; 2 0.27188303 0.05712358 0.0003293808    0.039065198 0.18065096 0.04246134
 #&gt; 3 0.00000000 0.00000000 0.0000000000    0.000000000 0.27272727 0.18181818
-#&gt; 4 0.13375082 0.03542694 0.0121998471    0.016160901 0.10724914 0.05150211
-#&gt; 5 0.27188303 0.05712358 0.0003293808    0.039065198 0.18065096 0.04246134
+#&gt; 4 0.07837450 0.02182129 0.0043244347    0.006202137 0.04493860 0.03684344
+#&gt; 5 0.13375082 0.03542694 0.0121998471    0.016160901 0.10724914 0.05150211
 #&gt;   Medicaid HMO Medicare A Medicare HMO    No Fault    Self Pay
-#&gt; 1   0.08001653 0.56250366   0.15152338 0.003475542 0.009976485
-#&gt; 2   0.28209782 0.23654904   0.04362913 0.002672067 0.027783628
+#&gt; 1   0.28209782 0.23654904   0.04362913 0.002672067 0.027783628
+#&gt; 2   0.24760799 0.10958146   0.03584494 0.000000000 0.015452115
 #&gt; 3   0.45454545 0.09090909   0.00000000 0.000000000 0.000000000
-#&gt; 4   0.13107693 0.35217108   0.11769769 0.008242686 0.034521844
-#&gt; 5   0.24760799 0.10958146   0.03584494 0.000000000 0.015452115
+#&gt; 4   0.08001653 0.56250366   0.15152338 0.003475542 0.009976485
+#&gt; 5   0.13107693 0.35217108   0.11769769 0.008242686 0.034521844
 #&gt; 
 #&gt; Clustering vector:
-#&gt;  [1] 2 5 1 4 4 1 1 1 1 1 5 2 4 1 1 1 4 2 4 1 1 3 1
+#&gt;  [1] 1 2 4 5 5 4 4 4 4 4 2 1 5 4 4 4 5 1 5 4 4 3 4
 #&gt; 
 #&gt; Within cluster sum of squares by cluster:
-#&gt; [1] 0.09625399 0.04450884 0.00000000 0.02592247 0.03549821
+#&gt; [1] 0.04450884 0.03549821 0.00000000 0.09625399 0.02592247
 #&gt;  (between_SS / total_SS =  85.6 %)
 #&gt; 
 #&gt; Available components:
