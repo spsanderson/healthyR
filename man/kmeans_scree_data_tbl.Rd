@@ -2,7 +2,7 @@
 % Please edit documentation in R/kmeans-funcs.R
 \name{kmeans_scree_data_tbl}
 \alias{kmeans_scree_data_tbl}
-\title{K-Means Mapper}
+\title{K-Means Scree Plot Data Table}
 \usage{
 kmeans_scree_data_tbl(.data)
 }
