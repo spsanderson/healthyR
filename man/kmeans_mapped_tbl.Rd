@@ -2,7 +2,7 @@
 % Please edit documentation in R/kmeans-funcs.R
 \name{kmeans_mapped_tbl}
 \alias{kmeans_mapped_tbl}
-\title{OPPE CPOE K-Means Mapper}
+\title{K-Means Mapper}
 \usage{
 kmeans_mapped_tbl(.data, .centers = 15)
 }
