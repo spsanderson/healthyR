@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>K-Means Mapper — kmeans_mapped_tbl • healthyR</title>
+<title>K-Means Scree Plot Data Table — kmeans_scree_data_tbl • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="K-Means Mapper — kmeans_mapped_tbl" />
-<meta property="og:description" content="Create a tibble that maps the kmeans_obj() using purrr::map()
-to create a nested data.frame/tibble that holds n centers. This tibble will be
-used to help create a scree plot." />
+<meta property="og:title" content="K-Means Scree Plot Data Table — kmeans_scree_data_tbl" />
+<meta property="og:description" content="Take data from the kmeans_mapped_tbl() and unnest it into a
+tibble for inspection and for use in the kmeans_scree_plt() function." />
 
 
 
@@ -136,18 +135,17 @@ used to help create a scree plot." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>K-Means Mapper</h1>
+    <h1>K-Means Scree Plot Data Table</h1>
     <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/kmeans-funcs.R'><code>R/kmeans-funcs.R</code></a></small>
-    <div class="hidden name"><code>kmeans_mapped_tbl.Rd</code></div>
+    <div class="hidden name"><code>kmeans_scree_data_tbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a tibble that maps the <code><a href='kmeans_obj.html'>kmeans_obj()</a></code> using <code><a href='https://purrr.tidyverse.org/reference/map.html'>purrr::map()</a></code>
-to create a nested data.frame/tibble that holds n centers. This tibble will be
-used to help create a scree plot.</p>
+    <p>Take data from the <code><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl()</a></code> and unnest it into a
+tibble for inspection and for use in the <code>kmeans_scree_plt()</code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kmeans_mapped_tbl</span><span class='op'>(</span><span class='va'>.data</span>, .centers <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>kmeans_scree_data_tbl</span><span class='op'>(</span><span class='va'>.data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,11 +153,7 @@ used to help create a scree plot.</p>
     <tr>
       <th>.data</th>
       <td><p>You must have a tibble in the working environment from the
-<code><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>.centers</th>
-      <td><p>How many different centers do you want to try</p></td>
+<code><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl()</a></code></p></td>
     </tr>
     </table>
 
@@ -168,11 +162,9 @@ used to help create a scree plot.</p>
     <p>A nested tibble</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Takes in a single parameter of .centers. This is used to create the tibble
-and map the <code><a href='kmeans_obj.html'>kmeans_obj()</a></code> function down the list creating a nested tibble.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='https://en.wikipedia.org/wiki/Scree_plot'>https://en.wikipedia.org/wiki/Scree_plot</a></p></div>
+    <p>Takes in a single parameter of .data from <code><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl()</a></code> and
+transforms it into a tibble that is used for <code>kmeans_scree_plt()</code>. It will
+show the values (tot.withinss) at each center.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven P. Sanderson II, MPH</p>
@@ -191,25 +183,27 @@ and map the <code><a href='kmeans_obj.html'>kmeans_obj()</a></code> function dow
 
 <span class='va'>ui_tbl</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span><span class='va'>data_tbl</span>, <span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span>
 
-<span class='fu'>kmeans_mapped_tbl</span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 3</span>
-#&gt;    centers k_means  glance          
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>          
-#&gt; <span style='color: #BCBCBC;'> 1</span>       1 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 2</span>       2 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span>       3 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span>       4 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 5</span>       5 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 6</span>       6 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span>       7 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 8</span>       8 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 9</span>       9 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>10</span>      10 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>11</span>      11 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>12</span>      12 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>13</span>      13 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>14</span>      14 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>15</span>      15 <span style='color: #949494;'>&lt;kmeans&gt;</span> <span style='color: #949494;'>&lt;tibble [1 x 4]&gt;</span></div><div class='input'>
+<span class='va'>kmm_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl</a></span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span>
+
+<span class='fu'>kmeans_scree_data_tbl</span><span class='op'>(</span><span class='va'>kmm_tbl</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 2</span>
+#&gt;    centers tot.withinss
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>       1       1.41  
+#&gt; <span style='color: #BCBCBC;'> 2</span>       2       0.592 
+#&gt; <span style='color: #BCBCBC;'> 3</span>       3       0.372 
+#&gt; <span style='color: #BCBCBC;'> 4</span>       4       0.276 
+#&gt; <span style='color: #BCBCBC;'> 5</span>       5       0.202 
+#&gt; <span style='color: #BCBCBC;'> 6</span>       6       0.159 
+#&gt; <span style='color: #BCBCBC;'> 7</span>       7       0.124 
+#&gt; <span style='color: #BCBCBC;'> 8</span>       8       0.088<span style='text-decoration: underline;'>4</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span>       9       0.071<span style='text-decoration: underline;'>6</span>
+#&gt; <span style='color: #BCBCBC;'>10</span>      10       0.057<span style='text-decoration: underline;'>6</span>
+#&gt; <span style='color: #BCBCBC;'>11</span>      11       0.046<span style='text-decoration: underline;'>0</span>
+#&gt; <span style='color: #BCBCBC;'>12</span>      12       0.036<span style='text-decoration: underline;'>3</span>
+#&gt; <span style='color: #BCBCBC;'>13</span>      13       0.029<span style='text-decoration: underline;'>3</span>
+#&gt; <span style='color: #BCBCBC;'>14</span>      14       0.021<span style='text-decoration: underline;'>2</span>
+#&gt; <span style='color: #BCBCBC;'>15</span>      15       0.016<span style='text-decoration: underline;'>0</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
