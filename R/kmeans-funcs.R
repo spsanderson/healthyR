@@ -241,7 +241,7 @@ kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy") {
 
 }
 
-#' OPPE CPOE K-Means Mapper
+#' K-Means Mapper
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
@@ -308,6 +308,62 @@ kmeans_mapped_tbl <- function(.data, .centers = 15){
         ) %>%
         dplyr::mutate(glance = k_means %>%
                           purrr::map(broom::glance))
+
+    # * Return ----
+    return(data_tbl)
+
+}
+
+#' K-Means Scree Plot Data Table
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description Take data from the [kmeans_mapped_tbl()] and unnest it into a
+#' tibble for inspection and for use in the [kmeans_scree_plt()] function.
+#'
+#' @details Takes in a single parameter of .data from [kmeans_mapped_tbl()] and
+#' transforms it into a tibble that is used for [kmeans_scree_plt()]. It will
+#' show the values (tot.withinss) at each center.
+#'
+#' @param .data You must have a tibble in the working environment from the
+#' [kmeans_mapped_tbl()]
+#'
+#' @examples
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' data_tbl <- healthyR_data%>%
+#'    filter(ip_op_flag == "I") %>%
+#'    filter(payer_grouping != "Medicare B") %>%
+#'    filter(payer_grouping != "?") %>%
+#'    select(service_line, payer_grouping) %>%
+#'    mutate(record = 1) %>%
+#'    as_tibble()
+#'
+#' ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'
+#' kmm_tbl <- kmeans_mapped_tbl(ui_tbl)
+#'
+#' kmeans_scree_data_tbl(kmm_tbl)
+#'
+#' @return
+#' A nested tibble
+#'
+#' @export
+#'
+kmeans_scree_data_tbl <- function(.data) {
+
+    # * Checks ----
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE, "(.data) is not a data.frame/tibble. Please supply.")
+    }
+
+    # * Manipulate ----
+    data_tbl <- tibble::as_tibble(.data)
+
+    data_tbl <- data_tbl %>%
+        tidyr::unnest(glance) %>%
+        dplyr::select(centers, tot.withinss)
 
     # * Return ----
     return(data_tbl)
