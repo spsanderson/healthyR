@@ -386,6 +386,7 @@ kmeans_scree_data_tbl <- function(.data) {
 #' @examples
 #' library(healthyR.data)
 #' library(dplyr)
+#' library(tidyquant)
 #'
 #' data_tbl <- healthyR_data%>%
 #'    filter(ip_op_flag == "I") %>%

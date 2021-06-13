@@ -1,6 +1,6 @@
 Package: healthyR
 Title: Hospital Data Analysis Workflow Tools
-Version: 0.1.3.9000
+Version: 0.1.4
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
@@ -40,7 +40,8 @@ Suggests:
     roxygen2,
     pacman,
     healthyR.data,
-    broom
+    broom,
+    tidyquant
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)

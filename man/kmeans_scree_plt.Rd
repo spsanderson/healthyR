@@ -21,6 +21,7 @@ Outputs a scree-plot
 \examples{
 library(healthyR.data)
 library(dplyr)
+library(tidyquant)
 
 data_tbl <- healthyR_data\%>\%
    filter(ip_op_flag == "I") \%>\%

@@ -1,4 +1,24 @@
-# healthyR (development version)
+# healthyR 0.1.4
+
+## Breaking Changes
+None
+
+## New Features
+* Added Functions
+1. `kmeans_tidy_tbl()` Fix #40 - A broom style function to get `tidy`, `augment` and `glance`
+of the `kmeans_obj()` output
+2. `kmeans_scree_data_tbl()` Fix #41 - Creates a tibble with the data that underlies the 
+`kmeans_scree_plot()`
+3. `kmeans_scree_plt()` Fix #42 - A `ggplot2` plot of the Scree data to help find
+the optimal elbow. Otherwise known as the elbow plot.
+4. `kmeans_mapped_tbl()` - Fix #43 - This generates the data that will help create the 
+elbow ploat data. It maps the `kmeans_obj()` function across the stated amount of centers.
+The default is set to 15.
+
+## Minor Fixes and Improvments
+Fix #45 - drop the `.row_col` parameter from the `kmeans_tidy_tbl()` function as
+it is not needed, this saves the user from needing to remember what they selected
+as the `user` column.
 
 # healthyR 0.1.3
 
@@ -6,11 +26,11 @@
 None
 
 ## New Features
-* Add functions
+* Added functions
 1. `kmeans_user_item_tbl()` Fix #37 - Creates a user item tibble from preprocessed data.
 2. `kmeans_obj()` Fix #37 - Creates a stats kmeans object, a simple wrapper.
 
-## Minor fixes and imprivements
+## Minor Fixes and Improvments
 * Minor fixes and improvements
 1. `ts_census_los_daily_tbl()` Fix #37 - Correctly arranges by date and gets
 correct counts by date column.
