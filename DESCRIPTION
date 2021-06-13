@@ -32,7 +32,8 @@ Imports:
     cowplot,
     scales,
     sqldf,
-    tidyr
+    tidyr,
+    ggrepel
 Suggests: 
     knitr,
     rmarkdown,
