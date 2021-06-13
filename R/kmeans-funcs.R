@@ -369,3 +369,82 @@ kmeans_scree_data_tbl <- function(.data) {
     return(data_tbl)
 
 }
+
+#' K-Means Scree Plot
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description Create a scree-plot from the [kmeans_mapped_tbl()] function.
+#'
+#' @details Outputs a scree-plot
+#'
+#' @seealso
+#' \url{https://en.wikipedia.org/wiki/Scree_plot}
+#'
+#' @param .data The data from the [kmeans_mapped_tbl()] function
+#'
+#' @examples
+#' library(healthyR.data)
+#' library(dplyr)
+#'
+#' data_tbl <- healthyR_data%>%
+#'    filter(ip_op_flag == "I") %>%
+#'    filter(payer_grouping != "Medicare B") %>%
+#'    filter(payer_grouping != "?") %>%
+#'    select(service_line, payer_grouping) %>%
+#'    mutate(record = 1) %>%
+#'    as_tibble()
+#'
+#' ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'
+#' kmm_tbl <- kmeans_mapped_tbl(ui_tbl)
+#'
+#' kmeans_scree_plt(.data = kmm_tbl)
+#'
+#' @return
+#' A ggplot2 plot
+#'
+#' @export
+#'
+
+kmeans_scree_plt <- function(.data){
+
+    # * Checks ----
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE,"(.data) is not a data.frame/tibble. Please supply.")
+    }
+
+    # * Manipulate ----
+    data_tbl <- tibble::as_tibble(.data)
+
+    data_tbl <- data_tbl %>%
+        tidyr::unnest(glance) %>%
+        dplyr::select(centers, tot.withinss)
+
+    # * Plot
+    p <- data_tbl %>%
+        ggplot2::ggplot(
+            mapping = ggplot2::aes(
+                x   = centers
+                , y = tot.withinss
+            )
+        ) +
+        ggplot2::geom_point() +
+        ggplot2::geom_line() +
+        # Kaiser Line
+        ggplot2::geom_hline(yintercept = 1, color = "red", linetype = "dashed") +
+        ggrepel::geom_label_repel(
+            mapping = ggplot2::aes(
+                label = centers
+            )) +
+        tidyquant::theme_tq() +
+        ggplot2::labs(
+            title      = "Scree Plot"
+            , subtitle = "Measures the distance each of the users are from the closest k-means cluster"
+            , y        = "Total Within Sum of Squares"
+            , x        = "Centers"
+        )
+
+    # * Return ----
+    return(p)
+}
