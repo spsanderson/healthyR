@@ -40,7 +40,8 @@ Suggests:
     roxygen2,
     pacman,
     healthyR.data,
-    broom
+    broom,
+    tidyquant
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
