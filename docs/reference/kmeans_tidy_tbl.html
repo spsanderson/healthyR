@@ -197,16 +197,16 @@ or <code><a href='https://generics.r-lib.org/reference/augment.html'>broom::augm
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 23 x 2</span>
 #&gt;    service_line                  cluster
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>  
-#&gt; <span style='color: #BCBCBC;'> 1</span> Alcohol Abuse                 3      
-#&gt; <span style='color: #BCBCBC;'> 2</span> Bariatric Surgery For Obesity 2      
-#&gt; <span style='color: #BCBCBC;'> 3</span> Carotid Endarterectomy        5      
-#&gt; <span style='color: #BCBCBC;'> 4</span> Cellulitis                    1      
-#&gt; <span style='color: #BCBCBC;'> 5</span> Chest Pain                    1      
-#&gt; <span style='color: #BCBCBC;'> 6</span> CHF                           5      
-#&gt; <span style='color: #BCBCBC;'> 7</span> COPD                          5      
-#&gt; <span style='color: #BCBCBC;'> 8</span> CVA                           5      
-#&gt; <span style='color: #BCBCBC;'> 9</span> GI Hemorrhage                 5      
-#&gt; <span style='color: #BCBCBC;'>10</span> Joint Replacement             5      
+#&gt; <span style='color: #BCBCBC;'> 1</span> Alcohol Abuse                 5      
+#&gt; <span style='color: #BCBCBC;'> 2</span> Bariatric Surgery For Obesity 4      
+#&gt; <span style='color: #BCBCBC;'> 3</span> Carotid Endarterectomy        3      
+#&gt; <span style='color: #BCBCBC;'> 4</span> Cellulitis                    2      
+#&gt; <span style='color: #BCBCBC;'> 5</span> Chest Pain                    2      
+#&gt; <span style='color: #BCBCBC;'> 6</span> CHF                           3      
+#&gt; <span style='color: #BCBCBC;'> 7</span> COPD                          3      
+#&gt; <span style='color: #BCBCBC;'> 8</span> CVA                           3      
+#&gt; <span style='color: #BCBCBC;'> 9</span> GI Hemorrhage                 3      
+#&gt; <span style='color: #BCBCBC;'>10</span> Joint Replacement             3      
 #&gt; <span style='color: #949494;'># ... with 13 more rows</span></div><div class='input'> <span class='fu'>kmeans_tidy_tbl</span><span class='op'>(</span>
    .kmeans_obj  <span class='op'>=</span> <span class='va'>km_obj</span>
    , .data      <span class='op'>=</span> <span class='va'>uit_tbl</span>
@@ -215,7 +215,7 @@ or <code><a href='https://generics.r-lib.org/reference/augment.html'>broom::augm
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 4</span>
 #&gt;   totss tot.withinss betweenss  iter
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span>  1.41        0.202      1.21     1</div><div class='input'> <span class='fu'>kmeans_tidy_tbl</span><span class='op'>(</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>  1.41        0.202      1.21     2</div><div class='input'> <span class='fu'>kmeans_tidy_tbl</span><span class='op'>(</span>
    .kmeans_obj  <span class='op'>=</span> <span class='va'>km_obj</span>
    , .data      <span class='op'>=</span> <span class='va'>uit_tbl</span>
    , .tidy_type <span class='op'>=</span> <span class='st'>"tidy"</span>
@@ -223,19 +223,19 @@ or <code><a href='https://generics.r-lib.org/reference/augment.html'>broom::augm
    <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 5
 #&gt; Columns: 14
-#&gt; $ `Blue Cross`     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.13375082, 0.27188303, 0.07912806, 0.00000000, 0.078~
-#&gt; $ Commercial       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.03542694, 0.05712358, 0.02702478, 0.00000000, 0.021~
-#&gt; $ Compensation     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.0121998471, 0.0003293808, 0.0002914681, 0.000000000~
-#&gt; $ `Exchange Plans` <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.016160901, 0.039065198, 0.009301354, 0.000000000, 0~
-#&gt; $ HMO              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.10724914, 0.18065096, 0.07723873, 0.27272727, 0.044~
-#&gt; $ Medicaid         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.05150211, 0.04246134, 0.21428392, 0.18181818, 0.036~
-#&gt; $ `Medicaid HMO`   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.13107693, 0.24760799, 0.28209782, 0.45454545, 0.080~
-#&gt; $ `Medicare A`     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.35217108, 0.10958146, 0.23654904, 0.09090909, 0.562~
-#&gt; $ `Medicare HMO`   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.11769769, 0.03584494, 0.04362913, 0.00000000, 0.151~
-#&gt; $ `No Fault`       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.008242686, 0.000000000, 0.002672067, 0.000000000, 0~
-#&gt; $ `Self Pay`       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.034521844, 0.015452115, 0.027783628, 0.000000000, 0~
-#&gt; $ size             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 5, 2, 3, 1, 12
-#&gt; $ withinss         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.02592247, 0.03549821, 0.04450884, 0.00000000, 0.096~
+#&gt; $ `Blue Cross`     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.00000000, 0.13375082, 0.07837450, 0.27188303, 0.079~
+#&gt; $ Commercial       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.00000000, 0.03542694, 0.02182129, 0.05712358, 0.027~
+#&gt; $ Compensation     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.0000000000, 0.0121998471, 0.0043244347, 0.000329380~
+#&gt; $ `Exchange Plans` <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.000000000, 0.016160901, 0.006202137, 0.039065198, 0~
+#&gt; $ HMO              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.27272727, 0.10724914, 0.04493860, 0.18065096, 0.077~
+#&gt; $ Medicaid         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.18181818, 0.05150211, 0.03684344, 0.04246134, 0.214~
+#&gt; $ `Medicaid HMO`   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.45454545, 0.13107693, 0.08001653, 0.24760799, 0.282~
+#&gt; $ `Medicare A`     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.09090909, 0.35217108, 0.56250366, 0.10958146, 0.236~
+#&gt; $ `Medicare HMO`   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.00000000, 0.11769769, 0.15152338, 0.03584494, 0.043~
+#&gt; $ `No Fault`       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.000000000, 0.008242686, 0.003475542, 0.000000000, 0~
+#&gt; $ `Self Pay`       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.000000000, 0.034521844, 0.009976485, 0.015452115, 0~
+#&gt; $ size             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> 1, 5, 12, 2, 3
+#&gt; $ withinss         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0.00000000, 0.02592247, 0.09625399, 0.03549821, 0.044~
 #&gt; $ cluster          <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> 1, 2, 3, 4, 5</div><div class='input'>
 </div></pre>
   </div>

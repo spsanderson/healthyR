@@ -36,6 +36,7 @@ reference:
      desc: Other Plotting Functions
      contents:
      - contains("_index_plt")
+     - "kmeans_scree_plt"
   -  title: Optimal Bin Functions for Histograms
      desc: Optimal Binning Functions
   -  subtitle: Optimal Binning for histograms
