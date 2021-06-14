@@ -41,7 +41,8 @@ Suggests:
     pacman,
     healthyR.data,
     broom,
-    tidyquant
+    tidyquant,
+    uwot
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
