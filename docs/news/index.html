@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.9000</span>
       </span>
     </div>
 
@@ -142,9 +142,9 @@
 <a href="#healthyr-development-version" class="anchor"></a>healthyR (development version)<small> Unreleased </small>
 </h1>
 </div>
-    <div id="healthyr-013" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.3">
-<a href="#healthyr-013" class="anchor"></a>healthyR 0.1.3<small> 2021-06-03 </small>
+    <div id="healthyr-014" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.4">
+<a href="#healthyr-014" class="anchor"></a>healthyR 0.1.4<small> 2021-06-13 </small>
 </h1>
 <div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -155,7 +155,40 @@
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New Features</h2>
 <ul>
-<li>Add functions</li>
+<li>Added Functions</li>
+</ul>
+<ol>
+<li>
+<code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> Fix <a href='https://github.com/spsanderson/healthyR/issues/40'>#40</a> - A broom style function to get <code>tidy</code>, <code>augment</code> and <code>glance</code> of the <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> output</li>
+<li>
+<code><a href="../reference/kmeans_scree_data_tbl.html">kmeans_scree_data_tbl()</a></code> Fix <a href='https://github.com/spsanderson/healthyR/issues/41'>#41</a> - Creates a tibble with the data that underlies the <code>kmeans_scree_plot()</code>
+</li>
+<li>
+<code><a href="../reference/kmeans_scree_plt.html">kmeans_scree_plt()</a></code> Fix <a href='https://github.com/spsanderson/healthyR/issues/42'>#42</a> - A <code>ggplot2</code> plot of the Scree data to help find the optimal elbow. Otherwise known as the elbow plot.</li>
+<li>
+<code><a href="../reference/kmeans_mapped_tbl.html">kmeans_mapped_tbl()</a></code> - Fix <a href='https://github.com/spsanderson/healthyR/issues/43'>#43</a> - This generates the data that will help create the elbow ploat data. It maps the <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> function across the stated amount of centers. The default is set to 15.</li>
+</ol>
+</div>
+<div id="minor-fixes-and-improvments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-fixes-and-improvments" class="anchor"></a>Minor Fixes and Improvments</h2>
+<p>Fix <a href='https://github.com/spsanderson/healthyR/issues/45'>#45</a> - drop the <code>.row_col</code> parameter from the <code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> function as it is not needed, this saves the user from needing to remember what they selected as the <code>user</code> column.</p>
+</div>
+</div>
+    <div id="healthyr-013" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.3">
+<a href="#healthyr-013" class="anchor"></a>healthyR 0.1.3<small> 2021-06-03 </small>
+</h1>
+<div id="breaking-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes-1" class="anchor"></a>Breaking Changes</h2>
+<p>None</p>
+</div>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>New Features</h2>
+<ul>
+<li>Added functions</li>
 </ul>
 <ol>
 <li>
@@ -164,9 +197,9 @@
 <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> Fix <a href='https://github.com/spsanderson/healthyR/issues/37'>#37</a> - Creates a stats kmeans object, a simple wrapper.</li>
 </ol>
 </div>
-<div id="minor-fixes-and-imprivements" class="section level2">
+<div id="minor-fixes-and-improvments-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-fixes-and-imprivements" class="anchor"></a>Minor fixes and imprivements</h2>
+<a href="#minor-fixes-and-improvments-1" class="anchor"></a>Minor Fixes and Improvments</h2>
 <ul>
 <li>Minor fixes and improvements</li>
 </ul>
