@@ -2,7 +2,7 @@
 % Please edit documentation in R/ts_ymwdh_tbl.R
 \name{ts_ymwdh_tbl}
 \alias{ts_ymwdh_tbl}
-\title{Make a time enhanced tibble}
+\title{Make a Time Enhanced Tibble}
 \usage{
 ts_ymwdh_tbl(.data, .date_col)
 }
@@ -23,8 +23,9 @@ Returns a tibble that has:
 \item week
 \item day
 \item hour
-All added from a chosen date column defined by the \code{.date_col} parameter.
 }
+
+All added from a chosen date column defined by the \code{.date_col} parameter.
 }
 \details{
 \itemize{
