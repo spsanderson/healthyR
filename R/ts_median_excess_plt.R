@@ -1,19 +1,19 @@
 #' Create a plot showing the excess of the median value
 #'
 #' @description
-#' Plot out the excess +/- of the median value grouped by certain time parameters
+#' Plot out the excess +/- of the median value grouped by certain time parameters.
 #'
-#' @param .data The data that is being analyzed, data must be a tibble/data.frame
-#' @param .date_col The column of the tibble that holds the date
-#' @param .value_col The column that holds the value of interest
+#' @param .data The data that is being analyzed, data must be a tibble/data.frame.
+#' @param .date_col The column of the tibble that holds the date.
+#' @param .value_col The column that holds the value of interest.
 #' @param .x_axis What is the be the x-axis, day, week, etc.
-#' @param .ggplot_group_var The variable to group the ggplot on
+#' @param .ggplot_group_var The variable to group the ggplot on.
 #' @param .years_back How many yeas back do you want to go in order to compute
-#' the median value
+#' the median value.
 #'
 #' @details
 #' - Supply data that you want to view and you will see the excess +/- of the median values
-#'   over a specified time series tibble
+#'   over a specified time series tibble.
 #'
 #' @examples
 #'
@@ -46,7 +46,7 @@ ts_median_excess_plt <- function(
     , .years_back
 ) {
 
-    # Tidayeval Setup
+    # * Tidayeval ----
     date_var_expr         <- rlang::enquo(.date_col)
 
     value_var_expr        <- rlang::enquo(.value_col)
@@ -59,7 +59,7 @@ ts_median_excess_plt <- function(
 
     years_back_expr       <- rlang::enquo(.years_back)
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)) {
         stop(call. = FALSE, "(data) is not a data-frame or tibble. Please supply.")
     }
@@ -86,7 +86,7 @@ ts_median_excess_plt <- function(
         dplyr::pull({{date_var_expr}}) %>%
         base::max()
 
-    # Data Manip
+    # * Manipulate ----
     df_grp_tbl <- tibble::as_tibble(.data) %>%
         dplyr::filter(lubridate::year({{date_var_expr}}) >= lubridate::year(.end_date) - {{years_back_expr}}) %>%
         dplyr::filter(lubridate::year({{date_var_expr}}) <= lubridate::year(.end_date) - 1) %>%
@@ -109,6 +109,7 @@ ts_median_excess_plt <- function(
         dplyr::ungroup() %>%
         dplyr::select(-value, -median_value)
 
+    # * Plot ----
     g <- df_excess_tbl %>%
         dplyr::mutate(last_flag = (df_excess_tbl[[1]] == max(df_excess_tbl[[1]]))) %>%
         ggplot2::ggplot(
@@ -127,6 +128,7 @@ ts_median_excess_plt <- function(
             x = ""
         )
 
+    # * Return ----
     return(g)
 
 }
