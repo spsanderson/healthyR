@@ -8,19 +8,19 @@
 #' @details
 #' - Expects a tibble
 #' - Expects the following columns and there should only be these 4
-#' 1. Length Of Stay Actual - Should be an integer
-#' 2. Length Of Stacy Benchmark - Should be an integer
-#' 3. Readmit Rate Actual - Should be 0/1 for each record, 1 = readmitted, 0 did not.
-#' 4. Readmit Rate Benchmark - Should be a percentage from the benchmark file.
+#'   * Length Of Stay Actual - Should be an integer
+#'   * Length Of Stacy Benchmark - Should be an integer
+#'   * Readmit Rate Actual - Should be 0/1 for each record, 1 = readmitted, 0 did not.
+#'   * Readmit Rate Benchmark - Should be a percentage from the benchmark file.
 #' - This will add a column called visits that will be the count of records per
 #' length of stay from 1 to .max_los
 #' - The .max_los param can be left blank and the function will default to 15. If
 #' this is not a good default and you don't know what it should be then set it to
-#' 75 percentile from the [stats::quantile] function using the defaults, like so
+#' 75 percentile from the [stats::quantile()] function using the defaults, like so
 #' .max_los = `stats::quantile(data_tbl$alos)[[4]]`
 #' - Uses all data to compute variance, if you want it for a particular time frame
 #' you will have to filter the data that goes into the .data argument. It is
-#' suggested to use `timetk::filter_by_time()`
+#' suggested to use [timetk::filter_by_time()]
 #' - The index is computed as the excess of the length of stay or readmit rates
 #' over their respective expectations.
 #'
@@ -51,7 +51,7 @@
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
 #'   , .readmit_bench = readmit_bench
-#'   )
+#' )
 #'
 #' los_ra_index_summary_tbl(
 #'   .data = data_tbl
@@ -60,7 +60,7 @@
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
 #'   , .readmit_bench = readmit_bench
-#'   )
+#' )
 #'
 #' @return
 #' A tibble
@@ -107,6 +107,10 @@ los_ra_index_summary_tbl <- function(
 
     if(rlang::quo_is_missing(readmit_bench_var_expr)) {
         stop(call. = FALSE, "(.readmit_bench) is missing. Please supply.")
+    }
+
+    if(ncol(.data) > 4){
+        stop(call. = FALSE, "(.data) has more than 4 columns. Please fix.")
     }
 
     # Summarize and Manipulate
@@ -181,10 +185,10 @@ los_ra_index_summary_tbl <- function(
 
 named_item_list <- function(.data, .group_col){
 
-    # Tidyeval
+    # * Tidyeval ----
     group_var_expr <- rlang::enquo(.group_col)
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)){
         stop(call. = FALSE,"(.data) is not a data.frame/tibble. Please supply")
     }
@@ -193,6 +197,7 @@ named_item_list <- function(.data, .group_col){
         stop(call. = FALSE,"(.group_col) is missing. Please supply")
     }
 
+    # * Manipulate ----
     data_tbl <- tibble::as_tibble(.data)
 
     data_tbl_list <- data_tbl %>%
