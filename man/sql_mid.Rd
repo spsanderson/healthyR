@@ -4,17 +4,17 @@
 \alias{sql_mid}
 \title{Use SQL MID type function}
 \usage{
-sql_mid(text, start_num, num_char)
+sql_mid(.text, .start_num, .num_char)
 }
 \arguments{
-\item{text}{A piece of text/string to be manipulated}
+\item{.text}{A piece of text/string to be manipulated}
 
-\item{start_num}{What place to start at}
+\item{.start_num}{What place to start at}
 
-\item{num_char}{How many characters do you want to grab}
+\item{.num_char}{How many characters do you want to grab}
 }
 \description{
-Perform a SQL SUBSTRING type function
+Perform an SQL SUBSTRING type function
 }
 \details{
 \itemize{
