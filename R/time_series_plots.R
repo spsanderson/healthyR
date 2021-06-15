@@ -3,7 +3,7 @@
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
-#' This is a warpper function to the `timetke::plot_time_series` function with
+#' This is a warpper function to the [timetk::plot_time_series()] function with
 #' a limited functionality parameter set. To see the full reference please visit
 #' the `timetk` package site.
 #'
@@ -11,12 +11,12 @@
 #' presets others while choosing the defaults on others. The smoother functionality
 #' is turned off.
 #'
-#' @param .data The data to pass to the function, must be a tibble/data.frame
-#' @param .date_col The column holding the date
-#' @param .value_col The column holding the value
-#' @param .color_col The column holding the variable for color
-#' @param .facet_col The column holding the variable for faceting
-#' @param .facet_ncol How many columns do you want
+#' @param .data The data to pass to the function, must be a tibble/data.frame.
+#' @param .date_col The column holding the date.
+#' @param .value_col The column holding the value.
+#' @param .color_col The column holding the variable for color.
+#' @param .facet_col The column holding the variable for faceting.
+#' @param .facet_ncol How many columns do you want.
 #' @param .interactive Return a `plotly` plot if set to TRUE and a static `ggplot2`
 #' plot if set to FALSE. The default is FALSE.
 #'
@@ -64,7 +64,7 @@ ts_plt <- function(
     , .interactive = FALSE
 ) {
 
-    # Tidyeval
+    # I* Tidyeval ----
     date_var_expr        <- rlang::enquo(.date_col)
     value_var_expr       <- rlang::enquo(.value_col)
     color_var_expr       <- rlang::enquo(.color_col)
@@ -72,7 +72,7 @@ ts_plt <- function(
     facet_ncol_expr      <- rlang::enquo(.facet_ncol)
     interactive_var_expr <- .interactive
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)) {
         stop(call. = FALSE,"(.data) is not a tibble/data.frame. Please supply")
     }
@@ -85,8 +85,10 @@ ts_plt <- function(
         stop(call. = FALSE, "(.value_col) is missing. Please supply.")
     }
 
+    # * Data ----
     data_tbl <- tibble::as_tibble(.data)
 
+    # * Plot ----
     plt <- data_tbl %>%
         timetk::plot_time_series(
             .date_var      = {{ date_var_expr }}
@@ -98,6 +100,7 @@ ts_plt <- function(
             , .smooth      = FALSE
         )
 
+    # * Return ----
     return(plt)
 }
 
@@ -156,13 +159,13 @@ ts_plt <- function(
 
 ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
 
-    # Tidyeval
+    # * Tidyeval ----
     date_var_expr        <- rlang::enquo(.date_col)
     value_var_expr       <- rlang::enquo(.value_col)
     by_var_expr          <- .by_grouping
     interactive_var_expr <- .interactive
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)) {
         stop(call. = FALSE, "(data) is not a data-frame or tibble. Please supply.")
     }
@@ -175,7 +178,7 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
         stop(call. = FALSE, "(value_var_expr) is missing. Please supply.")
     }
 
-    # Make into a tibble
+    # * Manipulate ----
     df_tbl <- tibble::as_tibble(.data) %>%
         dplyr::select( {{date_var_expr}}, {{value_var_expr}} ) %>%
         purrr::set_names("date", "value")
@@ -196,7 +199,7 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
         )
     }
 
-    # Plot out
+    # * Plot ----
     if(!interactive_var_expr) {
         g <- df_summarised_tbl %>%
             timetk::plot_time_series(
@@ -215,6 +218,7 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
             )
     }
 
+    # * Return ----
     return(g)
 
 }
@@ -231,13 +235,13 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
 #' - Uses `timetk` for underlying sumarization and plot
 #' - If .by_grouping is missing it will default to "day"
 #'
-#' @param .data The data you need to pass
-#' @param .date_col The date column
-#' @param .value_col The value column
+#' @param .data The data you need to pass.
+#' @param .date_col The date column.
+#' @param .value_col The value column.
 #' @param .by_grouping How you want the data summarized - "sec", "min", "hour",
-#' "day", "week", "month", "quarter" or "year"
+#' "day", "week", "month", "quarter" or "year".
 #' @param .interactive TRUE or FALSE. TRUE returns a `plotly` plot and FALSE
-#' returns a static `ggplot2` plot
+#' returns a static `ggplot2` plot.
 #'
 #' @examples
 #' set.seed(123)
@@ -281,13 +285,13 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
 
 ts_readmit_rate_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive) {
 
-    # Tidyeval
+    # * Tidyeval ----
     date_var_expr        <- rlang::enquo(.date_col)
     value_var_expr       <- rlang::enquo(.value_col)
     by_var_expr          <- .by_grouping
     interactive_var_expr <- .interactive
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)) {
         stop(call. = FALSE, "(data) is not a data-frame or tibble. Please supply.")
     }
@@ -300,11 +304,12 @@ ts_readmit_rate_plt <- function(.data, .date_col, .value_col, .by_grouping, .int
         stop(call. = FALSE, "(value_var_expr) is missing. Please supply.")
     }
 
-    # Make into a tibble
+    # * Data ----
     df_tbl <- tibble::as_tibble(.data) %>%
         dplyr::select( {{date_var_expr}}, {{value_var_expr}} ) %>%
         purrr::set_names("date", "value")
 
+    # * Manipulate ----
     # If .by is missing then manipulate
     if(by_var_expr == "") {
         df_summarised_tbl <- timetk::summarise_by_time(
@@ -321,7 +326,7 @@ ts_readmit_rate_plt <- function(.data, .date_col, .value_col, .by_grouping, .int
         )
     }
 
-    # Plot out
+    # * Plot ----
     if(!interactive_var_expr) {
         g <- df_summarised_tbl %>%
             timetk::plot_time_series(
@@ -340,6 +345,7 @@ ts_readmit_rate_plt <- function(.data, .date_col, .value_col, .by_grouping, .int
             )
     }
 
+    # * Return ----
     return(g)
 
 }
