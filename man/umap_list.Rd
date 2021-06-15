@@ -7,11 +7,11 @@
 umap_list(.data, .kmeans_map_tbl, .k_cluster = 5)
 }
 \arguments{
-\item{.data}{The data from the \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}} function}
+\item{.data}{The data from the \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}} function.}
 
-\item{.kmeans_map_tbl}{The data from the \code{\link[=kmeans_mapped_tbl]{kmeans_mapped_tbl()}}}
+\item{.kmeans_map_tbl}{The data from the \code{\link[=kmeans_mapped_tbl]{kmeans_mapped_tbl()}}.}
 
-\item{.k_cluster}{Pick the desired amount of clusters from your analysis of the scree plot}
+\item{.k_cluster}{Pick the desired amount of clusters from your analysis of the scree plot.}
 }
 \value{
 A list of tibbles and the umap object
@@ -21,7 +21,7 @@ Create a umap object from the \code{\link[uwot:umap]{uwot::umap()}} function.
 }
 \details{
 This takes in the user item table/matix that is produced by \code{\link[=kmeans_user_item_tbl]{kmeans_user_item_tbl()}}
-function. This function uses the defaults of \code{\link[uwot:umap]{uwot::umap()}}
+function. This function uses the defaults of \code{\link[uwot:umap]{uwot::umap()}}.
 }
 \examples{
 library(healthyR.data)
