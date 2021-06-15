@@ -191,20 +191,17 @@ than .max_los will be grouped to .max_los</p></td>
     
 <ul>
 <li><p>Expects a tibble</p></li>
-<li><p>Expects the following columns and there should only be these 4</p></li>
-</ul>
-<ol>
+<li><p>Expects the following columns and there should only be these 4</p><ul>
 <li><p>Length Of Stay Actual - Should be an integer</p></li>
 <li><p>Length Of Stacy Benchmark - Should be an integer</p></li>
 <li><p>Readmit Rate Actual - Should be 0/1 for each record, 1 = readmitted, 0 did not.</p></li>
 <li><p>Readmit Rate Benchmark - Should be a percentage from the benchmark file.</p></li>
-</ol>
-<ul>
+</ul></li>
 <li><p>This will add a column called visits that will be the count of records per
 length of stay from 1 to .max_los</p></li>
 <li><p>The .max_los param can be left blank and the function will default to 15. If
 this is not a good default and you don't know what it should be then set it to
-75 percentile from the <a href='https://rdrr.io/r/stats/quantile.html'>stats::quantile</a> function using the defaults, like so
+75 percentile from the <code><a href='https://rdrr.io/r/stats/quantile.html'>stats::quantile()</a></code> function using the defaults, like so
 .max_los = <code>stats::quantile(data_tbl$alos)[[4]]</code></p></li>
 <li><p>Uses all data to compute variance, if you want it for a particular time frame
 you will have to filter the data that goes into the .data argument. It is
@@ -235,7 +232,7 @@ over their respective expectations.</p></li>
   , .elos_col      <span class='op'>=</span> <span class='va'>elos</span>
   , .readmit_rate  <span class='op'>=</span> <span class='va'>readmit_rate</span>
   , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_bench</span>
-  <span class='op'>)</span>
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 4</span>
 #&gt;    los_group los_index rar_index los_ra_var
 #&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
@@ -261,7 +258,7 @@ over their respective expectations.</p></li>
   , .elos_col      <span class='op'>=</span> <span class='va'>elos</span>
   , .readmit_rate  <span class='op'>=</span> <span class='va'>readmit_rate</span>
   , .readmit_bench <span class='op'>=</span> <span class='va'>readmit_bench</span>
-  <span class='op'>)</span>
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 4</span>
 #&gt;    los_group los_index rar_index los_ra_var
 #&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
