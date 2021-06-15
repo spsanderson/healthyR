@@ -2,20 +2,29 @@
 % Please edit documentation in R/ts_ymwdh_tbl.R
 \name{ts_ymwdh_tbl}
 \alias{ts_ymwdh_tbl}
-\title{Make a tibble with year, month, week, week day and hour information added}
+\title{Make a time enhanced tibble}
 \usage{
 ts_ymwdh_tbl(.data, .date_col)
 }
 \arguments{
-\item{.data}{The data that is being analyzed, data must be a tibble/data.frame}
+\item{.data}{The data that is being analyzed.}
 
-\item{.date_col}{The column of the tibble that holds the date}
+\item{.date_col}{The column that holds the date.}
 }
 \value{
 A tibble
 }
 \description{
-Returns a tibble that has year, month, week, week day and hour added from a date column
+Returns a tibble that has:
+\itemize{
+\item year
+\item month
+\item week
+\item week
+\item day
+\item hour
+All added from a chosen date column defined by the \code{.date_col} parameter.
+}
 }
 \details{
 \itemize{
