@@ -1,10 +1,10 @@
 #' Use SQL LEFT type function
 #'
 #' @description
-#' Perform a sql LEFT() type function on a piece of text
+#' Perform an SQL LEFT() type function on a piece of text
 #'
-#' @param text A piece of text/string to be manipulated
-#' @param num_char How many characters do you want to grab
+#' @param .text A piece of text/string to be manipulated
+#' @param .num_char How many characters do you want to grab
 #'
 #' @details
 #' - You must supply data that you want to manipulate.
@@ -16,18 +16,18 @@
 #' @export
 #'
 
-sql_left <- function(text, num_char) {
-    base::substr(text, 1, num_char)
+sql_left <- function(.text, .num_char) {
+    base::substr(.text, 1, .num_char)
 }
 
 #' Use SQL MID type function
 #'
 #' @description
-#' Perform a SQL SUBSTRING type function
+#' Perform an SQL SUBSTRING type function
 #'
-#' @param text A piece of text/string to be manipulated
-#' @param start_num What place to start at
-#' @param num_char How many characters do you want to grab
+#' @param .text A piece of text/string to be manipulated
+#' @param .start_num What place to start at
+#' @param .num_char How many characters do you want to grab
 #'
 #' @details
 #'
@@ -40,17 +40,17 @@ sql_left <- function(text, num_char) {
 #' @export
 #'
 
-sql_mid <- function(text, start_num, num_char) {
-    base::substr(text, start_num, start_num + num_char - 1)
+sql_mid <- function(.text, .start_num, .num_char) {
+    base::substr(.text, .start_num, .start_num + .num_char - 1)
 }
 
 #' Use SQL RIGHT type functions
 #'
 #' @description
-#' Perform a SQL RIGHT type function
+#' Perform an SQL RIGHT type function
 #'
-#' @param text A piece of text/string to be manipulated
-#' @param num_char How many characters do you want to grab
+#' @param .text A piece of text/string to be manipulated
+#' @param .num_char How many characters do you want to grab
 #'
 #' @details
 #'
@@ -63,6 +63,6 @@ sql_mid <- function(text, start_num, num_char) {
 #' @export
 #'
 
-sql_right <- function(text, num_char) {
-    base::substr(text, base::nchar(text) - (num_char-1), base::nchar(text))
+sql_right <- function(.text, .num_char) {
+    base::substr(.text, base::nchar(.text) - (.num_char-1), base::nchar(.text))
 }
