@@ -1,13 +1,14 @@
-#' Make a time enhanced tibble
+#' Make a Time Enhanced Tibble
 #'
 #' @description
 #' Returns a tibble that has:
-#' * year
-#' * month
-#' * week
-#' * week
-#' * day
-#' * hour
+#' - year
+#' - month
+#' - week
+#' - week
+#' - day
+#' - hour
+#'
 #' All added from a chosen date column defined by the `.date_col` parameter.
 #'
 #' @param .data The data that is being analyzed.
