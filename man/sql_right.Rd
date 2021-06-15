@@ -4,15 +4,15 @@
 \alias{sql_right}
 \title{Use SQL RIGHT type functions}
 \usage{
-sql_right(text, num_char)
+sql_right(.text, .num_char)
 }
 \arguments{
-\item{text}{A piece of text/string to be manipulated}
+\item{.text}{A piece of text/string to be manipulated}
 
-\item{num_char}{How many characters do you want to grab}
+\item{.num_char}{How many characters do you want to grab}
 }
 \description{
-Perform a SQL RIGHT type function
+Perform an SQL RIGHT type function
 }
 \details{
 \itemize{
