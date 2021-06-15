@@ -15,17 +15,17 @@ ts_plt(
 )
 }
 \arguments{
-\item{.data}{The data to pass to the function, must be a tibble/data.frame}
+\item{.data}{The data to pass to the function, must be a tibble/data.frame.}
 
-\item{.date_col}{The column holding the date}
+\item{.date_col}{The column holding the date.}
 
-\item{.value_col}{The column holding the value}
+\item{.value_col}{The column holding the value.}
 
-\item{.color_col}{The column holding the variable for color}
+\item{.color_col}{The column holding the variable for color.}
 
-\item{.facet_col}{The column holding the variable for faceting}
+\item{.facet_col}{The column holding the variable for faceting.}
 
-\item{.facet_ncol}{How many columns do you want}
+\item{.facet_ncol}{How many columns do you want.}
 
 \item{.interactive}{Return a \code{plotly} plot if set to TRUE and a static \code{ggplot2}
 plot if set to FALSE. The default is FALSE.}
@@ -34,7 +34,7 @@ plot if set to FALSE. The default is FALSE.}
 A \code{plotly} plot or a \code{ggplot2} static plot
 }
 \description{
-This is a warpper function to the \code{timetke::plot_time_series} function with
+This is a warpper function to the \code{\link[timetk:plot_time_series]{timetk::plot_time_series()}} function with
 a limited functionality parameter set. To see the full reference please visit
 the \code{timetk} package site.
 }
