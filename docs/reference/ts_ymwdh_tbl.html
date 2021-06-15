@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make a tibble with year, month, week, week day and hour information added — ts_ymwdh_tbl • healthyR</title>
+<title>Make a Time Enhanced Tibble — ts_ymwdh_tbl • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,17 @@
 
 
 
-<meta property="og:title" content="Make a tibble with year, month, week, week day and hour information added — ts_ymwdh_tbl" />
-<meta property="og:description" content="Returns a tibble that has year, month, week, week day and hour added from a date column" />
+<meta property="og:title" content="Make a Time Enhanced Tibble — ts_ymwdh_tbl" />
+<meta property="og:description" content="Returns a tibble that has:
+year
+month
+week
+week
+day
+hour
+
+
+All added from a chosen date column defined by the .date_col parameter." />
 
 
 
@@ -134,13 +143,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make a tibble with year, month, week, week day and hour information added</h1>
+    <h1>Make a Time Enhanced Tibble</h1>
     <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/ts_ymwdh_tbl.R'><code>R/ts_ymwdh_tbl.R</code></a></small>
     <div class="hidden name"><code>ts_ymwdh_tbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a tibble that has year, month, week, week day and hour added from a date column</p>
+    <p>Returns a tibble that has:</p><ul>
+<li><p>year</p></li>
+<li><p>month</p></li>
+<li><p>week</p></li>
+<li><p>week</p></li>
+<li><p>day</p></li>
+<li><p>hour</p></li>
+</ul>
+
+<p>All added from a chosen date column defined by the <code>.date_col</code> parameter.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ts_ymwdh_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span><span class='op'>)</span></pre>
@@ -150,11 +168,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>The data that is being analyzed, data must be a tibble/data.frame</p></td>
+      <td><p>The data that is being analyzed.</p></td>
     </tr>
     <tr>
       <th>.date_col</th>
-      <td><p>The column of the tibble that holds the date</p></td>
+      <td><p>The column that holds the date.</p></td>
     </tr>
     </table>
 
