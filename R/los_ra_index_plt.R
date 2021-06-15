@@ -31,7 +31,7 @@
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
 #'   , .readmit_bench = readmit_rate_bench
-#'   ) %>%
+#' ) %>%
 #'   los_ra_index_plt()
 #'
 #' los_ra_index_summary_tbl(
@@ -41,7 +41,7 @@
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
 #'   , .readmit_bench = readmit_rate_bench
-#'   ) %>%
+#' ) %>%
 #'   los_ra_index_plt()
 #'
 #' @return
@@ -52,12 +52,12 @@
 
 los_ra_index_plt <- function(.data) {
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)) {
         stop(call. = FALSE, "(.data) is not a data.frame/tibble. Please supply.")
     }
 
-    # Set local df/tibble
+    # * Data ----
     df_tbl <- tibble::as_tibble(.data)
 
     # Set local variables
@@ -71,7 +71,7 @@ los_ra_index_plt <- function(.data) {
         dplyr::select(los_ra_var) %>%
         dplyr::pull()
 
-    # Plot
+    # * Plot ----
     g <- tibble::as_tibble(df_tbl) %>%
         ggplot2::ggplot(
             mapping = ggplot2::aes(
@@ -151,6 +151,7 @@ los_ra_index_plt <- function(.data) {
 
     p <- cowplot::plot_grid(g, g2, ncol = 1, nrow = 2)
 
+    # * Return ----
     return(p)
 
 }
