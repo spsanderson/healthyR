@@ -14,29 +14,29 @@ ts_median_excess_plt(
 )
 }
 \arguments{
-\item{.data}{The data that is being analyzed, data must be a tibble/data.frame}
+\item{.data}{The data that is being analyzed, data must be a tibble/data.frame.}
 
-\item{.date_col}{The column of the tibble that holds the date}
+\item{.date_col}{The column of the tibble that holds the date.}
 
-\item{.value_col}{The column that holds the value of interest}
+\item{.value_col}{The column that holds the value of interest.}
 
 \item{.x_axis}{What is the be the x-axis, day, week, etc.}
 
-\item{.ggplot_group_var}{The variable to group the ggplot on}
+\item{.ggplot_group_var}{The variable to group the ggplot on.}
 
 \item{.years_back}{How many yeas back do you want to go in order to compute
-the median value}
+the median value.}
 }
 \value{
 A \code{ggplot2} plot
 }
 \description{
-Plot out the excess +/- of the median value grouped by certain time parameters
+Plot out the excess +/- of the median value grouped by certain time parameters.
 }
 \details{
 \itemize{
 \item Supply data that you want to view and you will see the excess +/- of the median values
-over a specified time series tibble
+over a specified time series tibble.
 }
 }
 \examples{
