@@ -38,23 +38,21 @@ Create the length of stay and readmit index summary tibble
 \itemize{
 \item Expects a tibble
 \item Expects the following columns and there should only be these 4
-}
-\enumerate{
+\itemize{
 \item Length Of Stay Actual - Should be an integer
 \item Length Of Stacy Benchmark - Should be an integer
 \item Readmit Rate Actual - Should be 0/1 for each record, 1 = readmitted, 0 did not.
 \item Readmit Rate Benchmark - Should be a percentage from the benchmark file.
 }
-\itemize{
 \item This will add a column called visits that will be the count of records per
 length of stay from 1 to .max_los
 \item The .max_los param can be left blank and the function will default to 15. If
 this is not a good default and you don't know what it should be then set it to
-75 percentile from the \link[stats:quantile]{stats::quantile} function using the defaults, like so
+75 percentile from the \code{\link[stats:quantile]{stats::quantile()}} function using the defaults, like so
 .max_los = \code{stats::quantile(data_tbl$alos)[[4]]}
 \item Uses all data to compute variance, if you want it for a particular time frame
 you will have to filter the data that goes into the .data argument. It is
-suggested to use \code{timetk::filter_by_time()}
+suggested to use \code{\link[timetk:filter_by_time]{timetk::filter_by_time()}}
 \item The index is computed as the excess of the length of stay or readmit rates
 over their respective expectations.
 }
@@ -77,7 +75,7 @@ los_ra_index_summary_tbl(
   , .elos_col      = elos
   , .readmit_rate  = readmit_rate
   , .readmit_bench = readmit_bench
-  )
+)
 
 los_ra_index_summary_tbl(
   .data = data_tbl
@@ -86,7 +84,7 @@ los_ra_index_summary_tbl(
   , .elos_col      = elos
   , .readmit_rate  = readmit_rate
   , .readmit_bench = readmit_bench
-  )
+)
 
 }
 \author{
