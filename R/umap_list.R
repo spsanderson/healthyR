@@ -10,11 +10,11 @@
 #' *  \url{https://github.com/jlmelville/uwot} (arXiv paper)
 #'
 #' @details This takes in the user item table/matix that is produced by [kmeans_user_item_tbl()]
-#' function. This function uses the defaults of [uwot::umap()]
+#' function. This function uses the defaults of [uwot::umap()].
 #'
-#' @param .data The data from the [kmeans_user_item_tbl()] function
-#' @param .kmeans_map_tbl The data from the [kmeans_mapped_tbl()]
-#' @param .k_cluster Pick the desired amount of clusters from your analysis of the scree plot
+#' @param .data The data from the [kmeans_user_item_tbl()] function.
+#' @param .kmeans_map_tbl The data from the [kmeans_mapped_tbl()].
+#' @param .k_cluster Pick the desired amount of clusters from your analysis of the scree plot.
 #'
 #' @examples
 #' library(healthyR.data)
@@ -43,7 +43,7 @@
 umap_list <- function(.data
                       , .kmeans_map_tbl
                       , .k_cluster = 5) {
-    # * Tidyeval Setup ----
+    # * Tidyeval ----
     k_cluster_var_expr <- .k_cluster
 
     # * Checks ----
@@ -92,6 +92,7 @@ umap_list <- function(.data
             umap_kmeans_cluster_results_tbl = umap_kmeans_cluster_results_tbl
         )
 
+    # * Return ----
     return(df_list)
 
 }
