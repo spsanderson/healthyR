@@ -32,8 +32,8 @@ A tibble object
 \description{
 Sometimes it is important to know what the census was on any given day, or what
 the average length of stay is on given day, including for those patients that
-are not yet discharged. This can be easily achieved. This wil return one
-record for every account so the data will still need to be summarised.
+are not yet discharged. This can be easily achieved. This will return one
+record for every account so the data will still need to be summarized.
 
 \strong{This function can take a little bit of time to run while the join comparison runs.}
 }

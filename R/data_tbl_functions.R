@@ -8,19 +8,19 @@
 #' @details
 #' - Expects a tibble
 #' - Expects the following columns and there should only be these 4
-#' 1. Length Of Stay Actual - Should be an integer
-#' 2. Length Of Stacy Benchmark - Should be an integer
-#' 3. Readmit Rate Actual - Should be 0/1 for each record, 1 = readmitted, 0 did not.
-#' 4. Readmit Rate Benchmark - Should be a percentage from the benchmark file.
+#'   * Length Of Stay Actual - Should be an integer
+#'   * Length Of Stacy Benchmark - Should be an integer
+#'   * Readmit Rate Actual - Should be 0/1 for each record, 1 = readmitted, 0 did not.
+#'   * Readmit Rate Benchmark - Should be a percentage from the benchmark file.
 #' - This will add a column called visits that will be the count of records per
 #' length of stay from 1 to .max_los
 #' - The .max_los param can be left blank and the function will default to 15. If
 #' this is not a good default and you don't know what it should be then set it to
-#' 75 percentile from the [stats::quantile] function using the defaults, like so
+#' 75 percentile from the [stats::quantile()] function using the defaults, like so
 #' .max_los = `stats::quantile(data_tbl$alos)[[4]]`
 #' - Uses all data to compute variance, if you want it for a particular time frame
 #' you will have to filter the data that goes into the .data argument. It is
-#' suggested to use `timetk::filter_by_time()`
+#' suggested to use [timetk::filter_by_time()]
 #' - The index is computed as the excess of the length of stay or readmit rates
 #' over their respective expectations.
 #'
@@ -51,7 +51,7 @@
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
 #'   , .readmit_bench = readmit_bench
-#'   )
+#' )
 #'
 #' los_ra_index_summary_tbl(
 #'   .data = data_tbl
@@ -60,7 +60,7 @@
 #'   , .elos_col      = elos
 #'   , .readmit_rate  = readmit_rate
 #'   , .readmit_bench = readmit_bench
-#'   )
+#' )
 #'
 #' @return
 #' A tibble
@@ -68,15 +68,12 @@
 #' @export
 #'
 
-los_ra_index_summary_tbl <- function(
-    .data
-    , .max_los = 15
-    , .alos_col
-    , .elos_col
-    , .readmit_rate
-    , .readmit_bench
-    ) {
-
+los_ra_index_summary_tbl <- function(.data,
+                                     .max_los = 15,
+                                     .alos_col,
+                                     .elos_col,
+                                     .readmit_rate,
+                                     .readmit_bench) {
     # Tidyeval
     max_los_var_expr       <- .max_los
     alos_col_var_expr      <- rlang::enquo(.alos_col)
@@ -86,68 +83,80 @@ los_ra_index_summary_tbl <- function(
 
     # Checks
     if (!is.data.frame(.data)) {
-        stop(call. = FALSE, "(data) is not a data-frame/tibble. Please provide.")
+        stop(call. = FALSE,
+             "(data) is not a data-frame/tibble. Please provide.")
     }
 
-    if(!(.max_los)) {
-        max_los_var_expr = stats::quantile( !!alos_col_var_expr )[[4]]
+    if (!(.max_los)) {
+        max_los_var_expr = stats::quantile(!!alos_col_var_expr)[[4]]
     }
 
-    if(rlang::quo_is_missing(alos_col_var_expr)) {
+    if (rlang::quo_is_missing(alos_col_var_expr)) {
         stop(call. = FALSE, "(.alos_col) is missing. Please supply.")
     }
 
-    if(rlang::quo_is_missing(elos_col_var_expr)) {
+    if (rlang::quo_is_missing(elos_col_var_expr)) {
         stop(call. = FALSE, "(.elos_col) is missing. Please supply.")
     }
 
-    if(rlang::quo_is_missing(readmit_rate_var_expr)) {
+    if (rlang::quo_is_missing(readmit_rate_var_expr)) {
         stop(call. = FALSE, "(.readmit_rate) is missing. Please supply.")
     }
 
-    if(rlang::quo_is_missing(readmit_bench_var_expr)) {
+    if (rlang::quo_is_missing(readmit_bench_var_expr)) {
         stop(call. = FALSE, "(.readmit_bench) is missing. Please supply.")
+    }
+
+    if (ncol(.data) > 4) {
+        stop(call. = FALSE, "(.data) has more than 4 columns. Please fix.")
     }
 
     # Summarize and Manipulate
     df_tbl <- tibble::as_tibble(.data) %>%
-        dplyr::mutate(
-            alos = {{alos_col_var_expr}} %>%
-                as.integer() %>%
-                as.double()
-            )
+        dplyr::mutate(alos = {
+            {
+                alos_col_var_expr
+            }
+        } %>%
+            as.integer() %>%
+            as.double())
 
     df_summary_tbl <- df_tbl %>%
-        dplyr::mutate(
-            los_group = dplyr::case_when(
-                alos > max_los_var_expr ~ max_los_var_expr
-                , TRUE ~ alos
-            )
-        ) %>%
+        dplyr::mutate(los_group = dplyr::case_when(alos > max_los_var_expr ~ max_los_var_expr
+                                                   , TRUE ~ alos)) %>%
         dplyr::group_by(los_group) %>%
         dplyr::summarise(
-            tot_visits = dplyr::n()
-            , tot_los  = sum(alos, na.rm = TRUE)
-            , tot_elos = sum({{elos_col_var_expr}}, na.rm = TRUE)
-            , tot_ra   = sum({{readmit_rate_var_expr}}, na.rm = TRUE)
-            , tot_perf = base::round(base::mean({{readmit_bench_var_expr}}, na.rm = TRUE), digits = 2)
+            tot_visits = dplyr::n(),
+            tot_los  = sum(alos, na.rm = TRUE),
+            tot_elos = sum({
+                {
+                    elos_col_var_expr
+                }
+            }, na.rm = TRUE)
+            ,
+            tot_ra   = sum({
+                {
+                    readmit_rate_var_expr
+                }
+            }, na.rm = TRUE)
+            ,
+            tot_perf = base::round(base::mean({
+                {
+                    readmit_bench_var_expr
+                }
+            }, na.rm = TRUE), digits = 2)
         ) %>%
         dplyr::ungroup() %>%
-        dplyr::mutate(tot_rar = dplyr::case_when(
-            tot_ra != 0 ~ base::round((tot_ra / tot_visits), digits = 2),
-            TRUE ~ 0
-        )) %>%
-        dplyr::mutate(los_index = dplyr::case_when(
-            tot_elos != 0 ~ (tot_los / tot_elos),
-            TRUE ~ 0
-        )) %>%
-        dplyr::mutate(rar_index = dplyr::case_when(
-            (tot_rar != 0 & tot_perf != 0) ~ (tot_rar / tot_perf),
-            TRUE ~ 0
-        )) %>%
-        dplyr::mutate(
-            los_ra_var = base::abs(1 - los_index) + base::abs(1 - rar_index)
-        ) %>%
+        dplyr::mutate(tot_rar = dplyr::case_when(tot_ra != 0 ~ base::round((
+            tot_ra / tot_visits
+        ), digits = 2),
+        TRUE ~ 0)) %>%
+        dplyr::mutate(los_index = dplyr::case_when(tot_elos != 0 ~ (tot_los / tot_elos),
+                                                   TRUE ~ 0)) %>%
+        dplyr::mutate(rar_index = dplyr::case_when((tot_rar != 0 &
+                                                        tot_perf != 0) ~ (tot_rar / tot_perf),
+                                                   TRUE ~ 0)) %>%
+        dplyr::mutate(los_ra_var = base::abs(1 - los_index) + base::abs(1 - rar_index)) %>%
         dplyr::select(los_group, los_index, rar_index, los_ra_var)
 
     return(df_summary_tbl)
@@ -164,10 +173,10 @@ los_ra_index_summary_tbl <- function(
 #' sheet for each group of data.
 #'
 #' @details
-#' - Requires a data.frame/tibble and a grouping column
+#' - Requires a data.frame/tibble and a grouping column.
 #'
-#' @param .data The data.frame/tibble
-#' @param .group_col The column that contains the groupings
+#' @param .data The data.frame/tibble.
+#' @param .group_col The column that contains the groupings.
 #'
 #' @examples
 #' library(healthyR.data)
@@ -179,29 +188,38 @@ los_ra_index_summary_tbl <- function(
 #' @export
 #'
 
-named_item_list <- function(.data, .group_col){
-
-    # Tidyeval
+named_item_list <- function(.data, .group_col) {
+    # * Tidyeval ----
     group_var_expr <- rlang::enquo(.group_col)
 
-    # Checks
-    if(!is.data.frame(.data)){
-        stop(call. = FALSE,"(.data) is not a data.frame/tibble. Please supply")
+    # * Checks ----
+    if (!is.data.frame(.data)) {
+        stop(call. = FALSE,
+             "(.data) is not a data.frame/tibble. Please supply")
     }
 
-    if(rlang::quo_is_missing(group_var_expr)){
-        stop(call. = FALSE,"(.group_col) is missing. Please supply")
+    if (rlang::quo_is_missing(group_var_expr)) {
+        stop(call. = FALSE, "(.group_col) is missing. Please supply")
     }
 
+    # * Manipulate ----
     data_tbl <- tibble::as_tibble(.data)
 
     data_tbl_list <- data_tbl %>%
-        dplyr::group_split({{ group_var_expr }})
+        dplyr::group_split({
+            {
+                group_var_expr
+            }
+        })
 
     names(data_tbl_list) <- data_tbl_list %>%
-        purrr::map(~ dplyr::pull(., {{group_var_expr}})) %>%
-        purrr::map(~ base::as.character(.)) %>%
-        purrr::map(~ base::unique(.))
+        purrr::map( ~ dplyr::pull(., {
+            {
+                group_var_expr
+            }
+        })) %>%
+        purrr::map( ~ base::as.character(.)) %>%
+        purrr::map( ~ base::unique(.))
 
     # * Return ----
     return(data_tbl_list)
@@ -214,17 +232,17 @@ named_item_list <- function(.data, .group_col){
 #'
 #' @description
 #' Get the counts of a column by a particular grouping if supplied, otherwise just
-#' get counts of a colum
+#' get counts of a column.
 #'
 #' @details
-#' - Requires a data.frame/tibble
-#' - Requires a value column, a column that is going to counted
+#' - Requires a data.frame/tibble.
+#' - Requires a value column, a column that is going to counted.
 #'
-#' @param .data The data.frame/tibble supplied
-#' @param .count_col The column that has the values you want to count
+#' @param .data The data.frame/tibble supplied.
+#' @param .count_col The column that has the values you want to count.
 #' @param .arrange_value Defaults to true, this will arrange the resulting tibble
 #' in descending order by .count_col
-#' @param ... Place the values you want to pass in for grouping here
+#' @param ... Place the values you want to pass in for grouping here.
 #'
 #' @examples
 #' library(healthyR.data)
@@ -251,12 +269,12 @@ category_counts_tbl <- function(.data, .count_col,
                                 .arrange_value = TRUE,
                                 ...){
 
-    # Tidyeval
+    # * Tidyeval ----
     count_col_var_expr <- rlang::enquo(.count_col)
 
     arrange_value      <- .arrange_value
 
-    # Checks
+    # * Checks ----
     if(!is.data.frame(.data)){
         stop(call. = FALSE,"(.data) is missing. Please supply.")
     }
@@ -265,8 +283,10 @@ category_counts_tbl <- function(.data, .count_col,
         stop(call. = FALSE,"(.count_col) is missing. Please supply.")
     }
 
+    # * Data ----
     data <- tibble::as_tibble(.data)
 
+    # * Manipulate ----
     data_tbl <- data %>%
         dplyr::group_by(...) %>%
         dplyr::count({{count_col_var_expr}}) %>%
@@ -327,13 +347,13 @@ top_n_tbl <- function(
     , ...
 ) {
 
-    # Tidyeval Setup
+    # * Tidyeval ----
     top_n_var_expr <- rlang::enquo(.n_records)
     group_var_expr <- rlang::quos(...)
 
     arrange_value  <- .arrange_value
 
-    # Checks
+    # * Checks ----
     if (!is.data.frame(.data)) {
         stop(call. = FALSE, "(data) is not a data-frame/tibble. Please provide.")
     }
@@ -342,9 +362,10 @@ top_n_tbl <- function(
         stop(call. = FALSE, "(.n_records) is missing. Please provide.")
     }
 
-    # Make data a tibble
+    # * Data ----
     data <- tibble::as_tibble(.data)
 
+    # * Manipulate ----
     data_tbl <- data %>%
         dplyr::count(...)
 
@@ -358,7 +379,7 @@ top_n_tbl <- function(
     data_tbl <- data_tbl %>%
         dplyr::slice(1:( {{top_n_var_expr}} ))
 
-    # Return tibble
+    # * Return ----
     return(data_tbl)
 
 }
@@ -370,8 +391,8 @@ top_n_tbl <- function(
 #' @description
 #' Sometimes it is important to know what the census was on any given day, or what
 #' the average length of stay is on given day, including for those patients that
-#' are not yet discharged. This can be easily achieved. This wil return one
-#' record for every account so the data will still need to be summarised.
+#' are not yet discharged. This can be easily achieved. This will return one
+#' record for every account so the data will still need to be summarized.
 #'
 #' __This function can take a little bit of time to run while the join comparison runs.__
 #'
@@ -423,7 +444,7 @@ ts_census_los_daily_tbl <- function(.data, .keep_nulls_only = FALSE,
     end_date_var_expr   <- rlang::enquo(.end_date_col)
     by_var_expr         <- .by_time
 
-    # * Check ----
+    # * Checks ----
     if(!is.data.frame(.data)){
         stop(call. = FALSE,"(.data) is not a data.frame/tibble. Please supply.")
     }

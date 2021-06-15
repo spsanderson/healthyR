@@ -37,7 +37,7 @@
 
 kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
 
-    # Tidyeval ----
+    # * Tidyeval ----
     row_input_var_expr <- rlang::enquo(.row_input)
     col_input_var_expr <- rlang::enquo(.col_input)
 
@@ -57,6 +57,7 @@ kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
     # * Data ----
     data_tbl <- tibble::as_tibble(.data)
 
+    # * Manipulate ----
     data_summarized_tbl <- data_tbl %>%
         dplyr::group_by({{ row_input_var_expr }}, {{ col_input_var_expr }}) %>%
         dplyr::summarise(total_records = sum(record, na.rm = TRUE)) %>%
@@ -120,7 +121,7 @@ kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
 
 kmeans_obj <- function(.data, .centers = 5){
 
-    # * Tidyeval Setup ----
+    # * Tidyeval ----
     centers_var_expr <- .centers
 
     # * Checks ----
@@ -203,7 +204,8 @@ kmeans_obj <- function(.data, .centers = 5){
 #'
 
 kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy") {
-    # * Tidyeval Setup ----
+
+    # * Tidyeval ----
     kmeans_obj   <- .kmeans_obj
     tidy_type    <- .tidy_type
 
@@ -282,7 +284,7 @@ kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy") {
 #'
 kmeans_mapped_tbl <- function(.data, .centers = 15){
 
-    # * Tidy ----
+    # * Tidyeval ----
     centers_var_expr <- .centers
 
     # * Checks ----

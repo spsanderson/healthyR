@@ -41,7 +41,7 @@ los_ra_index_summary_tbl(
   , .elos_col      = elos
   , .readmit_rate  = readmit_rate
   , .readmit_bench = readmit_rate_bench
-  ) \%>\%
+) \%>\%
   los_ra_index_plt()
 
 los_ra_index_summary_tbl(
@@ -51,7 +51,7 @@ los_ra_index_summary_tbl(
   , .elos_col      = elos
   , .readmit_rate  = readmit_rate
   , .readmit_bench = readmit_rate_bench
-  ) \%>\%
+) \%>\%
   los_ra_index_plt()
 
 }

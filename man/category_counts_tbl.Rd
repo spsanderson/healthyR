@@ -7,23 +7,23 @@
 category_counts_tbl(.data, .count_col, .arrange_value = TRUE, ...)
 }
 \arguments{
-\item{.data}{The data.frame/tibble supplied}
+\item{.data}{The data.frame/tibble supplied.}
 
-\item{.count_col}{The column that has the values you want to count}
+\item{.count_col}{The column that has the values you want to count.}
 
 \item{.arrange_value}{Defaults to true, this will arrange the resulting tibble
 in descending order by .count_col}
 
-\item{...}{Place the values you want to pass in for grouping here}
+\item{...}{Place the values you want to pass in for grouping here.}
 }
 \description{
 Get the counts of a column by a particular grouping if supplied, otherwise just
-get counts of a colum
+get counts of a column.
 }
 \details{
 \itemize{
-\item Requires a data.frame/tibble
-\item Requires a value column, a column that is going to counted
+\item Requires a data.frame/tibble.
+\item Requires a value column, a column that is going to counted.
 }
 }
 \examples{

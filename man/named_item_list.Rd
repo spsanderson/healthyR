@@ -7,9 +7,9 @@
 named_item_list(.data, .group_col)
 }
 \arguments{
-\item{.data}{The data.frame/tibble}
+\item{.data}{The data.frame/tibble.}
 
-\item{.group_col}{The column that contains the groupings}
+\item{.group_col}{The column that contains the groupings.}
 }
 \description{
 Takes in a data.frame/tibble and creates a named list from a supplied grouping
@@ -18,7 +18,7 @@ sheet for each group of data.
 }
 \details{
 \itemize{
-\item Requires a data.frame/tibble and a grouping column
+\item Requires a data.frame/tibble and a grouping column.
 }
 }
 \examples{

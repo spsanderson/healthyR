@@ -7,17 +7,17 @@
 ts_readmit_rate_plt(.data, .date_col, .value_col, .by_grouping, .interactive)
 }
 \arguments{
-\item{.data}{The data you need to pass}
+\item{.data}{The data you need to pass.}
 
-\item{.date_col}{The date column}
+\item{.date_col}{The date column.}
 
-\item{.value_col}{The value column}
+\item{.value_col}{The value column.}
 
 \item{.by_grouping}{How you want the data summarized - "sec", "min", "hour",
-"day", "week", "month", "quarter" or "year"}
+"day", "week", "month", "quarter" or "year".}
 
 \item{.interactive}{TRUE or FALSE. TRUE returns a \code{plotly} plot and FALSE
-returns a static \code{ggplot2} plot}
+returns a static \code{ggplot2} plot.}
 }
 \value{
 A \code{timetk} time series plot that is interactive

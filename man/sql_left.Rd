@@ -4,15 +4,15 @@
 \alias{sql_left}
 \title{Use SQL LEFT type function}
 \usage{
-sql_left(text, num_char)
+sql_left(.text, .num_char)
 }
 \arguments{
-\item{text}{A piece of text/string to be manipulated}
+\item{.text}{A piece of text/string to be manipulated}
 
-\item{num_char}{How many characters do you want to grab}
+\item{.num_char}{How many characters do you want to grab}
 }
 \description{
-Perform a sql LEFT() type function on a piece of text
+Perform an SQL LEFT() type function on a piece of text
 }
 \details{
 \itemize{
