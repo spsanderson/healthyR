@@ -1,0 +1,128 @@
+---
+title: "Clustering with K-Means and UMAP"
+author: "Steven P. Sanderson II, MPH"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Getting Started with healthyR}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(
+    message = FALSE,
+    warning = FALSE,
+    fig.width = 8, 
+    fig.height = 4.5,
+    fig.align = 'center',
+    out.width='95%', 
+    dpi = 100,
+    collapse = TRUE,
+    comment = "#>"
+)
+```
+
+> healthyR: A toolkit for hospital data
+
+# Libaray Load
+
+First things first, lets load in the library:
+
+```{r setup}
+library(healthyR)
+```
+
+# Information
+
+K-Means is a partion algorithm initially designed for signal processing.
+The goal is to partition *`n`* observations into *`k`* clusters where
+each *`n`* is in *`k`*. The unsupervised k-means algorithm has a loose
+relationship to the k-nearest neighbor classifier, a popular supervised
+machine learning technique for classification that is often confused
+with k-means due to the name. Applying the 1-nearest neighbor classifier
+to the cluster centers obtained by k-means classifies new data into the
+existing clusters.
+
+The aim of this vignette is to showcase the use of the `healthyR`
+wrapper for the `kmeans` function the the wrapper and plot for the
+`uwot::umap` projection function. We will go through the entire workflow
+from getting the data to getting the fina `UMAP` plot.
+
+# Generate some data
+
+```{r get_data}
+library(healthyR.data)
+library(dplyr)
+library(broom)
+library(ggplot2)
+
+data_tbl <- healthyR_data %>%
+    filter(ip_op_flag == "I") %>%
+    filter(payer_grouping != "Medicare B") %>%
+    filter(payer_grouping != "?") %>%
+    select(service_line, payer_grouping) %>%
+    mutate(record = 1) %>%
+    as_tibble()
+
+data_tbl %>%
+  glimpse()
+```
+
+Now that we have our data we need to generate what is called a user item
+table. To do this we use the function *`kmeans_user_item_tbl`* which
+takes in just a few arguments. The purpose of the user item table is to
+aggregate and normalize the data between the users and the items.
+
+The data that we have generated is going to look for clustering amongst
+the *`service_lines`* (the user) and the *`payer_grouping`* (item)
+columns.
+
+Lets now create the user item table.
+
+# User Item Tibble
+
+```{r uit}
+uit_tbl <- kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+
+uit_tbl
+```
+
+The table is aggregated by item for the various users to which the
+algorithm will be applied.
+
+Now that we have this data we need to find what will be out optimal k
+(clusters). To do this we need to generate a table of data that will
+have a column of k and for that k apply the k-means function to the data
+with that k and return the **`total within sum of squares`**.
+
+To do this there is a convienent function called *`kmeans_mapped_tbl`*
+that takes as its sole argument the output from the
+*`kmeans_user_item_tbl`*. There is an argument *`.centers`* where the
+default is set to 15.
+
+# K-Means Mapped Tibble
+```{r kmm_tbl}
+kmm_tbl <- kmeans_mapped_tbl(uit_tbl)
+
+kmm_tbl
+```
+
+As we see there are three columns, `centers`, `k_means` and `glance`.
+The k_means column is the `k_means` list object and `glance` is the
+tibble returned by the `broom::glance` function.
+
+```{r kmm_tbl_glance}
+kmm_tbl %>%
+  tidyr::unnest(glance)
+```
+
+ump_lst <- umap_list(.data = uit_tbl, kmm_tbl, 3)
+
+umap_plt(.data = ump_lst, .point_size = 3)
