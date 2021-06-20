@@ -96,3 +96,86 @@ umap_list <- function(.data
     return(df_list)
 
 }
+
+#' UMAP and K-Means Cluster Visualization
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description Create a UMAP Projection plot.
+#'
+#' @seealso
+#' *  \url{https://cran.r-project.org/package=uwot} (CRAN)
+#' *  \url{https://github.com/jlmelville/uwot} (GitHub)
+#' *  \url{https://github.com/jlmelville/uwot} (arXiv paper)
+#'
+#' @details This takes in `umap_kmeans_cluster_results_tbl` from the [umap_list()]
+#' function output.
+#'
+#' @param .data The data from the [umap_list()] function.
+#' @param .point_size The desired size for the points of the plot.
+#'
+#' @examples
+#' library(healthyR.data)
+#' library(healthyR)
+#' library(dplyr)
+#' library(broom)
+#' library(ggplot2)
+#'
+#' data_tbl <- healthyR_data %>%
+#'     filter(ip_op_flag == "I") %>%
+#'     filter(payer_grouping != "Medicare B") %>%
+#'     filter(payer_grouping != "?") %>%
+#'     select(service_line, payer_grouping) %>%
+#'     mutate(record = 1) %>%
+#'     as_tibble()
+#'
+#' uit_tbl <- kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'
+#' kmm_tbl <- kmeans_mapped_tbl(uit_tbl)
+#'
+#' ump_lst <- umap_list(.data = uit_tbl, kmm_tbl, 3)
+#'
+#' umap_plt(.data = ump_lst, .point_size = 3)
+#'
+#' @return A ggplot2 UMAP Projection with clusters represented by colors.
+#'
+#' @export
+#'
+
+umap_plt <- function(.data, .point_size = 2) {
+
+    # * Checks ----
+    if(!is.list(.data)){
+        stop(call. = FALSE,"(.data) is not a list")
+    }
+
+    # * Data ----
+    ump_lst   <- .data
+    ump_tbl   <- ump_lst$umap_kmeans_cluster_results_tbl
+    optimal_k <- max(ump_lst$kmeans_obj$cluster)
+
+    umap_plt <- ump_tbl %>%
+        ggplot2::ggplot(
+            mapping = ggplot2::aes(
+                x = x
+                , y = y
+                , color = .cluster
+            )
+        ) +
+        ggplot2::geom_point(size = .point_size) +
+        tidyquant::theme_tq() +
+        tidyquant::scale_color_tq() +
+        ggplot2::labs(
+            subtitle = "UMAP 2D Projection with K-Means Cluster Assignment"
+            , caption = stringr::str_c(
+                "Conclusion:"
+                , optimal_k
+                , "Clusters Identified"
+                , sep = " "
+            )
+        )
+
+    # * Return ----
+    print(umap_plt)
+
+}

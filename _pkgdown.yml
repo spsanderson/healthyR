@@ -35,8 +35,9 @@ reference:
   -  title: Miscellaneous Plots
      desc: Other Plotting Functions
      contents:
-     - contains("_index_plt")
-     - "kmeans_scree_plt"
+     -  contains("_index_plt")
+     -  "kmeans_scree_plt"
+     -  "umap_plt"
   -  title: Optimal Bin Functions for Histograms
      desc: Optimal Binning Functions
   -  subtitle: Optimal Binning for histograms
@@ -57,6 +58,7 @@ reference:
   -  subtitle: ML/AI Functions
      contents:
      -  "kmeans_obj"
+     -  "umap_list"
   -  title: Miscellaneous
      desc: Miscellaneous Functions and Utilities
   -  subtitle: Function List
