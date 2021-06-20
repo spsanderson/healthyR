@@ -60,6 +60,10 @@
     <li>
       <a href="../articles/getting-started.html">Getting Started with healthyR</a>
     </li>
+    <li class="dropdown-header">K-Means and UMAP</li>
+    <li>
+      <a href="../articles/kmeans-umap.html">Clustering with K-Means and UMAP</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -207,18 +211,18 @@
 <span class="co">#&gt;  1       1 &lt;kmeans&gt;  1.41       1.41    1.33e-15     1</span>
 <span class="co">#&gt;  2       2 &lt;kmeans&gt;  1.41       0.592   8.17e- 1     1</span>
 <span class="co">#&gt;  3       3 &lt;kmeans&gt;  1.41       0.372   1.04e+ 0     2</span>
-<span class="co">#&gt;  4       4 &lt;kmeans&gt;  1.41       0.276   1.13e+ 0     2</span>
-<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     4</span>
+<span class="co">#&gt;  4       4 &lt;kmeans&gt;  1.41       0.276   1.13e+ 0     3</span>
+<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     3</span>
 <span class="co">#&gt;  6       6 &lt;kmeans&gt;  1.41       0.159   1.25e+ 0     3</span>
-<span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     4</span>
-<span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0922  1.32e+ 0     3</span>
-<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0745  1.33e+ 0     2</span>
+<span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     3</span>
+<span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0884  1.32e+ 0     3</span>
+<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0746  1.33e+ 0     3</span>
 <span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0576  1.35e+ 0     2</span>
 <span class="co">#&gt; 11      11 &lt;kmeans&gt;  1.41       0.0460  1.36e+ 0     3</span>
-<span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     2</span>
-<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0272  1.38e+ 0     2</span>
-<span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0212  1.39e+ 0     2</span>
-<span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0164  1.39e+ 0     3</span></code></pre></div>
+<span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     3</span>
+<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0293  1.38e+ 0     3</span>
+<span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0231  1.39e+ 0     2</span>
+<span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0161  1.39e+ 0     2</span></code></pre></div>
 <p>ump_lst &lt;- umap_list(.data = uit_tbl, kmm_tbl, 3)</p>
 <p>umap_plt(.data = ump_lst, .point_size = 3)</p>
 </div>
