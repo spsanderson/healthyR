@@ -123,6 +123,56 @@ kmm_tbl %>%
   tidyr::unnest(glance)
 ```
 
-ump_lst <- umap_list(.data = uit_tbl, kmm_tbl, 3)
+As stated we use the `tot.withinss` to decide what will become our *`k`*, an easy
+way to do this is to visualize the Scree Plot, also known as the elbow plot. This 
+is done by ploting the `x-axis` as the `centers` and the `y-axis` as the `tot.withinss`.
 
+# Scree Plot and Data
+
+```{r scree_plt}
+kmeans_scree_plt(.data = kmm_tbl)
+```
+
+If we want to see the scree plot data that creates the plot then we can use another function `kmeans_scree_data_tbl`.
+
+```{r scree_data}
+kmeans_scree_data_tbl(kmm_tbl)
+```
+
+With the above pieces of information we can decide upon a value for *`k`*, in this
+instance we are going to use 3. Now that we have that we can go ahead with creating the umap list object where we can take a look at a great many things associated with the data.
+
+# UMAP List Object
+
+Now lets go ahead and create our UMAP list object.
+
+```{r umap_list, message=FALSE, warning=FALSE}
+ump_lst <- umap_list(.data = uit_tbl, kmm_tbl, 3)
+```
+
+Now that it is created, lets take a look at each item in the list. The `umap_list` function returns a list of 5 items.
+
+  * umap_obj
+  * umap_results_tbl
+  * kmeans_obj
+  * kmeans_cluster_tbl
+  * umap_kmeans_cluster_results_tbl
+  
+Since we have the list object we can now inspect the `kmeans_obj`, first thing we will do is use the `kmeans_tidy_tbl` function to inspect things.
+
+```{r kmeans_obj_inspect}
+km_obj <- ump_lst$kmeans_obj
+kmeans_tidy_tbl(.kmeans_obj = km_obj, .data = uit_tbl, .tidy_type = "glance")
+
+kmeans_tidy_tbl(km_obj, uit_tbl, "augment")
+
+kmeans_tidy_tbl(km_obj, uit_tbl, "tidy")
+```
+
+# UMAP Plot
+
+Now that we have all of the above data we can visualize our clusters that are colored by their cluster number.
+
+```{r umap_plt}
 umap_plt(.data = ump_lst, .point_size = 3)
+```
