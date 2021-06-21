@@ -43,16 +43,16 @@ over a specified time series tibble.
 
 suppressPackageStartupMessages(library(timetk))
 
-ts_ymwdh_tbl(
-  .data = m4_daily
+ts_signature_tbl(
+  .data       = m4_daily
   , .date_col = date
 ) \%>\%
 ts_median_excess_plt(
-  .date_col = date
-  , .value_col = value
-  , .x_axis = wk
-  , .ggplot_group_var = yr
-  , .years_back = 5
+  .date_col           = date
+  , .value_col        = value
+  , .x_axis           = week
+  , .ggplot_group_var = year
+  , .years_back       = 4
 )
 
 }
