@@ -8,13 +8,12 @@ navbar:
   left:
     - icon: "fa-home"
       href: index.html
-    - text: "Documentation"
+    - text: "Getting Started"
+      href: articles/getting-started.html
+    - text: "Articles"
       href: articles/index.html
       menu:
-        -  text: "Getting Started"
-        -  text: "Getting Started with healthyR"
-           href: articles/getting-started.html
-        -  text: "K-Means and UMAP"
+        -  text: "Clustering"
         -  text: "Clustering with K-Means and UMAP"
            href: articles/kmeans-umap.html
     - text: "Function Reference"
@@ -28,9 +27,6 @@ reference:
   -  subtitle: Time Series Plotting
      contents:
      -  matches("^ts_.+_plt")
-     # -  contains("ts_alos_plt")
-     # -  contains("ts_median_excess_plt")
-     # -  contains("ts_readmit_rate_plt")
      -  contains("ts_plt")
   -  subtitle: Gartner Magic Chart
      contents:

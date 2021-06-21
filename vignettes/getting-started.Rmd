@@ -32,8 +32,12 @@ knitr::opts_chunk$set(
 # Libaray Load
 
 First things first, lets load in the library:
-```{r setup}
+```{r setup, warning=FALSE, message=FALSE}
 library(healthyR)
+library(healthyR.data)
+library(timetk)
+library(dplyr)
+library(purrr)
 ```
 
 # Generate Sample Data
@@ -44,26 +48,23 @@ to generate some random numbers to simulate different daily average length of
 stay data. We will set a seed for reproducibility.
 
 ```{r random_los_data}
-set.seed(123)
+# Get Length of Stay Data
+data_tbl <- healthyR_data
 
-# Library Load ----
-suppressPackageStartupMessages(library(healthyR))
-suppressPackageStartupMessages(library(timetk))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(purrr))
-
-# Make A Series of Dates ----
-ts_tbl <- tk_make_timeseries(
-  start = "2019-01-01"
-  , by = "day"
-  , length_out = "1 year 6 months"
-)
-
-# Set Values ----
-values <- runif(548, 5, 10)
-
-# Make tibble ----
-df_tbl <- tibble(x = ts_tbl, y = values) %>% set_names("Date","Values")
+df_tbl <- data_tbl %>%
+  filter(ip_op_flag == "I") %>%
+  select(visit_end_date_time, length_of_stay) %>%
+  summarise_by_time(
+    .date_var = visit_end_date_time
+    , .by     = "day"
+    , visits  = mean(length_of_stay, na.rm = TRUE)
+  ) %>%
+  filter_by_time(
+    .date_var     = visit_end_date_time
+    , .start_date = "2012"
+    , .end_date   = "2019"
+  ) %>%
+  set_names("Date","Values")
 ```
 
 # Plot the Time Series
