@@ -35,28 +35,36 @@ otherwise a \code{plotly} plot is returned.
 }
 }
 \examples{
-set.seed(123)
-
-suppressPackageStartupMessages(library(timetk))
-suppressPackageStartupMessages(library(purrr))
-suppressPackageStartupMessages(library(dplyr))
+library(healthyR)
+library(healthyR.data)
+library(timetk)
+library(dplyr)
+library(purrr)
 
 # Make A Series of Dates ----
-ts_tbl <- tk_make_timeseries(
-   start = "2019-01-01"
-   , by = "day"
-  , length_out = "1 year 6 months"
-)
+data_tbl <- healthyR_data
 
-# Set Values ----
-values <- runif(548, 5, 10)
-
-# Make tibble ----
-df_tbl <- tibble(x = ts_tbl, y = values) \%>\% set_names("Date","Values")
+df_tbl <- data_tbl \%>\%
+    filter(ip_op_flag == "I") \%>\%
+    select(visit_end_date_time, length_of_stay) \%>\%
+    summarise_by_time(
+        .date_var = visit_end_date_time
+        , .by     = "day"
+        , visits  = mean(length_of_stay, na.rm = TRUE)
+    ) \%>\%
+    filter_by_time(
+        .date_var     = visit_end_date_time
+        , .start_date = "2012"
+        , .end_date   = "2019"
+    ) \%>\%
+    set_names("Date","Values")
 
 ts_alos_plt(
-.data = df_tbl, .date_col = Date, .value_col = Values, .by = "month"
-, .interactive = FALSE
+  .data = df_tbl
+  , .date_col = Date
+  , .value_col = Values
+  , .by = "month"
+  , .interactive = FALSE
 )
 
 }
