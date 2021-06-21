@@ -33,7 +33,8 @@ Imports:
     scales,
     sqldf,
     tidyr,
-    ggrepel
+    ggrepel,
+    lifecycle
 Suggests: 
     knitr,
     rmarkdown,
