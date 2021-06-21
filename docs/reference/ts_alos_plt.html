@@ -194,28 +194,38 @@ otherwise a <code>plotly</code> plot is returned.</p></li>
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR'>healthyR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'tune':</span>
+#&gt; <span class='message'>  method                   from   </span>
+#&gt; <span class='message'>  required_pkgs.model_spec parsnip</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span>
 
 <span class='co'># Make A Series of Dates ----</span>
-<span class='va'>ts_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/tk_make_timeseries.html'>tk_make_timeseries</a></span><span class='op'>(</span>
-   start <span class='op'>=</span> <span class='st'>"2019-01-01"</span>
-   , by <span class='op'>=</span> <span class='st'>"day"</span>
-  , length_out <span class='op'>=</span> <span class='st'>"1 year 6 months"</span>
-<span class='op'>)</span>
+<span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='va'>healthyR_data</span>
 
-<span class='co'># Set Values ----</span>
-<span class='va'>values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>548</span>, <span class='fl'>5</span>, <span class='fl'>10</span><span class='op'>)</span>
-
-<span class='co'># Make tibble ----</span>
-<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ts_tbl</span>, y <span class='op'>=</span> <span class='va'>values</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/set_names.html'>set_names</a></span><span class='op'>(</span><span class='st'>"Date"</span>,<span class='st'>"Values"</span><span class='op'>)</span>
+<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='va'>data_tbl</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>visit_end_date_time</span>, <span class='va'>length_of_stay</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/summarise_by_time.html'>summarise_by_time</a></span><span class='op'>(</span>
+        .date_var <span class='op'>=</span> <span class='va'>visit_end_date_time</span>
+        , .by     <span class='op'>=</span> <span class='st'>"day"</span>
+        , visits  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>length_of_stay</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/filter_by_time.html'>filter_by_time</a></span><span class='op'>(</span>
+        .date_var     <span class='op'>=</span> <span class='va'>visit_end_date_time</span>
+        , .start_date <span class='op'>=</span> <span class='st'>"2012"</span>
+        , .end_date   <span class='op'>=</span> <span class='st'>"2019"</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://purrr.tidyverse.org/reference/set_names.html'>set_names</a></span><span class='op'>(</span><span class='st'>"Date"</span>,<span class='st'>"Values"</span><span class='op'>)</span>
 
 <span class='fu'>ts_alos_plt</span><span class='op'>(</span>
-.data <span class='op'>=</span> <span class='va'>df_tbl</span>, .date_col <span class='op'>=</span> <span class='va'>Date</span>, .value_col <span class='op'>=</span> <span class='va'>Values</span>, .by <span class='op'>=</span> <span class='st'>"month"</span>
-, .interactive <span class='op'>=</span> <span class='cn'>FALSE</span>
+  .data <span class='op'>=</span> <span class='va'>df_tbl</span>
+  , .date_col <span class='op'>=</span> <span class='va'>Date</span>
+  , .value_col <span class='op'>=</span> <span class='va'>Values</span>
+  , .by <span class='op'>=</span> <span class='st'>"month"</span>
+  , .interactive <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 </div><div class='img'><img src='ts_alos_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
