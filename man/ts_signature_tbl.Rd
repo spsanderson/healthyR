@@ -27,7 +27,7 @@ date column defined by the \code{.date_col} parameter.
 \itemize{
 \item Supply data with a date column and this will add the year, month, week, week day and hour
 to the tibble. The original date column is kept.
-\item Returns a timeseries signature tibble.
+\item Returns a time-series signature tibble.
 \item You must know the data going into the function and if certain columns
 should be dropped or kept when using further functions
 }
