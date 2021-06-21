@@ -4,12 +4,16 @@
 \alias{ts_ymwdh_tbl}
 \title{Make a Time Enhanced Tibble}
 \usage{
-ts_ymwdh_tbl(.data, .date_col)
+ts_ymwdh_tbl(.data, .date_col, .pad_time = TRUE)
 }
 \arguments{
 \item{.data}{The data that is being analyzed.}
 
 \item{.date_col}{The column that holds the date.}
+
+\item{.pad_time}{Boolean TRUE/FALSE. If TRUE then the \code{\link[timetk:pad_by_time]{timetk::pad_by_time()}}
+function is called and used on the data.frame before the modification. The
+default is TRUE.}
 }
 \value{
 A tibble
@@ -34,15 +38,15 @@ to the tibble. The original date column is kept.
 \item Returns a tibble.
 \item You must know the data going into the function and if certain columns
 should be dropped or kept when using further functions
-\item Future work - Add boolean for pad_by_time to fill in missing time series information
 }
 }
 \examples{
 library(timetk)
 
 ts_ymwdh_tbl(
-  .data = m4_daily
+  .data       = m4_daily
   , .date_col = date
+  , .pad_time = TRUE
 )
 
 }
