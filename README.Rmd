@@ -48,8 +48,9 @@ This is a basic example of using the ts_median_excess_plt() function`:
 ```{r example}
 library(healthyR)
 library(timetk)
+library(dplyr)
 
-ts_signature_tbl(.data = m4_daily, .date_col = date) %>%
+ts_signature_tbl(.data = m4_daily, .date_col = date, .pad_time = TRUE, id) %>%
     ts_median_excess_plt(
         .date_col           = date
         , .value_col        = value
@@ -59,13 +60,13 @@ ts_signature_tbl(.data = m4_daily, .date_col = date) %>%
     )
 ```
 
-Here is a simple example of using the ts_ymwdh_tbl() function:
+Here is a simple example of using the ts_signature_tbl() function:
 
 ```{r cars}
 library(healthyR)
 library(timetk)
 
-ts_ymwdh_tbl(.data = m4_daily, .date_col = date)
+ts_signature_tbl(.data = m4_daily, .date_col = date)
 ```
 
 

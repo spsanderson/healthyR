@@ -42,39 +42,43 @@ function\`:
 library(healthyR)
 library(timetk)
 
-ts_ymwdh_tbl(.data = m4_daily, .date_col = date) %>%
+ts_signature_tbl(.data = m4_daily, .date_col = date, .pad_time = FALSE) %>%
     ts_median_excess_plt(
-        .date_col = date
-        , .value_col = value
-        , .x_axis = wk
-        , .ggplot_group_var = yr
-        , .years_back = 5
+        .date_col           = date
+        , .value_col        = value
+        , .x_axis           = week
+        , .ggplot_group_var = year
+        , .years_back       = 5
     )
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
-Here is a simple example of using the ts\_ymwdh\_tbl() function:
+Here is a simple example of using the ts\_signature\_tbl() function:
 
 ``` r
 library(healthyR)
 library(timetk)
 
-ts_ymwdh_tbl(.data = m4_daily, .date_col = date)
-#> # A tibble: 9,743 x 8
-#>    id    date       value    yr mn       wk wd       hr
-#>    <fct> <date>     <dbl> <dbl> <ord> <dbl> <ord> <int>
-#>  1 D10   2014-07-03 2076.  2014 Jul      27 Thu       0
-#>  2 D10   2014-07-04 2073.  2014 Jul      27 Fri       0
-#>  3 D10   2014-07-05 2049.  2014 Jul      27 Sat       0
-#>  4 D10   2014-07-06 2049.  2014 Jul      27 Sun       0
-#>  5 D10   2014-07-07 2006.  2014 Jul      28 Mon       0
-#>  6 D10   2014-07-08 2018.  2014 Jul      28 Tue       0
-#>  7 D10   2014-07-09 2019.  2014 Jul      28 Wed       0
-#>  8 D10   2014-07-10 2007.  2014 Jul      28 Thu       0
-#>  9 D10   2014-07-11 2010   2014 Jul      28 Fri       0
-#> 10 D10   2014-07-12 2002.  2014 Jul      28 Sat       0
-#> # ... with 9,733 more rows
+ts_signature_tbl(.data = m4_daily, .date_col = date)
+#> # A tibble: 17,578 x 31
+#>    id    date       value index.num  diff  year year.iso  half quarter month
+#>    <fct> <date>     <dbl>     <dbl> <dbl> <int>    <int> <int>   <int> <int>
+#>  1 D410  1978-06-23 9109. 267408000    NA  1978     1978     1       2     6
+#>  2 D410  1978-06-24 9103. 267494400 86400  1978     1978     1       2     6
+#>  3 D410  1978-06-25 9116. 267580800 86400  1978     1978     1       2     6
+#>  4 D410  1978-06-26 9116. 267667200 86400  1978     1978     1       2     6
+#>  5 D410  1978-06-27 9106. 267753600 86400  1978     1978     1       2     6
+#>  6 D410  1978-06-28 9094. 267840000 86400  1978     1978     1       2     6
+#>  7 D410  1978-06-29 9094. 267926400 86400  1978     1978     1       2     6
+#>  8 D410  1978-06-30 9084. 268012800 86400  1978     1978     1       2     6
+#>  9 D410  1978-07-01 9081. 268099200 86400  1978     1978     2       3     7
+#> 10 D410  1978-07-02 9047. 268185600 86400  1978     1978     2       3     7
+#> # ... with 17,568 more rows, and 21 more variables: month.xts <int>,
+#> #   month.lbl <ord>, day <int>, hour <int>, minute <int>, second <int>,
+#> #   hour12 <int>, am.pm <int>, wday <int>, wday.xts <int>, wday.lbl <ord>,
+#> #   mday <int>, qday <int>, yday <int>, mweek <int>, week <int>,
+#> #   week.iso <int>, week2 <int>, week3 <int>, week4 <int>, mday7 <int>
 ```
 
 Here is a simple example of using the plt\_gartner\_magic\_chart()

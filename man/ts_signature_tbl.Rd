@@ -4,7 +4,7 @@
 \alias{ts_signature_tbl}
 \title{Make a Time Enhanced Tibble}
 \usage{
-ts_signature_tbl(.data, .date_col, .pad_time = TRUE)
+ts_signature_tbl(.data, .date_col, .pad_time = TRUE, ...)
 }
 \arguments{
 \item{.data}{The data that is being analyzed.}
@@ -14,6 +14,9 @@ ts_signature_tbl(.data, .date_col, .pad_time = TRUE)
 \item{.pad_time}{Boolean TRUE/FALSE. If TRUE then the \code{\link[timetk:pad_by_time]{timetk::pad_by_time()}}
 function is called and used on the data.frame before the modification. The
 default is TRUE.}
+
+\item{...}{Grouping variables to be used by \code{\link[dplyr:group_by]{dplyr::group_by()}} before using
+\code{\link[timetk:pad_by_time]{timetk::pad_by_time()}}}
 }
 \value{
 A tibble
@@ -39,6 +42,7 @@ ts_signature_tbl(
   .data       = m4_daily
   , .date_col = date
   , .pad_time = TRUE
+  , id
 )
 
 }
