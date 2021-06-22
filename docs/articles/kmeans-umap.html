@@ -215,15 +215,101 @@
 <span class="co">#&gt;  6       6 &lt;kmeans&gt;  1.41       0.159   1.25e+ 0     2</span>
 <span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     3</span>
 <span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0884  1.32e+ 0     2</span>
-<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0722  1.34e+ 0     3</span>
-<span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0578  1.35e+ 0     2</span>
+<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0716  1.34e+ 0     3</span>
+<span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0576  1.35e+ 0     3</span>
 <span class="co">#&gt; 11      11 &lt;kmeans&gt;  1.41       0.0460  1.36e+ 0     3</span>
 <span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     3</span>
-<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0293  1.38e+ 0     3</span>
+<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0272  1.38e+ 0     2</span>
 <span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0202  1.39e+ 0     2</span>
-<span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0161  1.39e+ 0     2</span></code></pre></div>
-<p>ump_lst &lt;- umap_list(.data = uit_tbl, kmm_tbl, 3)</p>
-<p>umap_plt(.data = ump_lst, .point_size = 3)</p>
+<span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0161  1.39e+ 0     3</span></code></pre></div>
+<p>As stated we use the <code>tot.withinss</code> to decide what will become our <em><code>k</code></em>, an easy way to do this is to visualize the Scree Plot, also known as the elbow plot. This is done by ploting the <code>x-axis</code> as the <code>centers</code> and the <code>y-axis</code> as the <code>tot.withinss</code>.</p>
+</div>
+<div id="scree-plot-and-data" class="section level1">
+<h1 class="hasAnchor">
+<a href="#scree-plot-and-data" class="anchor"></a>Scree Plot and Data</h1>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/kmeans_scree_plt.html">kmeans_scree_plt</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">kmm_tbl</span><span class="op">)</span></code></pre></div>
+<p><img src="kmeans-umap_files/figure-html/scree_plt-1.png" width="95%" style="display: block; margin: auto;"></p>
+<p>If we want to see the scree plot data that creates the plot then we can use another function <code>kmeans_scree_data_tbl</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/kmeans_scree_data_tbl.html">kmeans_scree_data_tbl</a></span><span class="op">(</span><span class="va">kmm_tbl</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 15 x 2</span>
+<span class="co">#&gt;    centers tot.withinss</span>
+<span class="co">#&gt;      &lt;int&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt;  1       1       1.41  </span>
+<span class="co">#&gt;  2       2       0.592 </span>
+<span class="co">#&gt;  3       3       0.372 </span>
+<span class="co">#&gt;  4       4       0.276 </span>
+<span class="co">#&gt;  5       5       0.202 </span>
+<span class="co">#&gt;  6       6       0.159 </span>
+<span class="co">#&gt;  7       7       0.124 </span>
+<span class="co">#&gt;  8       8       0.0884</span>
+<span class="co">#&gt;  9       9       0.0716</span>
+<span class="co">#&gt; 10      10       0.0576</span>
+<span class="co">#&gt; 11      11       0.0460</span>
+<span class="co">#&gt; 12      12       0.0363</span>
+<span class="co">#&gt; 13      13       0.0272</span>
+<span class="co">#&gt; 14      14       0.0202</span>
+<span class="co">#&gt; 15      15       0.0161</span></code></pre></div>
+<p>With the above pieces of information we can decide upon a value for <em><code>k</code></em>, in this instance we are going to use 3. Now that we have that we can go ahead with creating the umap list object where we can take a look at a great many things associated with the data.</p>
+</div>
+<div id="umap-list-object" class="section level1">
+<h1 class="hasAnchor">
+<a href="#umap-list-object" class="anchor"></a>UMAP List Object</h1>
+<p>Now lets go ahead and create our UMAP list object.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ump_lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/umap_list.html">umap_list</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">uit_tbl</span>, <span class="va">kmm_tbl</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<p>Now that it is created, lets take a look at each item in the list. The <code>umap_list</code> function returns a list of 5 items.</p>
+<ul>
+<li>umap_obj</li>
+<li>umap_results_tbl</li>
+<li>kmeans_obj</li>
+<li>kmeans_cluster_tbl</li>
+<li>umap_kmeans_cluster_results_tbl</li>
+</ul>
+<p>Since we have the list object we can now inspect the <code>kmeans_obj</code>, first thing we will do is use the <code>kmeans_tidy_tbl</code> function to inspect things.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">km_obj</span> <span class="op">&lt;-</span> <span class="va">ump_lst</span><span class="op">$</span><span class="va">kmeans_obj</span>
+<span class="fu"><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl</a></span><span class="op">(</span>.kmeans_obj <span class="op">=</span> <span class="va">km_obj</span>, .data <span class="op">=</span> <span class="va">uit_tbl</span>, .tidy_type <span class="op">=</span> <span class="st">"glance"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 1 x 4</span>
+<span class="co">#&gt;   totss tot.withinss betweenss  iter</span>
+<span class="co">#&gt;   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1  1.41        0.372      1.04     2</span>
+
+<span class="fu"><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl</a></span><span class="op">(</span><span class="va">km_obj</span>, <span class="va">uit_tbl</span>, <span class="st">"augment"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 23 x 2</span>
+<span class="co">#&gt;    service_line                  cluster</span>
+<span class="co">#&gt;    &lt;chr&gt;                         &lt;fct&gt;  </span>
+<span class="co">#&gt;  1 Alcohol Abuse                 3      </span>
+<span class="co">#&gt;  2 Bariatric Surgery For Obesity 3      </span>
+<span class="co">#&gt;  3 Carotid Endarterectomy        2      </span>
+<span class="co">#&gt;  4 Cellulitis                    1      </span>
+<span class="co">#&gt;  5 Chest Pain                    1      </span>
+<span class="co">#&gt;  6 CHF                           2      </span>
+<span class="co">#&gt;  7 COPD                          2      </span>
+<span class="co">#&gt;  8 CVA                           2      </span>
+<span class="co">#&gt;  9 GI Hemorrhage                 2      </span>
+<span class="co">#&gt; 10 Joint Replacement             2      </span>
+<span class="co">#&gt; # ... with 13 more rows</span>
+
+<span class="fu"><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl</a></span><span class="op">(</span><span class="va">km_obj</span>, <span class="va">uit_tbl</span>, <span class="st">"tidy"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 14</span>
+<span class="co">#&gt;   `Blue Cross` Commercial Compensation `Exchange Plans`    HMO Medicaid</span>
+<span class="co">#&gt;          &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1       0.117      0.0314     0.0102            0.0139  0.0982   0.0856</span>
+<span class="co">#&gt; 2       0.0784     0.0218     0.00432           0.00620 0.0449   0.0368</span>
+<span class="co">#&gt; 3       0.150      0.0368     0.000307          0.0207  0.163    0.131 </span>
+<span class="co">#&gt; # ... with 8 more variables: Medicaid HMO &lt;dbl&gt;, Medicare A &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Medicare HMO &lt;dbl&gt;, No Fault &lt;dbl&gt;, Self Pay &lt;dbl&gt;, size &lt;int&gt;,</span>
+<span class="co">#&gt; #   withinss &lt;dbl&gt;, cluster &lt;fct&gt;</span></code></pre></div>
+</div>
+<div id="umap-plot" class="section level1">
+<h1 class="hasAnchor">
+<a href="#umap-plot" class="anchor"></a>UMAP Plot</h1>
+<p>Now that we have all of the above data we can visualize our clusters that are colored by their cluster number.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/umap_plt.html">umap_plt</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">ump_lst</span>, .point_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<p><img src="kmeans-umap_files/figure-html/umap_plt-1.png" width="95%" style="display: block; margin: auto;"></p>
 </div>
   </div>
 
