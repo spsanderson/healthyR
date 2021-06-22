@@ -185,7 +185,12 @@ k-means algorithm to it using <code><a href='https://rdrr.io/r/stats/kmeans.html
    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 
- <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span><span class='va'>data_tbl</span>, <span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span>
+   .data           <span class='op'>=</span> <span class='va'>data_tbl</span>
+   , .row_input    <span class='op'>=</span> <span class='va'>service_line</span>
+   , .col_input    <span class='op'>=</span>  <span class='va'>payer_grouping</span>
+   , .record_input <span class='op'>=</span> <span class='va'>record</span>
+ <span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'>kmeans_obj</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; K-means clustering with 5 clusters of sizes 3, 2, 1, 12, 5
 #&gt; 

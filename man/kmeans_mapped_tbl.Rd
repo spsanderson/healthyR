@@ -36,7 +36,12 @@ data_tbl <- healthyR_data\%>\%
    mutate(record = 1) \%>\%
    as_tibble()
 
-ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+ui_tbl <-  kmeans_user_item_tbl(
+   .data           = data_tbl
+   , .row_input    = service_line
+   , .col_input    =  payer_grouping
+   , .record_input = record
+ )
 
 kmeans_mapped_tbl(ui_tbl)
 

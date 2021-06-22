@@ -150,7 +150,7 @@ user-item tibble of proportions. The user will need to input the parameters
 for the rows/user and the columns/items.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kmeans_user_item_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.row_input</span>, <span class='va'>.col_input</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>kmeans_user_item_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.row_input</span>, <span class='va'>.col_input</span>, <span class='va'>.record_input</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +167,11 @@ for the rows/user and the columns/items.</p>
       <th>.col_input</th>
       <td><p>The column that is going to be the column (item)</p></td>
     </tr>
+    <tr>
+      <th>.record_input</th>
+      <td><p>The column that is going to be summed up for the aggregattion
+and normalization process.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -176,7 +181,8 @@ for the rows/user and the columns/items.</p>
 
     <p>This function should be used before using a k-mean model. This is
 commonly referred to as a user item matrix because "users" tend to be on the
-rows and "items" (e.g. orders) on the columns.</p>
+rows and "items" (e.g. orders) on the columns. You must supply a column that
+can be summed for the aggregation and normalization process to occurr.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven P. Sanderson II, MPH</p>
@@ -193,7 +199,12 @@ rows and "items" (e.g. orders) on the columns.</p>
    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
    <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 
- <span class='fu'>kmeans_user_item_tbl</span><span class='op'>(</span><span class='va'>data_tbl</span>, <span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span>
+ <span class='fu'>kmeans_user_item_tbl</span><span class='op'>(</span>
+   .data           <span class='op'>=</span> <span class='va'>data_tbl</span>
+   , .row_input    <span class='op'>=</span> <span class='va'>service_line</span>
+   , .col_input    <span class='op'>=</span>  <span class='va'>payer_grouping</span>
+   , .record_input <span class='op'>=</span> <span class='va'>record</span>
+ <span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 23 x 12</span>
 #&gt;    service_line     `Blue Cross` Commercial Compensation `Exchange Plans`    HMO
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>

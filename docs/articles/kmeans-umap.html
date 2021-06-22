@@ -152,7 +152,7 @@
 <h1 class="hasAnchor">
 <a href="#user-item-tibble" class="anchor"></a>User Item Tibble</h1>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">uit_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span><span class="va">data_tbl</span>, <span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">uit_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span><span class="va">data_tbl</span>, <span class="va">service_line</span>, <span class="va">payer_grouping</span>, <span class="va">record</span><span class="op">)</span>
 
 <span class="va">uit_tbl</span>
 <span class="co">#&gt; # A tibble: 23 x 12</span>
@@ -203,7 +203,7 @@
 <p>As we see there are three columns, <code>centers</code>, <code>k_means</code> and <code>glance</code>. The k_means column is the <code>k_means</code> list object and <code>glance</code> is the tibble returned by the <code><a href="https://generics.r-lib.org/reference/glance.html">broom::glance</a></code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kmm_tbl</span> <span class="op">%&gt;%</span>
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/nest.html">unnest</a></span><span class="op">(</span><span class="va">glance</span><span class="op">)</span>
+  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">glance</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 15 x 6</span>
 <span class="co">#&gt;    centers k_means  totss tot.withinss betweenss  iter</span>
 <span class="co">#&gt;      &lt;int&gt; &lt;list&gt;   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;</span>
@@ -211,17 +211,17 @@
 <span class="co">#&gt;  2       2 &lt;kmeans&gt;  1.41       0.592   8.17e- 1     1</span>
 <span class="co">#&gt;  3       3 &lt;kmeans&gt;  1.41       0.372   1.04e+ 0     2</span>
 <span class="co">#&gt;  4       4 &lt;kmeans&gt;  1.41       0.276   1.13e+ 0     2</span>
-<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     4</span>
-<span class="co">#&gt;  6       6 &lt;kmeans&gt;  1.41       0.159   1.25e+ 0     2</span>
+<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     2</span>
+<span class="co">#&gt;  6       6 &lt;kmeans&gt;  1.41       0.159   1.25e+ 0     3</span>
 <span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     3</span>
-<span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0884  1.32e+ 0     2</span>
-<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0745  1.33e+ 0     3</span>
-<span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0576  1.35e+ 0     2</span>
-<span class="co">#&gt; 11      11 &lt;kmeans&gt;  1.41       0.0460  1.36e+ 0     3</span>
+<span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0884  1.32e+ 0     3</span>
+<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0716  1.34e+ 0     2</span>
+<span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0576  1.35e+ 0     3</span>
+<span class="co">#&gt; 11      11 &lt;kmeans&gt;  1.41       0.0460  1.36e+ 0     2</span>
 <span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     3</span>
 <span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0272  1.38e+ 0     2</span>
-<span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0212  1.39e+ 0     2</span>
-<span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0161  1.39e+ 0     2</span></code></pre></div>
+<span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0202  1.39e+ 0     2</span>
+<span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0160  1.39e+ 0     1</span></code></pre></div>
 <p>As stated we use the <code>tot.withinss</code> to decide what will become our <em><code>k</code></em>, an easy way to do this is to visualize the Scree Plot, also known as the elbow plot. This is done by ploting the <code>x-axis</code> as the <code>centers</code> and the <code>y-axis</code> as the <code>tot.withinss</code>.</p>
 </div>
 <div id="scree-plot-and-data" class="section level1">
@@ -244,13 +244,13 @@
 <span class="co">#&gt;  6       6       0.159 </span>
 <span class="co">#&gt;  7       7       0.124 </span>
 <span class="co">#&gt;  8       8       0.0884</span>
-<span class="co">#&gt;  9       9       0.0745</span>
+<span class="co">#&gt;  9       9       0.0716</span>
 <span class="co">#&gt; 10      10       0.0576</span>
 <span class="co">#&gt; 11      11       0.0460</span>
 <span class="co">#&gt; 12      12       0.0363</span>
 <span class="co">#&gt; 13      13       0.0272</span>
-<span class="co">#&gt; 14      14       0.0212</span>
-<span class="co">#&gt; 15      15       0.0161</span></code></pre></div>
+<span class="co">#&gt; 14      14       0.0202</span>
+<span class="co">#&gt; 15      15       0.0160</span></code></pre></div>
 <p>With the above pieces of information we can decide upon a value for <em><code>k</code></em>, in this instance we are going to use 3. Now that we have that we can go ahead with creating the umap list object where we can take a look at a great many things associated with the data.</p>
 </div>
 <div id="umap-list-object" class="section level1">
