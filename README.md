@@ -41,8 +41,9 @@ function\`:
 ``` r
 library(healthyR)
 library(timetk)
+library(dplyr)
 
-ts_signature_tbl(.data = m4_daily, .date_col = date, .pad_time = FALSE) %>%
+ts_signature_tbl(.data = m4_daily, .date_col = date, .pad_time = TRUE, id) %>%
     ts_median_excess_plt(
         .date_col           = date
         , .value_col        = value
