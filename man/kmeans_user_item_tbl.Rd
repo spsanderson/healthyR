@@ -28,7 +28,7 @@ for the rows/user and the columns/items.
 This function should be used before using a k-mean model. This is
 commonly referred to as a user item matrix because "users" tend to be on the
 rows and "items" (e.g. orders) on the columns. You must supply a column that
-can be summed for the aggregation and normalization process to occurr.
+can be summed for the aggregation and normalization process to occur.
 }
 \examples{
 library(healthyR.data)

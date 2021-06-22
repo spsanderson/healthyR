@@ -10,7 +10,7 @@
 #' @details This function should be used before using a k-mean model. This is
 #' commonly referred to as a user item matrix because "users" tend to be on the
 #' rows and "items" (e.g. orders) on the columns. You must supply a column that
-#' can be summed for the aggregation and normalization process to occurr.
+#' can be summed for the aggregation and normalization process to occur.
 #'
 #' @param .data The data that you want to transform
 #' @param .row_input The column that is going to be the row (user)
