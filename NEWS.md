@@ -1,4 +1,4 @@
-# healthyR (development version)
+# healthyR 0.1.5
 
 ## Breaking Changes
 1. Fix #70 - `ts_ymwdh_tbl()` renamed to `ts_signature_tbl()`
