@@ -9,11 +9,14 @@
 #'
 #' @details This function should be used before using a k-mean model. This is
 #' commonly referred to as a user item matrix because "users" tend to be on the
-#' rows and "items" (e.g. orders) on the columns.
+#' rows and "items" (e.g. orders) on the columns. You must supply a column that
+#' can be summed for the aggregation and normalization process to occurr.
 #'
 #' @param .data The data that you want to transform
 #' @param .row_input The column that is going to be the row (user)
 #' @param .col_input The column that is going to be the column (item)
+#' @param .record_input The column that is going to be summed up for the aggregattion
+#' and normalization process.
 #'
 #' @examples
 #' library(healthyR.data)
@@ -27,7 +30,12 @@
 #'    mutate(record = 1) %>%
 #'    as_tibble()
 #'
-#'  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'  kmeans_user_item_tbl(
+#'    .data           = data_tbl
+#'    , .row_input    = service_line
+#'    , .col_input    =  payer_grouping
+#'    , .record_input = record
+#'  )
 #'
 #' @return
 #' A aggregated/normalized user item tibble
@@ -35,11 +43,12 @@
 #' @export
 #'
 
-kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
+kmeans_user_item_tbl <- function(.data, .row_input, .col_input, .record_input){
 
     # * Tidyeval ----
     row_input_var_expr <- rlang::enquo(.row_input)
     col_input_var_expr <- rlang::enquo(.col_input)
+    rec_input_var_expr <- rlang::enquo(.record_input)
 
     # * Checks ----
     if(!is.data.frame(.data)){
@@ -54,13 +63,18 @@ kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
         stop(call. = FALSE, "You must supply an item/column input")
     }
 
+    if(rlang::quo_is_missing(rec_input_var_expr)){
+        stop(call. = FALSE, "You must supply a record column that can be summed up
+             for the aggregation and normalization process.")
+    }
+
     # * Data ----
     data_tbl <- tibble::as_tibble(.data)
 
     # * Manipulate ----
     data_summarized_tbl <- data_tbl %>%
         dplyr::group_by({{ row_input_var_expr }}, {{ col_input_var_expr }}) %>%
-        dplyr::summarise(total_records = sum(record, na.rm = TRUE)) %>%
+        dplyr::summarise(total_records = sum({{ rec_input_var_expr }}, na.rm = TRUE)) %>%
         dplyr::ungroup() %>%
         # Normalize proportions
         dplyr::group_by({{ row_input_var_expr }}) %>%
@@ -110,7 +124,12 @@ kmeans_user_item_tbl <- function(.data, .row_input, .col_input){
 #'    mutate(record = 1) %>%
 #'    as_tibble()
 #'
-#'  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping) %>%
+#'  kmeans_user_item_tbl(
+#'    .data           = data_tbl
+#'    , .row_input    = service_line
+#'    , .col_input    =  payer_grouping
+#'    , .record_input = record
+#'  ) %>%
 #'    kmeans_obj()
 #'
 #' @return
@@ -178,18 +197,27 @@ kmeans_obj <- function(.data, .centers = 5){
 #'    mutate(record = 1) %>%
 #'    as_tibble()
 #'
-#'  uit_tbl <- kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#'  uit_tbl <- kmeans_user_item_tbl(
+#'    .data           = data_tbl
+#'    , .row_input    = service_line
+#'    , .col_input    =  payer_grouping
+#'    , .record_input = record
+#'  )
+#'
 #'  km_obj  <- kmeans_obj(uit_tbl)
+#'
 #'  kmeans_tidy_tbl(
 #'    .kmeans_obj  = km_obj
 #'    , .data      = uit_tbl
 #'    , .tidy_type = "augment"
 #'  )
+#'
 #'  kmeans_tidy_tbl(
 #'    .kmeans_obj  = km_obj
 #'    , .data      = uit_tbl
 #'    , .tidy_type = "glance"
 #'  )
+#'
 #'  kmeans_tidy_tbl(
 #'    .kmeans_obj  = km_obj
 #'    , .data      = uit_tbl
@@ -273,7 +301,12 @@ kmeans_tidy_tbl <- function(.kmeans_obj, .data, .tidy_type = "tidy") {
 #'    mutate(record = 1) %>%
 #'    as_tibble()
 #'
-#' ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#' ui_tbl <-  kmeans_user_item_tbl(
+#'    .data           = data_tbl
+#'    , .row_input    = service_line
+#'    , .col_input    =  payer_grouping
+#'    , .record_input = record
+#'  )
 #'
 #' kmeans_mapped_tbl(ui_tbl)
 #'
@@ -342,7 +375,12 @@ kmeans_mapped_tbl <- function(.data, .centers = 15){
 #'    mutate(record = 1) %>%
 #'    as_tibble()
 #'
-#' ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#' ui_tbl <-  kmeans_user_item_tbl(
+#'    .data           = data_tbl
+#'    , .row_input    = service_line
+#'    , .col_input    =  payer_grouping
+#'    , .record_input = record
+#'  )
 #'
 #' kmm_tbl <- kmeans_mapped_tbl(ui_tbl)
 #'
@@ -398,7 +436,12 @@ kmeans_scree_data_tbl <- function(.data) {
 #'    mutate(record = 1) %>%
 #'    as_tibble()
 #'
-#' ui_tbl <-  kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+#' ui_tbl <-  kmeans_user_item_tbl(
+#'    .data           = data_tbl
+#'    , .row_input    = service_line
+#'    , .col_input    =  payer_grouping
+#'    , .record_input = record
+#'  )
 #'
 #' kmm_tbl <- kmeans_mapped_tbl(ui_tbl)
 #'

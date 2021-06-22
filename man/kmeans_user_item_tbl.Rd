@@ -4,7 +4,7 @@
 \alias{kmeans_user_item_tbl}
 \title{K-Means Functions}
 \usage{
-kmeans_user_item_tbl(.data, .row_input, .col_input)
+kmeans_user_item_tbl(.data, .row_input, .col_input, .record_input)
 }
 \arguments{
 \item{.data}{The data that you want to transform}
@@ -12,6 +12,9 @@ kmeans_user_item_tbl(.data, .row_input, .col_input)
 \item{.row_input}{The column that is going to be the row (user)}
 
 \item{.col_input}{The column that is going to be the column (item)}
+
+\item{.record_input}{The column that is going to be summed up for the aggregattion
+and normalization process.}
 }
 \value{
 A aggregated/normalized user item tibble
@@ -24,7 +27,8 @@ for the rows/user and the columns/items.
 \details{
 This function should be used before using a k-mean model. This is
 commonly referred to as a user item matrix because "users" tend to be on the
-rows and "items" (e.g. orders) on the columns.
+rows and "items" (e.g. orders) on the columns. You must supply a column that
+can be summed for the aggregation and normalization process to occurr.
 }
 \examples{
 library(healthyR.data)
@@ -38,7 +42,12 @@ data_tbl <- healthyR_data\%>\%
    mutate(record = 1) \%>\%
    as_tibble()
 
- kmeans_user_item_tbl(data_tbl, service_line, payer_grouping)
+ kmeans_user_item_tbl(
+   .data           = data_tbl
+   , .row_input    = service_line
+   , .col_input    =  payer_grouping
+   , .record_input = record
+ )
 
 }
 \author{
