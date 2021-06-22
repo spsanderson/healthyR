@@ -113,6 +113,8 @@ umap_list <- function(.data
 #'
 #' @param .data The data from the [umap_list()] function.
 #' @param .point_size The desired size for the points of the plot.
+#' @param .label Should [ggrepel::geom_label_repel()] be used to display cluster
+#' user labels.
 #'
 #' @examples
 #' library(healthyR.data)
@@ -142,7 +144,7 @@ umap_list <- function(.data
 #' @export
 #'
 
-umap_plt <- function(.data, .point_size = 2) {
+umap_plt <- function(.data, .point_size = 2, .label = TRUE) {
 
     # * Checks ----
     if(!is.list(.data)){
@@ -159,10 +161,9 @@ umap_plt <- function(.data, .point_size = 2) {
             mapping = ggplot2::aes(
                 x = x
                 , y = y
-                , color = .cluster
             )
         ) +
-        ggplot2::geom_point(size = .point_size) +
+        ggplot2::geom_point(size = .point_size, ggplot2::aes(col = .cluster)) +
         tidyquant::theme_tq() +
         tidyquant::scale_color_tq() +
         ggplot2::labs(
@@ -173,7 +174,19 @@ umap_plt <- function(.data, .point_size = 2) {
                 , "Clusters Identified"
                 , sep = " "
             )
+            , color = "Cluster"
         )
+
+    if(.label){
+        ump_label <- ump_lst$umap_kmeans_cluster_results_tbl[[3]]
+
+        umap_plt <- umap_plt +
+            ggrepel::geom_label_repel(
+                mapping = ggplot2::aes(
+                    label = ump_label
+                )
+            )
+    }
 
     # * Return ----
     print(umap_plt)

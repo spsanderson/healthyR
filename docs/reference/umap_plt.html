@@ -146,7 +146,7 @@
     <p>Create a UMAP Projection plot.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>umap_plt</span><span class='op'>(</span><span class='va'>.data</span>, .point_size <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>umap_plt</span><span class='op'>(</span><span class='va'>.data</span>, .point_size <span class='op'>=</span> <span class='fl'>2</span>, .label <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,6 +158,11 @@
     <tr>
       <th>.point_size</th>
       <td><p>The desired size for the points of the plot.</p></td>
+    </tr>
+    <tr>
+      <th>.label</th>
+      <td><p>Should <code><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>ggrepel::geom_label_repel()</a></code> be used to display cluster
+user labels.</p></td>
     </tr>
     </table>
 
