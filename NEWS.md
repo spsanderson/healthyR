@@ -1,5 +1,21 @@
 # healthyR (development version)
 
+## Breaking Changes
+1. Fix #70 - `ts_ymwdh_tbl()` renamed to `ts_signature_tbl()`
+
+## New Features
+1. Fix #70 - Add `timetk::tk_augment_time_series_signature()` to tibble that gets
+returned.
+2. Fix #59 - Add boolean to `ts_signature_tbl()` for `timetk::pad_by_time()` functionality.
+3. Fix #55 - Add `uwot::umap()` functionality with `umap_list()`.
+4. Fix #56 - Add `umap_plt()` functionality to plot out the UMAP Projection with K-Means cluster
+assignments.
+
+## Minor Fixes and Improvments
+1. Fix #76 - Require user to select a column to be aggregated and normalized in the
+`kmeans_user_item_tbl()` function.
+2. Fix #62 - Add `lifecycle` to project.
+
 # healthyR 0.1.4
 
 ## Breaking Changes

@@ -150,7 +150,7 @@ date column defined by the .date_col parameter." />
 date column defined by the <code>.date_col</code> parameter.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ts_signature_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span>, .pad_time <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ts_signature_tbl</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>.date_col</span>, .pad_time <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,6 +168,11 @@ date column defined by the <code>.date_col</code> parameter.</p>
       <td><p>Boolean TRUE/FALSE. If TRUE then the <code><a href='https://rdrr.io/pkg/timetk/man/pad_by_time.html'>timetk::pad_by_time()</a></code>
 function is called and used on the data.frame before the modification. The
 default is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Grouping variables to be used by <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code> before using
+<code><a href='https://rdrr.io/pkg/timetk/man/pad_by_time.html'>timetk::pad_by_time()</a></code></p></td>
     </tr>
     </table>
 
@@ -193,8 +198,9 @@ should be dropped or kept when using further functions</p></li>
   .data       <span class='op'>=</span> <span class='va'>m4_daily</span>
   , .date_col <span class='op'>=</span> <span class='va'>date</span>
   , .pad_time <span class='op'>=</span> <span class='cn'>TRUE</span>
+  , <span class='va'>id</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>pad applied on the interval: day</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,578 x 31</span>
+</div><div class='output co'>#&gt; <span class='message'>pad applied on the interval: day</span></div><div class='output co'>#&gt; <span class='message'>pad applied on the interval: day</span></div><div class='output co'>#&gt; <span class='message'>pad applied on the interval: day</span></div><div class='output co'>#&gt; <span class='message'>pad applied on the interval: day</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9,743 x 31</span>
 #&gt;    id    date       value index.num  diff  year year.iso  half quarter month
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> D410  1978-06-23 <span style='text-decoration: underline;'>9</span>109. 267<span style='text-decoration: underline;'>408</span>000    <span style='color: #BB0000;'>NA</span>  <span style='text-decoration: underline;'>1</span>978     <span style='text-decoration: underline;'>1</span>978     1       2     6
@@ -207,7 +213,7 @@ should be dropped or kept when using further functions</p></li>
 #&gt; <span style='color: #BCBCBC;'> 8</span> D410  1978-06-30 <span style='text-decoration: underline;'>9</span>084. 268<span style='text-decoration: underline;'>012</span>800 <span style='text-decoration: underline;'>86</span>400  <span style='text-decoration: underline;'>1</span>978     <span style='text-decoration: underline;'>1</span>978     1       2     6
 #&gt; <span style='color: #BCBCBC;'> 9</span> D410  1978-07-01 <span style='text-decoration: underline;'>9</span>081. 268<span style='text-decoration: underline;'>099</span>200 <span style='text-decoration: underline;'>86</span>400  <span style='text-decoration: underline;'>1</span>978     <span style='text-decoration: underline;'>1</span>978     2       3     7
 #&gt; <span style='color: #BCBCBC;'>10</span> D410  1978-07-02 <span style='text-decoration: underline;'>9</span>047. 268<span style='text-decoration: underline;'>185</span>600 <span style='text-decoration: underline;'>86</span>400  <span style='text-decoration: underline;'>1</span>978     <span style='text-decoration: underline;'>1</span>978     2       3     7
-#&gt; <span style='color: #949494;'># ... with 17,568 more rows, and 21 more variables: month.xts &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'># ... with 9,733 more rows, and 21 more variables: month.xts &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   month.lbl &lt;ord&gt;, day &lt;int&gt;, hour &lt;int&gt;, minute &lt;int&gt;, second &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   hour12 &lt;int&gt;, am.pm &lt;int&gt;, wday &lt;int&gt;, wday.xts &lt;int&gt;, wday.lbl &lt;ord&gt;,</span>
 #&gt; <span style='color: #949494;'>#   mday &lt;int&gt;, qday &lt;int&gt;, yday &lt;int&gt;, mweek &lt;int&gt;, week &lt;int&gt;,</span>

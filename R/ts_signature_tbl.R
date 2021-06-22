@@ -10,6 +10,8 @@
 #' @param .pad_time Boolean TRUE/FALSE. If TRUE then the [timetk::pad_by_time()]
 #' function is called and used on the data.frame before the modification. The
 #' default is TRUE.
+#' @param ... Grouping variables to be used by [dplyr::group_by()] before using
+#' [timetk::pad_by_time()]
 #'
 #' @details
 #' - Supply data with a date column and this will add the year, month, week, week day and hour
@@ -25,6 +27,7 @@
 #'   .data       = m4_daily
 #'   , .date_col = date
 #'   , .pad_time = TRUE
+#'   , id
 #' )
 #'
 #' @return A tibble
@@ -35,11 +38,13 @@ ts_signature_tbl <- function(
     .data
     , .date_col
     , .pad_time = TRUE
+    , ...
 ) {
 
     # * Tidyeval Setup ----
     date_var_expr <- rlang::enquo(.date_col)
     pad_var_expr  <- .pad_time
+    grp_var_expr  <- rlang::quos(...)
 
     # Checks
     if(!is.data.frame(.data)) {
@@ -51,9 +56,11 @@ ts_signature_tbl <- function(
 
     if(pad_var_expr){
         df_tbl <- df_tbl %>%
+            dplyr::group_by(!!! grp_var_expr) %>%
             timetk::pad_by_time(
                 .date_var = {{ date_var_expr }}
-            )
+            ) %>%
+            dplyr::ungroup()
     }
 
     df_extended_tbl <- df_tbl %>%

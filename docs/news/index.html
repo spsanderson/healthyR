@@ -144,19 +144,45 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#healthyr-development-version" class="anchor"></a>healthyR (development version)<small> Unreleased </small>
 </h1>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a>Breaking Changes</h2>
+<ol>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/70'>#70</a> - <code>ts_ymwdh_tbl()</code> renamed to <code><a href="../reference/ts_signature_tbl.html">ts_signature_tbl()</a></code>
+</li>
+</ol>
+</div>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New Features</h2>
+<ol>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/70'>#70</a> - Add <code>timetk::tk_augment_time_series_signature()</code> to tibble that gets returned.</li>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/59'>#59</a> - Add boolean to <code><a href="../reference/ts_signature_tbl.html">ts_signature_tbl()</a></code> for <code><a href="https://rdrr.io/pkg/timetk/man/pad_by_time.html">timetk::pad_by_time()</a></code> functionality.</li>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/55'>#55</a> - Add <code><a href="https://rdrr.io/pkg/uwot/man/umap.html">uwot::umap()</a></code> functionality with <code><a href="../reference/umap_list.html">umap_list()</a></code>.</li>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/56'>#56</a> - Add <code><a href="../reference/umap_plt.html">umap_plt()</a></code> functionality to plot out the UMAP Projection with K-Means cluster assignments.</li>
+</ol>
+</div>
+<div id="minor-fixes-and-improvments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-fixes-and-improvments" class="anchor"></a>Minor Fixes and Improvments</h2>
+<ol>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/76'>#76</a> - Require user to select a column to be aggregated and normalized in the <code><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code> function.</li>
+<li>Fix <a href='https://github.com/spsanderson/healthyR/issues/62'>#62</a> - Add <code>lifecycle</code> to project.</li>
+</ol>
+</div>
 </div>
     <div id="healthyr-014" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.4">
 <a href="#healthyr-014" class="anchor"></a>healthyR 0.1.4<small> 2021-06-13 </small>
 </h1>
-<div id="breaking-changes" class="section level2">
+<div id="breaking-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>Breaking Changes</h2>
+<a href="#breaking-changes-1" class="anchor"></a>Breaking Changes</h2>
 <p>None</p>
 </div>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New Features</h2>
+<a href="#new-features-1" class="anchor"></a>New Features</h2>
 <ul>
 <li>Added Functions</li>
 </ul>
@@ -172,9 +198,9 @@
 <code><a href="../reference/kmeans_mapped_tbl.html">kmeans_mapped_tbl()</a></code> - Fix <a href='https://github.com/spsanderson/healthyR/issues/43'>#43</a> - This generates the data that will help create the elbow ploat data. It maps the <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> function across the stated amount of centers. The default is set to 15.</li>
 </ol>
 </div>
-<div id="minor-fixes-and-improvments" class="section level2">
+<div id="minor-fixes-and-improvments-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-fixes-and-improvments" class="anchor"></a>Minor Fixes and Improvments</h2>
+<a href="#minor-fixes-and-improvments-1" class="anchor"></a>Minor Fixes and Improvments</h2>
 <p>Fix <a href='https://github.com/spsanderson/healthyR/issues/45'>#45</a> - drop the <code>.row_col</code> parameter from the <code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> function as it is not needed, this saves the user from needing to remember what they selected as the <code>user</code> column.</p>
 </div>
 </div>
@@ -182,14 +208,14 @@
 <h1 class="page-header" data-toc-text="0.1.3">
 <a href="#healthyr-013" class="anchor"></a>healthyR 0.1.3<small> 2021-06-03 </small>
 </h1>
-<div id="breaking-changes-1" class="section level2">
+<div id="breaking-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes-1" class="anchor"></a>Breaking Changes</h2>
+<a href="#breaking-changes-2" class="anchor"></a>Breaking Changes</h2>
 <p>None</p>
 </div>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New Features</h2>
+<a href="#new-features-2" class="anchor"></a>New Features</h2>
 <ul>
 <li>Added functions</li>
 </ul>
@@ -200,9 +226,9 @@
 <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> Fix <a href='https://github.com/spsanderson/healthyR/issues/37'>#37</a> - Creates a stats kmeans object, a simple wrapper.</li>
 </ol>
 </div>
-<div id="minor-fixes-and-improvments-1" class="section level2">
+<div id="minor-fixes-and-improvments-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-fixes-and-improvments-1" class="anchor"></a>Minor Fixes and Improvments</h2>
+<a href="#minor-fixes-and-improvments-2" class="anchor"></a>Minor Fixes and Improvments</h2>
 <ul>
 <li>Minor fixes and improvements</li>
 </ul>
