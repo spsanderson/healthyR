@@ -4,12 +4,15 @@
 \alias{umap_plt}
 \title{UMAP and K-Means Cluster Visualization}
 \usage{
-umap_plt(.data, .point_size = 2)
+umap_plt(.data, .point_size = 2, .label = TRUE)
 }
 \arguments{
 \item{.data}{The data from the \code{\link[=umap_list]{umap_list()}} function.}
 
 \item{.point_size}{The desired size for the points of the plot.}
+
+\item{.label}{Should \code{\link[ggrepel:geom_text_repel]{ggrepel::geom_label_repel()}} be used to display cluster
+user labels.}
 }
 \value{
 A ggplot2 UMAP Projection with clusters represented by colors.

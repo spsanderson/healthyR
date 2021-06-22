@@ -174,5 +174,5 @@ kmeans_tidy_tbl(km_obj, uit_tbl, "tidy")
 Now that we have all of the above data we can visualize our clusters that are colored by their cluster number.
 
 ```{r umap_plt}
-umap_plt(.data = ump_lst, .point_size = 3)
+umap_plt(.data = ump_lst, .point_size = 3, TRUE)
 ```
