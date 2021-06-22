@@ -1,5 +1,5 @@
 ## Test environments
-0.1.4 prep for cran
+0.1.5 prep for cran
   
 ## Fix Issue to maintain CRAN
 
