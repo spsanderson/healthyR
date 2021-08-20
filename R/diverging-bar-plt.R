@@ -55,7 +55,7 @@
 #' @export
 #'
 
-diverging_lollipop_plt <- function(.data, .x_axis, .y_axis, .fill_col,
+diverging_bar_plt <- function(.data, .x_axis, .y_axis, .fill_col,
                                    .plot_title = NULL, .plot_subtitle = NULL,
                                    .plot_caption = NULL, .interactive = FALSE){
 
@@ -101,7 +101,7 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis, .fill_col,
         ggplot2::geom_bar(
             stat = 'identity'
             , ggplot2::aes(
-                fill = mpg_type
+                fill = {{ fill_col_var }}
                 )
             , width=.5
         )  +
