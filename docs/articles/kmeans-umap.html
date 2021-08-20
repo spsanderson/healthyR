@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6.9000</span>
       </span>
     </div>
 
@@ -211,15 +211,15 @@
 <span class="co">#&gt;  2       2 &lt;kmeans&gt;  1.41       0.592   8.17e- 1     1</span>
 <span class="co">#&gt;  3       3 &lt;kmeans&gt;  1.41       0.372   1.04e+ 0     2</span>
 <span class="co">#&gt;  4       4 &lt;kmeans&gt;  1.41       0.276   1.13e+ 0     2</span>
-<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     3</span>
+<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     2</span>
 <span class="co">#&gt;  6       6 &lt;kmeans&gt;  1.41       0.159   1.25e+ 0     4</span>
-<span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     3</span>
+<span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     4</span>
 <span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0884  1.32e+ 0     2</span>
-<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0930  1.32e+ 0     3</span>
-<span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0606  1.35e+ 0     2</span>
+<span class="co">#&gt;  9       9 &lt;kmeans&gt;  1.41       0.0768  1.33e+ 0     2</span>
+<span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0576  1.35e+ 0     2</span>
 <span class="co">#&gt; 11      11 &lt;kmeans&gt;  1.41       0.0460  1.36e+ 0     2</span>
-<span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     3</span>
-<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0272  1.38e+ 0     3</span>
+<span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     2</span>
+<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0272  1.38e+ 0     2</span>
 <span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0202  1.39e+ 0     3</span>
 <span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0160  1.39e+ 0     2</span></code></pre></div>
 <p>As stated we use the <code>tot.withinss</code> to decide what will become our <em><code>k</code></em>, an easy way to do this is to visualize the Scree Plot, also known as the elbow plot. This is done by ploting the <code>x-axis</code> as the <code>centers</code> and the <code>y-axis</code> as the <code>tot.withinss</code>.</p>
@@ -244,8 +244,8 @@
 <span class="co">#&gt;  6       6       0.159 </span>
 <span class="co">#&gt;  7       7       0.124 </span>
 <span class="co">#&gt;  8       8       0.0884</span>
-<span class="co">#&gt;  9       9       0.0930</span>
-<span class="co">#&gt; 10      10       0.0606</span>
+<span class="co">#&gt;  9       9       0.0768</span>
+<span class="co">#&gt; 10      10       0.0576</span>
 <span class="co">#&gt; 11      11       0.0460</span>
 <span class="co">#&gt; 12      12       0.0363</span>
 <span class="co">#&gt; 13      13       0.0272</span>
@@ -280,11 +280,11 @@
 <span class="co">#&gt; # A tibble: 23 x 2</span>
 <span class="co">#&gt;    service_line                  cluster</span>
 <span class="co">#&gt;    &lt;chr&gt;                         &lt;fct&gt;  </span>
-<span class="co">#&gt;  1 Alcohol Abuse                 3      </span>
-<span class="co">#&gt;  2 Bariatric Surgery For Obesity 3      </span>
+<span class="co">#&gt;  1 Alcohol Abuse                 1      </span>
+<span class="co">#&gt;  2 Bariatric Surgery For Obesity 1      </span>
 <span class="co">#&gt;  3 Carotid Endarterectomy        2      </span>
-<span class="co">#&gt;  4 Cellulitis                    1      </span>
-<span class="co">#&gt;  5 Chest Pain                    1      </span>
+<span class="co">#&gt;  4 Cellulitis                    3      </span>
+<span class="co">#&gt;  5 Chest Pain                    3      </span>
 <span class="co">#&gt;  6 CHF                           2      </span>
 <span class="co">#&gt;  7 COPD                          2      </span>
 <span class="co">#&gt;  8 CVA                           2      </span>
@@ -296,9 +296,9 @@
 <span class="co">#&gt; # A tibble: 3 x 14</span>
 <span class="co">#&gt;   `Blue Cross` Commercial Compensation `Exchange Plans`    HMO Medicaid</span>
 <span class="co">#&gt;          &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1       0.117      0.0314     0.0102            0.0139  0.0982   0.0856</span>
+<span class="co">#&gt; 1       0.150      0.0368     0.000307          0.0207  0.163    0.131 </span>
 <span class="co">#&gt; 2       0.0784     0.0218     0.00432           0.00620 0.0449   0.0368</span>
-<span class="co">#&gt; 3       0.150      0.0368     0.000307          0.0207  0.163    0.131 </span>
+<span class="co">#&gt; 3       0.117      0.0314     0.0102            0.0139  0.0982   0.0856</span>
 <span class="co">#&gt; # ... with 8 more variables: Medicaid HMO &lt;dbl&gt;, Medicare A &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Medicare HMO &lt;dbl&gt;, No Fault &lt;dbl&gt;, Self Pay &lt;dbl&gt;, size &lt;int&gt;,</span>
 <span class="co">#&gt; #   withinss &lt;dbl&gt;, cluster &lt;fct&gt;</span></code></pre></div>
