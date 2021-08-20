@@ -105,11 +105,6 @@ diverging_bar_plt <- function(.data, .x_axis, .y_axis, .fill_col,
                 )
             , width=.5
         )  +
-        # ggplot2::scale_fill_manual(
-        #     name = "Mileage"
-        #     , labels = c("Above Average", "Below Average")
-        #     , values = c("above"="#00ba38", "below"="#f8766d")
-        # ) +
         tidyquant::scale_fill_tq() +
         ggplot2::labs(
             title    = plot_title,
