@@ -27,7 +27,8 @@
 #' @param .data The data to pass to the function, must be a tibble/data.frame.
 #' @param .x_axis The data that is passed to the x-axis.
 #' @param .y_axis The data that is passed to the y-axis. This will also equal the
-#' parameters of `yend` and `label`
+#' parameter `label`
+#' @param .fill_col The column that will be used to fill the color of the bars.
 #' @param .plot_title Default is NULL
 #' @param .plot_subtitle Default is NULL
 #' @param .plot_caption Default is NULL
@@ -54,19 +55,36 @@
 #' @export
 #'
 
-diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
+diverging_lollipop_plt <- function(.data, .x_axis, .y_axis, .fill_col,
                                    .plot_title = NULL, .plot_subtitle = NULL,
                                    .plot_caption = NULL, .interactive = FALSE){
 
     # * Tidyeval ----
     x_axis_var    <- rlang::enquo(.x_axis)
     y_axis_var    <- rlang::enquo(.y_axis)
+    fill_col_var  <- rlang::enquo(.fill_col)
     plot_title    <- .plot_title
     plot_subtitle <- .plot_subtitle
     plot_caption  <- .plot_caption
     interact_var  <- .interactive
 
     # * Checks ----
+    if (rlang::quo_is_missing(x_axis_var) | rlang::quo_is_missing(y_axis_var)){
+        stop(call. = FALSE, "You must provide both the .x_axis AND .y_axis columns.")
+    }
+
+    if (rlang::quo_is_missing(fill_col_var)){
+        stop(call. = FALSE, "You must provide the .fill_col that maps the color
+             for a over or under category.")
+    }
+
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE, "(.data) is missing, please supply.")
+    }
+
+    if (!is.logical(.interactive)) {
+        stop(call. = FALSE, "You must supply either TRUE or FALSE for .interactive")
+    }
 
     # * Data ----
     data_tbl <- tibble::as_tibble(.data)
