@@ -73,7 +73,7 @@ diverging_bar_plt(
   , .x_axis      = car_name
   , .y_axis      = mpg_z
   , .fill_col    = mpg_type
-  , .interactive = TRUE
+  , .interactive = FALSE
 )
 
 }
