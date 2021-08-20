@@ -55,7 +55,7 @@ mtcars <- mtcars[order(mtcars$mpg_z), ]  # sort
 mtcars$car_name <- factor(mtcars$car_name, levels = mtcars$car_name)
 
 diverging_lollipop_plt(.data = mtcars, .x_axis = car_name
-, .y_axis = mpg_z, .label = mpg_z)
+, .y_axis = mpg_z)
 
 }
 \author{
