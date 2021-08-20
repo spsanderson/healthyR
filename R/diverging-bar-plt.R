@@ -25,8 +25,7 @@
 #' This function takes only a few arguments and returns a ggplot2 object.
 #'
 #' @param .data The data to pass to the function, must be a tibble/data.frame.
-#' @param .x_axis The data that is passed to the x-axis. This will also be the
-#' `x` and `xend` parameters of the `geom_segment`
+#' @param .x_axis The data that is passed to the x-axis.
 #' @param .y_axis The data that is passed to the y-axis. This will also equal the
 #' parameters of `yend` and `label`
 #' @param .plot_title Default is NULL
@@ -88,11 +87,12 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
                 )
             , width=.5
         )  +
-        ggplot2::scale_fill_manual(
-            name = "Mileage"
-            , labels = c("Above Average", "Below Average")
-            , values = c("above"="#00ba38", "below"="#f8766d")
-        ) +
+        # ggplot2::scale_fill_manual(
+        #     name = "Mileage"
+        #     , labels = c("Above Average", "Below Average")
+        #     , values = c("above"="#00ba38", "below"="#f8766d")
+        # ) +
+        tidyquant::scale_fill_tq() +
         ggplot2::labs(
             title    = plot_title,
             subtitle = plot_subtitle,
