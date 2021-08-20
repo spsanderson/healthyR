@@ -38,6 +38,8 @@
 #' @return
 #' A `plotly` plot or a `ggplot2` static plot
 #'
+#' @importFrom plotly ggplotly
+#'
 #' @export
 #'
 
