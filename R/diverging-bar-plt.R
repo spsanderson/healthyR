@@ -79,22 +79,25 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
             x = {{ x_axis_var }}
             , y = {{ y_axis_var }}
             , label = {{ y_axis_var }}
-        )
-    ) +
-        ggplot2::geom_point(stat = 'identity', fill = "black", size = 6)  +
-        ggplot2::geom_segment(
-            ggplot2::aes(y = 0,
-                         x = {{ x_axis_var }},
-                         yend = {{ y_axis_var }},
-                         xend = {{ x_axis_var }}),
-            color = "black") +
-        ggplot2::geom_text(color = "white", size = 2) +
+            )
+        ) +
+        ggplot2::geom_bar(
+            stat = 'identity'
+            , ggplot2::aes(
+                fill = mpg_type
+                )
+            , width=.5
+        )  +
+        ggplot2::scale_fill_manual(
+            name = "Mileage"
+            , labels = c("Above Average", "Below Average")
+            , values = c("above"="#00ba38", "below"="#f8766d")
+        ) +
         ggplot2::labs(
             title    = plot_title,
             subtitle = plot_subtitle,
             caption  = plot_caption
         ) +
-        #ggplot2::ylim(-3, 3) +
         ggplot2::coord_flip() +
         ggplot2::theme_minimal()
 
