@@ -37,6 +37,7 @@ reference:
      -  contains("_index_plt")
      -  "kmeans_scree_plt"
      -  "umap_plt"
+     -  "diverging_lollipop_plt"
   -  title: Optimal Bin Functions for Histograms
      desc: Optimal Binning Functions
   -  subtitle: Optimal Binning for histograms
