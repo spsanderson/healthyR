@@ -65,3 +65,6 @@ gartner_magic_chart_plt(
 )
 
 }
+\author{
+Steven P. Sanderson II, MPH
+}

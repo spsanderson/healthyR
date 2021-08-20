@@ -34,7 +34,8 @@ Imports:
     sqldf,
     tidyr,
     ggrepel,
-    lifecycle
+    lifecycle,
+    plotly
 Suggests: 
     knitr,
     rmarkdown,
@@ -43,7 +44,10 @@ Suggests:
     healthyR.data,
     broom,
     tidyquant,
-    uwot
+    uwot,
+    cli,
+    crayon,
+    rstudioapi
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)

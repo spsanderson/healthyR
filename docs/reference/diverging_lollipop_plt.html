@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gartner Magic Chart - Plotting of two continuous variables — gartner_magic_chart_plt • healthyR</title>
+<title>Diverging Lollipop Chart — diverging_lollipop_plt • healthyR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,12 @@
 
 
 
-<meta property="og:title" content="Gartner Magic Chart - Plotting of two continuous variables — gartner_magic_chart_plt" />
-<meta property="og:description" content="Plot a Gartner Magic Chart of two continuous variables" />
+<meta property="og:title" content="Diverging Lollipop Chart — diverging_lollipop_plt" />
+<meta property="og:description" content="This is a diverging lollipop function. Lollipop chart conveys the same
+information as bar chart and diverging bar. Except that it looks more modern.
+Instead of geom_bar, I use geom_point and geom_segment to get the lollipops
+right. Let’s draw a lollipop using the same data I prepared in the previous
+example of diverging bars." />
 
 
 
@@ -137,26 +141,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gartner Magic Chart - Plotting of two continuous variables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/gartner_magic_chart.R'><code>R/gartner_magic_chart.R</code></a></small>
-    <div class="hidden name"><code>gartner_magic_chart_plt.Rd</code></div>
+    <h1>Diverging Lollipop Chart</h1>
+    <small class="dont-index">Source: <a href='https://github.com/spsanderson/healthyR/blob/master/R/diverging-lollipop-plt.R'><code>R/diverging-lollipop-plt.R</code></a></small>
+    <div class="hidden name"><code>diverging_lollipop_plt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot a Gartner Magic Chart of two continuous variables</p>
+    <p>This is a diverging lollipop function. Lollipop chart conveys the same
+information as bar chart and diverging bar. Except that it looks more modern.
+Instead of geom_bar, I use geom_point and geom_segment to get the lollipops
+right. Let’s draw a lollipop using the same data I prepared in the previous
+example of diverging bars.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gartner_magic_chart_plt</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>diverging_lollipop_plt</span><span class='op'>(</span>
   <span class='va'>.data</span>,
-  <span class='va'>.x_col</span>,
-  <span class='va'>.y_col</span>,
-  <span class='va'>.y_lab</span>,
-  <span class='va'>.x_lab</span>,
-  <span class='va'>.plt_title</span>,
-  <span class='va'>.tl_lbl</span>,
-  <span class='va'>.tr_lbl</span>,
-  <span class='va'>.br_lbl</span>,
-  <span class='va'>.bl_lbl</span>
+  <span class='va'>.x_axis</span>,
+  <span class='va'>.y_axis</span>,
+  .plot_title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .plot_subtitle <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .plot_caption <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .interactive <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -164,75 +169,59 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>The data set you want to plot</p></td>
+      <td><p>The data to pass to the function, must be a tibble/data.frame.</p></td>
     </tr>
     <tr>
-      <th>.x_col</th>
-      <td><p>The x-axis for the plot</p></td>
+      <th>.x_axis</th>
+      <td><p>The data that is passed to the x-axis. This will also be the
+<code>x</code> and <code>xend</code> parameters of the <code>geom_segment</code></p></td>
     </tr>
     <tr>
-      <th>.y_col</th>
-      <td><p>The y-axis for the plot</p></td>
+      <th>.y_axis</th>
+      <td><p>The data that is passed to the y-axis. This will also equal the
+parameters of <code>yend</code> and <code>label</code></p></td>
     </tr>
     <tr>
-      <th>.y_lab</th>
-      <td><p>The y-axis label</p></td>
+      <th>.plot_title</th>
+      <td><p>Default is NULL</p></td>
     </tr>
     <tr>
-      <th>.x_lab</th>
-      <td><p>The x-axis label</p></td>
+      <th>.plot_subtitle</th>
+      <td><p>Default is NULL</p></td>
     </tr>
     <tr>
-      <th>.plt_title</th>
-      <td><p>The title of the plot</p></td>
+      <th>.plot_caption</th>
+      <td><p>Default is NULL</p></td>
     </tr>
     <tr>
-      <th>.tl_lbl</th>
-      <td><p>The top left label</p></td>
-    </tr>
-    <tr>
-      <th>.tr_lbl</th>
-      <td><p>The top right label</p></td>
-    </tr>
-    <tr>
-      <th>.br_lbl</th>
-      <td><p>The bottom right label</p></td>
-    </tr>
-    <tr>
-      <th>.bl_lbl</th>
-      <td><p>The bottom left label</p></td>
+      <th>.interactive</th>
+      <td><p>Default is FALSE. TRUE returns a plotly plot</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>ggplot</code> plot</p>
+    <p>A <code>plotly</code> plot or a <code>ggplot2</code> static plot</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    
-<ul>
-<li><p>Supply a data frame with at least two continuous variables to plot against
-each other</p></li>
-</ul>
-
+    <p>This function takes only a few arguments and returns a ggplot2 object.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>gartner_magic_chart_plt</span><span class='op'>(</span>
-  .data <span class='op'>=</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>,<span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-  , .x_col <span class='op'>=</span> <span class='va'>x</span>
-  , .y_col <span class='op'>=</span> <span class='va'>y</span>
-  , .x_lab <span class='op'>=</span> <span class='st'>"los"</span>
-  , .y_lab <span class='op'>=</span> <span class='st'>"ra"</span>
-  , .plt_title <span class='op'>=</span> <span class='st'>"tst"</span>
-  , .tr_lbl <span class='op'>=</span> <span class='st'>"High RA-LOS"</span>
-  , .tl_lbl <span class='op'>=</span> <span class='st'>"High RA"</span>
-  , .bl_lbl <span class='op'>=</span> <span class='st'>"Leader"</span>
-  , .br_lbl <span class='op'>=</span> <span class='st'>"High LOS"</span>
-<span class='op'>)</span>
-</div><div class='img'><img src='gartner_magic_chart_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"mtcars"</span><span class='op'>)</span>
+<span class='va'>mtcars</span><span class='op'>$</span><span class='va'>car_name</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
+<span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg_z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span><span class='op'>)</span>, <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg_type</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg_z</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='st'>"below"</span>, <span class='st'>"above"</span><span class='op'>)</span>
+<span class='va'>mtcars</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg_z</span><span class='op'>)</span>, <span class='op'>]</span>  <span class='co'># sort</span>
+<span class='va'>mtcars</span><span class='op'>$</span><span class='va'>car_name</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>car_name</span>, levels <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>$</span><span class='va'>car_name</span><span class='op'>)</span>
+
+<span class='fu'>diverging_lollipop_plt</span><span class='op'>(</span>.data <span class='op'>=</span> <span class='va'>mtcars</span>, .x_axis <span class='op'>=</span> <span class='va'>car_name</span>
+, .y_axis <span class='op'>=</span> <span class='va'>mpg_z</span><span class='op'>)</span>
+</div><div class='img'><img src='diverging_lollipop_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -1,5 +1,7 @@
 #' Gartner Magic Chart - Plotting of two continuous variables
 #'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @description
 #' Plot a Gartner Magic Chart of two continuous variables
 #'

@@ -31,12 +31,13 @@ reference:
   -  subtitle: Gartner Magic Chart
      contents:
      -  contains("gartner_magic_chart_plt")
-  -  title: Miscellaneous Plots
+  -  subtitle: Miscellaneous Plots
      desc: Other Plotting Functions
      contents:
      -  contains("_index_plt")
      -  "kmeans_scree_plt"
      -  "umap_plt"
+     -  "diverging_lollipop_plt"
   -  title: Optimal Bin Functions for Histograms
      desc: Optimal Binning Functions
   -  subtitle: Optimal Binning for histograms
