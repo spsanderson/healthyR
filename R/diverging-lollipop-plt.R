@@ -64,6 +64,10 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
         stop(call. = FALSE, "(.data) is missing, please supply.")
     }
 
+    if (!is.logical(.interactive)) {
+        stop(call. = FALSE, "You must supply either TRUE or FALSE for .interactive")
+    }
+
     # * Data ----
     data_tbl <- tibble::as_tibble(.data)
 
