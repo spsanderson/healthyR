@@ -31,7 +31,7 @@ reference:
   -  subtitle: Gartner Magic Chart
      contents:
      -  contains("gartner_magic_chart_plt")
-  -  title: Miscellaneous Plots
+  -  subtitle: Miscellaneous Plots
      desc: Other Plotting Functions
      contents:
      -  contains("_index_plt")
