@@ -56,6 +56,13 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
     interact_var  <- .interactive
 
     # * Checks ----
+    if (rlang::quo_is_missing(x_axis_var) | rlang::quo_is_missing(y_axis_var)){
+        stop(call. = FALSE, "You must provide both the .x_axis AND .y_axis columns.")
+    }
+
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE, "(.data) is missing, please supply.")
+    }
 
     # * Data ----
     data_tbl <- tibble::as_tibble(.data)
