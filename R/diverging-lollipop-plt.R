@@ -80,7 +80,7 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
             subtitle = plot_subtitle,
             caption  = plot_caption
         ) +
-        ggplot2::ylim(-3, 3) +
+        #ggplot2::ylim(-3, 3) +
         ggplot2::coord_flip() +
         ggplot2::theme_minimal()
 
