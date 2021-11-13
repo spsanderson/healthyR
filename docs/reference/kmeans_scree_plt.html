@@ -171,44 +171,61 @@
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/tidyquant'>tidyquant</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: lubridate</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'lubridate'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: PerformanceAnalytics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: xts</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: zoo</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'zoo'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    as.Date, as.Date.numeric</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'xts'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:dplyr':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    first, last</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'PerformanceAnalytics'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:graphics':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    legend</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: quantmod</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: TTR</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #444444;'>==</span> <span style='color: #444444;'>Need to Learn tidyquant?</span> <span style='color: #444444;'>====================================================</span><span style='color: #0087D7;'></span>
-#&gt; <span class='message'>Business Science offers a 1-hour course - Learning Lab #9: Performance Analysis &amp; Portfolio Optimization with tidyquant!</span>
-#&gt; <span class='message'>&lt;/&gt; Learn more at: https://university.business-science.io/p/learning-labs-pro &lt;/&gt;</span></span></div><div class='input'>
-<span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='va'>healthyR_data</span><span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"Medicare B"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"?"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='va'>ui_tbl</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span>
-   .data           <span class='op'>=</span> <span class='va'>data_tbl</span>
-   , .row_input    <span class='op'>=</span> <span class='va'>service_line</span>
-   , .col_input    <span class='op'>=</span>  <span class='va'>payer_grouping</span>
-   , .record_input <span class='op'>=</span> <span class='va'>record</span>
- <span class='op'>)</span>
-
-<span class='va'>kmm_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl</a></span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span>
-
-<span class='fu'>kmeans_scree_plt</span><span class='op'>(</span>.data <span class='op'>=</span> <span class='va'>kmm_tbl</span><span class='op'>)</span>
-</div><div class='img'><img src='kmeans_scree_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/tidyquant'>tidyquant</a></span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: lubridate</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>package 'lubridate' was built under R version 4.1.1</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: 'lubridate'</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from 'package:base':</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     date, intersect, setdiff, union</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: PerformanceAnalytics</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: xts</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: zoo</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: 'zoo'</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from 'package:base':</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     as.Date, as.Date.numeric</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: 'xts'</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from 'package:dplyr':</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     first, last</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: 'PerformanceAnalytics'</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following object is masked from 'package:graphics':</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     legend</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: quantmod</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: TTR</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #444444;'>==</span> <span style='color: #444444;'>Need to Learn tidyquant?</span> <span style='color: #444444;'>====================================================</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #0087D7;'>Business Science offers a 1-hour course - Learning Lab #9: Performance Analysis &amp; Portfolio Optimization with tidyquant!</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #0087D7;'>&lt;/&gt; Learn more at: https://university.business-science.io/p/learning-labs-pro &lt;/&gt;</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='va'>healthyR_data</span><span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"Medicare B"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"?"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>ui_tbl</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span></span>
+<span class='r-in'>   .data           <span class='op'>=</span> <span class='va'>data_tbl</span></span>
+<span class='r-in'>   , .row_input    <span class='op'>=</span> <span class='va'>service_line</span></span>
+<span class='r-in'>   , .col_input    <span class='op'>=</span>  <span class='va'>payer_grouping</span></span>
+<span class='r-in'>   , .record_input <span class='op'>=</span> <span class='va'>record</span></span>
+<span class='r-in'> <span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>kmm_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl</a></span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>kmeans_scree_plt</span><span class='op'>(</span>.data <span class='op'>=</span> <span class='va'>kmm_tbl</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='kmeans_scree_plt-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

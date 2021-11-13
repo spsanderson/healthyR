@@ -210,31 +210,32 @@ is turned off.</p>
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span>
-
-<span class='fu'>healthyR.data</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/healthyR.data/man/healthyR_data.html'>healthyR_data</a></span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>visit_end_date_time</span>, <span class='va'>service_line</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/filter_by_time.html'>filter_by_time</a></span><span class='op'>(</span>
-    .date_var <span class='op'>=</span> <span class='va'>visit_end_date_time</span>
-    , .start_date <span class='op'>=</span> <span class='st'>"2020"</span>
-    <span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>service_line</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/summarise_by_time.html'>summarize_by_time</a></span><span class='op'>(</span>
-    .date_var <span class='op'>=</span> <span class='va'>visit_end_date_time</span>
-    , .by <span class='op'>=</span> <span class='st'>"month"</span>
-    , visits <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span>
- <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
- <span class='fu'>ts_plt</span><span class='op'>(</span>
-   .date_col <span class='op'>=</span> <span class='va'>visit_end_date_time</span>
-   , .value_col <span class='op'>=</span> <span class='va'>visits</span>
-   , .color_col <span class='op'>=</span> <span class='va'>service_line</span>
- <span class='op'>)</span>
-</div><div class='img'><img src='ts_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>healthyR.data</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/healthyR.data/man/healthyR_data.html'>healthyR_data</a></span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>visit_end_date_time</span>, <span class='va'>service_line</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/filter_by_time.html'>filter_by_time</a></span><span class='op'>(</span></span>
+<span class='r-in'>    .date_var <span class='op'>=</span> <span class='va'>visit_end_date_time</span></span>
+<span class='r-in'>    , .start_date <span class='op'>=</span> <span class='st'>"2020"</span></span>
+<span class='r-in'>    <span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>service_line</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/summarise_by_time.html'>summarize_by_time</a></span><span class='op'>(</span></span>
+<span class='r-in'>    .date_var <span class='op'>=</span> <span class='va'>visit_end_date_time</span></span>
+<span class='r-in'>    , .by <span class='op'>=</span> <span class='st'>"month"</span></span>
+<span class='r-in'>    , visits <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'> <span class='fu'>ts_plt</span><span class='op'>(</span></span>
+<span class='r-in'>   .date_col <span class='op'>=</span> <span class='va'>visit_end_date_time</span></span>
+<span class='r-in'>   , .value_col <span class='op'>=</span> <span class='va'>visits</span></span>
+<span class='r-in'>   , .color_col <span class='op'>=</span> <span class='va'>service_line</span></span>
+<span class='r-in'> <span class='op'>)</span></span>
+<span class='r-plt img'><img src='ts_plt-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

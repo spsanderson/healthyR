@@ -192,40 +192,41 @@ returns a static <code>ggplot2</code> plot.</p></td>
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>ts_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/tk_make_timeseries.html'>tk_make_timeseries</a></span><span class='op'>(</span>
-  start <span class='op'>=</span> <span class='st'>"2019-01-01"</span>
-  , by <span class='op'>=</span> <span class='st'>"day"</span>
-  , length_out <span class='op'>=</span> <span class='st'>"1 year 6 months"</span>
-<span class='op'>)</span>
-<span class='va'>values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/arima.sim.html'>arima.sim</a></span><span class='op'>(</span>
-  model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-    order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
-    , n <span class='op'>=</span> <span class='fl'>547</span>
-    , mean <span class='op'>=</span> <span class='fl'>1</span>
-    , sd <span class='op'>=</span> <span class='fl'>5</span>
-<span class='op'>)</span>
-
-<span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  x <span class='op'>=</span> <span class='va'>ts_tbl</span>
-  , y <span class='op'>=</span> <span class='va'>values</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://purrr.tidyverse.org/reference/set_names.html'>set_names</a></span><span class='op'>(</span><span class='st'>"Date"</span>,<span class='st'>"Values"</span><span class='op'>)</span>
-
-<span class='fu'>ts_readmit_rate_plt</span><span class='op'>(</span>
-  .data <span class='op'>=</span> <span class='va'>df_tbl</span>
-  , .date_col <span class='op'>=</span> <span class='va'>Date</span>
-  , .value_col <span class='op'>=</span> <span class='va'>Values</span>
-  , .by <span class='op'>=</span> <span class='st'>"month"</span>
-  , .interactive <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span>
-</div><div class='img'><img src='ts_readmit_rate_plt-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/timetk'>timetk</a></span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>ts_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/timetk/man/tk_make_timeseries.html'>tk_make_timeseries</a></span><span class='op'>(</span></span>
+<span class='r-in'>  start <span class='op'>=</span> <span class='st'>"2019-01-01"</span></span>
+<span class='r-in'>  , by <span class='op'>=</span> <span class='st'>"day"</span></span>
+<span class='r-in'>  , length_out <span class='op'>=</span> <span class='st'>"1 year 6 months"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>values</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/arima.sim.html'>arima.sim</a></span><span class='op'>(</span></span>
+<span class='r-in'>  model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>    order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>    , n <span class='op'>=</span> <span class='fl'>547</span></span>
+<span class='r-in'>    , mean <span class='op'>=</span> <span class='fl'>1</span></span>
+<span class='r-in'>    , sd <span class='op'>=</span> <span class='fl'>5</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>df_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+<span class='r-in'>  x <span class='op'>=</span> <span class='va'>ts_tbl</span></span>
+<span class='r-in'>  , y <span class='op'>=</span> <span class='va'>values</span></span>
+<span class='r-in'>  <span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://purrr.tidyverse.org/reference/set_names.html'>set_names</a></span><span class='op'>(</span><span class='st'>"Date"</span>,<span class='st'>"Values"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>ts_readmit_rate_plt</span><span class='op'>(</span></span>
+<span class='r-in'>  .data <span class='op'>=</span> <span class='va'>df_tbl</span></span>
+<span class='r-in'>  , .date_col <span class='op'>=</span> <span class='va'>Date</span></span>
+<span class='r-in'>  , .value_col <span class='op'>=</span> <span class='va'>Values</span></span>
+<span class='r-in'>  , .by <span class='op'>=</span> <span class='st'>"month"</span></span>
+<span class='r-in'>  , .interactive <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-plt img'><img src='ts_readmit_rate_plt-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -173,46 +173,47 @@ show the values (tot.withinss) at each center.</p>
     <p>Steven P. Sanderson II, MPH</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-
-<span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='va'>healthyR_data</span><span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"Medicare B"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"?"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='va'>ui_tbl</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span>
-   .data           <span class='op'>=</span> <span class='va'>data_tbl</span>
-   , .row_input    <span class='op'>=</span> <span class='va'>service_line</span>
-   , .col_input    <span class='op'>=</span>  <span class='va'>payer_grouping</span>
-   , .record_input <span class='op'>=</span> <span class='va'>record</span>
- <span class='op'>)</span>
-
-<span class='va'>kmm_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl</a></span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span>
-
-<span class='fu'>kmeans_scree_data_tbl</span><span class='op'>(</span><span class='va'>kmm_tbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 2</span>
-#&gt;    centers tot.withinss
-#&gt;      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>       1       1.41  
-#&gt; <span style='color: #BCBCBC;'> 2</span>       2       0.592 
-#&gt; <span style='color: #BCBCBC;'> 3</span>       3       0.372 
-#&gt; <span style='color: #BCBCBC;'> 4</span>       4       0.276 
-#&gt; <span style='color: #BCBCBC;'> 5</span>       5       0.202 
-#&gt; <span style='color: #BCBCBC;'> 6</span>       6       0.159 
-#&gt; <span style='color: #BCBCBC;'> 7</span>       7       0.124 
-#&gt; <span style='color: #BCBCBC;'> 8</span>       8       0.088<span style='text-decoration: underline;'>4</span>
-#&gt; <span style='color: #BCBCBC;'> 9</span>       9       0.071<span style='text-decoration: underline;'>6</span>
-#&gt; <span style='color: #BCBCBC;'>10</span>      10       0.057<span style='text-decoration: underline;'>6</span>
-#&gt; <span style='color: #BCBCBC;'>11</span>      11       0.046<span style='text-decoration: underline;'>0</span>
-#&gt; <span style='color: #BCBCBC;'>12</span>      12       0.036<span style='text-decoration: underline;'>3</span>
-#&gt; <span style='color: #BCBCBC;'>13</span>      13       0.029<span style='text-decoration: underline;'>3</span>
-#&gt; <span style='color: #BCBCBC;'>14</span>      14       0.021<span style='text-decoration: underline;'>2</span>
-#&gt; <span style='color: #BCBCBC;'>15</span>      15       0.016<span style='text-decoration: underline;'>0</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/spsanderson/healthyR.data'>healthyR.data</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>data_tbl</span> <span class='op'>&lt;-</span> <span class='va'>healthyR_data</span><span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ip_op_flag</span> <span class='op'>==</span> <span class='st'>"I"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"Medicare B"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>payer_grouping</span> <span class='op'>!=</span> <span class='st'>"?"</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>service_line</span>, <span class='va'>payer_grouping</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>record <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>   <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>ui_tbl</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='kmeans_user_item_tbl.html'>kmeans_user_item_tbl</a></span><span class='op'>(</span></span>
+<span class='r-in'>   .data           <span class='op'>=</span> <span class='va'>data_tbl</span></span>
+<span class='r-in'>   , .row_input    <span class='op'>=</span> <span class='va'>service_line</span></span>
+<span class='r-in'>   , .col_input    <span class='op'>=</span>  <span class='va'>payer_grouping</span></span>
+<span class='r-in'>   , .record_input <span class='op'>=</span> <span class='va'>record</span></span>
+<span class='r-in'> <span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>kmm_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='kmeans_mapped_tbl.html'>kmeans_mapped_tbl</a></span><span class='op'>(</span><span class='va'>ui_tbl</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>kmeans_scree_data_tbl</span><span class='op'>(</span><span class='va'>kmm_tbl</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 15 x 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    centers tot.withinss</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>       1       1.41  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>       2       0.592 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>       3       0.372 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>       4       0.276 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>       5       0.202 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>       6       0.159 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>       7       0.124 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>       8       0.088<span style='text-decoration: underline;'>4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>       9       0.071<span style='text-decoration: underline;'>6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>      10       0.057<span style='text-decoration: underline;'>6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>11</span>      11       0.046<span style='text-decoration: underline;'>0</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>12</span>      12       0.036<span style='text-decoration: underline;'>3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>13</span>      13       0.029<span style='text-decoration: underline;'>3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>14</span>      14       0.021<span style='text-decoration: underline;'>2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>15</span>      15       0.016<span style='text-decoration: underline;'>0</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
