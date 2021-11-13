@@ -89,13 +89,13 @@
 
       
 
-      </header><script src="kmeans-umap_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><script src="kmeans-umap_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Clustering with K-Means and UMAP</h1>
                         <h4 class="author">Steven P. Sanderson II, MPH</h4>
             
-            <h4 class="date">2021-08-23</h4>
+            <h4 class="date">2021-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/spsanderson/healthyR/blob/master/vignettes/kmeans-umap.Rmd"><code>vignettes/kmeans-umap.Rmd</code></a></small>
       <div class="hidden name"><code>kmeans-umap.Rmd</code></div>
@@ -129,15 +129,15 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
-<span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
     <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="va">data_tbl</span> <span class="op">%&gt;%</span>
+<span class="va">data_tbl</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 116,823</span>
 <span class="co">#&gt; Columns: 3</span>
@@ -202,7 +202,7 @@
 <span class="co">#&gt; 15      15 &lt;kmeans&gt; &lt;tibble [1 x 4]&gt;</span></code></pre></div>
 <p>As we see there are three columns, <code>centers</code>, <code>k_means</code> and <code>glance</code>. The k_means column is the <code>k_means</code> list object and <code>glance</code> is the tibble returned by the <code><a href="https://generics.r-lib.org/reference/glance.html">broom::glance</a></code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kmm_tbl</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">kmm_tbl</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">glance</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 15 x 6</span>
 <span class="co">#&gt;    centers k_means  totss tot.withinss betweenss  iter</span>
@@ -211,7 +211,7 @@
 <span class="co">#&gt;  2       2 &lt;kmeans&gt;  1.41       0.592   8.17e- 1     1</span>
 <span class="co">#&gt;  3       3 &lt;kmeans&gt;  1.41       0.372   1.04e+ 0     2</span>
 <span class="co">#&gt;  4       4 &lt;kmeans&gt;  1.41       0.276   1.13e+ 0     2</span>
-<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     2</span>
+<span class="co">#&gt;  5       5 &lt;kmeans&gt;  1.41       0.202   1.21e+ 0     4</span>
 <span class="co">#&gt;  6       6 &lt;kmeans&gt;  1.41       0.159   1.25e+ 0     3</span>
 <span class="co">#&gt;  7       7 &lt;kmeans&gt;  1.41       0.124   1.28e+ 0     3</span>
 <span class="co">#&gt;  8       8 &lt;kmeans&gt;  1.41       0.0922  1.32e+ 0     3</span>
@@ -219,8 +219,8 @@
 <span class="co">#&gt; 10      10 &lt;kmeans&gt;  1.41       0.0576  1.35e+ 0     2</span>
 <span class="co">#&gt; 11      11 &lt;kmeans&gt;  1.41       0.0460  1.36e+ 0     2</span>
 <span class="co">#&gt; 12      12 &lt;kmeans&gt;  1.41       0.0363  1.37e+ 0     2</span>
-<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0272  1.38e+ 0     2</span>
-<span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0202  1.39e+ 0     3</span>
+<span class="co">#&gt; 13      13 &lt;kmeans&gt;  1.41       0.0282  1.38e+ 0     2</span>
+<span class="co">#&gt; 14      14 &lt;kmeans&gt;  1.41       0.0212  1.39e+ 0     3</span>
 <span class="co">#&gt; 15      15 &lt;kmeans&gt;  1.41       0.0160  1.39e+ 0     2</span></code></pre></div>
 <p>As stated we use the <code>tot.withinss</code> to decide what will become our <em><code>k</code></em>, an easy way to do this is to visualize the Scree Plot, also known as the elbow plot. This is done by ploting the <code>x-axis</code> as the <code>centers</code> and the <code>y-axis</code> as the <code>tot.withinss</code>.</p>
 </div>
@@ -248,8 +248,8 @@
 <span class="co">#&gt; 10      10       0.0576</span>
 <span class="co">#&gt; 11      11       0.0460</span>
 <span class="co">#&gt; 12      12       0.0363</span>
-<span class="co">#&gt; 13      13       0.0272</span>
-<span class="co">#&gt; 14      14       0.0202</span>
+<span class="co">#&gt; 13      13       0.0282</span>
+<span class="co">#&gt; 14      14       0.0212</span>
 <span class="co">#&gt; 15      15       0.0160</span></code></pre></div>
 <p>With the above pieces of information we can decide upon a value for <em><code>k</code></em>, in this instance we are going to use 3. Now that we have that we can go ahead with creating the umap list object where we can take a look at a great many things associated with the data.</p>
 </div>
@@ -282,14 +282,14 @@
 <span class="co">#&gt;    &lt;chr&gt;                         &lt;fct&gt;  </span>
 <span class="co">#&gt;  1 Alcohol Abuse                 1      </span>
 <span class="co">#&gt;  2 Bariatric Surgery For Obesity 1      </span>
-<span class="co">#&gt;  3 Carotid Endarterectomy        2      </span>
-<span class="co">#&gt;  4 Cellulitis                    3      </span>
-<span class="co">#&gt;  5 Chest Pain                    3      </span>
-<span class="co">#&gt;  6 CHF                           2      </span>
-<span class="co">#&gt;  7 COPD                          2      </span>
-<span class="co">#&gt;  8 CVA                           2      </span>
-<span class="co">#&gt;  9 GI Hemorrhage                 2      </span>
-<span class="co">#&gt; 10 Joint Replacement             2      </span>
+<span class="co">#&gt;  3 Carotid Endarterectomy        3      </span>
+<span class="co">#&gt;  4 Cellulitis                    2      </span>
+<span class="co">#&gt;  5 Chest Pain                    2      </span>
+<span class="co">#&gt;  6 CHF                           3      </span>
+<span class="co">#&gt;  7 COPD                          3      </span>
+<span class="co">#&gt;  8 CVA                           3      </span>
+<span class="co">#&gt;  9 GI Hemorrhage                 3      </span>
+<span class="co">#&gt; 10 Joint Replacement             3      </span>
 <span class="co">#&gt; # ... with 13 more rows</span>
 
 <span class="fu"><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl</a></span><span class="op">(</span><span class="va">km_obj</span>, <span class="va">uit_tbl</span>, <span class="st">"tidy"</span><span class="op">)</span>
@@ -297,8 +297,8 @@
 <span class="co">#&gt;   `Blue Cross` Commercial Compensation `Exchange Plans`    HMO Medicaid</span>
 <span class="co">#&gt;          &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1       0.150      0.0368     0.000307          0.0207  0.163    0.131 </span>
-<span class="co">#&gt; 2       0.0784     0.0218     0.00432           0.00620 0.0449   0.0368</span>
-<span class="co">#&gt; 3       0.117      0.0314     0.0102            0.0139  0.0982   0.0856</span>
+<span class="co">#&gt; 2       0.117      0.0314     0.0102            0.0139  0.0982   0.0856</span>
+<span class="co">#&gt; 3       0.0784     0.0218     0.00432           0.00620 0.0449   0.0368</span>
 <span class="co">#&gt; # ... with 8 more variables: Medicaid HMO &lt;dbl&gt;, Medicare A &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Medicare HMO &lt;dbl&gt;, No Fault &lt;dbl&gt;, Self Pay &lt;dbl&gt;, size &lt;int&gt;,</span>
 <span class="co">#&gt; #   withinss &lt;dbl&gt;, cluster &lt;fct&gt;</span></code></pre></div>

@@ -26,9 +26,9 @@
 #' ts_median_excess_plt(
 #'   .date_col           = date
 #'   , .value_col        = value
-#'   , .x_axis           = week
+#'   , .x_axis           = month
 #'   , .ggplot_group_var = year
-#'   , .years_back       = 4
+#'   , .years_back       = 1
 #' )
 #'
 #' @return
