@@ -34,7 +34,6 @@ Imports:
     sqldf,
     tidyr,
     ggrepel,
-    lifecycle,
     plotly
 Suggests: 
     knitr,
@@ -47,7 +46,8 @@ Suggests:
     uwot,
     cli,
     crayon,
-    rstudioapi
+    rstudioapi,
+    tidyselect
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
