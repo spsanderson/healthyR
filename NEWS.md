@@ -1,5 +1,15 @@
 # healthyR (development version)
 
+## Breaking Changes
+None
+
+## New Features
+1. Fix #107 - Add `service_line_vec()`
+2. Fix #108 - Add `service_line_augment()`
+
+## Minor Fixes and Improvements
+None
+
 # healthyR 0.1.6
 
 ## Breaking Changes
