@@ -37,11 +37,9 @@ maps to DX_660, then this visit would get grouped to \code{alcohol_abuse}
 DRG 896: ALCOHOL, DRUG ABUSE OR DEPENDENCE WITHOUT REHABILITATION THERAPY WITH
 MAJOR COMPLICATION OR COMORBIDITY (MCC)
 
-DX_660 Maps to the following ICD-10 Codes ie F1010 Alcohol abuse, uncomplicated:
-\code{
-  dx_cc_mapping %>%
-    filter(CC_Code == "DX_660") %>%
-    filter(ICD_Ver_Flag == "10)
+DX_660 Maps to the following ICD-10 Codes ie F1010 Alcohol abuse, uncomplicated:\preformatted{library(healthyR)
+dx_cc_mapping \%>\%
+  filter(CC_Code == "DX_660", ICD_Ver_Flag == "10")
 }
 }
 \examples{

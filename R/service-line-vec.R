@@ -23,11 +23,12 @@
 #' MAJOR COMPLICATION OR COMORBIDITY (MCC)
 #'
 #' DX_660 Maps to the following ICD-10 Codes ie F1010 Alcohol abuse, uncomplicated:
-#' \code{
-#'   dx_cc_mapping %>%
-#'     filter(CC_Code == "DX_660") %>%
-#'     filter(ICD_Ver_Flag == "10)
-#' }
+#'
+#' ```
+#' library(healthyR)
+#' dx_cc_mapping %>%
+#'   filter(CC_Code == "DX_660", ICD_Ver_Flag == "10")
+#' ```
 #'
 #' @param .data The data being passed that will be augmented by the function.
 #' @param .dx_col The column containing the Principal Diagnosis for the discharge.
