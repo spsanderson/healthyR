@@ -94,7 +94,7 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
         ) %>%
         dplyr::mutate(
             dplyr::across(
-                .cols = tidyselect::where(is.character),
+                .cols = tidyselect::vars_select_helpers$where(is.character),
                 .fns = stringr::str_squish
                 )
             )
@@ -103,7 +103,7 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
     df <- data %>%
         dplyr::left_join(
             y = healthyR::dx_cc_mapping %>%
-                filter(ICD_Ver_Flag == '10'),
+                dplyr::filter(ICD_Ver_Flag == '10'),
             by = c("dx_col" = "ICDCode")
         ) %>%
         dplyr::left_join(
