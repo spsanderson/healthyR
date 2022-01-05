@@ -39,6 +39,14 @@ reference:
      -  "umap_plt"
      -  "diverging_lollipop_plt"
      -  "diverging_bar_plt"
+  -  title: Augment Functions
+     desc: Functions that Augment a tibble
+     contents:
+     -  contains("_augment")
+  -  title: Vectorized Functions
+     desc: Functions that work on or return a vector
+     contents:
+     -  contains("_vec")
   -  title: Optimal Bin Functions for Histograms
      desc: Optimal Binning Functions
   -  subtitle: Optimal Binning for histograms

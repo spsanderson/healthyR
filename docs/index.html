@@ -30,6 +30,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -42,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.7.9000</span>
       </span>
     </div>
 
@@ -79,7 +81,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/spsanderson/healthyR/">
+  <a href="https://github.com/spsanderson/healthyR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -96,34 +98,33 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="healthyr-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#healthyr-" class="anchor"></a>healthyR <img src="reference/figures/test7.png" width="147" height="170" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="healthyr-">healthyR <img src="reference/figures/test7.png" width="147" height="170" align="right"><a class="anchor" aria-label="anchor" href="#healthyr-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p>The goal of healthyR is to help quickly analyze common data problems in the Administrative and Clincial spaces.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of healthyR from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of healthyR from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"healthyR"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"healthyR"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"spsanderson/healthyR"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"spsanderson/healthyR"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <p>This is a basic example of using the ts_median_excess_plt() function`:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR">healthyR</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk">timetk</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
-<span class="fu"><a href="reference/ts_signature_tbl.html">ts_signature_tbl</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">m4_daily</span>, .date_col <span class="op">=</span> <span class="va">date</span>, .pad_time <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">id</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span>
+<span class="fu"><a href="reference/ts_signature_tbl.html">ts_signature_tbl</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">m4_daily</span>, .date_col <span class="op">=</span> <span class="va">date</span>, .pad_time <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">id</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="reference/ts_median_excess_plt.html">ts_median_excess_plt</a></span><span class="op">(</span>
         .date_col           <span class="op">=</span> <span class="va">date</span>
         , .value_col        <span class="op">=</span> <span class="va">value</span>
@@ -134,8 +135,8 @@
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <p>Here is a simple example of using the ts_signature_tbl() function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR">healthyR</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk">timetk</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span>
 
 <span class="fu"><a href="reference/ts_signature_tbl.html">ts_signature_tbl</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">m4_daily</span>, .date_col <span class="op">=</span> <span class="va">date</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 17,578 x 31</span>
@@ -158,12 +159,12 @@
 <span class="co">#&gt; #   week.iso &lt;int&gt;, week2 &lt;int&gt;, week3 &lt;int&gt;, week4 &lt;int&gt;, mday7 &lt;int&gt;</span></code></pre></div>
 <p>Here is a simple example of using the plt_gartner_magic_chart() function:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR">healthyR</a></span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="reference/gartner_magic_chart_plt.html">gartner_magic_chart_plt</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+  .data <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
   , .x_col <span class="op">=</span> <span class="va">x</span>
   , .y_col <span class="op">=</span> <span class="va">y</span>
   , .y_lab <span class="op">=</span> <span class="st">"los"</span>
@@ -181,55 +182,65 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=healthyR">https://​cloud.r-project.org/​package=healthyR</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/spsanderson/healthyR/">https://​github.com/​spsanderson/​healthyR/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/spsanderson/healthyR/issues">https://​github.com/​spsanderson/​healthyR/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=healthyR" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/spsanderson/healthyR/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/spsanderson/healthyR/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Steven Sanderson <br><small class="roles"> Author, maintainer </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing healthyR</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=healthyR"><img src="http://www.r-pkg.org/badges/version/healthyR" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html##experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></li>
+<li>Steven Sanderson <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=healthyR" class="external-link"><img src="http://www.r-pkg.org/badges/version/healthyR" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html##experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://makeapullrequest.com" class="external-link"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Steven Sanderson.</p>
+  <p></p>
+<p>Developed by Steven Sanderson.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -237,6 +248,8 @@
 
   
 
+
+  
 
   </body>
 </html>
