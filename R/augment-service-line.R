@@ -43,7 +43,7 @@
 #'   drg_col = "896"
 #' )
 #'
-#' service_line_vec(
+#' service_line_augment(
 #'   .data = df,
 #'   .dx_col = dx_col,
 #'   .px_col = px_col,
@@ -51,7 +51,58 @@
 #' )
 #'
 #' @return
-#' A vector of service line assignments.
+#' An augmented data.frame/tibble with the service line appended as a new column.
 #'
 #' @export
 #'
+
+service_line_augment <- function(.data, .dx_col, .px_col, .drg_col){
+
+    # Tidyeval ----
+    # Grab the columns necessary
+    dx_col <- rlang::enquo(.dx_col)
+    px_col <- rlang::enquo(.px_col)
+    drg_col <- rlang::enquo(.drg_col)
+
+    # Checks ----
+    if(!is.data.frame(.data)){
+        stop(call. = FALSE, ".data must be supplied.")
+    }
+
+    if(rlang::quo_is_missing(dx_col) | rlang::quo_is_missing(px_col) |
+       rlang::quo_is_missing(drg_col)){
+        stop(call. = FALSE, "The columns .dx_col, .px_col and .drg_col must be supplied.")
+    }
+
+    # Copy data
+    data <- tibble::as_tibble(.data)
+
+    data <- data %>%
+        dplyr::select(
+            {{dx_col}},
+            {{px_col}},
+            {{drg_col}},
+            dplyr::everything()
+        )
+
+    # Run vec func
+    service_line <- healthyR::service_line_vec(
+        .data = data,
+        .dx_col = {{dx_col}},
+        .px_col = {{px_col}},
+        .drg_col = {{drg_col}}
+    )
+
+    data <- cbind(data, service_line) %>%
+        tibble::as_tibble() %>%
+        dplyr::mutate(
+            dplyr::across(
+                .cols = where(is.character),
+                .fns = stringr::str_squish
+                )
+            )
+
+    # Return ----
+    return(data)
+
+}

@@ -74,7 +74,6 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
         stop(call. = FALSE, "The columns .dx_col, .px_col and .drg_col must be supplied.")
     }
 
-
     # Copy data
     data <- tibble::as_tibble(.data)
 
