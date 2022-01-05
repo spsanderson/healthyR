@@ -1,6 +1,6 @@
 Package: healthyR
 Title: Hospital Data Analysis Workflow Tools
-Version: 0.1.6.9000
+Version: 0.1.7
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
@@ -34,7 +34,6 @@ Imports:
     sqldf,
     tidyr,
     ggrepel,
-    lifecycle,
     plotly
 Suggests: 
     knitr,
@@ -47,7 +46,8 @@ Suggests:
     uwot,
     cli,
     crayon,
-    rstudioapi
+    rstudioapi,
+    tidyselect
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)

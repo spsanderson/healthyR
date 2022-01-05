@@ -94,7 +94,7 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
         ) %>%
         dplyr::mutate(
             dplyr::across(
-                .cols = where(is.character),
+                .cols = tidyselect::vars_select_helpers$where(is.character),
                 .fns = stringr::str_squish
                 )
             )
@@ -103,12 +103,12 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
     df <- data %>%
         dplyr::left_join(
             y = healthyR::dx_cc_mapping %>%
-                filter(ICD_Ver_Flag == '10'),
+                dplyr::filter(ICD_Ver_Flag == '10'),
             by = c("dx_col" = "ICDCode")
         ) %>%
         dplyr::left_join(
             y = healthyR::px_cc_mapping %>%
-                filter(ICD_Ver_Flag == "10"),
+                dplyr::filter(ICD_Ver_Flag == "10"),
             by = c("px_col" = "ICDCode")
         ) %>%
         dplyr::select(dx_col:drg_col, CC_Code.x, CC_Code.y) %>%
@@ -208,8 +208,8 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
 
     # Outpatient assignment
     op_df <- op_df %>%
-        mutate(
-            service_line = case_when(
+        dplyr::mutate(
+            service_line = dplyr::case_when(
                 px_col %in% c("4468", "4495", "43770", "43770") ~ "bariatric_surgery_outpatient",
                 px_col %in% c(
                     "3721", "3722", "3723", "36013", "93451",

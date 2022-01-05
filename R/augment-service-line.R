@@ -97,7 +97,7 @@ service_line_augment <- function(.data, .dx_col, .px_col, .drg_col){
         tibble::as_tibble() %>%
         dplyr::mutate(
             dplyr::across(
-                .cols = where(is.character),
+                .cols = tidyselect::vars_select_helpers$where(is.character),
                 .fns = stringr::str_squish
                 )
             )

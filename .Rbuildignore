@@ -16,3 +16,4 @@ img
 ^logo\.png$
 ^index\.Rmd$
 ^Meta$
+^CRAN-SUBMISSION$
