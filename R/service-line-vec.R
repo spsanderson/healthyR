@@ -22,7 +22,7 @@
 #' DRG 896: ALCOHOL, DRUG ABUSE OR DEPENDENCE WITHOUT REHABILITATION THERAPY WITH
 #' MAJOR COMPLICATION OR COMORBIDITY (MCC)
 #'
-#' DX_660 Maps to the following ICD-10 Codes:
+#' DX_660 Maps to the following ICD-10 Codes ie F1010 Alcohol abuse, uncomplicated:
 #' \code{
 #'   dx_cc_mapping %>%
 #'     filter(CC_Code == "DX_660") %>%
@@ -31,12 +31,23 @@
 #'
 #' @param .data The data being passed that will be augmented by the function.
 #' @param .dx_col The column containing the Principal Diagnosis for the discharge.
-#' @param .px_col The column containng the Principal Coded Procedure for the discharge.
+#' @param .px_col The column containing the Principal Coded Procedure for the discharge.
 #' It is possible that this could be blank.
-#' @param .dg_col The DRG Number coded to the inpatient discharge.
+#' @param .drg_col The DRG Number coded to the inpatient discharge.
 #'
 #' @examples
+#' df <- data.frame(
+#'   dx_col = "F10.10",
+#'   px_col = NA,
+#'   drg_col = "896"
+#' )
 #'
+#' service_line_vec(
+#'   .data = df,
+#'   .dx_col = dx_col,
+#'   .px_col = px_col,
+#'   .drg_col = drg_col
+#' )
 #'
 #' @return
 #' A vector of service line assignments.
@@ -46,22 +57,27 @@
 
 service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
 
+    # Tidyeval ----
+    # Grab the columns necessary
+    dx_col <- rlang::enquo(.dx_col)
+    px_col <- rlang::enquo(.px_col)
+    drg_col <- rlang::enquo(.drg_col)
+
     # Checks ----
     if(!is.data.frame(.data)){
         stop(call. = FALSE, ".data must be supplied.")
     }
 
-    if(is.na(.dx_col) | is.na(.px_col) | is.na(.drg_col)){
+    if(rlang::quo_is_missing(dx_col) | rlang::quo_is_missing(px_col) |
+       rlang::quo_is_missing(drg_col)){
         stop(call. = FALSE, "The columns .dx_col, .px_col and .drg_col must be supplied.")
     }
 
-    # Tidyeval ----
-    dx_col <- rlang::enquo(.dx_col)
-    px_col <- rlang::enquo(.px_col)
-    drg_col <- rlang::enquo(.drg_col)
 
+    # Copy data
     data <- tibble::as_tibble(.data)
 
+    # Rearrange data and adjust internal table as desired.
     data <- data %>%
         dplyr::select(
             {{dx_col}},
@@ -76,32 +92,25 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
                 stringr::str_squish(),
             drg_col = stringr::str_squish({{drg_col}}) %>% as.numeric()
         ) %>%
-        dplyr::mutate(dplyr::across(.cols = where(is.character), .fns = stringr::str_squish))
-
-    #col_name_vector <- names(data)
-
-    # dx_col <- data %>% dplyr::pull({{dx_col}})
-    # px_col <- data %>% dplyr::pull({{px_col}})
-    # drg_col <- data %>% dplyr::pull({{drg_col}})
-    #
-    # # Manipulation ----
-    # dx_col <- gsub(x = dx_col, pattern = "\\.", replacement = "") %>%
-    #   stringr::str_squish()
-    # px_col <- gsub(x = px_col, pattern = "\\.", replacement = "") %>%
-    #   stringr::str_squish()
-    # drg_col <- stringr::str_squish(drg_col) %>% as.numeric()
-    #
-    # # cbind into data.frame
-    # df <- data.frame(
-    #   dx_col,
-    #   px_col,
-    #   drg_col
-    # )
+        dplyr::mutate(
+            dplyr::across(
+                .cols = where(is.character),
+                .fns = stringr::str_squish
+                )
+            )
 
     # Join dx_cc_mapping and px_cc_mapping
     df <- data %>%
-        dplyr::left_join(y = healthyR::dx_cc_mapping %>% filter(ICD_Ver_Flag == '10'), by = c("dx_col" = "ICDCode")) %>%
-        dplyr::left_join(y = healthyR::px_cc_mapping %>% filter(ICD_Ver_Flag == "10"), by = c("px_col" = "ICDCode")) %>%
+        dplyr::left_join(
+            y = healthyR::dx_cc_mapping %>%
+                filter(ICD_Ver_Flag == '10'),
+            by = c("dx_col" = "ICDCode")
+        ) %>%
+        dplyr::left_join(
+            y = healthyR::px_cc_mapping %>%
+                filter(ICD_Ver_Flag == "10"),
+            by = c("px_col" = "ICDCode")
+        ) %>%
         dplyr::select(dx_col:drg_col, CC_Code.x, CC_Code.y) %>%
         dplyr::rename(
             dx_cc_code = CC_Code.x,
@@ -109,6 +118,7 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
         ) %>%
         dplyr::as_tibble()
 
+    # split off inpatient and outpatient and assign service line appropirately
     ip_df <- df %>%
         dplyr::filter(!is.na(drg_col))
 
@@ -116,6 +126,7 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
         dplyr::filter(is.na(drg_col))
 
     # Main if statement ----
+    # Inpatient assignment
     ip_df <- ip_df %>%
         dplyr::mutate(
             service_line = dplyr::case_when(
@@ -195,6 +206,7 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
             )
         )
 
+    # Outpatient assignment
     op_df <- op_df %>%
         mutate(
             service_line = case_when(
@@ -235,9 +247,12 @@ service_line_vec <- function(.data, .dx_col, .px_col, .drg_col) {
             )
         )
 
+    # rbind ip and op back together
     df_final_tbl <- rbind(ip_df, op_df)
 
-    # Return ----
+    # Get the vector of service lines
     svc_line_vec <- df_final_tbl$service_line
+
+    # Return ----
     return(svc_line_vec)
 }
