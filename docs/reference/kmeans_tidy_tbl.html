@@ -111,7 +111,6 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package 'broom' was built under R version 4.1.1</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span><span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
@@ -138,16 +137,16 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 x 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    service_line                  cluster</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 5      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bariatric Surgery For Obesity 2      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CHF                           4      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COPD                          4      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CVA                           4      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Carotid Endarterectomy        4      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cellulitis                    1      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Chest Pain                    1      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 4      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replacement             4      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CHF                           3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COPD                          3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CVA                           3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Carotid Endarterectomy        3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cellulitis                    4      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Chest Pain                    4      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replacement             3      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 13 more rows</span></span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="fu">kmeans_tidy_tbl</span><span class="op">(</span></span>
@@ -158,7 +157,7 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   totss tot.withinss betweenss  iter</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  1.41        0.202      1.21     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  1.41        0.202      1.21     3</span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="fu">kmeans_tidy_tbl</span><span class="op">(</span></span>
 <span class="r-in">   .kmeans_obj  <span class="op">=</span> <span class="va">km_obj</span></span>
@@ -168,19 +167,19 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
 <span class="r-in">   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Blue Cross`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.13375082, 0.27188303, 0.07912806, 0.07837450, 0.000~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Commercial       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.03542694, 0.05712358, 0.02702478, 0.02182129, 0.000~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Compensation     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0121998471, 0.0003293808, 0.0002914681, 0.004324434~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Exchange Plans` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.016160901, 0.039065198, 0.009301354, 0.006202137, 0~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ HMO              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.10724914, 0.18065096, 0.07723873, 0.04493860, 0.272~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Medicaid         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.05150211, 0.04246134, 0.21428392, 0.03684344, 0.181~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicaid HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.13107693, 0.24760799, 0.28209782, 0.08001653, 0.454~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare A`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.35217108, 0.10958146, 0.23654904, 0.56250366, 0.090~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.11769769, 0.03584494, 0.04362913, 0.15152338, 0.000~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `No Fault`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.008242686, 0.000000000, 0.002672067, 0.003475542, 0~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Self Pay`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.034521844, 0.015452115, 0.027783628, 0.009976485, 0~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ size             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 2, 3, 12, 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ withinss         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02592247, 0.03549821, 0.04450884, 0.09625399, 0.000~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Blue Cross`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00000000, 0.27188303, 0.07837450, 0.13375082, 0.079~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ Commercial       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00000000, 0.05712358, 0.02182129, 0.03542694, 0.027~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ Compensation     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0000000000, 0.0003293808, 0.0043244347, 0.012199847~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Exchange Plans` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.000000000, 0.039065198, 0.006202137, 0.016160901, 0~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ HMO              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.27272727, 0.18065096, 0.04493860, 0.10724914, 0.077~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ Medicaid         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.18181818, 0.04246134, 0.03684344, 0.05150211, 0.214~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicaid HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.45454545, 0.24760799, 0.08001653, 0.13107693, 0.282~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare A`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.09090909, 0.10958146, 0.56250366, 0.35217108, 0.236~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00000000, 0.03584494, 0.15152338, 0.11769769, 0.043~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `No Fault`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.000000000, 0.000000000, 0.003475542, 0.008242686, 0~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Self Pay`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.000000000, 0.015452115, 0.009976485, 0.034521844, 0~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ size             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 12, 5, 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ withinss         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00000000, 0.03549821, 0.09625399, 0.02592247, 0.044~</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ cluster          <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> 1, 2, 3, 4, 5</span>
 <span class="r-in"></span>
 </code></pre></div>
