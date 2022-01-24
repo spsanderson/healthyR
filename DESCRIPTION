@@ -44,9 +44,6 @@ Suggests:
     broom,
     tidyquant,
     uwot,
-    cli,
-    crayon,
-    rstudioapi,
     tidyselect
 VignetteBuilder: knitr
 Depends: 
