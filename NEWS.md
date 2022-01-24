@@ -1,5 +1,14 @@
 # healthyR (development version)
 
+## Breaking Changes
+None
+
+## New Features
+None
+
+## Minor Fixes and Improvements
+1. Fix #116 - Drop need for `cli`, `crayon`, and `rstudioapi`
+
 # healthyR 0.1.7
 
 ## Breaking Changes
