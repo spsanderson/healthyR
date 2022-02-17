@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Clustering with K-Means and UMAP</h1>
                         <h4 data-toc-skip class="author">Steven P. Sanderson II, MPH</h4>
             
-            <h4 data-toc-skip class="date">2022-01-08</h4>
+            <h4 data-toc-skip class="date">2022-02-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/spsanderson/healthyR/blob/HEAD/vignettes/kmeans-umap.Rmd" class="external-link"><code>vignettes/kmeans-umap.Rmd</code></a></small>
       <div class="hidden name"><code>kmeans-umap.Rmd</code></div>
@@ -109,22 +109,22 @@
 <blockquote>
 <p>healthyR: A toolkit for hospital data</p>
 </blockquote>
-<div class="section level1">
-<h1 id="libaray-load">Libaray Load<a class="anchor" aria-label="anchor" href="#libaray-load"></a>
-</h1>
+<div class="section level2">
+<h2 id="libaray-load">Libaray Load<a class="anchor" aria-label="anchor" href="#libaray-load"></a>
+</h2>
 <p>First things first, lets load in the library:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="information">Information<a class="anchor" aria-label="anchor" href="#information"></a>
-</h1>
+<div class="section level2">
+<h2 id="information">Information<a class="anchor" aria-label="anchor" href="#information"></a>
+</h2>
 <p>K-Means is a partion algorithm initially designed for signal processing. The goal is to partition <em><code>n</code></em> observations into <em><code>k</code></em> clusters where each <em><code>n</code></em> is in <em><code>k</code></em>. The unsupervised k-means algorithm has a loose relationship to the k-nearest neighbor classifier, a popular supervised machine learning technique for classification that is often confused with k-means due to the name. Applying the 1-nearest neighbor classifier to the cluster centers obtained by k-means classifies new data into the existing clusters.</p>
 <p>The aim of this vignette is to showcase the use of the <code>healthyR</code> wrapper for the <code>kmeans</code> function the the wrapper and plot for the <code><a href="https://rdrr.io/pkg/uwot/man/umap.html" class="external-link">uwot::umap</a></code> projection function. We will go through the entire workflow from getting the data to getting the fina <code>UMAP</code> plot.</p>
 </div>
-<div class="section level1">
-<h1 id="generate-some-data">Generate some data<a class="anchor" aria-label="anchor" href="#generate-some-data"></a>
-</h1>
+<div class="section level2">
+<h2 id="generate-some-data">Generate some data<a class="anchor" aria-label="anchor" href="#generate-some-data"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
@@ -140,7 +140,7 @@
     <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">data_tbl</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 116,823</span>
 <span class="co">#&gt; Columns: 3</span>
 <span class="co">#&gt; $ service_line   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Medical", "Schizophrenia", "Syncope", "Pneumonia", "Ch~</span>
@@ -150,9 +150,9 @@
 <p>The data that we have generated is going to look for clustering amongst the <em><code>service_lines</code></em> (the user) and the <em><code>payer_grouping</code></em> (item) columns.</p>
 <p>Lets now create the user item table.</p>
 </div>
-<div class="section level1">
-<h1 id="user-item-tibble">User Item Tibble<a class="anchor" aria-label="anchor" href="#user-item-tibble"></a>
-</h1>
+<div class="section level2">
+<h2 id="user-item-tibble">User Item Tibble<a class="anchor" aria-label="anchor" href="#user-item-tibble"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">uit_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span><span class="va">data_tbl</span>, <span class="va">service_line</span>, <span class="va">payer_grouping</span>, <span class="va">record</span><span class="op">)</span>
 
@@ -171,15 +171,15 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage          0.054<span style="text-decoration: underline;">2</span>    0.017<span style="text-decoration: underline;">5</span>      0.001<span style="text-decoration: underline;">25</span>           0.008<span style="text-decoration: underline;">34</span> 0.048<span style="text-decoration: underline;">0</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Joint Replaceme~       0.139     0.017<span style="text-decoration: underline;">9</span>      0.033<span style="text-decoration: underline;">6</span>            0.006<span style="text-decoration: underline;">73</span> 0.051<span style="text-decoration: underline;">6</span></span>
 <span class="co">#&gt; <span style="color: #949494;"># ... with 13 more rows, and 6 more variables: Medicaid &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Medicaid HMO &lt;dbl&gt;, Medicare A &lt;dbl&gt;, Medicare HMO &lt;dbl&gt;, No Fault &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Self Pay &lt;dbl&gt;</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;">#   `Medicaid HMO` &lt;dbl&gt;, `Medicare A` &lt;dbl&gt;, `Medicare HMO` &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   `No Fault` &lt;dbl&gt;, `Self Pay` &lt;dbl&gt;</span></span></code></pre></div>
 <p>The table is aggregated by item for the various users to which the algorithm will be applied.</p>
 <p>Now that we have this data we need to find what will be out optimal k (clusters). To do this we need to generate a table of data that will have a column of k and for that k apply the k-means function to the data with that k and return the <strong><code>total within sum of squares</code></strong>.</p>
 <p>To do this there is a convienent function called <em><code>kmeans_mapped_tbl</code></em> that takes as its sole argument the output from the <em><code>kmeans_user_item_tbl</code></em>. There is an argument <em><code>.centers</code></em> where the default is set to 15.</p>
 </div>
-<div class="section level1">
-<h1 id="k-means-mapped-tibble">K-Means Mapped Tibble<a class="anchor" aria-label="anchor" href="#k-means-mapped-tibble"></a>
-</h1>
+<div class="section level2">
+<h2 id="k-means-mapped-tibble">K-Means Mapped Tibble<a class="anchor" aria-label="anchor" href="#k-means-mapped-tibble"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kmm_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kmeans_mapped_tbl.html">kmeans_mapped_tbl</a></span><span class="op">(</span><span class="va">uit_tbl</span><span class="op">)</span>
 
@@ -211,24 +211,24 @@
 <span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>       1 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       1.41    1.33<span style="color: #949494;">e</span><span style="color: #BB0000;">-15</span>     1</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>       2 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.592   8.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>     1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>       3 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.372   1.04<span style="color: #949494;">e</span>+ 0     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>       3 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.372   1.04<span style="color: #949494;">e</span>+ 0     3</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>       4 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.276   1.13<span style="color: #949494;">e</span>+ 0     2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       5 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.202   1.21<span style="color: #949494;">e</span>+ 0     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       5 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.202   1.21<span style="color: #949494;">e</span>+ 0     4</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>       6 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.159   1.25<span style="color: #949494;">e</span>+ 0     3</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       7 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.124   1.28<span style="color: #949494;">e</span>+ 0     3</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       8 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.092<span style="text-decoration: underline;">2</span>  1.32<span style="color: #949494;">e</span>+ 0     3</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       9 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.076<span style="text-decoration: underline;">8</span>  1.33<span style="color: #949494;">e</span>+ 0     2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      10 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.057<span style="text-decoration: underline;">8</span>  1.35<span style="color: #949494;">e</span>+ 0     2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      11 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.046<span style="text-decoration: underline;">0</span>  1.36<span style="color: #949494;">e</span>+ 0     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       7 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.124   1.28<span style="color: #949494;">e</span>+ 0     4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       8 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.088<span style="text-decoration: underline;">4</span>  1.32<span style="color: #949494;">e</span>+ 0     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       9 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.071<span style="text-decoration: underline;">6</span>  1.34<span style="color: #949494;">e</span>+ 0     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      10 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.057<span style="text-decoration: underline;">8</span>  1.35<span style="color: #949494;">e</span>+ 0     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      11 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.046<span style="text-decoration: underline;">0</span>  1.36<span style="color: #949494;">e</span>+ 0     2</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      12 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.036<span style="text-decoration: underline;">3</span>  1.37<span style="color: #949494;">e</span>+ 0     3</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span>      13 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.027<span style="text-decoration: underline;">2</span>  1.38<span style="color: #949494;">e</span>+ 0     2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span>      14 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.020<span style="text-decoration: underline;">2</span>  1.39<span style="color: #949494;">e</span>+ 0     2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span>      15 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.016<span style="text-decoration: underline;">0</span>  1.39<span style="color: #949494;">e</span>+ 0     2</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span>      13 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.028<span style="text-decoration: underline;">2</span>  1.38<span style="color: #949494;">e</span>+ 0     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span>      14 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.021<span style="text-decoration: underline;">2</span>  1.39<span style="color: #949494;">e</span>+ 0     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span>      15 <span style="color: #949494;">&lt;kmeans&gt;</span>  1.41       0.016<span style="text-decoration: underline;">1</span>  1.39<span style="color: #949494;">e</span>+ 0     3</span></code></pre></div>
 <p>As stated we use the <code>tot.withinss</code> to decide what will become our <em><code>k</code></em>, an easy way to do this is to visualize the Scree Plot, also known as the elbow plot. This is done by ploting the <code>x-axis</code> as the <code>centers</code> and the <code>y-axis</code> as the <code>tot.withinss</code>.</p>
 </div>
-<div class="section level1">
-<h1 id="scree-plot-and-data">Scree Plot and Data<a class="anchor" aria-label="anchor" href="#scree-plot-and-data"></a>
-</h1>
+<div class="section level2">
+<h2 id="scree-plot-and-data">Scree Plot and Data<a class="anchor" aria-label="anchor" href="#scree-plot-and-data"></a>
+</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/kmeans_scree_plt.html">kmeans_scree_plt</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">kmm_tbl</span><span class="op">)</span></code></pre></div>
 <p><img src="kmeans-umap_files/figure-html/scree_plt-1.png" width="95%" style="display: block; margin: auto;"></p>
@@ -245,19 +245,19 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       5       0.202 </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>       6       0.159 </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       7       0.124 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       8       0.092<span style="text-decoration: underline;">2</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       9       0.076<span style="text-decoration: underline;">8</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       8       0.088<span style="text-decoration: underline;">4</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       9       0.071<span style="text-decoration: underline;">6</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      10       0.057<span style="text-decoration: underline;">8</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      11       0.046<span style="text-decoration: underline;">0</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      12       0.036<span style="text-decoration: underline;">3</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span>      13       0.027<span style="text-decoration: underline;">2</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span>      14       0.020<span style="text-decoration: underline;">2</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">15</span>      15       0.016<span style="text-decoration: underline;">0</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span>      13       0.028<span style="text-decoration: underline;">2</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span>      14       0.021<span style="text-decoration: underline;">2</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span>      15       0.016<span style="text-decoration: underline;">1</span></span></code></pre></div>
 <p>With the above pieces of information we can decide upon a value for <em><code>k</code></em>, in this instance we are going to use 3. Now that we have that we can go ahead with creating the umap list object where we can take a look at a great many things associated with the data.</p>
 </div>
-<div class="section level1">
-<h1 id="umap-list-object">UMAP List Object<a class="anchor" aria-label="anchor" href="#umap-list-object"></a>
-</h1>
+<div class="section level2">
+<h2 id="umap-list-object">UMAP List Object<a class="anchor" aria-label="anchor" href="#umap-list-object"></a>
+</h2>
 <p>Now lets go ahead and create our UMAP list object.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ump_lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/umap_list.html">umap_list</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">uit_tbl</span>, <span class="va">kmm_tbl</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
@@ -276,38 +276,38 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 x 4</span></span>
 <span class="co">#&gt;   totss tot.withinss betweenss  iter</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  1.41        0.372      1.04     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  1.41        0.372      1.04     3</span>
 
 <span class="fu"><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl</a></span><span class="op">(</span><span class="va">km_obj</span>, <span class="va">uit_tbl</span>, <span class="st">"augment"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 23 x 2</span></span>
 <span class="co">#&gt;    service_line                  cluster</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 2      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Bariatric Surgery For Obesity 2      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Carotid Endarterectomy        1      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 1      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Bariatric Surgery For Obesity 1      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Carotid Endarterectomy        2      </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Cellulitis                    3      </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Chest Pain                    3      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> CHF                           1      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> COPD                          1      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> CVA                           1      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 1      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Joint Replacement             1      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> CHF                           2      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> COPD                          2      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> CVA                           2      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 2      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Joint Replacement             2      </span>
 <span class="co">#&gt; <span style="color: #949494;"># ... with 13 more rows</span></span>
 
 <span class="fu"><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl</a></span><span class="op">(</span><span class="va">km_obj</span>, <span class="va">uit_tbl</span>, <span class="st">"tidy"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 x 14</span></span>
 <span class="co">#&gt;   `Blue Cross` Commercial Compensation `Exchange Plans`    HMO Medicaid</span>
 <span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       0.078<span style="text-decoration: underline;">4</span>     0.021<span style="text-decoration: underline;">8</span>     0.004<span style="text-decoration: underline;">32</span>           0.006<span style="text-decoration: underline;">20</span> 0.044<span style="text-decoration: underline;">9</span>   0.036<span style="text-decoration: underline;">8</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>       0.150      0.036<span style="text-decoration: underline;">8</span>     0.000<span style="text-decoration: underline;">307</span>          0.020<span style="text-decoration: underline;">7</span>  0.163    0.131 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>       0.150      0.036<span style="text-decoration: underline;">8</span>     0.000<span style="text-decoration: underline;">307</span>          0.020<span style="text-decoration: underline;">7</span>  0.163    0.131 </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>       0.078<span style="text-decoration: underline;">4</span>     0.021<span style="text-decoration: underline;">8</span>     0.004<span style="text-decoration: underline;">32</span>           0.006<span style="text-decoration: underline;">20</span> 0.044<span style="text-decoration: underline;">9</span>   0.036<span style="text-decoration: underline;">8</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">3</span>       0.117      0.031<span style="text-decoration: underline;">4</span>     0.010<span style="text-decoration: underline;">2</span>            0.013<span style="text-decoration: underline;">9</span>  0.098<span style="text-decoration: underline;">2</span>   0.085<span style="text-decoration: underline;">6</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 8 more variables: Medicaid HMO &lt;dbl&gt;, Medicare A &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Medicare HMO &lt;dbl&gt;, No Fault &lt;dbl&gt;, Self Pay &lt;dbl&gt;, size &lt;int&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># ... with 8 more variables: `Medicaid HMO` &lt;dbl&gt;, `Medicare A` &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   `Medicare HMO` &lt;dbl&gt;, `No Fault` &lt;dbl&gt;, `Self Pay` &lt;dbl&gt;, size &lt;int&gt;,</span></span>
 <span class="co">#&gt; <span style="color: #949494;">#   withinss &lt;dbl&gt;, cluster &lt;fct&gt;</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="umap-plot">UMAP Plot<a class="anchor" aria-label="anchor" href="#umap-plot"></a>
-</h1>
+<div class="section level2">
+<h2 id="umap-plot">UMAP Plot<a class="anchor" aria-label="anchor" href="#umap-plot"></a>
+</h2>
 <p>Now that we have all of the above data we can visualize our clusters that are colored by their cluster number.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/umap_plt.html">umap_plt</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">ump_lst</span>, .point_size <span class="op">=</span> <span class="fl">3</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -332,7 +332,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
