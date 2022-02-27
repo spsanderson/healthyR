@@ -1,4 +1,4 @@
-# healthyR (development version)
+# healthyR 0.1.8
 
 ## Breaking Changes
 None
