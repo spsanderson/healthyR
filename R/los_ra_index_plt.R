@@ -106,6 +106,7 @@ los_ra_index_plt <- function(.data) {
             , linetype = "dashed"
         ) +
         ggplot2::scale_y_continuous(labels = scales::percent) +
+        ggplot2::theme_minimal() +
         ggplot2::labs(
             title = "LOS Index vs. Readmit Index",
             subtitle = "Black dots are LOS and Red are Readmit",
@@ -132,6 +133,7 @@ los_ra_index_plt <- function(.data) {
             color = "red"
         ) +
         ggplot2::scale_y_continuous(labels = scales::number) +
+        ggplot2::theme_minimal() +
         ggplot2::labs(
             title = "LOS vs Readmit Rate Index Variance",
             subtitle = stringr::str_c(
