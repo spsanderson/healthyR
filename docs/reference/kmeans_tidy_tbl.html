@@ -38,7 +38,7 @@
   <a href="../articles/getting-started.html">Getting Started</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -137,16 +137,16 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 x 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    service_line                  cluster</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 5      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bariatric Surgery For Obesity 4      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CHF                           2      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COPD                          2      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CVA                           2      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Carotid Endarterectomy        2      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cellulitis                    1      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Chest Pain                    1      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 2      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replacement             2      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 1      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bariatric Surgery For Obesity 3      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CHF                           5      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COPD                          5      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CVA                           5      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Carotid Endarterectomy        5      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cellulitis                    4      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Chest Pain                    4      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 5      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replacement             5      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 13 more rows</span></span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="fu">kmeans_tidy_tbl</span><span class="op">(</span></span>
@@ -157,7 +157,7 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   totss tot.withinss betweenss  iter</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  1.41        0.202      1.21     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  1.41        0.202      1.21     3</span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="fu">kmeans_tidy_tbl</span><span class="op">(</span></span>
 <span class="r-in">   .kmeans_obj  <span class="op">=</span> <span class="va">km_obj</span></span>
@@ -167,19 +167,19 @@ or <code><a href="https://generics.r-lib.org/reference/augment.html" class="exte
 <span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Blue Cross`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.13375082, 0.07837450, 0.00000000, 0.27188303, 0.079~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Commercial       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.03542694, 0.02182129, 0.00000000, 0.05712358, 0.027~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Compensation     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0121998471, 0.0043244347, 0.0000000000, 0.000329380~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Exchange Plans` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.016160901, 0.006202137, 0.000000000, 0.039065198, 0~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ HMO              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.10724914, 0.04493860, 0.27272727, 0.18065096, 0.077~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ Medicaid         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.05150211, 0.03684344, 0.18181818, 0.04246134, 0.214~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicaid HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.13107693, 0.08001653, 0.45454545, 0.24760799, 0.282~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare A`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.35217108, 0.56250366, 0.09090909, 0.10958146, 0.236~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.11769769, 0.15152338, 0.00000000, 0.03584494, 0.043~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `No Fault`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.008242686, 0.003475542, 0.000000000, 0.000000000, 0~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Self Pay`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.034521844, 0.009976485, 0.000000000, 0.015452115, 0~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ size             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 12, 1, 2, 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ withinss         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02592247, 0.09625399, 0.00000000, 0.03549821, 0.044~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Blue Cross`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.07912806, 0.00000000, 0.27188303, 0.13375082, 0.078~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ Commercial       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02702478, 0.00000000, 0.05712358, 0.03542694, 0.021~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ Compensation     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002914681, 0.0000000000, 0.0003293808, 0.012199847~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Exchange Plans` <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.009301354, 0.000000000, 0.039065198, 0.016160901, 0~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ HMO              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.07723873, 0.27272727, 0.18065096, 0.10724914, 0.044~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ Medicaid         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.21428392, 0.18181818, 0.04246134, 0.05150211, 0.036~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicaid HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.28209782, 0.45454545, 0.24760799, 0.13107693, 0.080~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare A`     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.23654904, 0.09090909, 0.10958146, 0.35217108, 0.562~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Medicare HMO`   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.04362913, 0.00000000, 0.03584494, 0.11769769, 0.151~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `No Fault`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002672067, 0.000000000, 0.000000000, 0.008242686, 0~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ `Self Pay`       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.027783628, 0.000000000, 0.015452115, 0.034521844, 0~</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ size             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 3, 1, 2, 5, 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ withinss         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.04450884, 0.00000000, 0.03549821, 0.02592247, 0.096~</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ cluster          <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> 1, 2, 3, 4, 5</span>
 <span class="r-in"></span>
 </code></pre></div>

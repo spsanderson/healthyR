@@ -215,15 +215,19 @@ ts_alos_plt <- function(.data, .date_col, .value_col, .by_grouping, .interactive
                 , .value = value
                 , .title = "Average Length of Stay Plot"
                 , .interactive = FALSE
-            )
+            ) +
+            ggplot2::theme_minimal()
     } else {
         g <- df_summarised_tbl %>%
             timetk::plot_time_series(
                 .date_var = date
                 , .value = value
                 , .title = "Average Length of Stay Plot"
-                , .interactive = TRUE
-            )
+                , .interactive = FALSE
+            ) +
+            ggplot2::theme_minimal()
+
+        g <- plotly::ggplotly(g)
     }
 
     # * Return ----
