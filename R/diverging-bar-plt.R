@@ -110,7 +110,6 @@ diverging_bar_plt <- function(.data, .x_axis, .y_axis, .fill_col,
                 )
             , width=.5
         )  +
-        tidyquant::scale_fill_tq() +
         ggplot2::labs(
             title    = plot_title,
             subtitle = plot_subtitle,

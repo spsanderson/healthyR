@@ -174,8 +174,7 @@ umap_plt <- function(.data, .point_size = 2, .label = TRUE) {
             )
         ) +
         ggplot2::geom_point(size = .point_size, ggplot2::aes(col = .cluster)) +
-        tidyquant::theme_tq() +
-        tidyquant::scale_color_tq() +
+        ggplot2::theme_minimal()
         ggplot2::labs(
             subtitle = "UMAP 2D Projection with K-Means Cluster Assignment"
             , caption = stringr::str_c(

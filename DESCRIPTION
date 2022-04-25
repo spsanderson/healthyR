@@ -42,7 +42,6 @@ Suggests:
     pacman,
     healthyR.data,
     broom,
-    tidyquant,
     uwot,
     tidyselect
 VignetteBuilder: knitr
