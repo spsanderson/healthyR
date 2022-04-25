@@ -426,7 +426,6 @@ kmeans_scree_data_tbl <- function(.data) {
 #' @examples
 #' library(healthyR.data)
 #' library(dplyr)
-#' library(tidyquant)
 #'
 #' data_tbl <- healthyR_data%>%
 #'    filter(ip_op_flag == "I") %>%
@@ -483,7 +482,7 @@ kmeans_scree_plt <- function(.data){
             mapping = ggplot2::aes(
                 label = centers
             )) +
-        tidyquant::theme_tq() +
+        ggplot2::theme_minimal() +
         ggplot2::labs(
             title      = "Scree Plot"
             , subtitle = "Measures the distance each of the users are from the closest k-means cluster"
