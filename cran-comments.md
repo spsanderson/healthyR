@@ -7,3 +7,6 @@
 ## R CMD check results
 
 0 errors | 1 warnings | 2 note
+
+Fixed CRAN pretest result and changed using if statement to compare class
+to use inherits in kmeans-funcs.R per pretest.
