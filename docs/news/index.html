@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
       </span>
     </div>
 
@@ -75,18 +75,20 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="healthyr-development-version">healthyR (development version)<a class="anchor" aria-label="anchor" href="#healthyr-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.9" id="healthyr-019">healthyR 0.1.9<a class="anchor" aria-label="anchor" href="#healthyr-019"></a></h2>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<h3 id="breaking-changes-0-1-9">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-1-9"></a></h3>
 <p>None</p>
 </div>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-0-1-9">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-9"></a></h3>
 <p>None</p>
 </div>
 <div class="section level3">
-<h3 id="minor-fixes-and-improvements-development-version">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-development-version"></a></h3>
-<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/129" class="external-link">#129</a> - Default to <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">ggplot2::theme_minimal()</a></code> for all
-plots.</li>
+<h3 id="minor-fixes-and-improvements-0-1-9">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-0-1-9"></a></h3>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/129" class="external-link">#129</a> - Default to <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">ggplot2::theme_minimal()</a></code> for all plots.</li>
 </ol></div>
 </div>
     <div class="section level2">
@@ -101,11 +103,9 @@ plots.</li>
 </div>
 <div class="section level3">
 <h3 id="minor-fixes-and-improvements-0-1-8">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-0-1-8"></a></h3>
-<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/116" class="external-link">#116</a> - Drop need for <code>cli</code>, <code>crayon</code>, and
-<code>rstudioapi</code>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/116" class="external-link">#116</a> - Drop need for <code>cli</code>, <code>crayon</code>, and <code>rstudioapi</code>
 </li>
-<li>F-x <a href="https://github.com/spsanderson/healthyR/issues/105" class="external-link">#105</a> - correct code and make minor updates to
-<code><a href="../reference/ts_census_los_daily_tbl.html">ts_census_los_daily_tbl()</a></code>
+<li>F-x <a href="https://github.com/spsanderson/healthyR/issues/105" class="external-link">#105</a> - correct code and make minor updates to <code><a href="../reference/ts_census_los_daily_tbl.html">ts_census_los_daily_tbl()</a></code>
 </li>
 </ol></div>
 </div>
@@ -149,26 +149,19 @@ plots.</li>
 <h2 class="page-header" data-toc-text="0.1.5" id="healthyr-015">healthyR 0.1.5<small>2021-06-22</small><a class="anchor" aria-label="anchor" href="#healthyr-015"></a></h2>
 <div class="section level3">
 <h3 id="breaking-changes-0-1-5">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-1-5"></a></h3>
-<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/70" class="external-link">#70</a> - <code>ts_ymwdh_tbl()</code> renamed to
-<code><a href="../reference/ts_signature_tbl.html">ts_signature_tbl()</a></code>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/70" class="external-link">#70</a> - <code>ts_ymwdh_tbl()</code> renamed to <code><a href="../reference/ts_signature_tbl.html">ts_signature_tbl()</a></code>
 </li>
 </ol></div>
 <div class="section level3">
 <h3 id="new-features-0-1-5">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-5"></a></h3>
-<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/70" class="external-link">#70</a> - Add
-<code>timetk::tk_augment_time_series_signature()</code> to tibble that
-gets returned.</li>
-<li>Fix <a href="https://github.com/spsanderson/healthyR/issues/59" class="external-link">#59</a> - Add boolean to <code><a href="../reference/ts_signature_tbl.html">ts_signature_tbl()</a></code> for
-<code><a href="https://business-science.github.io/timetk/reference/pad_by_time.html" class="external-link">timetk::pad_by_time()</a></code> functionality.</li>
-<li>Fix <a href="https://github.com/spsanderson/healthyR/issues/55" class="external-link">#55</a> - Add <code><a href="https://rdrr.io/pkg/uwot/man/umap.html" class="external-link">uwot::umap()</a></code> functionality with
-<code><a href="../reference/umap_list.html">umap_list()</a></code>.</li>
-<li>Fix <a href="https://github.com/spsanderson/healthyR/issues/56" class="external-link">#56</a> - Add <code><a href="../reference/umap_plt.html">umap_plt()</a></code> functionality to plot out the
-UMAP Projection with K-Means cluster assignments.</li>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/70" class="external-link">#70</a> - Add <code>timetk::tk_augment_time_series_signature()</code> to tibble that gets returned.</li>
+<li>Fix <a href="https://github.com/spsanderson/healthyR/issues/59" class="external-link">#59</a> - Add boolean to <code><a href="../reference/ts_signature_tbl.html">ts_signature_tbl()</a></code> for <code><a href="https://business-science.github.io/timetk/reference/pad_by_time.html" class="external-link">timetk::pad_by_time()</a></code> functionality.</li>
+<li>Fix <a href="https://github.com/spsanderson/healthyR/issues/55" class="external-link">#55</a> - Add <code><a href="https://rdrr.io/pkg/uwot/man/umap.html" class="external-link">uwot::umap()</a></code> functionality with <code><a href="../reference/umap_list.html">umap_list()</a></code>.</li>
+<li>Fix <a href="https://github.com/spsanderson/healthyR/issues/56" class="external-link">#56</a> - Add <code><a href="../reference/umap_plt.html">umap_plt()</a></code> functionality to plot out the UMAP Projection with K-Means cluster assignments.</li>
 </ol></div>
 <div class="section level3">
 <h3 id="minor-fixes-and-improvments-0-1-5">Minor Fixes and Improvments<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvments-0-1-5"></a></h3>
-<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/76" class="external-link">#76</a> - Require user to select a column to be aggregated and
-normalized in the <code><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code> function.</li>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/healthyR/issues/76" class="external-link">#76</a> - Require user to select a column to be aggregated and normalized in the <code><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code> function.</li>
 <li>Fix <a href="https://github.com/spsanderson/healthyR/issues/62" class="external-link">#62</a> - Add <code>lifecycle</code> to project.</li>
 </ol></div>
 </div>
@@ -182,29 +175,18 @@ normalized in the <code><a href="../reference/kmeans_user_item_tbl.html">kmeans_
 <h3 id="new-features-0-1-4">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-4"></a></h3>
 <ul><li>Added Functions</li>
 </ul><ol style="list-style-type: decimal"><li>
-<code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/40" class="external-link">#40</a> - A broom style function to
-get <code>tidy</code>, <code>augment</code> and <code>glance</code> of
-the <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> output</li>
+<code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/40" class="external-link">#40</a> - A broom style function to get <code>tidy</code>, <code>augment</code> and <code>glance</code> of the <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> output</li>
 <li>
-<code><a href="../reference/kmeans_scree_data_tbl.html">kmeans_scree_data_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/41" class="external-link">#41</a> - Creates a tibble with
-the data that underlies the <code>kmeans_scree_plot()</code>
+<code><a href="../reference/kmeans_scree_data_tbl.html">kmeans_scree_data_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/41" class="external-link">#41</a> - Creates a tibble with the data that underlies the <code>kmeans_scree_plot()</code>
 </li>
 <li>
-<code><a href="../reference/kmeans_scree_plt.html">kmeans_scree_plt()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/42" class="external-link">#42</a> - A <code>ggplot2</code>
-plot of the Scree data to help find the optimal elbow. Otherwise known
-as the elbow plot.</li>
+<code><a href="../reference/kmeans_scree_plt.html">kmeans_scree_plt()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/42" class="external-link">#42</a> - A <code>ggplot2</code> plot of the Scree data to help find the optimal elbow. Otherwise known as the elbow plot.</li>
 <li>
-<code><a href="../reference/kmeans_mapped_tbl.html">kmeans_mapped_tbl()</a></code> - Fix <a href="https://github.com/spsanderson/healthyR/issues/43" class="external-link">#43</a> - This generates the data
-that will help create the elbow ploat data. It maps the
-<code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> function across the stated amount of centers.
-The default is set to 15.</li>
+<code><a href="../reference/kmeans_mapped_tbl.html">kmeans_mapped_tbl()</a></code> - Fix <a href="https://github.com/spsanderson/healthyR/issues/43" class="external-link">#43</a> - This generates the data that will help create the elbow ploat data. It maps the <code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> function across the stated amount of centers. The default is set to 15.</li>
 </ol></div>
 <div class="section level3">
 <h3 id="minor-fixes-and-improvments-0-1-4">Minor Fixes and Improvments<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvments-0-1-4"></a></h3>
-<p>Fix <a href="https://github.com/spsanderson/healthyR/issues/45" class="external-link">#45</a> - drop the <code>.row_col</code> parameter from the
-<code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> function as it is not needed, this saves
-the user from needing to remember what they selected as the
-<code>user</code> column.</p>
+<p>Fix <a href="https://github.com/spsanderson/healthyR/issues/45" class="external-link">#45</a> - drop the <code>.row_col</code> parameter from the <code><a href="../reference/kmeans_tidy_tbl.html">kmeans_tidy_tbl()</a></code> function as it is not needed, this saves the user from needing to remember what they selected as the <code>user</code> column.</p>
 </div>
 </div>
     <div class="section level2">
@@ -217,39 +199,28 @@ the user from needing to remember what they selected as the
 <h3 id="new-features-0-1-3">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-3"></a></h3>
 <ul><li>Added functions</li>
 </ul><ol style="list-style-type: decimal"><li>
-<code><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/37" class="external-link">#37</a> - Creates a user item
-tibble from preprocessed data.</li>
+<code><a href="../reference/kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/37" class="external-link">#37</a> - Creates a user item tibble from preprocessed data.</li>
 <li>
-<code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/37" class="external-link">#37</a> - Creates a stats kmeans object, a
-simple wrapper.</li>
+<code><a href="../reference/kmeans_obj.html">kmeans_obj()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/37" class="external-link">#37</a> - Creates a stats kmeans object, a simple wrapper.</li>
 </ol></div>
 <div class="section level3">
 <h3 id="minor-fixes-and-improvments-0-1-3">Minor Fixes and Improvments<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvments-0-1-3"></a></h3>
 <ul><li>Minor fixes and improvements</li>
 </ul><ol style="list-style-type: decimal"><li>
-<code><a href="../reference/ts_census_los_daily_tbl.html">ts_census_los_daily_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/37" class="external-link">#37</a> - Correctly arranges
-by date and gets correct counts by date column.</li>
+<code><a href="../reference/ts_census_los_daily_tbl.html">ts_census_los_daily_tbl()</a></code> Fix <a href="https://github.com/spsanderson/healthyR/issues/37" class="external-link">#37</a> - Correctly arranges by date and gets correct counts by date column.</li>
 </ol></div>
 <div class="section level3">
 <h3 id="healthyr-0-1-3">healthyR 0.1.2<a class="anchor" aria-label="anchor" href="#healthyr-0-1-3"></a></h3>
 <ul><li>Add function</li>
-</ul><ol style="list-style-type: decimal"><li>ts_census_los_daily_tbl - Can get the census or length of stay given
-just two columns of data, admit/arrival date and discharge/departure
-date</li>
+</ul><ol style="list-style-type: decimal"><li>ts_census_los_daily_tbl - Can get the census or length of stay given just two columns of data, admit/arrival date and discharge/departure date</li>
 </ol></div>
 <div class="section level3">
 <h3 id="healthyr-0-1-3-1">healthyR 0.1.1<a class="anchor" aria-label="anchor" href="#healthyr-0-1-3-1"></a></h3>
 <ul><li>Add function(s)</li>
-</ul><ol style="list-style-type: decimal"><li>category_counts_tbl - Get counts of a specified column with a user
-specified grouping if provided</li>
-<li>named_item_list - Good for saving a tibble with many groups to
-different sheets of an excel file</li>
-<li>top_n_tbl - Good for getting a tibble of n records by some column
-selection</li>
-<li>ts_census_los_daily_tbl - Can compute the alos and census for data
-given simply the Admit Date and Discharge Date (discharge date can be
-null). Sometimes you want to see the average length of stay for those
-patients that are currently admitted</li>
+</ul><ol style="list-style-type: decimal"><li>category_counts_tbl - Get counts of a specified column with a user specified grouping if provided</li>
+<li>named_item_list - Good for saving a tibble with many groups to different sheets of an excel file</li>
+<li>top_n_tbl - Good for getting a tibble of n records by some column selection</li>
+<li>ts_census_los_daily_tbl - Can compute the alos and census for data given simply the Admit Date and Discharge Date (discharge date can be null). Sometimes you want to see the average length of stay for those patients that are currently admitted</li>
 </ol></div>
 <div class="section level3">
 <h3 id="healthyr-0-1-3-2">healthyR 0.1.0<a class="anchor" aria-label="anchor" href="#healthyr-0-1-3-2"></a></h3>
@@ -302,8 +273,7 @@ patients that are currently admitted</li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>
