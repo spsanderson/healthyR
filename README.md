@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/healthyR)](https://cran.r-project.org/package=healthyR)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/healthyR)](https://cran.r-project.org/package=healthyR)
 ![](https://cranlogs.r-pkg.org/badges/healthyR)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/healthyR)
 [![Lifecycle:
@@ -35,8 +35,7 @@ devtools::install_github("spsanderson/healthyR")
 
 ## Example
 
-This is a basic example of using the ts\_median\_excess\_plt()
-function\`:
+This is a basic example of using the ts_median_excess_plt() function\`:
 
 ``` r
 library(healthyR)
@@ -55,7 +54,7 @@ ts_signature_tbl(.data = m4_daily, .date_col = date, .pad_time = TRUE, id) %>%
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
-Here is a simple example of using the ts\_signature\_tbl() function:
+Here is a simple example of using the ts_signature_tbl() function:
 
 ``` r
 library(healthyR)
@@ -82,7 +81,7 @@ ts_signature_tbl(.data = m4_daily, .date_col = date)
 #> #   week.iso <int>, week2 <int>, week3 <int>, week4 <int>, mday7 <int>
 ```
 
-Here is a simple example of using the plt\_gartner\_magic\_chart()
+Here is a simple example of using the plt_gartner_magic_chart()
 function:
 
 ``` r
