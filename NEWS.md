@@ -1,5 +1,15 @@
 # healthyR (development version)
 
+## Breaking Changes
+None
+
+## New Features
+1. Fix #139 - Add functions `color_blind()` `scale_fill_colorblind()` 
+and `scale_color_colorblind()`
+
+## Minor Fixes and Improvements
+None
+
 # healthyR 0.1.9
 
 ## Breaking Changes
