@@ -6,6 +6,8 @@ None
 ## New Features
 1. Fix #139 - Add functions `color_blind()` `scale_fill_colorblind()` 
 and `scale_color_colorblind()`
+2. Fix #138 - Add parameter to `gartner_magic_chart_plt()` function in order to 
+size points accoring to a column in a data.frame/tibble.
 
 ## Minor Fixes and Improvements
 None

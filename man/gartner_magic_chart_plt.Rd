@@ -8,6 +8,7 @@ gartner_magic_chart_plt(
   .data,
   .x_col,
   .y_col,
+  .point_size_col = NULL,
   .y_lab,
   .x_lab,
   .plt_title,
@@ -37,6 +38,11 @@ gartner_magic_chart_plt(
 \item{.br_lbl}{The bottom right label}
 
 \item{.bl_lbl}{The bottom left label}
+
+\item{.plot_col_size}{The default is NULL, if you want to size the dots by
+a column in the data.frame/tibble then enter the column name here.}
+
+\item{.point_size}{The column you want to pass as a point size to \code{ggplot2}}
 }
 \value{
 A \code{ggplot} plot
@@ -51,17 +57,40 @@ each other
 }
 }
 \examples{
+library(dplyr)
+
+data_tbl <- tibble(
+    x = rnorm(100, 0, 1),
+    y = rnorm(100, 0, 1),
+    z = abs(x) + abs(y)
+ )
+
 gartner_magic_chart_plt(
-  .data = tibble::tibble(x = rnorm(100, 0, 1), y = rnorm(100,0,1))
-  , .x_col = x
-  , .y_col = y
-  , .x_lab = "los"
-  , .y_lab = "ra"
-  , .plt_title = "tst"
-  , .tr_lbl = "High RA-LOS"
-  , .tl_lbl = "High RA"
-  , .bl_lbl = "Leader"
-  , .br_lbl = "High LOS"
+  .data = data_tbl,
+  .x_col = x,
+  .y_col = y,
+  .point_size = z,
+  .x_lab = "los",
+  .y_lab = "ra",
+  .plt_title = "tst",
+  .tr_lbl = "High RA-LOS",
+  .tl_lbl = "High RA",
+  .bl_lbl = "Leader",
+  .br_lbl = "High LOS"
+)
+
+gartner_magic_chart_plt(
+  .data = data_tbl,
+  .x_col = x,
+  .y_col = y,
+  .point_size = NULL,
+  .x_lab = "los",
+  .y_lab = "ra",
+  .plt_title = "tst",
+  .tr_lbl = "High RA-LOS",
+  .tl_lbl = "High RA",
+  .bl_lbl = "Leader",
+  .br_lbl = "High LOS"
 )
 
 }
