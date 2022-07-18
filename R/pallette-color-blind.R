@@ -1,6 +1,19 @@
 #' Provide Colorblind Compliant Colors
 #'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @details
+#' This function is used in others in order to help render plots for those that
+#' are color blind.
+#'
+#' @description
 #' 8 Hex RGB color definitions suitable for charts for colorblind people.
+#'
+#' @examples
+#' color_blind()
+#'
+#' @return
+#' A vector of 8 Hex RGB definitions.
 #'
 #' @export
 color_blind <- function(){
@@ -10,22 +23,54 @@ color_blind <- function(){
 }
 
 #' Provide Colorblind Compliant Colors
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @details
+#' This function is used in others in order to help render plots for those that
+#' are color blind.
+#'
+#' @description
+#' 8 Hex RGB color definitions suitable for charts for colorblind people.
+#'
+#' @param ... Data passed in from a `ggplot` object
+#' @param theme Right now this is `hr` only. Anything else will render an error.
+#'
+#' @return
+#' A `gggplot` layer
+#'
 #' @export
-scale_fill_colorblind <- function(..., theme = "td") {
+hr_scale_fill_colorblind <- function(..., theme = "hr") {
 
     pal <- switch(theme,
-                  "td" = unname(color_blind()) %>% rep(100)
+                  "hr" = unname(color_blind()) %>% rep(100)
     )
 
     ggplot2::scale_fill_manual(values = pal)
 }
 
 #' Provide Colorblind Compliant Colors
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @details
+#' This function is used in others in order to help render plots for those that
+#' are color blind.
+#'
+#' @description
+#' 8 Hex RGB color definitions suitable for charts for colorblind people.
+#'
+#' @param ... Data passed in from a `ggplot` object
+#' @param theme Right now this is `hr` only. Anything else will render an error.
+#'
+#' @return
+#' A `gggplot` layer
+#'
 #' @export
-scale_color_colorblind = function(..., theme = "td") {
+hr_scale_color_colorblind = function(..., theme = "hr") {
 
     pal <- switch(theme,
-                  "td" = unname(color_blind()) %>% rep(100)
+                  "hr" = unname(color_blind()) %>% rep(100)
     )
 
     ggplot2::scale_color_manual(values = pal)

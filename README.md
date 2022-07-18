@@ -61,7 +61,7 @@ library(healthyR)
 library(timetk)
 
 ts_signature_tbl(.data = m4_daily, .date_col = date)
-#> # A tibble: 17,578 x 31
+#> # A tibble: 17,578 × 31
 #>    id    date       value index.num  diff  year year.iso  half quarter month
 #>    <fct> <date>     <dbl>     <dbl> <dbl> <int>    <int> <int>   <int> <int>
 #>  1 D410  1978-06-23 9109. 267408000    NA  1978     1978     1       2     6
@@ -74,7 +74,7 @@ ts_signature_tbl(.data = m4_daily, .date_col = date)
 #>  8 D410  1978-06-30 9084. 268012800 86400  1978     1978     1       2     6
 #>  9 D410  1978-07-01 9081. 268099200 86400  1978     1978     2       3     7
 #> 10 D410  1978-07-02 9047. 268185600 86400  1978     1978     2       3     7
-#> # ... with 17,568 more rows, and 21 more variables: month.xts <int>,
+#> # … with 17,568 more rows, and 21 more variables: month.xts <int>,
 #> #   month.lbl <ord>, day <int>, hour <int>, minute <int>, second <int>,
 #> #   hour12 <int>, am.pm <int>, wday <int>, wday.xts <int>, wday.lbl <ord>,
 #> #   mday <int>, qday <int>, yday <int>, mweek <int>, week <int>,

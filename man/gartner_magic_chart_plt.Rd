@@ -25,6 +25,9 @@ gartner_magic_chart_plt(
 
 \item{.y_col}{The y-axis for the plot}
 
+\item{.point_size_col}{The default is NULL, if you want to size the dots by
+a column in the data.frame/tibble then enter the column name here.}
+
 \item{.y_lab}{The y-axis label}
 
 \item{.x_lab}{The x-axis label}
@@ -38,11 +41,6 @@ gartner_magic_chart_plt(
 \item{.br_lbl}{The bottom right label}
 
 \item{.bl_lbl}{The bottom left label}
-
-\item{.plot_col_size}{The default is NULL, if you want to size the dots by
-a column in the data.frame/tibble then enter the column name here.}
-
-\item{.point_size}{The column you want to pass as a point size to \code{ggplot2}}
 }
 \value{
 A \code{ggplot} plot

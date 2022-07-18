@@ -8,7 +8,7 @@
 #' @param .data The data set you want to plot
 #' @param .x_col The x-axis for the plot
 #' @param .y_col The y-axis for the plot
-#' @param .plot_col_size The default is NULL, if you want to size the dots by
+#' @param .point_size_col The default is NULL, if you want to size the dots by
 #' a column in the data.frame/tibble then enter the column name here.
 #' @param .y_lab The y-axis label
 #' @param .x_lab The x-axis label
@@ -17,7 +17,6 @@
 #' @param .tl_lbl The top left label
 #' @param .bl_lbl The bottom left label
 #' @param .br_lbl The bottom right label
-#' @param .point_size The column you want to pass as a point size to `ggplot2`
 #'
 #' @details
 #' - Supply a data frame with at least two continuous variables to plot against
