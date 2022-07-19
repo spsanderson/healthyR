@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -79,46 +79,73 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gartner_magic_chart_plt</span><span class="op">(</span>
-  <span class="va">.data</span>,
-  <span class="va">.x_col</span>,
-  <span class="va">.y_col</span>,
-  <span class="va">.y_lab</span>,
-  <span class="va">.x_lab</span>,
-  <span class="va">.plt_title</span>,
-  <span class="va">.tl_lbl</span>,
-  <span class="va">.tr_lbl</span>,
-  <span class="va">.br_lbl</span>,
-  <span class="va">.bl_lbl</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gartner_magic_chart_plt</span><span class="op">(</span></span>
+<span>  <span class="va">.data</span>,</span>
+<span>  <span class="va">.x_col</span>,</span>
+<span>  <span class="va">.y_col</span>,</span>
+<span>  .point_size_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">.y_lab</span>,</span>
+<span>  <span class="va">.x_lab</span>,</span>
+<span>  <span class="va">.plt_title</span>,</span>
+<span>  <span class="va">.tl_lbl</span>,</span>
+<span>  <span class="va">.tr_lbl</span>,</span>
+<span>  <span class="va">.br_lbl</span>,</span>
+<span>  <span class="va">.bl_lbl</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data set you want to plot</p></dd>
+
+
 <dt>.x_col</dt>
 <dd><p>The x-axis for the plot</p></dd>
+
+
 <dt>.y_col</dt>
 <dd><p>The y-axis for the plot</p></dd>
+
+
+<dt>.point_size_col</dt>
+<dd><p>The default is NULL, if you want to size the dots by
+a column in the data.frame/tibble then enter the column name here.</p></dd>
+
+
 <dt>.y_lab</dt>
 <dd><p>The y-axis label</p></dd>
+
+
 <dt>.x_lab</dt>
 <dd><p>The x-axis label</p></dd>
+
+
 <dt>.plt_title</dt>
 <dd><p>The title of the plot</p></dd>
+
+
 <dt>.tl_lbl</dt>
 <dd><p>The top left label</p></dd>
+
+
 <dt>.tr_lbl</dt>
 <dd><p>The top right label</p></dd>
+
+
 <dt>.br_lbl</dt>
 <dd><p>The bottom right label</p></dd>
+
+
 <dt>.bl_lbl</dt>
 <dd><p>The bottom left label</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>ggplot</code> plot</p>
+    
+
+<p>A <code>ggplot</code> plot</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -133,20 +160,44 @@ each other</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">gartner_magic_chart_plt</span><span class="op">(</span></span>
-<span class="r-in">  .data <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  , .x_col <span class="op">=</span> <span class="va">x</span></span>
-<span class="r-in">  , .y_col <span class="op">=</span> <span class="va">y</span></span>
-<span class="r-in">  , .x_lab <span class="op">=</span> <span class="st">"los"</span></span>
-<span class="r-in">  , .y_lab <span class="op">=</span> <span class="st">"ra"</span></span>
-<span class="r-in">  , .plt_title <span class="op">=</span> <span class="st">"tst"</span></span>
-<span class="r-in">  , .tr_lbl <span class="op">=</span> <span class="st">"High RA-LOS"</span></span>
-<span class="r-in">  , .tl_lbl <span class="op">=</span> <span class="st">"High RA"</span></span>
-<span class="r-in">  , .bl_lbl <span class="op">=</span> <span class="st">"Leader"</span></span>
-<span class="r-in">  , .br_lbl <span class="op">=</span> <span class="st">"High LOS"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">gartner_magic_chart_plt</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data <span class="op">=</span> <span class="va">data_tbl</span>,</span></span>
+<span class="r-in"><span>  .x_col <span class="op">=</span> <span class="va">x</span>,</span></span>
+<span class="r-in"><span>  .y_col <span class="op">=</span> <span class="va">y</span>,</span></span>
+<span class="r-in"><span>  .point_size <span class="op">=</span> <span class="va">z</span>,</span></span>
+<span class="r-in"><span>  .x_lab <span class="op">=</span> <span class="st">"los"</span>,</span></span>
+<span class="r-in"><span>  .y_lab <span class="op">=</span> <span class="st">"ra"</span>,</span></span>
+<span class="r-in"><span>  .plt_title <span class="op">=</span> <span class="st">"tst"</span>,</span></span>
+<span class="r-in"><span>  .tr_lbl <span class="op">=</span> <span class="st">"High RA-LOS"</span>,</span></span>
+<span class="r-in"><span>  .tl_lbl <span class="op">=</span> <span class="st">"High RA"</span>,</span></span>
+<span class="r-in"><span>  .bl_lbl <span class="op">=</span> <span class="st">"Leader"</span>,</span></span>
+<span class="r-in"><span>  .br_lbl <span class="op">=</span> <span class="st">"High LOS"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gartner_magic_chart_plt-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">gartner_magic_chart_plt</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data <span class="op">=</span> <span class="va">data_tbl</span>,</span></span>
+<span class="r-in"><span>  .x_col <span class="op">=</span> <span class="va">x</span>,</span></span>
+<span class="r-in"><span>  .y_col <span class="op">=</span> <span class="va">y</span>,</span></span>
+<span class="r-in"><span>  .point_size <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>  .x_lab <span class="op">=</span> <span class="st">"los"</span>,</span></span>
+<span class="r-in"><span>  .y_lab <span class="op">=</span> <span class="st">"ra"</span>,</span></span>
+<span class="r-in"><span>  .plt_title <span class="op">=</span> <span class="st">"tst"</span>,</span></span>
+<span class="r-in"><span>  .tr_lbl <span class="op">=</span> <span class="st">"High RA-LOS"</span>,</span></span>
+<span class="r-in"><span>  .tl_lbl <span class="op">=</span> <span class="st">"High RA"</span>,</span></span>
+<span class="r-in"><span>  .bl_lbl <span class="op">=</span> <span class="st">"Leader"</span>,</span></span>
+<span class="r-in"><span>  .br_lbl <span class="op">=</span> <span class="st">"High LOS"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="gartner_magic_chart_plt-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -161,7 +212,7 @@ each other</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

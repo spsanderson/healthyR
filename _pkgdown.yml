@@ -39,6 +39,12 @@ reference:
      -  "umap_plt"
      -  "diverging_lollipop_plt"
      -  "diverging_bar_plt"
+  -  subtitle: Color Blindness
+     desc: Functions to help with color blindness
+     contents:
+     -  "color_blind"
+     -  "hr_scale_fill_colorblind"
+     -  "hr_scale_color_colorblind"
   -  title: Augment Functions
      desc: Functions that Augment a tibble
      contents:

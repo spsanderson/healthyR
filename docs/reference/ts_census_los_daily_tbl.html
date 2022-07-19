@@ -33,7 +33,7 @@ This function can take a little bit of time to run while the join comparison run
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -99,34 +99,45 @@ If you want to aggregate from there you should be able to do so easily.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ts_census_los_daily_tbl</span><span class="op">(</span>
-  <span class="va">.data</span>,
-  .keep_nulls_only <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">.start_date_col</span>,
-  <span class="va">.end_date_col</span>,
-  .by_time <span class="op">=</span> <span class="st">"day"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ts_census_los_daily_tbl</span><span class="op">(</span></span>
+<span>  <span class="va">.data</span>,</span>
+<span>  .keep_nulls_only <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">.start_date_col</span>,</span>
+<span>  <span class="va">.end_date_col</span>,</span>
+<span>  .by_time <span class="op">=</span> <span class="st">"day"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data you want to pass to the function</p></dd>
+
+
 <dt>.keep_nulls_only</dt>
 <dd><p>A boolean that will keep only those records that have
 a NULL end date, meaning the patient is still admitted. The default is FALSE which
 brings back all records.</p></dd>
+
+
 <dt>.start_date_col</dt>
 <dd><p>The column containing the start date for the record</p></dd>
+
+
 <dt>.end_date_col</dt>
 <dd><p>The column containing the end date for the record.</p></dd>
+
+
 <dt>.by_time</dt>
 <dd><p>How you want the data presented, defaults to day and should remain
 that way unless you need more granular data.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble object</p>
+    
+
+<p>A tibble object</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -142,24 +153,24 @@ column</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">df_tbl</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">visit_start_date_time</span>, <span class="va">visit_end_date_time</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">timetk</span><span class="fu">::</span><span class="fu"><a href="https://business-science.github.io/timetk/reference/filter_by_time.html" class="external-link">filter_by_time</a></span><span class="op">(</span>.date_var <span class="op">=</span> <span class="va">visit_start_date_time</span>, .start_date <span class="op">=</span> <span class="st">"2020"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">ts_census_los_daily_tbl</span><span class="op">(</span></span>
-<span class="r-in">   .data              <span class="op">=</span> <span class="va">df_tbl</span></span>
-<span class="r-in">   , .keep_nulls_only <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in">   , .start_date_col  <span class="op">=</span> <span class="va">visit_start_date_time</span></span>
-<span class="r-in">   , .end_date_col    <span class="op">=</span> <span class="va">visit_end_date_time</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 45,572 x 5</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">df_tbl</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">visit_start_date_time</span>, <span class="va">visit_end_date_time</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">timetk</span><span class="fu">::</span><span class="fu"><a href="https://business-science.github.io/timetk/reference/filter_by_time.html" class="external-link">filter_by_time</a></span><span class="op">(</span>.date_var <span class="op">=</span> <span class="va">visit_start_date_time</span>, .start_date <span class="op">=</span> <span class="st">"2020"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">ts_census_los_daily_tbl</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   .data              <span class="op">=</span> <span class="va">df_tbl</span></span></span>
+<span class="r-in"><span>   , .keep_nulls_only <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>   , .start_date_col  <span class="op">=</span> <span class="va">visit_start_date_time</span></span></span>
+<span class="r-in"><span>   , .end_date_col    <span class="op">=</span> <span class="va">visit_end_date_time</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 45,572 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    date       visit_start_date_time visit_end_date_time   los census</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2020-01-01 2020-01-01            2020-01-02              1      1</span>
@@ -172,8 +183,8 @@ column</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2020-01-01 2020-01-01            2020-01-04              3      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2020-01-01 2020-01-01            2020-01-04              3      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2020-01-01 2020-01-01            2020-01-05              4      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 45,562 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 45,562 more rows</span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -188,7 +199,7 @@ column</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -79,36 +79,49 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">los_ra_index_summary_tbl</span><span class="op">(</span>
-  <span class="va">.data</span>,
-  .max_los <span class="op">=</span> <span class="fl">15</span>,
-  <span class="va">.alos_col</span>,
-  <span class="va">.elos_col</span>,
-  <span class="va">.readmit_rate</span>,
-  <span class="va">.readmit_bench</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">los_ra_index_summary_tbl</span><span class="op">(</span></span>
+<span>  <span class="va">.data</span>,</span>
+<span>  .max_los <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>  <span class="va">.alos_col</span>,</span>
+<span>  <span class="va">.elos_col</span>,</span>
+<span>  <span class="va">.readmit_rate</span>,</span>
+<span>  <span class="va">.readmit_bench</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data you are going to analyze.</p></dd>
+
+
 <dt>.max_los</dt>
 <dd><p>You can give a maximum LOS value. Lets say you typically do
 not see los over 15 days, you would then set .max_los to 15 and all values greater
 than .max_los will be grouped to .max_los</p></dd>
+
+
 <dt>.alos_col</dt>
 <dd><p>The Average Length of Stay column</p></dd>
+
+
 <dt>.elos_col</dt>
 <dd><p>The Expected Length of Stay column</p></dd>
+
+
 <dt>.readmit_rate</dt>
 <dd><p>The Actual Readmit Rate column</p></dd>
+
+
 <dt>.readmit_bench</dt>
 <dd><p>The Expected Readmit Rate column</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble</p>
+    
+
+<p>A tibble</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -138,65 +151,65 @@ over their respective expectations.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"alos"</span>            <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">1</span>, <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-in">  , <span class="st">"elos"</span>          <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">1</span>, <span class="fl">17</span><span class="op">)</span></span>
-<span class="r-in">  , <span class="st">"readmit_rate"</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">0</span>, <span class="fl">.25</span><span class="op">)</span></span>
-<span class="r-in">  , <span class="st">"readmit_bench"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">0</span>, <span class="fl">.2</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">los_ra_index_summary_tbl</span><span class="op">(</span></span>
-<span class="r-in">  .data <span class="op">=</span> <span class="va">data_tbl</span></span>
-<span class="r-in">  , .max_los       <span class="op">=</span> <span class="fl">15</span></span>
-<span class="r-in">  , .alos_col      <span class="op">=</span> <span class="va">alos</span></span>
-<span class="r-in">  , .elos_col      <span class="op">=</span> <span class="va">elos</span></span>
-<span class="r-in">  , .readmit_rate  <span class="op">=</span> <span class="va">readmit_rate</span></span>
-<span class="r-in">  , .readmit_bench <span class="op">=</span> <span class="va">readmit_bench</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 x 4</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"alos"</span>            <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">1</span>, <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  , <span class="st">"elos"</span>          <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">1</span>, <span class="fl">17</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  , <span class="st">"readmit_rate"</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">0</span>, <span class="fl">.25</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  , <span class="st">"readmit_bench"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">186</span>, <span class="fl">0</span>, <span class="fl">.2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">los_ra_index_summary_tbl</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data <span class="op">=</span> <span class="va">data_tbl</span></span></span>
+<span class="r-in"><span>  , .max_los       <span class="op">=</span> <span class="fl">15</span></span></span>
+<span class="r-in"><span>  , .alos_col      <span class="op">=</span> <span class="va">alos</span></span></span>
+<span class="r-in"><span>  , .elos_col      <span class="op">=</span> <span class="va">elos</span></span></span>
+<span class="r-in"><span>  , .readmit_rate  <span class="op">=</span> <span class="va">readmit_rate</span></span></span>
+<span class="r-in"><span>  , .readmit_bench <span class="op">=</span> <span class="va">readmit_bench</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    los_group los_index rar_index los_ra_var</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>         1     0.101     1.09       0.990</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>         2     0.254     1.17       0.913</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>         3     0.323     1.42       1.09 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>         4     0.477     1.36       0.886</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>         5     0.727     1.27       0.546</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>         6     0.585     1.57       0.986</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>         7     1.03      1.08       0.113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>         8     0.874     1          0.126</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>         9     1.06      1.36       0.425</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>        10     1.13      1.62       0.752</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>        11     1.05      1.22       0.270</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>        12     1.26      1.09       0.350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>        13     1.32      1.43       0.753</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span>        14     1.95      0.917      1.03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span>        15     1.91      1.2        1.11 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">los_ra_index_summary_tbl</span><span class="op">(</span></span>
-<span class="r-in">  .data <span class="op">=</span> <span class="va">data_tbl</span></span>
-<span class="r-in">  , .max_los       <span class="op">=</span> <span class="fl">10</span></span>
-<span class="r-in">  , .alos_col      <span class="op">=</span> <span class="va">alos</span></span>
-<span class="r-in">  , .elos_col      <span class="op">=</span> <span class="va">elos</span></span>
-<span class="r-in">  , .readmit_rate  <span class="op">=</span> <span class="va">readmit_rate</span></span>
-<span class="r-in">  , .readmit_bench <span class="op">=</span> <span class="va">readmit_bench</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 x 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>         1     0.137     1.5        1.36 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>         2     0.312     1.2        0.888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>         3     0.376     0.9        0.724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>         4     0.424     1.4        0.976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>         5     0.520     1.23       0.711</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>         6     0.482     1.57       1.09 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>         7     1.00      1.78       0.782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>         8     0.907     1.73       0.821</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>         9     0.593     1.6        1.01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>        10     2.45      1.5        1.95 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>        11     1.07      2          1.07 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>        12     1.78      0.727      1.06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>        13     1.11      0.833      0.282</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span>        14     1.49      1.17       0.654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span>        15     1.87      1.09       0.962</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">los_ra_index_summary_tbl</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data <span class="op">=</span> <span class="va">data_tbl</span></span></span>
+<span class="r-in"><span>  , .max_los       <span class="op">=</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span>  , .alos_col      <span class="op">=</span> <span class="va">alos</span></span></span>
+<span class="r-in"><span>  , .elos_col      <span class="op">=</span> <span class="va">elos</span></span></span>
+<span class="r-in"><span>  , .readmit_rate  <span class="op">=</span> <span class="va">readmit_rate</span></span></span>
+<span class="r-in"><span>  , .readmit_bench <span class="op">=</span> <span class="va">readmit_bench</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    los_group los_index rar_index los_ra_var</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>         1     0.101      1.09      0.990</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>         2     0.254      1.17      0.913</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>         3     0.323      1.42      1.09 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>         4     0.477      1.36      0.886</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>         5     0.727      1.27      0.546</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>         6     0.585      1.57      0.986</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>         7     1.03       1.08      0.113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>         8     0.874      1         0.126</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>         9     1.06       1.36      0.425</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>        10     1.55       1.2       0.755</span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>         1     0.137      1.5       1.36 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>         2     0.312      1.2       0.888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>         3     0.376      0.9       0.724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>         4     0.424      1.4       0.976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>         5     0.520      1.23      0.711</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>         6     0.482      1.57      1.09 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>         7     1.00       1.78      0.782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>         8     0.907      1.73      0.821</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>         9     0.593      1.6       1.01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>        10     1.62       1.09      0.712</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -211,7 +224,7 @@ over their respective expectations.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

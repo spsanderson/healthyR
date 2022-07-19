@@ -25,7 +25,7 @@ the timetk package site."><!-- mathjax --><script src="https://cdnjs.cloudflare.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -83,38 +83,53 @@ the <code>timetk</code> package site.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ts_plt</span><span class="op">(</span>
-  <span class="va">.data</span>,
-  <span class="va">.date_col</span>,
-  <span class="va">.value_col</span>,
-  .color_col <span class="op">=</span> <span class="cn">NULL</span>,
-  .facet_col <span class="op">=</span> <span class="cn">NULL</span>,
-  .facet_ncol <span class="op">=</span> <span class="cn">NULL</span>,
-  .interactive <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ts_plt</span><span class="op">(</span></span>
+<span>  <span class="va">.data</span>,</span>
+<span>  <span class="va">.date_col</span>,</span>
+<span>  <span class="va">.value_col</span>,</span>
+<span>  .color_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .facet_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .facet_ncol <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .interactive <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data to pass to the function, must be a tibble/data.frame.</p></dd>
+
+
 <dt>.date_col</dt>
 <dd><p>The column holding the date.</p></dd>
+
+
 <dt>.value_col</dt>
 <dd><p>The column holding the value.</p></dd>
+
+
 <dt>.color_col</dt>
 <dd><p>The column holding the variable for color.</p></dd>
+
+
 <dt>.facet_col</dt>
 <dd><p>The column holding the variable for faceting.</p></dd>
+
+
 <dt>.facet_ncol</dt>
 <dd><p>How many columns do you want.</p></dd>
+
+
 <dt>.interactive</dt>
 <dd><p>Return a <code>plotly</code> plot if set to TRUE and a static <code>ggplot2</code>
 plot if set to FALSE. The default is FALSE.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>plotly</code> plot or a <code>ggplot2</code> static plot</p>
+    
+
+<p>A <code>plotly</code> plot or a <code>ggplot2</code> static plot</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -133,31 +148,31 @@ is turned off.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">healthyR.data</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/healthyR.data/man/healthyR_data.html" class="external-link">healthyR_data</a></span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">visit_end_date_time</span>, <span class="va">service_line</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://business-science.github.io/timetk/reference/filter_by_time.html" class="external-link">filter_by_time</a></span><span class="op">(</span></span>
-<span class="r-in">    .date_var <span class="op">=</span> <span class="va">visit_end_date_time</span></span>
-<span class="r-in">    , .start_date <span class="op">=</span> <span class="st">"2020"</span></span>
-<span class="r-in">    <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">service_line</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://business-science.github.io/timetk/reference/summarise_by_time.html" class="external-link">summarize_by_time</a></span><span class="op">(</span></span>
-<span class="r-in">    .date_var <span class="op">=</span> <span class="va">visit_end_date_time</span></span>
-<span class="r-in">    , .by <span class="op">=</span> <span class="st">"month"</span></span>
-<span class="r-in">    , visits <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">ts_plt</span><span class="op">(</span></span>
-<span class="r-in">   .date_col <span class="op">=</span> <span class="va">visit_end_date_time</span></span>
-<span class="r-in">   , .value_col <span class="op">=</span> <span class="va">visits</span></span>
-<span class="r-in">   , .color_col <span class="op">=</span> <span class="va">service_line</span></span>
-<span class="r-in"> <span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">healthyR.data</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/healthyR.data/man/healthyR_data.html" class="external-link">healthyR_data</a></span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">visit_end_date_time</span>, <span class="va">service_line</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://business-science.github.io/timetk/reference/filter_by_time.html" class="external-link">filter_by_time</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    .date_var <span class="op">=</span> <span class="va">visit_end_date_time</span></span></span>
+<span class="r-in"><span>    , .start_date <span class="op">=</span> <span class="st">"2020"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">service_line</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://business-science.github.io/timetk/reference/summarise_by_time.html" class="external-link">summarize_by_time</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    .date_var <span class="op">=</span> <span class="va">visit_end_date_time</span></span></span>
+<span class="r-in"><span>    , .by <span class="op">=</span> <span class="st">"month"</span></span></span>
+<span class="r-in"><span>    , visits <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu">ts_plt</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   .date_col <span class="op">=</span> <span class="va">visit_end_date_time</span></span></span>
+<span class="r-in"><span>   , .value_col <span class="op">=</span> <span class="va">visits</span></span></span>
+<span class="r-in"><span>   , .color_col <span class="op">=</span> <span class="va">service_line</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ts_plt-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -172,7 +187,7 @@ is turned off.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

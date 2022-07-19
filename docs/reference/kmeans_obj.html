@@ -24,7 +24,7 @@ k-means algorithm to it using stats::kmeans()"><!-- mathjax --><script src="http
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -81,19 +81,24 @@ k-means algorithm to it using <code><a href="https://rdrr.io/r/stats/kmeans.html
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">kmeans_obj</span><span class="op">(</span><span class="va">.data</span>, .centers <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kmeans_obj</span><span class="op">(</span><span class="va">.data</span>, .centers <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data that gets passed from <code><a href="kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code></p></dd>
+
+
 <dt>.centers</dt>
 <dd><p>How many initial centers to start with</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A stats k-means object</p>
+    
+
+<p>A stats k-means object</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -106,52 +111,52 @@ k-means algorithm to it using <code><a href="https://rdrr.io/r/stats/kmeans.html
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span><span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="fu"><a href="kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span></span>
-<span class="r-in">   .data           <span class="op">=</span> <span class="va">data_tbl</span></span>
-<span class="r-in">   , .row_input    <span class="op">=</span> <span class="va">service_line</span></span>
-<span class="r-in">   , .col_input    <span class="op">=</span>  <span class="va">payer_grouping</span></span>
-<span class="r-in">   , .record_input <span class="op">=</span> <span class="va">record</span></span>
-<span class="r-in"> <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu">kmeans_obj</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> K-means clustering with 5 clusters of sizes 2, 5, 3, 1, 12</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span><span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   .data           <span class="op">=</span> <span class="va">data_tbl</span></span></span>
+<span class="r-in"><span>   , .row_input    <span class="op">=</span> <span class="va">service_line</span></span></span>
+<span class="r-in"><span>   , .col_input    <span class="op">=</span>  <span class="va">payer_grouping</span></span></span>
+<span class="r-in"><span>   , .record_input <span class="op">=</span> <span class="va">record</span></span></span>
+<span class="r-in"><span> <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu">kmeans_obj</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> K-means clustering with 5 clusters of sizes 5, 2, 3, 1, 12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cluster means:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Blue Cross Commercial Compensation Exchange Plans        HMO   Medicaid</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.27188303 0.05712358 0.0003293808    0.039065198 0.18065096 0.04246134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.13375082 0.03542694 0.0121998471    0.016160901 0.10724914 0.05150211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.13375082 0.03542694 0.0121998471    0.016160901 0.10724914 0.05150211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.27188303 0.05712358 0.0003293808    0.039065198 0.18065096 0.04246134</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.07912806 0.02702478 0.0002914681    0.009301354 0.07723873 0.21428392</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.00000000 0.00000000 0.0000000000    0.000000000 0.27272727 0.18181818</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.07837450 0.02182129 0.0043244347    0.006202137 0.04493860 0.03684344</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Medicaid HMO Medicare A Medicare HMO    No Fault    Self Pay</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.24760799 0.10958146   0.03584494 0.000000000 0.015452115</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.13107693 0.35217108   0.11769769 0.008242686 0.034521844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.13107693 0.35217108   0.11769769 0.008242686 0.034521844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.24760799 0.10958146   0.03584494 0.000000000 0.015452115</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.28209782 0.23654904   0.04362913 0.002672067 0.027783628</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.45454545 0.09090909   0.00000000 0.000000000 0.000000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.08001653 0.56250366   0.15152338 0.003475542 0.009976485</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Clustering vector:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3 1 5 5 5 5 2 2 5 5 1 5 3 2 5 2 5 3 2 5 5 4 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3 2 5 5 5 5 1 1 5 5 2 5 3 1 5 1 5 3 1 5 5 4 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Within cluster sum of squares by cluster:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03549821 0.02592247 0.04450884 0.00000000 0.09625399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02592247 0.03549821 0.04450884 0.00000000 0.09625399</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  (between_SS / total_SS =  85.6 %)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Available components:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6] "betweenss"    "size"         "iter"         "ifault"      </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -166,7 +171,7 @@ k-means algorithm to it using <code><a href="https://rdrr.io/r/stats/kmeans.html
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
