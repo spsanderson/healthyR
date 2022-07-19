@@ -1,8 +1,11 @@
 pandoc: 2.17.1.1
-pkgdown: 2.0.5
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
   kmeans-umap: kmeans-umap.html
-last_built: 2022-07-19T00:37Z
+last_built: 2022-07-19T16:17Z
+urls:
+  reference: https://www.spsanderson.com/healthyR/reference
+  article: https://www.spsanderson.com/healthyR/articles
 
