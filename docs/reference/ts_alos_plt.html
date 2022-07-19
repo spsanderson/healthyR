@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -79,27 +79,38 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ts_alos_plt</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.date_col</span>, <span class="va">.value_col</span>, <span class="va">.by_grouping</span>, <span class="va">.interactive</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ts_alos_plt</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.date_col</span>, <span class="va">.value_col</span>, <span class="va">.by_grouping</span>, <span class="va">.interactive</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The time series data you need to pass</p></dd>
+
+
 <dt>.date_col</dt>
 <dd><p>The date column</p></dd>
+
+
 <dt>.value_col</dt>
 <dd><p>The value column</p></dd>
+
+
 <dt>.by_grouping</dt>
 <dd><p>How you want the data summarized - "sec", "min", "hour",
 "day", "week", "month", "quarter" or "year"</p></dd>
+
+
 <dt>.interactive</dt>
 <dd><p>TRUE or FALSE. TRUE returns a <code>plotly</code> plot and FALSE
 returns a static <code>ggplot2</code> plot</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A timetk time series plot</p>
+    
+
+<p>A timetk time series plot</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -117,39 +128,39 @@ otherwise a <code>plotly</code> plot is returned.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Make A Series of Dates ----</span></span>
-<span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">df_tbl</span> <span class="op">&lt;-</span> <span class="va">data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">visit_end_date_time</span>, <span class="va">length_of_stay</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://business-science.github.io/timetk/reference/summarise_by_time.html" class="external-link">summarise_by_time</a></span><span class="op">(</span></span>
-<span class="r-in">        .date_var <span class="op">=</span> <span class="va">visit_end_date_time</span></span>
-<span class="r-in">        , .by     <span class="op">=</span> <span class="st">"day"</span></span>
-<span class="r-in">        , visits  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">length_of_stay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://business-science.github.io/timetk/reference/filter_by_time.html" class="external-link">filter_by_time</a></span><span class="op">(</span></span>
-<span class="r-in">        .date_var     <span class="op">=</span> <span class="va">visit_end_date_time</span></span>
-<span class="r-in">        , .start_date <span class="op">=</span> <span class="st">"2012"</span></span>
-<span class="r-in">        , .end_date   <span class="op">=</span> <span class="st">"2019"</span></span>
-<span class="r-in">    <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://purrr.tidyverse.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="st">"Date"</span>,<span class="st">"Values"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">ts_alos_plt</span><span class="op">(</span></span>
-<span class="r-in">  .data <span class="op">=</span> <span class="va">df_tbl</span></span>
-<span class="r-in">  , .date_col <span class="op">=</span> <span class="va">Date</span></span>
-<span class="r-in">  , .value_col <span class="op">=</span> <span class="va">Values</span></span>
-<span class="r-in">  , .by <span class="op">=</span> <span class="st">"month"</span></span>
-<span class="r-in">  , .interactive <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make A Series of Dates ----</span></span></span>
+<span class="r-in"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">df_tbl</span> <span class="op">&lt;-</span> <span class="va">data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">visit_end_date_time</span>, <span class="va">length_of_stay</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://business-science.github.io/timetk/reference/summarise_by_time.html" class="external-link">summarise_by_time</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        .date_var <span class="op">=</span> <span class="va">visit_end_date_time</span></span></span>
+<span class="r-in"><span>        , .by     <span class="op">=</span> <span class="st">"day"</span></span></span>
+<span class="r-in"><span>        , visits  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">length_of_stay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://business-science.github.io/timetk/reference/filter_by_time.html" class="external-link">filter_by_time</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        .date_var     <span class="op">=</span> <span class="va">visit_end_date_time</span></span></span>
+<span class="r-in"><span>        , .start_date <span class="op">=</span> <span class="st">"2012"</span></span></span>
+<span class="r-in"><span>        , .end_date   <span class="op">=</span> <span class="st">"2019"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/rlang/man/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="st">"Date"</span>,<span class="st">"Values"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">ts_alos_plt</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data <span class="op">=</span> <span class="va">df_tbl</span></span></span>
+<span class="r-in"><span>  , .date_col <span class="op">=</span> <span class="va">Date</span></span></span>
+<span class="r-in"><span>  , .value_col <span class="op">=</span> <span class="va">Values</span></span></span>
+<span class="r-in"><span>  , .by <span class="op">=</span> <span class="st">"month"</span></span></span>
+<span class="r-in"><span>  , .interactive <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ts_alos_plt-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -164,7 +175,7 @@ otherwise a <code>plotly</code> plot is returned.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

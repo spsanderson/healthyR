@@ -40,6 +40,9 @@
     <loc>/reference/category_counts_tbl.html</loc>
   </url>
   <url>
+    <loc>/reference/color_blind.html</loc>
+  </url>
+  <url>
     <loc>/reference/diverging_bar_plt.html</loc>
   </url>
   <url>
@@ -50,6 +53,12 @@
   </url>
   <url>
     <loc>/reference/gartner_magic_chart_plt.html</loc>
+  </url>
+  <url>
+    <loc>/reference/hr_scale_color_colorblind.html</loc>
+  </url>
+  <url>
+    <loc>/reference/hr_scale_fill_colorblind.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>

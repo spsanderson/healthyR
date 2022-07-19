@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -79,27 +79,38 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ts_readmit_rate_plt</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.date_col</span>, <span class="va">.value_col</span>, <span class="va">.by_grouping</span>, <span class="va">.interactive</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ts_readmit_rate_plt</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.date_col</span>, <span class="va">.value_col</span>, <span class="va">.by_grouping</span>, <span class="va">.interactive</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data you need to pass.</p></dd>
+
+
 <dt>.date_col</dt>
 <dd><p>The date column.</p></dd>
+
+
 <dt>.value_col</dt>
 <dd><p>The value column.</p></dd>
+
+
 <dt>.by_grouping</dt>
 <dd><p>How you want the data summarized - "sec", "min", "hour",
 "day", "week", "month", "quarter" or "year".</p></dd>
+
+
 <dt>.interactive</dt>
 <dd><p>TRUE or FALSE. TRUE returns a <code>plotly</code> plot and FALSE
 returns a static <code>ggplot2</code> plot.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>timetk</code> time series plot that is interactive</p>
+    
+
+<p>A <code>timetk</code> time series plot that is interactive</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -115,40 +126,40 @@ returns a static <code>ggplot2</code> plot.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ts_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://business-science.github.io/timetk/reference/tk_make_timeseries.html" class="external-link">tk_make_timeseries</a></span><span class="op">(</span></span>
-<span class="r-in">  start <span class="op">=</span> <span class="st">"2019-01-01"</span></span>
-<span class="r-in">  , by <span class="op">=</span> <span class="st">"day"</span></span>
-<span class="r-in">  , length_out <span class="op">=</span> <span class="st">"1 year 6 months"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html" class="external-link">arima.sim</a></span><span class="op">(</span></span>
-<span class="r-in">  model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">    order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">    , n <span class="op">=</span> <span class="fl">547</span></span>
-<span class="r-in">    , mean <span class="op">=</span> <span class="fl">1</span></span>
-<span class="r-in">    , sd <span class="op">=</span> <span class="fl">5</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">df_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">ts_tbl</span></span>
-<span class="r-in">  , y <span class="op">=</span> <span class="va">values</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://purrr.tidyverse.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="st">"Date"</span>,<span class="st">"Values"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">ts_readmit_rate_plt</span><span class="op">(</span></span>
-<span class="r-in">  .data <span class="op">=</span> <span class="va">df_tbl</span></span>
-<span class="r-in">  , .date_col <span class="op">=</span> <span class="va">Date</span></span>
-<span class="r-in">  , .value_col <span class="op">=</span> <span class="va">Values</span></span>
-<span class="r-in">  , .by <span class="op">=</span> <span class="st">"month"</span></span>
-<span class="r-in">  , .interactive <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ts_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://business-science.github.io/timetk/reference/tk_make_timeseries.html" class="external-link">tk_make_timeseries</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  start <span class="op">=</span> <span class="st">"2019-01-01"</span></span></span>
+<span class="r-in"><span>  , by <span class="op">=</span> <span class="st">"day"</span></span></span>
+<span class="r-in"><span>  , length_out <span class="op">=</span> <span class="st">"1 year 6 months"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html" class="external-link">arima.sim</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    , n <span class="op">=</span> <span class="fl">547</span></span></span>
+<span class="r-in"><span>    , mean <span class="op">=</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span>    , sd <span class="op">=</span> <span class="fl">5</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">df_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">ts_tbl</span></span></span>
+<span class="r-in"><span>  , y <span class="op">=</span> <span class="va">values</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/rlang/man/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="st">"Date"</span>,<span class="st">"Values"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">ts_readmit_rate_plt</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data <span class="op">=</span> <span class="va">df_tbl</span></span></span>
+<span class="r-in"><span>  , .date_col <span class="op">=</span> <span class="va">Date</span></span></span>
+<span class="r-in"><span>  , .value_col <span class="op">=</span> <span class="va">Values</span></span></span>
+<span class="r-in"><span>  , .by <span class="op">=</span> <span class="st">"month"</span></span></span>
+<span class="r-in"><span>  , .interactive <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ts_readmit_rate_plt-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -163,7 +174,7 @@ returns a static <code>ggplot2</code> plot.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

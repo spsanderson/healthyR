@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -79,21 +79,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">umap_list</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.kmeans_map_tbl</span>, .k_cluster <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">umap_list</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.kmeans_map_tbl</span>, .k_cluster <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data from the <code><a href="kmeans_user_item_tbl.html">kmeans_user_item_tbl()</a></code> function.</p></dd>
+
+
 <dt>.kmeans_map_tbl</dt>
 <dd><p>The data from the <code><a href="kmeans_mapped_tbl.html">kmeans_mapped_tbl()</a></code>.</p></dd>
+
+
 <dt>.k_cluster</dt>
 <dd><p>Pick the desired amount of clusters from your analysis of the scree plot.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list of tibbles and the umap object</p>
+    
+
+<p>A list of tibbles and the umap object</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -115,29 +122,29 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">uit_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span></span>
-<span class="r-in">   .data           <span class="op">=</span> <span class="va">data_tbl</span></span>
-<span class="r-in">   , .row_input    <span class="op">=</span> <span class="va">service_line</span></span>
-<span class="r-in">   , .col_input    <span class="op">=</span>  <span class="va">payer_grouping</span></span>
-<span class="r-in">   , .record_input <span class="op">=</span> <span class="va">record</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">kmm_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="kmeans_mapped_tbl.html">kmeans_mapped_tbl</a></span><span class="op">(</span><span class="va">uit_tbl</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">umap_list</span><span class="op">(</span>.data <span class="op">=</span> <span class="va">uit_tbl</span>, <span class="va">kmm_tbl</span>, <span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR" class="external-link">healthyR</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">uit_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="kmeans_user_item_tbl.html">kmeans_user_item_tbl</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   .data           <span class="op">=</span> <span class="va">data_tbl</span></span></span>
+<span class="r-in"><span>   , .row_input    <span class="op">=</span> <span class="va">service_line</span></span></span>
+<span class="r-in"><span>   , .col_input    <span class="op">=</span>  <span class="va">payer_grouping</span></span></span>
+<span class="r-in"><span>   , .record_input <span class="op">=</span> <span class="va">record</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">kmm_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="kmeans_mapped_tbl.html">kmeans_mapped_tbl</a></span><span class="op">(</span><span class="va">uit_tbl</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">umap_list</span><span class="op">(</span>.data <span class="op">=</span> <span class="va">uit_tbl</span>, <span class="va">kmm_tbl</span>, <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Using compatibility `.name_repair`.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span>
@@ -172,7 +179,7 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -3.380066  5.532106</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $umap_results_tbl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 x 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         x       y service_line                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">1.20</span>  -<span style="color: #BB0000;">1.48</span>   Alcohol Abuse                </span>
@@ -185,7 +192,7 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">1.29</span>  -<span style="color: #BB0000;">0.079</span><span style="color: #BB0000; text-decoration: underline;">1</span> Chest Pain                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  1.65   0.569  GI Hemorrhage                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  0.518  0.069<span style="text-decoration: underline;">9</span> Joint Replacement            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 13 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $kmeans_obj</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> K-means clustering with 3 clusters of sizes 6, 12, 5</span>
@@ -213,7 +220,7 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6] "betweenss"    "size"         "iter"         "ifault"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $kmeans_cluster_tbl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 x 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    service_line                  .cluster</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse                 3       </span>
@@ -226,10 +233,10 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Chest Pain                    1       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage                 2       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replacement             2       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 13 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $umap_kmeans_cluster_results_tbl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 x 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         x       y service_line                  .cluster</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">1.20</span>  -<span style="color: #BB0000;">1.48</span>   Alcohol Abuse                 3       </span>
@@ -242,9 +249,9 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">1.29</span>  -<span style="color: #BB0000;">0.079</span><span style="color: #BB0000; text-decoration: underline;">1</span> Chest Pain                    1       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  1.65   0.569  GI Hemorrhage                 2       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  0.518  0.069<span style="text-decoration: underline;">9</span> Joint Replacement             2       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 13 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -259,7 +266,7 @@ function. This function uses the defaults of <code><a href="https://rdrr.io/pkg/
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

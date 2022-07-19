@@ -25,7 +25,7 @@ for the rows/user and the columns/items."><!-- mathjax --><script src="https://c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -83,24 +83,33 @@ for the rows/user and the columns/items.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">kmeans_user_item_tbl</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.row_input</span>, <span class="va">.col_input</span>, <span class="va">.record_input</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kmeans_user_item_tbl</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.row_input</span>, <span class="va">.col_input</span>, <span class="va">.record_input</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data that you want to transform</p></dd>
+
+
 <dt>.row_input</dt>
 <dd><p>The column that is going to be the row (user)</p></dd>
+
+
 <dt>.col_input</dt>
 <dd><p>The column that is going to be the column (item)</p></dd>
+
+
 <dt>.record_input</dt>
 <dd><p>The column that is going to be summed up for the aggregattion
 and normalization process.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A aggregated/normalized user item tibble</p>
+    
+
+<p>A aggregated/normalized user item tibble</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -116,40 +125,40 @@ can be summed for the aggregation and normalization process to occur.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span><span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="fu">kmeans_user_item_tbl</span><span class="op">(</span></span>
-<span class="r-in">   .data           <span class="op">=</span> <span class="va">data_tbl</span></span>
-<span class="r-in">   , .row_input    <span class="op">=</span> <span class="va">service_line</span></span>
-<span class="r-in">   , .col_input    <span class="op">=</span>  <span class="va">payer_grouping</span></span>
-<span class="r-in">   , .record_input <span class="op">=</span> <span class="va">record</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 x 12</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/healthyR.data" class="external-link">healthyR.data</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="va">healthyR_data</span><span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ip_op_flag</span> <span class="op">==</span> <span class="st">"I"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"Medicare B"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">payer_grouping</span> <span class="op">!=</span> <span class="st">"?"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">service_line</span>, <span class="va">payer_grouping</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>record <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="fu">kmeans_user_item_tbl</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   .data           <span class="op">=</span> <span class="va">data_tbl</span></span></span>
+<span class="r-in"><span>   , .row_input    <span class="op">=</span> <span class="va">service_line</span></span></span>
+<span class="r-in"><span>   , .col_input    <span class="op">=</span>  <span class="va">payer_grouping</span></span></span>
+<span class="r-in"><span>   , .record_input <span class="op">=</span> <span class="va">record</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    service_line     `Blue Cross` Commercial Compensation `Exchange Plans`    HMO</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Alcohol Abuse          0.094<span style="text-decoration: underline;">1</span>    0.032<span style="text-decoration: underline;">1</span>      0.000<span style="text-decoration: underline;">525</span>          0.011<span style="text-decoration: underline;">6</span>  0.078<span style="text-decoration: underline;">8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bariatric Surge~       0.317     0.058<span style="text-decoration: underline;">3</span>      0                 0.051<span style="text-decoration: underline;">8</span>  0.168 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bariatric Surge…       0.317     0.058<span style="text-decoration: underline;">3</span>      0                 0.051<span style="text-decoration: underline;">8</span>  0.168 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> CHF                    0.029<span style="text-decoration: underline;">5</span>    0.009<span style="text-decoration: underline;">58</span>     0.000<span style="text-decoration: underline;">518</span>          0.004<span style="text-decoration: underline;">14</span> 0.020<span style="text-decoration: underline;">5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COPD                   0.049<span style="text-decoration: underline;">3</span>    0.022<span style="text-decoration: underline;">8</span>      0.000<span style="text-decoration: underline;">228</span>          0.005<span style="text-decoration: underline;">48</span> 0.034<span style="text-decoration: underline;">2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> CVA                    0.064<span style="text-decoration: underline;">7</span>    0.024<span style="text-decoration: underline;">6</span>      0.001<span style="text-decoration: underline;">07</span>           0.010<span style="text-decoration: underline;">7</span>  0.052<span style="text-decoration: underline;">4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Carotid Endarte~       0.084<span style="text-decoration: underline;">5</span>    0.028<span style="text-decoration: underline;">2</span>      0                 0       0.014<span style="text-decoration: underline;">1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Carotid Endarte…       0.084<span style="text-decoration: underline;">5</span>    0.028<span style="text-decoration: underline;">2</span>      0                 0       0.014<span style="text-decoration: underline;">1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cellulitis             0.110     0.033<span style="text-decoration: underline;">9</span>      0.011<span style="text-decoration: underline;">8</span>            0.008<span style="text-decoration: underline;">47</span> 0.080<span style="text-decoration: underline;">5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Chest Pain             0.144     0.039<span style="text-decoration: underline;">1</span>      0.002<span style="text-decoration: underline;">90</span>           0.005<span style="text-decoration: underline;">43</span> 0.112 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> GI Hemorrhage          0.054<span style="text-decoration: underline;">2</span>    0.017<span style="text-decoration: underline;">5</span>      0.001<span style="text-decoration: underline;">25</span>           0.008<span style="text-decoration: underline;">34</span> 0.048<span style="text-decoration: underline;">0</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replaceme~       0.139     0.017<span style="text-decoration: underline;">9</span>      0.033<span style="text-decoration: underline;">6</span>            0.006<span style="text-decoration: underline;">73</span> 0.051<span style="text-decoration: underline;">6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 13 more rows, and 6 more variables: Medicaid &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Joint Replaceme…       0.139     0.017<span style="text-decoration: underline;">9</span>      0.033<span style="text-decoration: underline;">6</span>            0.006<span style="text-decoration: underline;">73</span> 0.051<span style="text-decoration: underline;">6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13 more rows, and 6 more variables: Medicaid &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Medicaid HMO` &lt;dbl&gt;, `Medicare A` &lt;dbl&gt;, `Medicare HMO` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `No Fault` &lt;dbl&gt;, `Self Pay` &lt;dbl&gt;</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -164,7 +173,7 @@ can be summed for the aggregation and normalization process to occur.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -25,7 +25,7 @@ date column defined by the .date_col parameter."><!-- mathjax --><script src="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">healthyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
       </span>
     </div>
 
@@ -83,26 +83,35 @@ date column defined by the <code>.date_col</code> parameter.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ts_signature_tbl</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.date_col</span>, .pad_time <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ts_signature_tbl</span><span class="op">(</span><span class="va">.data</span>, <span class="va">.date_col</span>, .pad_time <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>The data that is being analyzed.</p></dd>
+
+
 <dt>.date_col</dt>
 <dd><p>The column that holds the date.</p></dd>
+
+
 <dt>.pad_time</dt>
 <dd><p>Boolean TRUE/FALSE. If TRUE then the <code><a href="https://business-science.github.io/timetk/reference/pad_by_time.html" class="external-link">timetk::pad_by_time()</a></code>
 function is called and used on the data.frame before the modification. The
 default is TRUE.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Grouping variables to be used by <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">dplyr::group_by()</a></code> before using
 <code><a href="https://business-science.github.io/timetk/reference/pad_by_time.html" class="external-link">timetk::pad_by_time()</a></code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble</p>
+    
+
+<p>A tibble</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -116,16 +125,16 @@ should be dropped or kept when using further functions</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">ts_signature_tbl</span><span class="op">(</span></span>
-<span class="r-in">  .data       <span class="op">=</span> <span class="va">m4_daily</span></span>
-<span class="r-in">  , .date_col <span class="op">=</span> <span class="va">date</span></span>
-<span class="r-in">  , .pad_time <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in">  , <span class="va">id</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/timetk" class="external-link">timetk</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">ts_signature_tbl</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  .data       <span class="op">=</span> <span class="va">m4_daily</span></span></span>
+<span class="r-in"><span>  , .date_col <span class="op">=</span> <span class="va">date</span></span></span>
+<span class="r-in"><span>  , .pad_time <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>  , <span class="va">id</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> pad applied on the interval: day</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9,743 x 31</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9,743 × 31</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    id    date       value index.num  diff  year year.iso  half quarter month</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> D410  1978-06-23 <span style="text-decoration: underline;">9</span>109. 267<span style="text-decoration: underline;">408</span>000    <span style="color: #BB0000;">NA</span>  <span style="text-decoration: underline;">1</span>978     <span style="text-decoration: underline;">1</span>978     1       2     6</span>
@@ -138,12 +147,12 @@ should be dropped or kept when using further functions</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> D410  1978-06-30 <span style="text-decoration: underline;">9</span>084. 268<span style="text-decoration: underline;">012</span>800 <span style="text-decoration: underline;">86</span>400  <span style="text-decoration: underline;">1</span>978     <span style="text-decoration: underline;">1</span>978     1       2     6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> D410  1978-07-01 <span style="text-decoration: underline;">9</span>081. 268<span style="text-decoration: underline;">099</span>200 <span style="text-decoration: underline;">86</span>400  <span style="text-decoration: underline;">1</span>978     <span style="text-decoration: underline;">1</span>978     2       3     7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> D410  1978-07-02 <span style="text-decoration: underline;">9</span>047. 268<span style="text-decoration: underline;">185</span>600 <span style="text-decoration: underline;">86</span>400  <span style="text-decoration: underline;">1</span>978     <span style="text-decoration: underline;">1</span>978     2       3     7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 9,733 more rows, and 21 more variables: month.xts &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 9,733 more rows, and 21 more variables: month.xts &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   month.lbl &lt;ord&gt;, day &lt;int&gt;, hour &lt;int&gt;, minute &lt;int&gt;, second &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   hour12 &lt;int&gt;, am.pm &lt;int&gt;, wday &lt;int&gt;, wday.xts &lt;int&gt;, wday.lbl &lt;ord&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   mday &lt;int&gt;, qday &lt;int&gt;, yday &lt;int&gt;, mweek &lt;int&gt;, week &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   week.iso &lt;int&gt;, week2 &lt;int&gt;, week3 &lt;int&gt;, week4 &lt;int&gt;, mday7 &lt;int&gt;</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -158,7 +167,7 @@ should be dropped or kept when using further functions</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
