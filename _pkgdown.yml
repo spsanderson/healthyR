@@ -1,7 +1,8 @@
+url: https://www.spsanderson.com/healthyR/
 template:
-  params:
-    bootswatch: flatly
-    ganalytics: G-3393M45M1X
+  bootstrap: 5
+  bootswatch: flatly
+  ganalytics: G-3393M45M1X
 
 navbar:
   title: "healthyR"
@@ -85,3 +86,5 @@ reference:
   -  subtitle: Mapping Files
      contents:
      -  contains("mapping")
+
+search:
