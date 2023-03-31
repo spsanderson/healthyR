@@ -1,4 +1,4 @@
-# healthyR (development version)
+# healthyR 0.2.1
 
 ## Breaking Changes
 1. Fix #141 - Drop support for kmeans functions and umap functions as they were

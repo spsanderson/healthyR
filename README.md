@@ -74,17 +74,19 @@ ts_signature_tbl(.data = m4_daily, .date_col = date)
 #>  8 D410  1978-06-30 9084. 268012800 86400  1978     1978     1       2     6
 #>  9 D410  1978-07-01 9081. 268099200 86400  1978     1978     2       3     7
 #> 10 D410  1978-07-02 9047. 268185600 86400  1978     1978     2       3     7
-#> # … with 17,568 more rows, and 21 more variables: month.xts <int>,
-#> #   month.lbl <ord>, day <int>, hour <int>, minute <int>, second <int>,
-#> #   hour12 <int>, am.pm <int>, wday <int>, wday.xts <int>, wday.lbl <ord>,
-#> #   mday <int>, qday <int>, yday <int>, mweek <int>, week <int>,
-#> #   week.iso <int>, week2 <int>, week3 <int>, week4 <int>, mday7 <int>
+#> # ℹ 17,568 more rows
+#> # ℹ 21 more variables: month.xts <int>, month.lbl <ord>, day <int>, hour <int>,
+#> #   minute <int>, second <int>, hour12 <int>, am.pm <int>, wday <int>,
+#> #   wday.xts <int>, wday.lbl <ord>, mday <int>, qday <int>, yday <int>,
+#> #   mweek <int>, week <int>, week.iso <int>, week2 <int>, week3 <int>,
+#> #   week4 <int>, mday7 <int>
 ```
 
 Here is a simple example of using the plt_gartner_magic_chart()
 function:
 
 ``` r
+
 suppressPackageStartupMessages(library(healthyR))
 suppressPackageStartupMessages(library(tibble))
 suppressPackageStartupMessages(library(dplyr))

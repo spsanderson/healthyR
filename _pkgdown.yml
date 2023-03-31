@@ -14,9 +14,6 @@ navbar:
     - text: "Articles"
       href: articles/index.html
       menu:
-        -  text: "Clustering"
-        -  text: "Clustering with K-Means and UMAP"
-           href: articles/kmeans-umap.html
     - text: "Function Reference"
       href: reference/index.html
     - text: "News"
@@ -36,8 +33,6 @@ reference:
      desc: Other Plotting Functions
      contents:
      -  contains("_index_plt")
-     -  "kmeans_scree_plt"
-     -  "umap_plt"
      -  "diverging_lollipop_plt"
      -  "diverging_bar_plt"
   -  subtitle: Color Blindness
@@ -70,11 +65,6 @@ reference:
      contents:
      -  contains("tbl")
   -  title: ML/AI Functions
-     desc: Functions for ML/AI Processing
-  -  subtitle: ML/AI Functions
-     contents:
-     -  "kmeans_obj"
-     -  "umap_list"
   -  title: Miscellaneous
      desc: Miscellaneous Functions and Utilities
   -  subtitle: Function List
