@@ -14,7 +14,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 URL: https://github.com/spsanderson/healthyR
 BugReports: https://github.com/spsanderson/healthyR/issues
 Imports: 
@@ -46,4 +46,4 @@ Suggests:
     tidyselect
 VignetteBuilder: knitr
 Depends: 
-    R (>= 2.10)
+    R (>= 3.3)
