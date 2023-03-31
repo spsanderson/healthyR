@@ -32,8 +32,6 @@ Imports:
     cowplot,
     scales,
     sqldf,
-    tidyr,
-    ggrepel,
     plotly
 Suggests: 
     knitr,
@@ -42,7 +40,6 @@ Suggests:
     pacman,
     healthyR.data,
     broom,
-    uwot,
     tidyselect
 VignetteBuilder: knitr
 Depends: 
