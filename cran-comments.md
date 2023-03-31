@@ -1,11 +1,11 @@
 ## Test environments
-0.2.0 prep for cran
+0.2.1 prep for cran
   
 ## Fix Issue to maintain CRAN
-
+resubmit for timetk dep issue
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 note
+0 errors | 0 warnings | 1 note
 
-Minor updates.
+Minor updates and fix for timetk dependency.
