@@ -2,8 +2,10 @@ Package: healthyR
 Title: Hospital Data Analysis Workflow Tools
 Version: 0.2.1.9000
 Authors@R: c(
-    person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
-    person("Steven Sanderson", role = "cph"))
+    person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre","cph"),
+      comment = c(ORCID = "0009-0006-7661-8247")
+      )
+    )
 Description: 
     Hospital data analysis workflow tools, modeling, and automations. This library
     provides many useful tools to review common administrative hospital data. Some 
