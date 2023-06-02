@@ -22,25 +22,38 @@
 save_to_excel <- function(.data, .file_name) {
 
     # Checks
-    if(!is.data.frame(.data)){
-        stop(call. = FALSE, "(.data) is not a data.frame/tibble. Please supply.")
+    if (!is.data.frame(.data) & !is.list(.data)){
+        rlang::abort(
+            message = ".data is not a data.frame/tibble. Please supply",
+            use_cli_format = TRUE
+        )
+    }
+
+    if (is.list(.data) & !all(unlist(purrr::map(.data, is.data.frame)))) {
+        rlang::abort(
+            message = ".data is a list, but is not a list of data.frames/tibbles.
+            Please supply a valid list."
+        )
     }
 
     if(is.na(.file_name)){
-        stop(call. = FALSE, "(.file_name) was not provided. Please supply.")
+        rlang::abort(
+            message = ".file_name must be supplied.",
+            use_cli_format = TRUE
+        )
     }
 
-    data_tbl <- tibble::as_tibble(.data)
+    dl <- .data
 
     # Save Dir
     file_path <- utils::choose.dir()
 
     # File Name
     file_name <- .file_name
-    file_date <- base::Sys.Date() %>%
+    file_date <- base::Sys.Date() |>
         stringr::str_replace_all("-","")
-    file_time <- base::Sys.time() %>%
-        healthyR::sql_right(5) %>%
+    file_time <- base::Sys.time() |>
+        healthyR::sql_right(5) |>
         stringr::str_replace_all(":","")
     file_name <- base::paste0(
         "\\"
@@ -59,7 +72,7 @@ save_to_excel <- function(.data, .file_name) {
 
     # Save file
     writexl::write_xlsx(
-        x = data_tbl
+        x = dl
         , path = f_pn
     )
 
