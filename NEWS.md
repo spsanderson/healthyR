@@ -1,5 +1,14 @@
 # healthyR (development version)
 
+## Breaking Changes
+None
+
+## New Features
+None
+
+## Minor Fixes and Improvements
+1. Fix #153 - Additions to check logic by @alcrosby for `save_to_excel()`
+
 # healthyR 0.2.1
 
 ## Breaking Changes
