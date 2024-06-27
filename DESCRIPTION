@@ -38,7 +38,6 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    roxygen2,
     pacman,
     healthyR.data,
     broom,

@@ -15,7 +15,7 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 <!-- badges: end -->
 
 The goal of healthyR is to help quickly analyze common data problems in
-the Administrative and Clincial spaces.
+the Administrative and Clinical spaces.
 
 ## Installation
 
