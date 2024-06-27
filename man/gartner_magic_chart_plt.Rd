@@ -9,89 +9,81 @@ gartner_magic_chart_plt(
   .x_col,
   .y_col,
   .point_size_col = NULL,
-  .y_lab,
-  .x_lab,
-  .plt_title,
-  .tl_lbl,
-  .tr_lbl,
-  .br_lbl,
-  .bl_lbl
+  .y_lab = "",
+  .x_lab = "",
+  .plot_title = "",
+  .top_left_label = "",
+  .top_right_label = "",
+  .bottom_right_label = "",
+  .bottom_left_label = ""
 )
 }
 \arguments{
-\item{.data}{The data set you want to plot}
+\item{.data}{The dataset you want to plot.}
 
-\item{.x_col}{The x-axis for the plot}
+\item{.x_col}{The x-axis for the plot.}
 
-\item{.y_col}{The y-axis for the plot}
+\item{.y_col}{The y-axis for the plot.}
 
-\item{.point_size_col}{The default is NULL, if you want to size the dots by
-a column in the data.frame/tibble then enter the column name here.}
+\item{.point_size_col}{The default is NULL. If you want to size the dots by
+a column in the data frame/tibble, enter the column name here.}
 
-\item{.y_lab}{The y-axis label}
+\item{.y_lab}{The y-axis label (default: "").}
 
-\item{.x_lab}{The x-axis label}
+\item{.x_lab}{The x-axis label (default: "").}
 
-\item{.plt_title}{The title of the plot}
+\item{.plot_title}{The title of the plot (default: "").}
 
-\item{.tl_lbl}{The top left label}
+\item{.top_left_label}{The top left label (default: "").}
 
-\item{.tr_lbl}{The top right label}
+\item{.top_right_label}{The top right label (default: "").}
 
-\item{.br_lbl}{The bottom right label}
+\item{.bottom_right_label}{The bottom right label (default: "").}
 
-\item{.bl_lbl}{The bottom left label}
+\item{.bottom_left_label}{The bottom left label (default: "").}
 }
 \value{
-A \code{ggplot} plot
+A \code{ggplot} plot.
 }
 \description{
-Plot a Gartner Magic Chart of two continuous variables
-}
-\details{
-\itemize{
-\item Supply a data frame with at least two continuous variables to plot against
-each other
-}
+Plot a Gartner Magic Chart of two continuous variables.
 }
 \examples{
 library(dplyr)
+library(ggplot2)
 
 data_tbl <- tibble(
-    x = rnorm(100, 0, 1),
-    y = rnorm(100, 0, 1),
-    z = abs(x) + abs(y)
- )
-
-gartner_magic_chart_plt(
-  .data = data_tbl,
-  .x_col = x,
-  .y_col = y,
-  .point_size = z,
-  .x_lab = "los",
-  .y_lab = "ra",
-  .plt_title = "tst",
-  .tr_lbl = "High RA-LOS",
-  .tl_lbl = "High RA",
-  .bl_lbl = "Leader",
-  .br_lbl = "High LOS"
+  x = rnorm(100, 0, 1),
+  y = rnorm(100, 0, 1),
+  z = abs(x) + abs(y)
 )
 
 gartner_magic_chart_plt(
   .data = data_tbl,
   .x_col = x,
   .y_col = y,
-  .point_size = NULL,
+  .point_size_col = z,
   .x_lab = "los",
   .y_lab = "ra",
-  .plt_title = "tst",
-  .tr_lbl = "High RA-LOS",
-  .tl_lbl = "High RA",
-  .bl_lbl = "Leader",
-  .br_lbl = "High LOS"
+  .plot_title = "tst",
+  .top_right_label = "High RA-LOS",
+  .top_left_label = "High RA",
+  .bottom_left_label = "Leader",
+  .bottom_right_label = "High LOS"
 )
 
+gartner_magic_chart_plt(
+  .data = data_tbl,
+  .x_col = x,
+  .y_col = y,
+  .point_size_col = NULL,
+  .x_lab = "los",
+  .y_lab = "ra",
+  .plot_title = "tst",
+  .top_right_label = "High RA-LOS",
+  .top_left_label = "High RA",
+  .bottom_left_label = "Leader",
+  .bottom_right_label = "High LOS"
+)
 }
-\author{
-Steven P. Sanderson II, MPH
-}
+\concept{plotting_functions}
