@@ -1,5 +1,7 @@
 #' Time Series - Census and LOS by Day
 #'
+#' @family Data Table Functions
+#'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description

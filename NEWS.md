@@ -10,6 +10,7 @@ None
 1. Fix #153 - Additions to check logic by @alcrosby for `save_to_excel()`
 2. Fix #168 - Minor fixes to `gartner_magic_chart_plt()`
 3. Fix #167 - Fix `<scale>` argument of `<guides>`
+4. Fix #169 - Break out data table functions into their own files.
 
 # healthyR 0.2.1
 
