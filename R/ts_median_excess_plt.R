@@ -122,10 +122,12 @@ ts_median_excess_plt <- function(
         ggplot2::geom_hline(yintercept = 0, col='gray') +
         ggplot2::geom_line(ggplot2::aes(col=last_flag, y = excess)) +
         ggplot2::scale_color_manual(values = c("FALSE"='gray',"TRUE"='red')) +
-        ggplot2::guides(col = FALSE) +
+        ggplot2::guides(col = "none") +
         ggplot2::theme_minimal() +
         ggplot2::labs(
-            x = ""
+            x = "",
+            y = "Excess +/- of Median Value",
+            title = "Excess +/- of Median Value Over Time"
         )
 
     # * Return ----
