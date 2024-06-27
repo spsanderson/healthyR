@@ -1,22 +1,36 @@
-#' Diverging Lollipop Chart
+#' Diverging Bar Chart
+#'
+#' @family Plotting Functions
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
-#' This is a diverging lollipop function. Lollipop chart conveys the same
-#' information as bar chart and diverging bar. Except that it looks more modern.
-#' Instead of geom_bar, I use geom_point and geom_segment to get the lollipops
-#' right. Let’s draw a lollipop using the same data I prepared in the previous
-#' example of diverging bars.
+#' Diverging Bars is a bar chart that can handle both negative and positive
+#' values. This can be implemented by a smart tweak with `geom_bar()`. But the
+#' usage of `geom_bar()` can be quite confusing. That's because, it can be used to
+#' make a bar chart as well as a histogram. Let me explain.
+#'
+#' By default, `geom_bar()` has the stat set to count. That means, when you
+#' provide just a continuous X variable (and no Y variable), it tries to make
+#' a histogram out of the data.
+#'
+#' In order to make a bar chart create bars instead of histogram,
+#' you need to do two things. Set `stat = identity` and provide both `x` and `y`
+#' inside `aes()` where, `x` is either character or factor and `y` is numeric.
+#' In order to make sure you get diverging bars instead of just bars, make sure,
+#' your categorical variable has 2 categories that changes values at a certain
+#' threshold of the continuous variable. In below example, the mpg from mtcars
+#' data set is normalized by computing the z score. Those vehicles with mpg
+#' above zero are marked green and those below are marked red.
 #'
 #' @details
 #' This function takes only a few arguments and returns a ggplot2 object.
 #'
 #' @param .data The data to pass to the function, must be a tibble/data.frame.
-#' @param .x_axis The data that is passed to the x-axis. This will also be the
-#' `x` and `xend` parameters of the `geom_segment`
+#' @param .x_axis The data that is passed to the x-axis.
 #' @param .y_axis The data that is passed to the y-axis. This will also equal the
-#' parameters of `yend` and `label`
+#' parameter `label`
+#' @param .fill_col The column that will be used to fill the color of the bars.
 #' @param .plot_title Default is NULL
 #' @param .plot_subtitle Default is NULL
 #' @param .plot_caption Default is NULL
@@ -32,8 +46,13 @@
 #' mtcars <- mtcars[order(mtcars$mpg_z), ]  # sort
 #' mtcars$car_name <- factor(mtcars$car_name, levels = mtcars$car_name)
 #'
-#' diverging_lollipop_plt(.data = mtcars, .x_axis = car_name
-#' , .y_axis = mpg_z)
+#' diverging_bar_plt(
+#'   .data          = mtcars
+#'   , .x_axis      = car_name
+#'   , .y_axis      = mpg_z
+#'   , .fill_col    = mpg_type
+#'   , .interactive = FALSE
+#' )
 #'
 #' @return
 #' A `plotly` plot or a `ggplot2` static plot
@@ -43,13 +62,14 @@
 #' @export
 #'
 
-diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
+diverging_bar_plt <- function(.data, .x_axis, .y_axis, .fill_col,
                                    .plot_title = NULL, .plot_subtitle = NULL,
                                    .plot_caption = NULL, .interactive = FALSE){
 
     # * Tidyeval ----
     x_axis_var    <- rlang::enquo(.x_axis)
     y_axis_var    <- rlang::enquo(.y_axis)
+    fill_col_var  <- rlang::enquo(.fill_col)
     plot_title    <- .plot_title
     plot_subtitle <- .plot_subtitle
     plot_caption  <- .plot_caption
@@ -58,6 +78,11 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
     # * Checks ----
     if (rlang::quo_is_missing(x_axis_var) | rlang::quo_is_missing(y_axis_var)){
         stop(call. = FALSE, "You must provide both the .x_axis AND .y_axis columns.")
+    }
+
+    if (rlang::quo_is_missing(fill_col_var)){
+        stop(call. = FALSE, "You must provide the .fill_col that maps the color
+             for a over or under category.")
     }
 
     if(!is.data.frame(.data)){
@@ -80,20 +105,18 @@ diverging_lollipop_plt <- function(.data, .x_axis, .y_axis,
             , label = {{ y_axis_var }}
             )
         ) +
-        ggplot2::geom_point(stat = 'identity', fill = "black", size = 6)  +
-        ggplot2::geom_segment(
-            ggplot2::aes(y = 0,
-                         x = {{ x_axis_var }},
-                         yend = {{ y_axis_var }},
-                         xend = {{ x_axis_var }}),
-                     color = "black") +
-        ggplot2::geom_text(color = "white", size = 2) +
+        ggplot2::geom_bar(
+            stat = 'identity'
+            , ggplot2::aes(
+                fill = {{ fill_col_var }}
+                )
+            , width=.5
+        )  +
         ggplot2::labs(
             title    = plot_title,
             subtitle = plot_subtitle,
             caption  = plot_caption
         ) +
-        #ggplot2::ylim(-3, 3) +
         ggplot2::coord_flip() +
         ggplot2::theme_minimal()
 

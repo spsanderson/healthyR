@@ -1,6 +1,6 @@
 #' Service Line Grouper Vectorized Function
 #'
-#' @family Vectorized Function
+#' @family Vector Function
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

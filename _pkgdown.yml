@@ -22,58 +22,31 @@ navbar:
 reference:
   -  title: Plotting with healthyR
      desc: healthyR Plots
-  -  subtitle: Time Series Plotting
      contents:
-     -  matches("^ts_.+_plt")
-     -  contains("ts_plt")
-  -  subtitle: Gartner Magic Chart
-     contents:
-     -  contains("gartner_magic_chart_plt")
-  -  subtitle: Miscellaneous Plots
-     desc: Other Plotting Functions
-     contents:
-     -  contains("_index_plt")
-     -  "diverging_lollipop_plt"
-     -  "diverging_bar_plt"
+     -  has_concept("Plotting Functions")
   -  subtitle: Color Blindness
      desc: Functions to help with color blindness
      contents:
-     -  "color_blind"
-     -  "hr_scale_fill_colorblind"
-     -  "hr_scale_color_colorblind"
+     -  has_concept("Color Blind")
   -  title: Augment Functions
      desc: Functions that Augment a tibble
      contents:
-     -  contains("_augment")
+     -  has_concept("Augment Function")
   -  title: Vectorized Functions
      desc: Functions that work on or return a vector
      contents:
-     -  contains("_vec")
-  -  title: Optimal Bin Functions for Histograms
-     desc: Optimal Binning Functions
-  -  subtitle: Optimal Binning for histograms
-     contents:
-     -  contains("opt_bin")
-  -  title: SQL String Functions
-     desc: Manipulate Strings with SQL like Functions
-  -  subtitle: SQL String Functions
-     contents:
-     -  contains("sql")
+     -  has_concept("Vector Function")
   -  title: Table Functions
      desc: Functions that return tibbles
      contents:
      -  has_concept("Data Table Functions")
-  -  title: ML/AI Functions
   -  title: Miscellaneous
      desc: Miscellaneous Functions and Utilities
-  -  subtitle: Function List
      contents:
-     -  contains("save_to_excel")
-     -  "named_item_list"
+     -  has_concept("Utilities")
   -  title: Data Files
-     desc: __Data Files__
-  -  subtitle: Mapping Files
+     desc: Data Files
      contents:
-     -  contains("mapping")
+     -  has_concept("Data Files")
 
 search:

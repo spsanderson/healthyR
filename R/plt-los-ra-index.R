@@ -1,5 +1,7 @@
 #' Plot LOS and Readmit Index with Variance
 #'
+#' @family Plotting Functions
+#'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description

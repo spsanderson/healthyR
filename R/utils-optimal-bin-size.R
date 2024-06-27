@@ -1,5 +1,9 @@
 #' Get the optimal binwidth for a histogram
 #'
+#' @family Utilities
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' Modified from Hideaki Shimazaki
 #' Department of Physics, Kyoto University
 #' shimazaki at ton.scphys.kyoto-u.ac.jp

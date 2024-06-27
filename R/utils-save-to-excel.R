@@ -1,5 +1,7 @@
 #' Save a file to Excel
 #'
+#' @family Utilities
+#'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
@@ -16,6 +18,9 @@
 #' @return
 #' A saved excel file
 #'
+#' @name save_to_excel
+NULL
+#' @rdname save_to_excel
 #' @export
 #'
 

@@ -1,5 +1,7 @@
 #' Create a plot showing the excess of the median value
 #'
+#' @family Plotting Functions
+#'
 #' @description
 #' Plot out the excess +/- of the median value grouped by certain time parameters.
 #'
