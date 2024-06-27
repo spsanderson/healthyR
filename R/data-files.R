@@ -1,5 +1,7 @@
 #' Diagnosis to Condition Code Mapping file
 #'
+#' @family Data Files
+#'
 #' A dataset containing the Diagnosis Code to AHRQ Condition Code Mapping
 #' that is used in helping to define service lines for inpatient discharges.
 #'
@@ -19,6 +21,8 @@
 "dx_cc_mapping"
 
 #' Procedure to Condition Code Mapping file
+#'
+#' @family Data Files
 #'
 #' A dataset containing the Procedure Code to AHRQ Condition Code Mapping
 #' that is used in helping to define servce lines for inpatient discharges.

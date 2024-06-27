@@ -61,9 +61,8 @@ reference:
      -  contains("sql")
   -  title: Table Functions
      desc: Functions that return tibbles
-  -  subtitle: Table Functions
      contents:
-     -  contains("tbl")
+     -  has_concept("Data Table Functions")
   -  title: ML/AI Functions
   -  title: Miscellaneous
      desc: Miscellaneous Functions and Utilities

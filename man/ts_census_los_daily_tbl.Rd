@@ -72,6 +72,15 @@ ts_census_los_daily_tbl(
 )
 
 }
+\seealso{
+Other Data Table Functions: 
+\code{\link{category_counts_tbl}()},
+\code{\link{los_ra_index_summary_tbl}()},
+\code{\link{named_item_list}()},
+\code{\link{top_n_tbl}()},
+\code{\link{ts_signature_tbl}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }
+\concept{Data Table Functions}

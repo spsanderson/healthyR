@@ -1,5 +1,9 @@
 #' Make a Time Enhanced Tibble
 #'
+#' @family Data Table Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @description
 #' Returns a tibble that adds the time series signature from the
 #' [timetk::tk_augment_timeseries_signature()] function. All added from a chosen
