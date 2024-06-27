@@ -20,6 +20,12 @@ are color blind.
 color_blind()
 
 }
+\seealso{
+Other Color Blind: 
+\code{\link{hr_scale_color_colorblind}()},
+\code{\link{hr_scale_fill_colorblind}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }
+\concept{Color Blind}

@@ -21,6 +21,12 @@ A \code{gggplot} layer
 This function is used in others in order to help render plots for those that
 are color blind.
 }
+\seealso{
+Other Color Blind: 
+\code{\link{color_blind}()},
+\code{\link{hr_scale_color_colorblind}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }
+\concept{Color Blind}

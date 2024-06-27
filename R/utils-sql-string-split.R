@@ -1,5 +1,9 @@
 #' Use SQL LEFT type function
 #'
+#' @family Utilities
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @description
 #' Perform an SQL LEFT() type function on a piece of text
 #'
@@ -21,6 +25,10 @@ sql_left <- function(.text, .num_char) {
 }
 
 #' Use SQL MID type function
+#'
+#' @family Utilities
+#'
+#' @author Steven P. Sanderson II, MPH
 #'
 #' @description
 #' Perform an SQL SUBSTRING type function
@@ -45,6 +53,10 @@ sql_mid <- function(.text, .start_num, .num_char) {
 }
 
 #' Use SQL RIGHT type functions
+#'
+#' @family Utilities
+#'
+#' @author Steven P. Sanderson II, MPH
 #'
 #' @description
 #' Perform an SQL RIGHT type function

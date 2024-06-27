@@ -1,5 +1,7 @@
 #' Provide Colorblind Compliant Colors
 #'
+#' @family Color Blind
+#'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @details
@@ -23,6 +25,8 @@ color_blind <- function(){
 }
 
 #' Provide Colorblind Compliant Colors
+#'
+#' @family Color Blind
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
@@ -50,6 +54,8 @@ hr_scale_fill_colorblind <- function(..., theme = "hr") {
 }
 
 #' Provide Colorblind Compliant Colors
+#'
+#' @family Color Blind
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
