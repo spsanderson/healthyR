@@ -1,7 +1,7 @@
 # healthyR (development version)
 
 ## Breaking Changes
-None
+1. Fix #168 - Minor fixes to `gartner_magic_chart_plt()` parameter names.
 
 ## New Features
 None

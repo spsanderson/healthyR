@@ -83,11 +83,11 @@ gartner_magic_chart_plt(
   , .y_col = y
   , .y_lab = "los"
   , .x_lab = "RA"
-  , .plt_title = "Test Title"
-  , .tl_lbl = "Top Left lbl"
-  , .tr_lbl = "Top Right lbl"
-  , .bl_lbl = "Bottom Left lbl"
-  , .br_lbl = "Bottom Right lbl"
+  , .plot_title = "Test Title"
+  , .top_left_lable = "Top Left lbl"
+  , .top_right_lable = "Top Right lbl"
+  , .bottom_left_lable = "Bottom Left lbl"
+  , .bottom_right_lable = "Bottom Right lbl"
 )
 
 ```
