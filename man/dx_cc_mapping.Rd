@@ -15,5 +15,5 @@ Diagnosis to Condition Code Mapping file
 }
 \concept{Data Files
 
-A dataset containing the Diagnosis Code to AHRQ Condition Code Mapping.}
+AHRQ DX Condition Code Mapping.}
 \keyword{datasets}
