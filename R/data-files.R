@@ -2,7 +2,7 @@
 #'
 #' @family Data Files
 #'
-#' A dataset containing the Diagnosis Code to AHRQ Condition Code Mapping.
+#' AHRQ DX Condition Code Mapping.
 #'
 #' @docType data
 #' @keywords datasets
@@ -15,7 +15,7 @@
 #'
 #' @family Data Files
 #'
-#' A dataset containing the Procedure Code to AHRQ Condition Code Mapping.
+#' AHRQ Px Condition Code Mapping.
 #'
 #' @docType data
 #' @keywords datasets

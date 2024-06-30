@@ -15,5 +15,5 @@ Procedure to Condition Code Mapping file
 }
 \concept{Data Files
 
-A dataset containing the Procedure Code to AHRQ Condition Code Mapping.}
+AHRQ Px Condition Code Mapping.}
 \keyword{datasets}
