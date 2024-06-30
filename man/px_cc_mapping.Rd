@@ -15,14 +15,5 @@ Procedure to Condition Code Mapping file
 }
 \concept{Data Files
 
-A dataset containing the Procedure Code to AHRQ Condition Code Mapping
-that is used in helping to define servce lines for inpatient discharges.
-
-\itemize{
-\item CC_Code. PX_1, PX_2, ..., PX_n
-\item CC_Desc. PX_1 = Genitourinary incontinence procedures
-\item ICD_Ver_Flag. 10 or 9
-\item ICDCode. ICD-9 or ICD-10 Code
-\item Procedure. Inject Implant Urethra
-}}
+A dataset containing the Procedure Code to AHRQ Condition Code Mapping.}
 \keyword{datasets}
