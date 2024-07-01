@@ -13,7 +13,9 @@ data(dx_cc_mapping)
 \description{
 Diagnosis to Condition Code Mapping file
 }
-\concept{Data Files
-
-AHRQ DX Condition Code Mapping.}
+\seealso{
+Other AHRQ: 
+\code{\link{px_cc_mapping}}
+}
+\concept{AHRQ}
 \keyword{datasets}
