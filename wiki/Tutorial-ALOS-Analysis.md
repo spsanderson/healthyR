@@ -633,10 +633,10 @@ print(p2)
 
 ## Navigation
 
-- [← Data Files Reference](Data-Files-Reference)
-- [Readmission Analysis Tutorial →](Tutorial-Readmission-Analysis)
-- [View All Tutorials](Home#tutorials--examples)
+- [← Data Files Reference](Data-Files-Reference.md)
+- [Readmission Analysis Tutorial →](Tutorial-Readmission-Analysis.md)
+- [View All Tutorials](Home.md#tutorials--examples)
 
 ---
 
-*Questions? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Questions? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*

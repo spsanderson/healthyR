@@ -565,10 +565,10 @@ hospital_data %>%
 
 ## Navigation
 
-- [← Tutorial: ALOS Analysis](Tutorial-ALOS-Analysis)
-- [FAQ →](FAQ)
-- [View All Tutorials](Home#tutorials--examples)
+- [← Tutorial: ALOS Analysis](Tutorial-ALOS-Analysis.md)
+- [FAQ →](FAQ.md)
+- [View All Tutorials](Home.md#tutorials--examples)
 
 ---
 
-*Questions? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Questions? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*

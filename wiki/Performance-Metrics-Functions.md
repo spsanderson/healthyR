@@ -166,7 +166,7 @@ quarterly_performance %>%
 
 - [los_ra_index_plt()](#los_ra_index_plt) - Visualize the indices
 - [gartner_magic_chart_plt()](#gartner_magic_chart_plt) - Quadrant analysis
-- [Tutorial: Performance Dashboard](Tutorial-Performance-Dashboard)
+- [Tutorial: Performance Dashboard](Tutorial-Performance-Dashboard.md)
 
 ---
 
@@ -442,7 +442,7 @@ p <- gartner_magic_chart_plt(...) +
 
 - [los_ra_index_plt()](#los_ra_index_plt) - Specialized LOS/Readmit visualization
 - [diverging_bar_plt()](#diverging_bar_plt) - Show deviations
-- [Tutorial: Performance Dashboard](Tutorial-Performance-Dashboard)
+- [Tutorial: Performance Dashboard](Tutorial-Performance-Dashboard.md)
 
 ---
 
@@ -672,10 +672,10 @@ diverging_lollipop_plt(
 
 ## Navigation
 
-- [← Time Series Functions](Time-Series-and-Plotting-Functions)
-- [Data Transformation Functions →](Data-Transformation-Functions)
-- [View Tutorials](Tutorial-Performance-Dashboard)
+- [← Time Series Functions](Time-Series-and-Plotting-Functions.md)
+- [Data Transformation Functions →](Data-Transformation-Functions.md)
+- [View Tutorials](Tutorial-Performance-Dashboard.md)
 
 ---
 
-*Need help with performance metrics? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Need help with performance metrics? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
