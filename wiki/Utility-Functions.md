@@ -301,8 +301,8 @@ readr::write_csv(my_data, "report.csv")
 
 ### See Also
 
-- [named_item_list()](Data-Transformation-Functions#named_item_list) - Create named lists
-- [category_counts_tbl()](Data-Transformation-Functions#category_counts_tbl) - Summary tables
+- [named_item_list()](Data-Transformation-Functions.md#named_item_list) - Create named lists
+- [category_counts_tbl()](Data-Transformation-Functions.md#category_counts_tbl) - Summary tables
 
 ---
 
@@ -709,10 +709,10 @@ stringr::str_sub(x, 4, 5)
 
 ## Navigation
 
-- [← Accessibility Features](Accessibility-Features)
-- [Data Files Reference →](Data-Files-Reference)
-- [View All Functions](Time-Series-and-Plotting-Functions)
+- [← Accessibility Features](Accessibility-Features.md)
+- [Data Files Reference →](Data-Files-Reference.md)
+- [View All Functions](Time-Series-and-Plotting-Functions.md)
 
 ---
 
-*Need help with utilities? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Need help with utilities? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*

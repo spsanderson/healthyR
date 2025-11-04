@@ -4,7 +4,7 @@ Get up and running with healthyR in 5 minutes! This guide covers the essentials 
 
 ## Prerequisites
 
-Make sure you have healthyR installed. If not, see the [Installation Guide](Installation-Guide).
+Make sure you have healthyR installed. If not, see the [Installation Guide](Installation-Guide.md).
 
 ```r
 install.packages("healthyR")
@@ -321,16 +321,16 @@ ggplot(performance_data, aes(x = service_line, y = avg_los, fill = service_line)
 
 Now that you've completed the quick start:
 
-1. **Dive Deeper**: Explore [Core Concepts](Core-Concepts) to understand healthyR's philosophy
+1. **Dive Deeper**: Explore [Core Concepts](Core-Concepts.md) to understand healthyR's philosophy
 2. **Function Reference**: Browse all available functions:
-   - [Time Series & Plotting Functions](Time-Series-and-Plotting-Functions)
-   - [Performance Metrics Functions](Performance-Metrics-Functions)
-   - [Data Transformation Functions](Data-Transformation-Functions)
+   - [Time Series & Plotting Functions](Time-Series-and-Plotting-Functions.md)
+   - [Performance Metrics Functions](Performance-Metrics-Functions.md)
+   - [Data Transformation Functions](Data-Transformation-Functions.md)
 3. **Tutorials**: Follow detailed tutorials:
-   - [Average Length of Stay Analysis](Tutorial-ALOS-Analysis)
-   - [Readmission Rate Analysis](Tutorial-Readmission-Analysis)
-   - [Service Line Classification](Tutorial-Service-Line-Classification)
-4. **Get Help**: Check the [FAQ](FAQ) and [Troubleshooting](Troubleshooting) pages
+   - [Average Length of Stay Analysis](Tutorial-ALOS-Analysis.md)
+   - [Readmission Rate Analysis](Tutorial-Readmission-Analysis.md)
+   - [Service Line Classification](Tutorial-Service-Line-Classification.md)
+4. **Get Help**: Check the [FAQ](FAQ.md) and [Troubleshooting](Troubleshooting.md) pages
 
 ## Quick Reference Card
 
@@ -367,4 +367,4 @@ hr_scale_color_colorblind()
 
 ---
 
-*Ready for more? Check out the [detailed tutorials](Tutorial-ALOS-Analysis) or explore the [complete function reference](Time-Series-and-Plotting-Functions).*
+*Ready for more? Check out the [detailed tutorials](Tutorial-ALOS-Analysis.md) or explore the [complete function reference](Time-Series-and-Plotting-Functions.md).*

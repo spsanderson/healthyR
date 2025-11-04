@@ -268,7 +268,7 @@ When contributing to healthyR, please update NEWS.md:
 - Description of breaking change (#issue_number)
 ```
 
-See [Contributing Guidelines](Contributing) for more details.
+See [Contributing Guidelines](Contributing.md) for more details.
 
 ---
 
@@ -323,9 +323,9 @@ Development versions use `.9000` suffix (e.g., 0.2.2.9000)
 
 ## Navigation
 
-- [← Troubleshooting](Troubleshooting)
-- [Home](Home)
-- [Contributing →](Contributing)
+- [← Troubleshooting](Troubleshooting.md)
+- [Home](Home.md)
+- [Contributing →](Contributing.md)
 
 ---
 

@@ -487,10 +487,10 @@ write_xlsx(
 
 ## Navigation
 
-- [← Utility Functions](Utility-Functions)
-- [Tutorial: Service Line Classification →](Tutorial-Service-Line-Classification)
-- [Home](Home)
+- [← Utility Functions](Utility-Functions.md)
+- [Tutorial: Service Line Classification →](Tutorial-Service-Line-Classification.md)
+- [Home](Home.md)
 
 ---
 
-*Questions about the data files? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Questions about the data files? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
