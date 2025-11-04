@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2025-11-04T18:32Z
+last_built: 2025-11-04T18:57Z
 urls:
   reference: https://www.spsanderson.com/healthyR/reference
   article: https://www.spsanderson.com/healthyR/articles

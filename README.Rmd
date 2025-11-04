@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-To view the full wiki, click here: [Full healthyR Wiki](https://github.com/spsanderson/healthyR/blob/master/wiki/README.md)
+To view the full wiki, click here: [Full healthyR Wiki](https://github.com/spsanderson/healthyR/blob/master/wiki/Home.md)
 
 **healthyR** is a comprehensive R package designed to streamline hospital data analysis workflows. It provides a consistent, intuitive framework for analyzing common administrative and clinical data problems, helping healthcare analysts and data scientists quickly generate insights from hospital data.
 

@@ -17,7 +17,7 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 ## Overview
 
 To view the full wiki, click here: [Full healthyR
-Wiki](https://github.com/spsanderson/healthyR/blob/master/wiki/README.md)
+Wiki](https://github.com/spsanderson/healthyR/blob/master/wiki/Home.md)
 
 **healthyR** is a comprehensive R package designed to streamline
 hospital data analysis workflows. It provides a consistent, intuitive
