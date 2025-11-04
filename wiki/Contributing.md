@@ -510,9 +510,9 @@ Thank you for contributing to healthyR. Your efforts help make hospital data ana
 
 ## Navigation
 
-- [← FAQ](FAQ)
-- [Troubleshooting →](Troubleshooting)
-- [Home](Home)
+- [← FAQ](FAQ.md)
+- [Troubleshooting →](Troubleshooting.md)
+- [Home](Home.md)
 
 ---
 

@@ -240,7 +240,7 @@ dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE)
 
 If you continue to experience issues:
 
-1. Check the [FAQ](FAQ) page
+1. Check the [FAQ](FAQ.md) page
 2. Search [existing issues](https://github.com/spsanderson/healthyR/issues)
 3. Open a [new issue](https://github.com/spsanderson/healthyR/issues/new) with:
    - Your R version (`R.version.string`)
@@ -289,11 +289,11 @@ pak::pkg_remove("healthyR", dependencies = TRUE)
 
 After successful installation:
 
-1. Review the [Quick Start](Quick-Start) guide
-2. Explore [Core Concepts](Core-Concepts)
-3. Try the [Tutorials](Tutorial-ALOS-Analysis)
-4. Browse the [Function Reference](Time-Series-and-Plotting-Functions)
+1. Review the [Quick Start](Quick-Start.md) guide
+2. Explore [Core Concepts](Core-Concepts.md)
+3. Try the [Tutorials](Tutorial-ALOS-Analysis.md)
+4. Browse the [Function Reference](Time-Series-and-Plotting-Functions.md)
 
 ---
 
-*Having installation issues? Check the [Troubleshooting](Troubleshooting) page or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Having installation issues? Check the [Troubleshooting](Troubleshooting.md) page or [open an issue](https://github.com/spsanderson/healthyR/issues).*

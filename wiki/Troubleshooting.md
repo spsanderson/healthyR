@@ -528,7 +528,7 @@ p + hr_scale_fill_colorblind()
 ### Before Asking for Help
 
 1. **Search existing issues:** [GitHub Issues](https://github.com/spsanderson/healthyR/issues)
-2. **Check the FAQ:** [FAQ](FAQ)
+2. **Check the FAQ:** [FAQ](FAQ.md)
 3. **Review documentation:** Function help files and wiki
 4. **Create a reprex:** Minimal reproducible example
 
@@ -622,9 +622,9 @@ dev.off()
 
 ## Navigation
 
-- [← Contributing](Contributing)
-- [Changelog →](Changelog)
-- [Home](Home)
+- [← Contributing](Contributing.md)
+- [Changelog →](Changelog.md)
+- [Home](Home.md)
 
 ---
 

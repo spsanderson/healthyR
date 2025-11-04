@@ -138,7 +138,7 @@ analysis <- hospital_data %>%
 
 - [ts_alos_plt()](#ts_alos_plt) - Plot average length of stay
 - [ts_census_los_daily_tbl()](#ts_census_los_daily_tbl) - Daily census calculations
-- [Core Concepts: Time Series Analysis](Core-Concepts#time-series-analysis)
+- [Core Concepts: Time Series Analysis](Core-Concepts.md#time-series-analysis)
 
 ---
 
@@ -277,7 +277,7 @@ base_plot +
 
 - [ts_readmit_rate_plt()](#ts_readmit_rate_plt) - Plot readmission rates
 - [ts_plt()](#ts_plt) - General time series plotting
-- [Tutorial: ALOS Analysis](Tutorial-ALOS-Analysis)
+- [Tutorial: ALOS Analysis](Tutorial-ALOS-Analysis.md)
 
 ---
 
@@ -433,7 +433,7 @@ readmit_data %>%
 
 - [ts_alos_plt()](#ts_alos_plt) - Plot average length of stay
 - [los_ra_index_summary_tbl()](#los_ra_index_summary_tbl) - Combine LOS and readmission
-- [Tutorial: Readmission Analysis](Tutorial-Readmission-Analysis)
+- [Tutorial: Readmission Analysis](Tutorial-Readmission-Analysis.md)
 
 ---
 
@@ -687,10 +687,10 @@ ts_plt(
 
 ## Navigation
 
-- [← Back to Home](Home)
-- [Performance Metrics Functions →](Performance-Metrics-Functions)
-- [View All Tutorials](Tutorial-ALOS-Analysis)
+- [← Back to Home](Home.md)
+- [Performance Metrics Functions →](Performance-Metrics-Functions.md)
+- [View All Tutorials](Tutorial-ALOS-Analysis.md)
 
 ---
 
-*Need help with time series analysis? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Need help with time series analysis? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*

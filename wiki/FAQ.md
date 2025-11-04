@@ -40,7 +40,7 @@ Yes! healthyR is open source and released under the MIT license. It's free to us
 ### Where can I get help?
 
 1. Check this FAQ
-2. Review the [wiki documentation](Home)
+2. Review the [wiki documentation](Home.md)
 3. Search [existing issues](https://github.com/spsanderson/healthyR/issues)
 4. Ask a question by [opening a new issue](https://github.com/spsanderson/healthyR/issues/new)
 
@@ -66,7 +66,7 @@ From GitHub (development version):
 devtools::install_github("spsanderson/healthyR")
 ```
 
-See the [Installation Guide](Installation-Guide) for details.
+See the [Installation Guide](Installation-Guide.md) for details.
 
 ### What version of R do I need?
 
@@ -91,7 +91,7 @@ healthyR works with tidy data frames where:
 - Each column is a variable
 - Data is in a tibble or data.frame
 
-See [Core Concepts: Tidy Data](Core-Concepts#tidy-data-principles).
+See [Core Concepts: Tidy Data](Core-Concepts.md#tidy-data-principles).
 
 ### What columns do I need?
 
@@ -490,9 +490,9 @@ When asking for help, please include:
 
 ## Navigation
 
-- [← Tutorial: Service Line Classification](Tutorial-Service-Line-Classification)
-- [Contributing Guidelines →](Contributing)
-- [Home](Home)
+- [← Tutorial: Service Line Classification](Tutorial-Service-Line-Classification.md)
+- [Contributing Guidelines →](Contributing.md)
+- [Home](Home.md)
 
 ---
 

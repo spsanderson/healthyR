@@ -222,8 +222,8 @@ head(px_cc_mapping)
 ### See Also
 
 - [service_line_augment()](#service_line_augment) - Alternative approach that returns a tibble
-- [Data Files Reference](Data-Files-Reference) - Details on mapping tables
-- [Tutorial: Service Line Classification](Tutorial-Service-Line-Classification)
+- [Data Files Reference](Data-Files-Reference.md) - Details on mapping tables
+- [Tutorial: Service Line Classification](Tutorial-Service-Line-Classification.md)
 
 ---
 
@@ -335,7 +335,7 @@ data2 <- data %>%
 ### See Also
 
 - [service_line_vec()](#service_line_vec) - Vectorized version
-- [Tutorial: Service Line Classification](Tutorial-Service-Line-Classification)
+- [Tutorial: Service Line Classification](Tutorial-Service-Line-Classification.md)
 
 ---
 
@@ -491,7 +491,7 @@ counts %>%
 ### See Also
 
 - [top_n_tbl()](#top_n_tbl) - Get top N categories
-- [Core Concepts: Tidy Data](Core-Concepts#tidy-data-principles)
+- [Core Concepts: Tidy Data](Core-Concepts.md#tidy-data-principles)
 
 ---
 
@@ -644,7 +644,7 @@ top_dx_comparison <- hospital_data %>%
 ### See Also
 
 - [category_counts_tbl()](#category_counts_tbl) - Get all counts
-- [Core Concepts: Tidy Data](Core-Concepts#tidy-data-principles)
+- [Core Concepts: Tidy Data](Core-Concepts.md#tidy-data-principles)
 
 ---
 
@@ -828,16 +828,16 @@ bind_rows(sl_list, .id = "service_line")
 
 - [save_to_excel()](#save_to_excel) - Export to Excel
 - [category_counts_tbl()](#category_counts_tbl) - Create grouped summaries
-- [Utility Functions](Utility-Functions#save_to_excel)
+- [Utility Functions](Utility-Functions.md#save_to_excel)
 
 ---
 
 ## Navigation
 
-- [← Performance Metrics Functions](Performance-Metrics-Functions)
-- [Accessibility Features →](Accessibility-Features)
-- [View Tutorials](Tutorial-Service-Line-Classification)
+- [← Performance Metrics Functions](Performance-Metrics-Functions.md)
+- [Accessibility Features →](Accessibility-Features.md)
+- [View Tutorials](Tutorial-Service-Line-Classification.md)
 
 ---
 
-*Need help with data transformation? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Need help with data transformation? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*

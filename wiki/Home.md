@@ -7,33 +7,33 @@ Welcome to the comprehensive documentation for **healthyR**, an R package design
 ## 📚 Quick Navigation
 
 ### Getting Started
-- [Installation Guide](Installation-Guide) - How to install and set up healthyR
-- [Quick Start](Quick-Start) - Get up and running in 5 minutes
-- [Core Concepts](Core-Concepts) - Understanding healthyR's approach to hospital data
+- [Installation Guide](Installation-Guide.md) - How to install and set up healthyR
+- [Quick Start](Quick-Start.md) - Get up and running in 5 minutes
+- [Core Concepts](Core-Concepts.md) - Understanding healthyR's approach to hospital data
 
 ### Function Reference
-- [Time Series & Plotting Functions](Time-Series-and-Plotting-Functions)
-- [Performance Metrics Functions](Performance-Metrics-Functions)
-- [Data Transformation Functions](Data-Transformation-Functions)
-- [Accessibility Features](Accessibility-Features)
-- [Utility Functions](Utility-Functions)
+- [Time Series & Plotting Functions](Time-Series-and-Plotting-Functions.md)
+- [Performance Metrics Functions](Performance-Metrics-Functions.md)
+- [Data Transformation Functions](Data-Transformation-Functions.md)
+- [Accessibility Features](Accessibility-Features.md)
+- [Utility Functions](Utility-Functions.md)
 
 ### Tutorials & Examples
-- [Average Length of Stay Analysis](Tutorial-ALOS-Analysis)
-- [Readmission Rate Analysis](Tutorial-Readmission-Analysis)
-- [Service Line Classification](Tutorial-Service-Line-Classification)
-- [Performance Dashboard Creation](Tutorial-Performance-Dashboard)
-- [Census & Capacity Planning](Tutorial-Census-Planning)
+- [Average Length of Stay Analysis](Tutorial-ALOS-Analysis.md)
+- [Readmission Rate Analysis](Tutorial-Readmission-Analysis.md)
+- [Service Line Classification](Tutorial-Service-Line-Classification.md)
+- [Performance Dashboard Creation](Tutorial-Performance-Dashboard.md)
+- [Census & Capacity Planning](Tutorial-Census-Planning.md)
 
 ### Reference Documentation
-- [Data Files Reference](Data-Files-Reference)
-- [API Reference](API-Reference)
-- [Changelog](Changelog)
+- [Data Files Reference](Data-Files-Reference.md)
+- [API Reference](API-Reference.md)
+- [Changelog](Changelog.md)
 
 ### Help & Support
-- [FAQ](FAQ)
-- [Troubleshooting](Troubleshooting)
-- [Contributing Guidelines](Contributing)
+- [FAQ](FAQ.md)
+- [Troubleshooting](Troubleshooting.md)
+- [Contributing Guidelines](Contributing.md)
 
 ## 📊 What is healthyR?
 
@@ -95,7 +95,7 @@ ts_alos_plt(
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](Contributing) for details on:
+We welcome contributions! Please see our [Contributing Guidelines](Contributing.md) for details on:
 
 - Reporting bugs
 - Suggesting new features
@@ -106,8 +106,8 @@ We welcome contributions! Please see our [Contributing Guidelines](Contributing)
 
 If you encounter issues or have questions:
 
-1. Check the [FAQ](FAQ) page
-2. Review the [Troubleshooting](Troubleshooting) guide
+1. Check the [FAQ](FAQ.md) page
+2. Review the [Troubleshooting](Troubleshooting.md) guide
 3. Search [existing issues](https://github.com/spsanderson/healthyR/issues)
 4. Open a [new issue](https://github.com/spsanderson/healthyR/issues/new) with a reproducible example
 

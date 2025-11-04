@@ -410,18 +410,18 @@ data %>%
 Now that you understand the core concepts:
 
 1. **Explore Functions**: Review detailed documentation for:
-   - [Time Series & Plotting Functions](Time-Series-and-Plotting-Functions)
-   - [Performance Metrics Functions](Performance-Metrics-Functions)
-   - [Data Transformation Functions](Data-Transformation-Functions)
+   - [Time Series & Plotting Functions](Time-Series-and-Plotting-Functions.md)
+   - [Performance Metrics Functions](Performance-Metrics-Functions.md)
+   - [Data Transformation Functions](Data-Transformation-Functions.md)
 
 2. **Try Tutorials**: Follow step-by-step guides:
-   - [Average Length of Stay Analysis](Tutorial-ALOS-Analysis)
-   - [Service Line Classification](Tutorial-Service-Line-Classification)
+   - [Average Length of Stay Analysis](Tutorial-ALOS-Analysis.md)
+   - [Service Line Classification](Tutorial-Service-Line-Classification.md)
 
 3. **Reference Materials**: Check out:
-   - [Data Files Reference](Data-Files-Reference)
-   - [API Reference](API-Reference)
+   - [Data Files Reference](Data-Files-Reference.md)
+   - [API Reference](API-Reference.md)
 
 ---
 
-*Questions about core concepts? Check the [FAQ](FAQ) or [ask a question](https://github.com/spsanderson/healthyR/issues).*
+*Questions about core concepts? Check the [FAQ](FAQ.md) or [ask a question](https://github.com/spsanderson/healthyR/issues).*

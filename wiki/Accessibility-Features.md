@@ -532,10 +532,10 @@ data_summarized <- data %>%
 
 ## Navigation
 
-- [← Data Transformation Functions](Data-Transformation-Functions)
-- [Utility Functions →](Utility-Functions)
-- [View All Tutorials](Tutorial-ALOS-Analysis)
+- [← Data Transformation Functions](Data-Transformation-Functions.md)
+- [Utility Functions →](Utility-Functions.md)
+- [View All Tutorials](Tutorial-ALOS-Analysis.md)
 
 ---
 
-*Questions about accessibility? Check the [FAQ](FAQ) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
+*Questions about accessibility? Check the [FAQ](FAQ.md) or [open an issue](https://github.com/spsanderson/healthyR/issues).*
