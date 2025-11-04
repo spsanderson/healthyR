@@ -16,22 +16,38 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 
 ## Overview
 
-**healthyR** is a comprehensive R package designed to streamline hospital data analysis workflows. It provides a consistent, intuitive framework for analyzing common administrative and clinical data problems, helping healthcare analysts and data scientists quickly generate insights from hospital data.
+To view the full wiki, click here: [Full healthyR
+Wiki](https://github.com/spsanderson/healthyR/blob/master/wiki/README.md)
+
+**healthyR** is a comprehensive R package designed to streamline
+hospital data analysis workflows. It provides a consistent, intuitive
+framework for analyzing common administrative and clinical data
+problems, helping healthcare analysts and data scientists quickly
+generate insights from hospital data.
 
 ### Key Features
 
-- **📊 Time Series Analysis**: Advanced tools for analyzing hospital census, length of stay (LOS), readmission rates, and other temporal metrics
-- **📈 Visualization**: Ready-to-use plotting functions for common healthcare analytics use cases
-- **🏥 Service Line Grouping**: Automated patient classification into service lines based on ICD-10 codes and DRG
-- **📉 Performance Metrics**: Calculate and visualize key hospital performance indicators including ALOS (Average Length of Stay), readmission rates, and LOS/Readmit indices
-- **🎨 Accessible Design**: Color-blind friendly palettes and themes for inclusive data visualization
-- **🔧 Utility Functions**: Helper functions for data manipulation, Excel export, and SQL-style string operations
+- **📊 Time Series Analysis**: Advanced tools for analyzing hospital
+  census, length of stay (LOS), readmission rates, and other temporal
+  metrics
+- **📈 Visualization**: Ready-to-use plotting functions for common
+  healthcare analytics use cases
+- **🏥 Service Line Grouping**: Automated patient classification into
+  service lines based on ICD-10 codes and DRG
+- **📉 Performance Metrics**: Calculate and visualize key hospital
+  performance indicators including ALOS (Average Length of Stay),
+  readmission rates, and LOS/Readmit indices
+- **🎨 Accessible Design**: Color-blind friendly palettes and themes for
+  inclusive data visualization
+- **🔧 Utility Functions**: Helper functions for data manipulation,
+  Excel export, and SQL-style string operations
 
 ### What Problems Does healthyR Solve?
 
 healthyR takes the guesswork out of common hospital data analysis tasks:
 
-- Calculate average length of stay across different time periods and patient populations
+- Calculate average length of stay across different time periods and
+  patient populations
 - Analyze readmission rates and identify trends
 - Create service line classifications from diagnosis and procedure codes
 - Generate publication-ready visualizations of hospital metrics
@@ -92,8 +108,7 @@ data_with_service_line <- your_data %>%
 
 ### Time Series Analysis
 
-healthyR provides powerful tools for temporal analysis of hospital
-data.
+healthyR provides powerful tools for temporal analysis of hospital data.
 
 #### Time Signature Features
 
@@ -193,7 +208,6 @@ service_line_vec(
   .px_col = px_col,
   .drg_col = drg_col
 )
-#> [1] "alcohol_abuse"
 ```
 
 ## Function Categories
@@ -233,8 +247,7 @@ service_line_vec(
 
 - `save_to_excel()` - Export data to Excel with timestamp
 - `opt_bin()` - Calculate optimal bin size for histograms
-- `sql_left()`, `sql_right()`, `sql_mid()` - SQL-style string
-  operations
+- `sql_left()`, `sql_right()`, `sql_mid()` - SQL-style string operations
 
 ## Documentation
 
@@ -295,9 +308,7 @@ MIT © Steven P. Sanderson II, MPH
 
 ## Author
 
-**Steven P. Sanderson II, MPH**
-
-- Website: [https://www.spsanderson.com](https://www.spsanderson.com)
-- GitHub: [@spsanderson](https://github.com/spsanderson)
-- ORCID:
-  [0009-0006-7661-8247](https://orcid.org/0009-0006-7661-8247)
+**Steven P. Sanderson II, MPH** - Website:
+<https://www.spsanderson.com> - GitHub:
+[@spsanderson](https://github.com/spsanderson) - ORCID:
+[0009-0006-7661-8247](https://orcid.org/0009-0006-7661-8247)
