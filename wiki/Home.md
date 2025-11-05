@@ -20,10 +20,7 @@ Welcome to the comprehensive documentation for **healthyR**, an R package design
 
 ### Tutorials & Examples
 - [Average Length of Stay Analysis](Tutorial-ALOS-Analysis.md)
-- [Readmission Rate Analysis](Tutorial-Readmission-Analysis.md)
 - [Service Line Classification](Tutorial-Service-Line-Classification.md)
-- [Performance Dashboard Creation](Tutorial-Performance-Dashboard.md)
-- [Census & Capacity Planning](Tutorial-Census-Planning.md)
 
 ### Reference Documentation
 - [Data Files Reference](Data-Files-Reference.md)
