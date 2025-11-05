@@ -24,7 +24,6 @@ Welcome to the comprehensive documentation for **healthyR**, an R package design
 
 ### Reference Documentation
 - [Data Files Reference](Data-Files-Reference.md)
-- [API Reference](API-Reference.md)
 - [Changelog](Changelog.md)
 
 ### Help & Support
